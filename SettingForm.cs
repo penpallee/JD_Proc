@@ -79,5 +79,9 @@ namespace JD_Proc
 
 
 
+        private void dungeonForm1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

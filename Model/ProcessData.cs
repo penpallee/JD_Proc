@@ -14,6 +14,6 @@ namespace JD_Proc.Model
         public int Count { get; set; }
         public int SubPixelValue_up { get; set; }
         public int SubPixelValue_dw { get; set; }
-
+        public int BlobCenterY { get; set; }
     }
 }

@@ -163,7 +163,7 @@
             nightForm1.Size = new Size(1920, 1032);
             nightForm1.TabIndex = 0;
             nightForm1.Text = "JD Measuring system";
-            nightForm1.TextAlignment = ReaLTaiizor.Forms.NightForm.Alignment.Left;
+            nightForm1.TextAlignment = ReaLTaiizor.Forms.NightForm.Left;
             nightForm1.TitleBarTextColor = Color.Gainsboro;
             // 
             // panel3
@@ -374,7 +374,7 @@
             dComboBox_scale2.Size = new Size(102, 26);
             dComboBox_scale2.StartIndex = 1;
             dComboBox_scale2.TabIndex = 19;
-            dComboBox_scale2.SelectedIndexChanged += dComboBox_scale2_SelectedIndexChanged;
+            dComboBox_scale2.SelectedIndexChanged += this.dComboBox_scale2_SelectedIndexChanged;
             // 
             // dComboBox_cam2
             // 
@@ -403,7 +403,7 @@
             dComboBox_cam2.Size = new Size(102, 26);
             dComboBox_cam2.StartIndex = 5;
             dComboBox_cam2.TabIndex = 13;
-            dComboBox_cam2.SelectedIndexChanged += dComboBox_cam2_SelectedIndexChanged;
+            dComboBox_cam2.SelectedIndexChanged += this.dComboBox_cam2_SelectedIndexChanged;
             // 
             // moonLabel2
             // 
@@ -551,7 +551,7 @@
             dBtn_gridView2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_gridView2.TabIndex = 5;
             dBtn_gridView2.Text = "grid view";
-            dBtn_gridView2.Click += dBtn_gridView2_Click;
+            dBtn_gridView2.Click += this.dBtn_gridView2_Click;
             // 
             // dBtn_load2
             // 
@@ -574,7 +574,7 @@
             dBtn_load2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_load2.TabIndex = 0;
             dBtn_load2.Text = "load";
-            dBtn_load2.Click += dBtn_load2_Click;
+            dBtn_load2.Click += this.dBtn_load2_Click;
             // 
             // dBtn_imageSave2
             // 
@@ -597,7 +597,7 @@
             dBtn_imageSave2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_imageSave2.TabIndex = 1;
             dBtn_imageSave2.Text = "save";
-            dBtn_imageSave2.Click += dBtn_imageSave2_Click;
+            dBtn_imageSave2.Click += this.dBtn_imageSave2_Click;
             // 
             // dBtn_live2
             // 
@@ -620,7 +620,7 @@
             dBtn_live2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_live2.TabIndex = 2;
             dBtn_live2.Text = "live";
-            dBtn_live2.Click += dBtn_live2_Click;
+            dBtn_live2.Click += this.dBtn_live2_Click;
             // 
             // dBtn_stop2
             // 
@@ -643,7 +643,7 @@
             dBtn_stop2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_stop2.TabIndex = 6;
             dBtn_stop2.Text = "live stop";
-            dBtn_stop2.Click += dBtn_stop2_Click;
+            dBtn_stop2.Click += this.dBtn_stop2_Click;
             // 
             // dBtn_Process2
             // 
@@ -666,7 +666,7 @@
             dBtn_Process2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_Process2.TabIndex = 4;
             dBtn_Process2.Text = "Process";
-            dBtn_Process2.Click += dBtn_Process2_Click;
+            dBtn_Process2.Click += this.dBtn_Process2_Click;
             // 
             // dBtn_snap2
             // 
@@ -689,7 +689,7 @@
             dBtn_snap2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_snap2.TabIndex = 3;
             dBtn_snap2.Text = "snap";
-            dBtn_snap2.Click += dBtn_snap2_Click;
+            dBtn_snap2.Click += this.dBtn_snap2_Click;
             // 
             // dChart_L_5
             // 
@@ -914,7 +914,7 @@
             dComboBox_scale1.Size = new Size(102, 26);
             dComboBox_scale1.StartIndex = 1;
             dComboBox_scale1.TabIndex = 18;
-            dComboBox_scale1.SelectedIndexChanged += dComboBox_scale1_SelectedIndexChanged;
+            dComboBox_scale1.SelectedIndexChanged += this.dComboBox_scale1_SelectedIndexChanged;
             // 
             // dLable_tmp1
             // 
@@ -955,7 +955,7 @@
             dComboBox_cam1.Size = new Size(102, 26);
             dComboBox_cam1.StartIndex = 5;
             dComboBox_cam1.TabIndex = 12;
-            dComboBox_cam1.SelectedIndexChanged += dComboBox_cam1_SelectedIndexChanged;
+            dComboBox_cam1.SelectedIndexChanged += this.dComboBox_cam1_SelectedIndexChanged;
             // 
             // moonLabel1
             // 
@@ -1103,7 +1103,7 @@
             dBtn_gridView1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_gridView1.TabIndex = 5;
             dBtn_gridView1.Text = "grid view";
-            dBtn_gridView1.Click += dBtn_gridView1_Click;
+            dBtn_gridView1.Click += this.dBtn_gridView1_Click;
             // 
             // dBtn_load1
             // 
@@ -1126,7 +1126,7 @@
             dBtn_load1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_load1.TabIndex = 0;
             dBtn_load1.Text = "load";
-            dBtn_load1.Click += dBtn_load1_Click;
+            dBtn_load1.Click += this.dBtn_load1_Click;
             // 
             // dBtn_imageSave1
             // 
@@ -1149,7 +1149,7 @@
             dBtn_imageSave1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_imageSave1.TabIndex = 1;
             dBtn_imageSave1.Text = "save";
-            dBtn_imageSave1.Click += dBtn_imageSave1_Click;
+            dBtn_imageSave1.Click += this.dBtn_imageSave1_Click;
             // 
             // dBtn_live1
             // 
@@ -1172,7 +1172,7 @@
             dBtn_live1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_live1.TabIndex = 2;
             dBtn_live1.Text = "live";
-            dBtn_live1.Click += dBtn_live1_Click;
+            dBtn_live1.Click += this.dBtn_live1_Click;
             // 
             // dBtn_stop1
             // 
@@ -1195,7 +1195,7 @@
             dBtn_stop1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_stop1.TabIndex = 6;
             dBtn_stop1.Text = "live stop";
-            dBtn_stop1.Click += dBtn_stop1_Click;
+            dBtn_stop1.Click += this.dBtn_stop1_Click;
             // 
             // dBtn_Process1
             // 
@@ -1218,7 +1218,7 @@
             dBtn_Process1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_Process1.TabIndex = 4;
             dBtn_Process1.Text = "Process";
-            dBtn_Process1.Click += dBtn_Process1_Click;
+            dBtn_Process1.Click += this.dBtn_Process1_Click;
             // 
             // dBtn_snap1
             // 
@@ -1241,7 +1241,7 @@
             dBtn_snap1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             dBtn_snap1.TabIndex = 3;
             dBtn_snap1.Text = "snap";
-            dBtn_snap1.Click += dBtn_snap1_Click;
+            dBtn_snap1.Click += this.dBtn_snap1_Click;
             // 
             // panel1
             // 
@@ -1286,7 +1286,7 @@
             dBtn_settings.Size = new Size(35, 43);
             dBtn_settings.TabIndex = 11;
             dBtn_settings.TextAlignment = StringAlignment.Center;
-            dBtn_settings.Click += dBtn_settings_Click;
+            dBtn_settings.Click += this.dBtn_settings_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -1314,7 +1314,7 @@
             dBtn_auto.Size = new Size(162, 45);
             dBtn_auto.TabIndex = 2;
             dBtn_auto.Text = "AUTO / MANUAL";
-            dBtn_auto.Click += dBtn_auto_Click;
+            dBtn_auto.Click += this.dBtn_auto_Click;
             // 
             // thunderButton2
             // 
@@ -1335,7 +1335,7 @@
             dBtn_modelOpen.Size = new Size(162, 45);
             dBtn_modelOpen.TabIndex = 0;
             dBtn_modelOpen.Text = "M O D E L";
-            dBtn_modelOpen.Click += dBtn_modelOpen_Click;
+            dBtn_modelOpen.Click += this.dBtn_modelOpen_Click;
             // 
             // tableLayoutPanel2
             // 
