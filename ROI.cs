@@ -430,143 +430,143 @@ namespace JD_Proc
 
         private void Arrow_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            switch (e.KeyCode)
-            {
-                case Keys.Up:
-                    e.IsInputKey = true;
-                    break;
-                case Keys.Down:
-                    e.IsInputKey = true;
-                    break;
-                case Keys.Left:
-                    e.IsInputKey = true;
-                    break;
-                case Keys.Right:
-                    e.IsInputKey = true;
-                    break;
-            }
+            //switch (e.KeyCode)
+            //{
+            //    case Keys.Up:
+            //        e.IsInputKey = true;
+            //        break;
+            //    case Keys.Down:
+            //        e.IsInputKey = true;
+            //        break;
+            //    case Keys.Left:
+            //        e.IsInputKey = true;
+            //        break;
+            //    case Keys.Right:
+            //        e.IsInputKey = true;
+            //        break;
+            //}
         }
 
 
         public void Mouse_Move(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            //minimum size for the control is 8x8
-            if (currentControl.Height < 8)
-            {
-                currentControl.Height = 8;
-                return;
-            }
-            else if (currentControl.Width < 8)
-            {
-                currentControl.Width = 8;
-                return;
-            }
+            ////minimum size for the control is 8x8
+            //if (currentControl.Height < 8)
+            //{
+            //    currentControl.Height = 8;
+            //    return;
+            //}
+            //else if (currentControl.Width < 8)
+            //{
+            //    currentControl.Width = 8;
+            //    return;
+            //}
 
-            if (currentControl.Height > nPicBoxY)
-            {
-                currentControl.Height = nPicBoxY;
-                return;
-            }
-            else if (currentControl.Width > nPicBoxX)
-            {
-                currentControl.Width = nPicBoxX;
-                return;
-            }
+            //if (currentControl.Height > nPicBoxY)
+            //{
+            //    currentControl.Height = nPicBoxY;
+            //    return;
+            //}
+            //else if (currentControl.Width > nPicBoxX)
+            //{
+            //    currentControl.Width = nPicBoxX;
+            //    return;
+            //}
 
-            switch (this.CurrBorder)
-            {
-                case RESIZE_BORDER.RB_TOP:
-                    reSizerect = true;
-                    currentControl.Height = currentControl.Height - e.Y + prevLeftClick.Y;
-                    if (currentControl.Height > 8)
-                        currentControl.Top = currentControl.Top + e.Y - prevLeftClick.Y;
-                    break;
-                case RESIZE_BORDER.RB_TOPLEFT:
-                    reSizerect = true;
-                    currentControl.Height = currentControl.Height - e.Y + prevLeftClick.Y;
-                    if (currentControl.Height > 8)
-                        currentControl.Top = currentControl.Top + e.Y - prevLeftClick.Y;
-                    currentControl.Width = currentControl.Width - e.X + prevLeftClick.X;
-                    if (currentControl.Width > 8)
-                        currentControl.Left = currentControl.Left + e.X - prevLeftClick.X;
-                    break;
-                case RESIZE_BORDER.RB_TOPRIGHT:
-                    reSizerect = true;
-                    currentControl.Height = currentControl.Height - e.Y + prevLeftClick.Y;
-                    if (currentControl.Height > 8)
-                        currentControl.Top = currentControl.Top + e.Y - prevLeftClick.Y;
-                    currentControl.Width = currentControl.Width + e.X - prevLeftClick.X;
+            //switch (this.CurrBorder)
+            //{
+            //    case RESIZE_BORDER.RB_TOP:
+            //        reSizerect = true;
+            //        currentControl.Height = currentControl.Height - e.Y + prevLeftClick.Y;
+            //        if (currentControl.Height > 8)
+            //            currentControl.Top = currentControl.Top + e.Y - prevLeftClick.Y;
+            //        break;
+            //    case RESIZE_BORDER.RB_TOPLEFT:
+            //        reSizerect = true;
+            //        currentControl.Height = currentControl.Height - e.Y + prevLeftClick.Y;
+            //        if (currentControl.Height > 8)
+            //            currentControl.Top = currentControl.Top + e.Y - prevLeftClick.Y;
+            //        currentControl.Width = currentControl.Width - e.X + prevLeftClick.X;
+            //        if (currentControl.Width > 8)
+            //            currentControl.Left = currentControl.Left + e.X - prevLeftClick.X;
+            //        break;
+            //    case RESIZE_BORDER.RB_TOPRIGHT:
+            //        reSizerect = true;
+            //        currentControl.Height = currentControl.Height - e.Y + prevLeftClick.Y;
+            //        if (currentControl.Height > 8)
+            //            currentControl.Top = currentControl.Top + e.Y - prevLeftClick.Y;
+            //        currentControl.Width = currentControl.Width + e.X - prevLeftClick.X;
 
-                    if (currentControl.Width + currentControl.Left >= nPicBoxX)
-                    {
-                        currentControl.Width = nPicBoxX - currentControl.Left;
-                        currentControl.Left = currentControl.Left;
-                    }
+            //        if (currentControl.Width + currentControl.Left >= nPicBoxX)
+            //        {
+            //            currentControl.Width = nPicBoxX - currentControl.Left;
+            //            currentControl.Left = currentControl.Left;
+            //        }
 
-                    break;
-                case RESIZE_BORDER.RB_RIGHT:
-                    reSizerect = true;
-                    currentControl.Width = currentControl.Width + e.X - prevLeftClick.X;
-                    if (currentControl.Width + currentControl.Left >= nPicBoxX)
-                    {
-                        currentControl.Width = nPicBoxX - currentControl.Left;
-                        currentControl.Left = currentControl.Left;
-                    }
+            //        break;
+            //    case RESIZE_BORDER.RB_RIGHT:
+            //        reSizerect = true;
+            //        currentControl.Width = currentControl.Width + e.X - prevLeftClick.X;
+            //        if (currentControl.Width + currentControl.Left >= nPicBoxX)
+            //        {
+            //            currentControl.Width = nPicBoxX - currentControl.Left;
+            //            currentControl.Left = currentControl.Left;
+            //        }
 
-                    break;
-                case RESIZE_BORDER.RB_BOTTOM:
-                    reSizerect = true;
-                    currentControl.Height = currentControl.Height + e.Y - prevLeftClick.Y;
+            //        break;
+            //    case RESIZE_BORDER.RB_BOTTOM:
+            //        reSizerect = true;
+            //        currentControl.Height = currentControl.Height + e.Y - prevLeftClick.Y;
 
-                    if (currentControl.Height + currentControl.Top >= nPicBoxY)
-                    {
-                        currentControl.Height = nPicBoxY - currentControl.Top;
-                        currentControl.Top = currentControl.Top;
-                    }
-                    break;
-                case RESIZE_BORDER.RB_BOTTOMLEFT:
-                    reSizerect = true;
+            //        if (currentControl.Height + currentControl.Top >= nPicBoxY)
+            //        {
+            //            currentControl.Height = nPicBoxY - currentControl.Top;
+            //            currentControl.Top = currentControl.Top;
+            //        }
+            //        break;
+            //    case RESIZE_BORDER.RB_BOTTOMLEFT:
+            //        reSizerect = true;
 
-                    currentControl.Height = currentControl.Height + e.Y - prevLeftClick.Y;
-                    currentControl.Width = currentControl.Width - e.X + prevLeftClick.X;
-                    if (currentControl.Width > 8)
-                        currentControl.Left = currentControl.Left + e.X - prevLeftClick.X;
+            //        currentControl.Height = currentControl.Height + e.Y - prevLeftClick.Y;
+            //        currentControl.Width = currentControl.Width - e.X + prevLeftClick.X;
+            //        if (currentControl.Width > 8)
+            //            currentControl.Left = currentControl.Left + e.X - prevLeftClick.X;
 
-                    if (currentControl.Height + currentControl.Top >= nPicBoxY)
-                    {
-                        currentControl.Height = nPicBoxY - currentControl.Top;
-                        currentControl.Top = currentControl.Top;
-                    }
-                    break;
-                case RESIZE_BORDER.RB_BOTTOMRIGHT:
-                    reSizerect = true;
-                    currentControl.Height = currentControl.Height + e.Y - prevLeftClick.Y;
-                    currentControl.Width = currentControl.Width + e.X - prevLeftClick.X;
+            //        if (currentControl.Height + currentControl.Top >= nPicBoxY)
+            //        {
+            //            currentControl.Height = nPicBoxY - currentControl.Top;
+            //            currentControl.Top = currentControl.Top;
+            //        }
+            //        break;
+            //    case RESIZE_BORDER.RB_BOTTOMRIGHT:
+            //        reSizerect = true;
+            //        currentControl.Height = currentControl.Height + e.Y - prevLeftClick.Y;
+            //        currentControl.Width = currentControl.Width + e.X - prevLeftClick.X;
 
-                    if (currentControl.Width + currentControl.Left >= nPicBoxX)
-                    {
-                        currentControl.Width = nPicBoxX - currentControl.Left;
-                        currentControl.Left = currentControl.Left;
-                    }
+            //        if (currentControl.Width + currentControl.Left >= nPicBoxX)
+            //        {
+            //            currentControl.Width = nPicBoxX - currentControl.Left;
+            //            currentControl.Left = currentControl.Left;
+            //        }
 
-                    if (currentControl.Height + currentControl.Top >= nPicBoxY)
-                    {
-                        currentControl.Height = nPicBoxY - currentControl.Top;
-                        currentControl.Top = currentControl.Top;
-                    }
+            //        if (currentControl.Height + currentControl.Top >= nPicBoxY)
+            //        {
+            //            currentControl.Height = nPicBoxY - currentControl.Top;
+            //            currentControl.Top = currentControl.Top;
+            //        }
 
-                    break;
-                case RESIZE_BORDER.RB_LEFT:
-                    reSizerect = true;
-                    currentControl.Width = currentControl.Width - e.X + prevLeftClick.X;
-                    if (currentControl.Width > 8)
-                        currentControl.Left = currentControl.Left + e.X - prevLeftClick.X;
-                    break;
-                case RESIZE_BORDER.RB_NONE:
-                    reSizerect = false;
-                    currentControl.Location = new System.Drawing.Point(currentControl.Location.X + e.X - prevLeftClick.X, currentControl.Location.Y + e.Y - prevLeftClick.Y);
-                    break;
-            }
+            //        break;
+            //    case RESIZE_BORDER.RB_LEFT:
+            //        reSizerect = true;
+            //        currentControl.Width = currentControl.Width - e.X + prevLeftClick.X;
+            //        if (currentControl.Width > 8)
+            //            currentControl.Left = currentControl.Left + e.X - prevLeftClick.X;
+            //        break;
+            //    case RESIZE_BORDER.RB_NONE:
+            //        reSizerect = false;
+            //        currentControl.Location = new System.Drawing.Point(currentControl.Location.X + e.X - prevLeftClick.X, currentControl.Location.Y + e.Y - prevLeftClick.Y);
+            //        break;
+            //}
 
         }
 
@@ -639,80 +639,80 @@ namespace JD_Proc
         private void RectTracker_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
 
-            //the mouse is up, recreate the control to append changes
-            if (this.Focused)
-            {
-                Create();
-                this.Visible = true;
-                if (this.Left < 0)
-                {
-                    this.Left = 0;
-                    this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
+            ////the mouse is up, recreate the control to append changes
+            //if (this.Focused)
+            //{
+            //    Create();
+            //    this.Visible = true;
+            //    if (this.Left < 0)
+            //    {
+            //        this.Left = 0;
+            //        this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
 
-                    if (this.Width >= nPicBoxX)
-                    {
-                        this.Width = nPicBoxX;
-                    }
-                }
+            //        if (this.Width >= nPicBoxX)
+            //        {
+            //            this.Width = nPicBoxX;
+            //        }
+            //    }
 
-                if (this.Top < 20)
-                {
-                    if (this.Top < 0)
-                    {
-                        this.Top = 0;
-                    }
-                    this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
+            //    if (this.Top < 20)
+            //    {
+            //        if (this.Top < 0)
+            //        {
+            //            this.Top = 0;
+            //        }
+            //        this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
 
-                    if (this.Height >= nPicBoxY)
-                    {
-                        this.Height = nPicBoxY;
-                    }
-                }
+            //        if (this.Height >= nPicBoxY)
+            //        {
+            //            this.Height = nPicBoxY;
+            //        }
+            //    }
 
-                if ((this.Left >= 0) && (this.Top >= 20))
-                {
-                    this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
-                }
+            //    if ((this.Left >= 0) && (this.Top >= 20))
+            //    {
+            //        this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
+            //    }
 
-                if (this.Left + this.Width >= nPicBoxX)
-                {
-                    if (this.Width >= nPicBoxX)
-                    {
-                        this.Width = nPicBoxX - 1;
-                        this.Left = 0;
-                    }
+            //    if (this.Left + this.Width >= nPicBoxX)
+            //    {
+            //        if (this.Width >= nPicBoxX)
+            //        {
+            //            this.Width = nPicBoxX - 1;
+            //            this.Left = 0;
+            //        }
 
-                    if (!reSizerect)
-                        this.Left = nPicBoxX - this.Width;
-                    if (reSizerect)
-                        this.Left = this.Left;
-                    this.Width = nPicBoxX - this.Left;
+            //        if (!reSizerect)
+            //            this.Left = nPicBoxX - this.Width;
+            //        if (reSizerect)
+            //            this.Left = this.Left;
+            //        this.Width = nPicBoxX - this.Left;
 
-                    if (this.Top < 20)
-                    {
-                        this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
-                    }
-                    else
-                    {
-                        this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
-                    }
-                }
+            //        if (this.Top < 20)
+            //        {
+            //            this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
+            //        }
+            //        else
+            //        {
+            //            this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
+            //        }
+            //    }
 
-                if (this.Top + this.Height >= nPicBoxY)
-                {
-                    if (this.Height >= nPicBoxY)
-                    {
-                        this.Height = nPicBoxY;
-                    }
-                    this.Top = nPicBoxY - this.Height;
-                    this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
-                }
+            //    if (this.Top + this.Height >= nPicBoxY)
+            //    {
+            //        if (this.Height >= nPicBoxY)
+            //        {
+            //            this.Height = nPicBoxY;
+            //        }
+            //        this.Top = nPicBoxY - this.Height;
+            //        this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
+            //    }
 
 
-            }
+            //}
 
-            if (reSizerect)
-                reSizerect = false;
+            //if (reSizerect)
+            //    reSizerect = false;
         }
 
         public void StartTracking(Control ctl)
@@ -738,108 +738,108 @@ namespace JD_Proc
 
         private void RectTracker_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
-            {
-                case Keys.Up:
-                    currentControl.Top = currentControl.Top - 1;
-                    this.Location = new System.Drawing.Point(this.Left, this.Top - 1);
+            //switch (e.KeyCode)
+            //{
+            //    case Keys.Up:
+            //        currentControl.Top = currentControl.Top - 1;
+            //        this.Location = new System.Drawing.Point(this.Left, this.Top - 1);
 
-                    this.roiLabel.Location = new System.Drawing.Point(this.roiLabel.Left, this.roiLabel.Top - 1);
-                    if (this.Top < 20)
-                    {
-                        if (this.Top < 0)
-                        {
-                            this.Top = 0;
-                        }
-                        this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
-                    }
+            //        this.roiLabel.Location = new System.Drawing.Point(this.roiLabel.Left, this.roiLabel.Top - 1);
+            //        if (this.Top < 20)
+            //        {
+            //            if (this.Top < 0)
+            //            {
+            //                this.Top = 0;
+            //            }
+            //            this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
+            //        }
 
-                    if ((this.Left >= 0) && (this.Top >= 20))
-                    {
-                        this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
-                    }
+            //        if ((this.Left >= 0) && (this.Top >= 20))
+            //        {
+            //            this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
+            //        }
 
-                    break;
+            //        break;
 
-                case Keys.Down:
-                    currentControl.Top = currentControl.Top + 1;
-                    this.Location = new System.Drawing.Point(this.Left, this.Top + 1);
-                    this.roiLabel.Location = new System.Drawing.Point(this.roiLabel.Left, this.roiLabel.Top + 1);
-                    if (this.Top < 20)
-                        this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
-                    else
-                        this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
-                    if (this.Top + this.Height > nPicBoxY)
-                    {
-                        this.Top = nPicBoxY - this.Height;
-                    }
+            //    case Keys.Down:
+            //        currentControl.Top = currentControl.Top + 1;
+            //        this.Location = new System.Drawing.Point(this.Left, this.Top + 1);
+            //        this.roiLabel.Location = new System.Drawing.Point(this.roiLabel.Left, this.roiLabel.Top + 1);
+            //        if (this.Top < 20)
+            //            this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
+            //        else
+            //            this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
+            //        if (this.Top + this.Height > nPicBoxY)
+            //        {
+            //            this.Top = nPicBoxY - this.Height;
+            //        }
 
-                    break;
+            //        break;
 
-                case Keys.Left:
-                    currentControl.Left = currentControl.Left - 1;
-                    this.Location = new System.Drawing.Point(this.Left - 1, this.Top);
-                    this.roiLabel.Location = new System.Drawing.Point(this.roiLabel.Left - 1, this.roiLabel.Top);
-                    if (this.Left < 0)
-                    {
-                        this.Left = 0;
-                        if (this.Top < 20)
-                            this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
-                        else
-                            this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
-                    }
-                    break;
+            //    case Keys.Left:
+            //        currentControl.Left = currentControl.Left - 1;
+            //        this.Location = new System.Drawing.Point(this.Left - 1, this.Top);
+            //        this.roiLabel.Location = new System.Drawing.Point(this.roiLabel.Left - 1, this.roiLabel.Top);
+            //        if (this.Left < 0)
+            //        {
+            //            this.Left = 0;
+            //            if (this.Top < 20)
+            //                this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
+            //            else
+            //                this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
+            //        }
+            //        break;
 
-                case Keys.Right:
-                    currentControl.Left = currentControl.Left + 1;
-                    this.Location = new System.Drawing.Point(this.Left + 1, this.Top);
-                    this.roiLabel.Location = new System.Drawing.Point(this.roiLabel.Left + 1, this.roiLabel.Top);
-                    if (this.Left + this.Width > nPicBoxX)
-                    {
-                        this.Left = nPicBoxX - this.Width;
-                        if (this.Top < 20)
-                        {
-                            this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
-                        }
-                        else
-                        {
-                            this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
-                        }
-                    }
-                    break;
-            }
+            //    case Keys.Right:
+            //        currentControl.Left = currentControl.Left + 1;
+            //        this.Location = new System.Drawing.Point(this.Left + 1, this.Top);
+            //        this.roiLabel.Location = new System.Drawing.Point(this.roiLabel.Left + 1, this.roiLabel.Top);
+            //        if (this.Left + this.Width > nPicBoxX)
+            //        {
+            //            this.Left = nPicBoxX - this.Width;
+            //            if (this.Top < 20)
+            //            {
+            //                this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top + this.Height + 5);
+            //            }
+            //            else
+            //            {
+            //                this.roiLabel.Location = new System.Drawing.Point(this.Left, this.Top - 15);
+            //            }
+            //        }
+            //        break;
+            //}
         }
 
         private void RectTracker_KeyUp(object sender, KeyEventArgs e)
         {
-            int X;
-            int Y;
-            int HEIGHT;
-            int WIDTH;
+            //int X;
+            //int Y;
+            //int HEIGHT;
+            //int WIDTH;
 
-            X = currentControl.Bounds.X;
-            Y = currentControl.Bounds.Y;
-            HEIGHT = currentControl.Bounds.Height;
-            WIDTH = currentControl.Bounds.Width;
+            //X = currentControl.Bounds.X;
+            //Y = currentControl.Bounds.Y;
+            //HEIGHT = currentControl.Bounds.Height;
+            //WIDTH = currentControl.Bounds.Width;
 
-            //Create();
-            switch (e.KeyCode)
-            {
-                case Keys.Up:
-                    this.Location = new System.Drawing.Point(this.Left, this.Top);
-                    break;
-                case Keys.Down:
-                    this.Location = new System.Drawing.Point(this.Left, this.Top);
-                    break;
-                case Keys.Left:
-                    this.Location = new System.Drawing.Point(this.Left, this.Top);
-                    break;
-                case Keys.Right:
-                    this.Location = new System.Drawing.Point(this.Left, this.Top);
-                    break;
-            }
+            ////Create();
+            //switch (e.KeyCode)
+            //{
+            //    case Keys.Up:
+            //        this.Location = new System.Drawing.Point(this.Left, this.Top);
+            //        break;
+            //    case Keys.Down:
+            //        this.Location = new System.Drawing.Point(this.Left, this.Top);
+            //        break;
+            //    case Keys.Left:
+            //        this.Location = new System.Drawing.Point(this.Left, this.Top);
+            //        break;
+            //    case Keys.Right:
+            //        this.Location = new System.Drawing.Point(this.Left, this.Top);
+            //        break;
+            //}
 
-            //Create();
+            ////Create();
         }
 
         private void RectTracker_LocationChanged(object sender, EventArgs e)

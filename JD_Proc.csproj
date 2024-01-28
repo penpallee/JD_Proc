@@ -7,6 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Platforms>AnyCPU;x64;x86</Platforms>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,15 @@
     <PackageReference Include="OpenCvSharp4.Extensions" Version="4.9.0.20240103" />
     <PackageReference Include="ReaLTaiizor" Version="3.7.9.8" />
     <PackageReference Include="WinForms.DataVisualization" Version="1.9.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Interop.ActSupportMsg64Lib">
+      <HintPath>Libs\x64\Interop.ActSupportMsg64Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.ActUtlType64Lib">
+      <HintPath>Libs\x64\Interop.ActUtlType64Lib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

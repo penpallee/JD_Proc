@@ -20,6 +20,11 @@ namespace JD_Proc.Service
         [DllImport("kernel32")]
         private static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder retVal, int size, string filePath);
 
+        public void WriteOne(string Section, string Key, string value, string path)
+        {
+            WritePrivateProfileString(Section, Key, value, path);
+        }
+
         public void WriteAll(Model.Models models)
         {
             string path = _path + models.Name + ".ini";

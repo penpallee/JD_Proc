@@ -782,7 +782,7 @@
             dBtn_open.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             dBtn_open.TabIndex = 5;
             dBtn_open.Tag = "Cyber";
-            dBtn_open.TextButton = "O P E N";
+            dBtn_open.TextButton = "L O A D";
             dBtn_open.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             dBtn_open.Timer_Effect_1 = 20;
             dBtn_open.Timer_RGB = 100;
@@ -808,7 +808,7 @@
             controlBoxEdit1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             controlBoxEdit1.BackColor = Color.Transparent;
             controlBoxEdit1.DefaultLocation = true;
-            controlBoxEdit1.Location = new Point(758, -1);
+            controlBoxEdit1.Location = new Point(748, -1);
             controlBoxEdit1.Name = "controlBoxEdit1";
             controlBoxEdit1.Size = new Size(77, 19);
             controlBoxEdit1.TabIndex = 0;
