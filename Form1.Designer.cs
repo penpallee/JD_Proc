@@ -264,6 +264,7 @@
             DBtn_jogDown_L.Size = new Size(53, 47);
             DBtn_jogDown_L.TabIndex = 33;
             DBtn_jogDown_L.TextAlignment = StringAlignment.Center;
+            DBtn_jogDown_L.Visible = false;
             DBtn_jogDown_L.Click += DBtn_jogDown_L_Click;
             // 
             // DBtn_jogUp_L
@@ -283,6 +284,7 @@
             DBtn_jogUp_L.Size = new Size(53, 47);
             DBtn_jogUp_L.TabIndex = 32;
             DBtn_jogUp_L.TextAlignment = StringAlignment.Center;
+            DBtn_jogUp_L.Visible = false;
             DBtn_jogUp_L.Click += DBtn_jogUp_L_Click;
             // 
             // panel4
@@ -351,6 +353,7 @@
             DBtn_jogDown_R.Size = new Size(53, 47);
             DBtn_jogDown_R.TabIndex = 35;
             DBtn_jogDown_R.TextAlignment = StringAlignment.Center;
+            DBtn_jogDown_R.Visible = false;
             DBtn_jogDown_R.Click += DBtn_jogDown_R_Click;
             // 
             // DBtn_jogUp_R
@@ -370,6 +373,7 @@
             DBtn_jogUp_R.Size = new Size(53, 47);
             DBtn_jogUp_R.TabIndex = 34;
             DBtn_jogUp_R.TextAlignment = StringAlignment.Center;
+            DBtn_jogUp_R.Visible = false;
             DBtn_jogUp_R.Click += DBtn_jogUp_R_Click;
             // 
             // dChart_R_5

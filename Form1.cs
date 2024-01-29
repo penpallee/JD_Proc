@@ -53,6 +53,7 @@ namespace JD_Proc
 
         public static PLC.Melsec _MELSEC;
         public static PLC.Melsec _MELSEC_JOG;
+        public static PLC.Melsec _MELSEC_HEART;
 
         double[,] _tempData_L = new double[640, 480];
         double[,] _tempData_R = new double[640, 480];
@@ -895,12 +896,12 @@ namespace JD_Proc
         #region event(settings) - click
         private void dBtn_settings_Click(object sender, EventArgs e)
         {
-            SettingForm settingForm = new SettingForm();
+            SettingForm settingForm = new SettingForm(this);
             settingForm.StartPosition = FormStartPosition.Manual;
             settingForm.Location = new System.Drawing.Point(500, 100);
 
             //settingForm.SetPlc();
-            //settingForm._timer.Start();
+            // settingForm._timer.Start();
 
             settingForm.ShowDialog();
 
@@ -1024,21 +1025,22 @@ namespace JD_Proc
         private void DBtn_jogUp_L_Click(object sender, EventArgs e)
         {
             // _MELSEC_JOG 객체를 이용한다. 
+            _MELSEC_JOG.actUtlType64.SetDevice("B16", short.Parse("1"));
         }
 
         private void DBtn_jogDown_L_Click(object sender, EventArgs e)
         {
-            // _MELSEC_JOG 객체를 이용한다. 
+            _MELSEC_JOG.actUtlType64.SetDevice("B17", short.Parse("1"));
         }
 
         private void DBtn_jogUp_R_Click(object sender, EventArgs e)
         {
-            // _MELSEC_JOG 객체를 이용한다. 
+            _MELSEC_JOG.actUtlType64.SetDevice("B18", short.Parse("1"));
         }
 
         private void DBtn_jogDown_R_Click(object sender, EventArgs e)
         {
-            // _MELSEC_JOG 객체를 이용한다. 
+            _MELSEC_JOG.actUtlType64.SetDevice("B19", short.Parse("1"));
         }
         #endregion
 
@@ -1127,6 +1129,28 @@ namespace JD_Proc
         {
             SetModel(path);
             _Model_path = path;
+        }
+        #endregion
+
+        #region method - 셋팅 창에서 조그 활성화를 했을때
+        public void JogVisibleChanged(bool show)
+        {
+            if (show == true)
+            {
+                DBtn_jogUp_L.Visible = true;
+                DBtn_jogDown_L.Visible = true;
+                DBtn_jogUp_R.Visible = true;
+                DBtn_jogDown_R.Visible = true;
+            }
+            else
+            {
+                DBtn_jogUp_L.Visible = false;
+                DBtn_jogDown_L.Visible = false;
+                DBtn_jogUp_R.Visible = false;
+                DBtn_jogDown_R.Visible = false;
+            }
+
+
         }
         #endregion
 

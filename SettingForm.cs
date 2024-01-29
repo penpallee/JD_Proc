@@ -20,18 +20,21 @@ namespace JD_Proc
     {
         #region var
         public System.Timers.Timer _timer = new System.Timers.Timer();
+        Form1 _form1;
         #endregion
 
         #region 생성자
-        public SettingForm()
+        public SettingForm(Form1 form1)
         {
             InitializeComponent();
+
+            _form1 = form1;
 
             GetResolution_1();
             GetResolution_2();
 
             _timer = new System.Timers.Timer();
-            _timer.Interval = 3000;
+            _timer.Interval = 200;
             _timer.Elapsed += new ElapsedEventHandler(PlcCheckTimer);
 
         }
@@ -55,7 +58,7 @@ namespace JD_Proc
                 }));
 
                 int cam1Start = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B103", out cam1Start);
+                Form1._MELSEC.actUtlType64.GetDevice("B110", out cam1Start);
 
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
@@ -66,7 +69,7 @@ namespace JD_Proc
                 }));
 
                 int cam2Start = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B104", out cam2Start);
+                Form1._MELSEC.actUtlType64.GetDevice("B111", out cam2Start);
 
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
@@ -116,6 +119,153 @@ namespace JD_Proc
         private void dBtn_pixelLoad2_Click(object sender, EventArgs e)
         {
             GetResolution_2();
+        }
+        #endregion
+
+        #region event(plc) - click
+
+        private void dPanel_visionCam1Auto_Click(object sender, EventArgs e)
+        {
+            if (dPanel_visionCam1Auto.BackColor == Color.Red)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B3", short.Parse("1"));
+
+                dPanel_visionCam1Auto.BackColor = Color.Lime;
+                dPanel_visionCam2Auto.BackColor = Color.Lime;
+            }
+            else if (dPanel_visionCam1Auto.BackColor == Color.Lime)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B3", short.Parse("0"));
+
+                dPanel_visionCam1Auto.BackColor = Color.Red;
+                dPanel_visionCam2Auto.BackColor = Color.Red;
+            }
+        }
+
+        private void dPanel_visionCam1Ready_Click(object sender, EventArgs e)
+        {
+            if (dPanel_visionCam1Ready.BackColor == Color.Red)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B10", short.Parse("1"));
+
+                dPanel_visionCam1Ready.BackColor = Color.Lime;
+                dPanel_visionCam1Ready.BackColor = Color.Lime;
+            }
+            else if (dPanel_visionCam1Ready.BackColor == Color.Lime)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B10", short.Parse("0"));
+
+                dPanel_visionCam1Ready.BackColor = Color.Red;
+                dPanel_visionCam1Ready.BackColor = Color.Red;
+            }
+        }
+
+        private void dPanel_visionCam1Busy_Click(object sender, EventArgs e)
+        {
+            if (dPanel_visionCam1Busy.BackColor == Color.Red)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B11", short.Parse("1"));
+
+                dPanel_visionCam1Busy.BackColor = Color.Lime;
+                dPanel_visionCam1Busy.BackColor = Color.Lime;
+            }
+            else if (dPanel_visionCam1Busy.BackColor == Color.Lime)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B11", short.Parse("0"));
+
+                dPanel_visionCam1Busy.BackColor = Color.Red;
+                dPanel_visionCam1Busy.BackColor = Color.Red;
+            }
+        }
+
+        private void dPanel_visionCam1End_Click(object sender, EventArgs e)
+        {
+            if (dPanel_visionCam1End.BackColor == Color.Red)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B12", short.Parse("1"));
+
+                dPanel_visionCam1End.BackColor = Color.Lime;
+                dPanel_visionCam1End.BackColor = Color.Lime;
+            }
+            else if (dPanel_visionCam1End.BackColor == Color.Lime)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B12", short.Parse("0"));
+
+                dPanel_visionCam1End.BackColor = Color.Red;
+                dPanel_visionCam1End.BackColor = Color.Red;
+            }
+        }
+
+        private void dPanel_visionCam2Auto_Click(object sender, EventArgs e)
+        {
+            if (dPanel_visionCam2Auto.BackColor == Color.Red)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice2("B3", short.Parse("1"));
+
+                dPanel_visionCam1Auto.BackColor = Color.Lime;
+                dPanel_visionCam2Auto.BackColor = Color.Lime;
+            }
+            else if (dPanel_visionCam2Auto.BackColor == Color.Lime)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice2("B3", short.Parse("0"));
+
+                dPanel_visionCam1Auto.BackColor = Color.Red;
+                dPanel_visionCam2Auto.BackColor = Color.Red;
+            }
+        }
+
+        private void dPanel_visionCam2Ready_Click(object sender, EventArgs e)
+        {
+            if (dPanel_visionCam2Ready.BackColor == Color.Red)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B13", short.Parse("1"));
+
+                dPanel_visionCam2Ready.BackColor = Color.Lime;
+                dPanel_visionCam2Ready.BackColor = Color.Lime;
+            }
+            else if (dPanel_visionCam2Ready.BackColor == Color.Lime)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B13", short.Parse("0"));
+
+                dPanel_visionCam2Ready.BackColor = Color.Red;
+                dPanel_visionCam2Ready.BackColor = Color.Red;
+            }
+        }
+
+        private void dPanel_visionCam2Busy_Click(object sender, EventArgs e)
+        {
+            if (dPanel_visionCam2Busy.BackColor == Color.Red)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B14", short.Parse("1"));
+
+                dPanel_visionCam2Busy.BackColor = Color.Lime;
+                dPanel_visionCam2Busy.BackColor = Color.Lime;
+            }
+            else if (dPanel_visionCam2Busy.BackColor == Color.Lime)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B14", short.Parse("0"));
+
+                dPanel_visionCam2Busy.BackColor = Color.Red;
+                dPanel_visionCam2Busy.BackColor = Color.Red;
+            }
+        }
+
+        private void dPanel_visionCam2End_Click(object sender, EventArgs e)
+        {
+            if (dPanel_visionCam2End.BackColor == Color.Red)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B15", short.Parse("1"));
+
+                dPanel_visionCam2End.BackColor = Color.Lime;
+                dPanel_visionCam2End.BackColor = Color.Lime;
+            }
+            else if (dPanel_visionCam2End.BackColor == Color.Lime)
+            {
+                Form1._MELSEC.actUtlType64.SetDevice("B15", short.Parse("0"));
+
+                dPanel_visionCam2End.BackColor = Color.Red;
+                dPanel_visionCam2End.BackColor = Color.Red;
+            }
         }
         #endregion
 
@@ -224,155 +374,23 @@ namespace JD_Proc
         {
 
         }
-        #endregion
 
-        #region event(plc) - click
-
-        private void dPanel_visionCam1Auto_Click(object sender, EventArgs e)
+        private void dCheckBox_jog_Load(object sender, EventArgs e)
         {
-            if (dPanel_visionCam1Auto.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B3", short.Parse("1"));
 
-                dPanel_visionCam1Auto.BackColor = Color.Lime;
-                dPanel_visionCam2Auto.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam1Auto.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B3", short.Parse("0"));
-
-                dPanel_visionCam1Auto.BackColor = Color.Red;
-                dPanel_visionCam2Auto.BackColor = Color.Red;
-            }
         }
-
-        private void dPanel_visionCam1Ready_Click(object sender, EventArgs e)
+        private void dCheckBox_jog_VisibleChanged(object sender, EventArgs e)
         {
-            if (dPanel_visionCam1Ready.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B4", short.Parse("1"));
 
-                dPanel_visionCam1Ready.BackColor = Color.Lime;
-                dPanel_visionCam1Ready.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam1Ready.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B4", short.Parse("0"));
-
-                dPanel_visionCam1Ready.BackColor = Color.Red;
-                dPanel_visionCam1Ready.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam1Busy_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam1Busy.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B5", short.Parse("1"));
-
-                dPanel_visionCam1Busy.BackColor = Color.Lime;
-                dPanel_visionCam1Busy.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam1Busy.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B5", short.Parse("0"));
-
-                dPanel_visionCam1Busy.BackColor = Color.Red;
-                dPanel_visionCam1Busy.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam1End_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam1End.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B6", short.Parse("1"));
-
-                dPanel_visionCam1End.BackColor = Color.Lime;
-                dPanel_visionCam1End.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam1End.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B6", short.Parse("0"));
-
-                dPanel_visionCam1End.BackColor = Color.Red;
-                dPanel_visionCam1End.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam2Auto_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam2Auto.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice2("B3", short.Parse("1"));
-
-                dPanel_visionCam1Auto.BackColor = Color.Lime;
-                dPanel_visionCam2Auto.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam2Auto.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice2("B3", short.Parse("0"));
-
-                dPanel_visionCam1Auto.BackColor = Color.Red;
-                dPanel_visionCam2Auto.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam2Ready_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam2Ready.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B7", short.Parse("1"));
-
-                dPanel_visionCam2Ready.BackColor = Color.Lime;
-                dPanel_visionCam2Ready.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam2Ready.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B7", short.Parse("0"));
-
-                dPanel_visionCam2Ready.BackColor = Color.Red;
-                dPanel_visionCam2Ready.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam2Busy_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam2Busy.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B8", short.Parse("1"));
-
-                dPanel_visionCam2Busy.BackColor = Color.Lime;
-                dPanel_visionCam2Busy.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam2Busy.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B8", short.Parse("0"));
-
-                dPanel_visionCam2Busy.BackColor = Color.Red;
-                dPanel_visionCam2Busy.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam2End_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam2End.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B9", short.Parse("1"));
-
-                dPanel_visionCam2End.BackColor = Color.Lime;
-                dPanel_visionCam2End.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam2End.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B9", short.Parse("0"));
-
-                dPanel_visionCam2End.BackColor = Color.Red;
-                dPanel_visionCam2End.BackColor = Color.Red;
-            }
         }
         #endregion
 
-
+        #region event(jog) - checked changed
+        private void dCheckBox_jog_CheckedChanged()
+        {
+            _form1.JogVisibleChanged(dCheckBox_jog.Checked);
+        }
+        #endregion
     }
 }
+
