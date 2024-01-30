@@ -43,7 +43,11 @@
             ReaLTaiizor.Controls.FoxLabel foxLabel15;
             ReaLTaiizor.Controls.FoxLabel foxLabel16;
             ReaLTaiizor.Controls.FoxLabel foxLabel7;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingForm));
             dungeonForm1 = new ReaLTaiizor.Forms.DungeonForm();
+            dPanel_login = new ReaLTaiizor.Controls.NightPanel();
+            dTxtBox_password = new ReaLTaiizor.Controls.CyberTextBox();
+            dButton_login = new ReaLTaiizor.Controls.CyberButton();
             thunderGroupBox7 = new ReaLTaiizor.Controls.ThunderGroupBox();
             dCheckBox_jog = new ReaLTaiizor.Controls.CyberCheckBox();
             thunderGroupBox6 = new ReaLTaiizor.Controls.ThunderGroupBox();
@@ -87,6 +91,7 @@
             foxLabel16 = new ReaLTaiizor.Controls.FoxLabel();
             foxLabel7 = new ReaLTaiizor.Controls.FoxLabel();
             dungeonForm1.SuspendLayout();
+            dPanel_login.SuspendLayout();
             thunderGroupBox7.SuspendLayout();
             thunderGroupBox6.SuspendLayout();
             thunderGroupBox5.SuspendLayout();
@@ -294,6 +299,7 @@
             // 
             dungeonForm1.BackColor = Color.FromArgb(40, 45, 45);
             dungeonForm1.BorderColor = Color.FromArgb(38, 38, 38);
+            dungeonForm1.Controls.Add(dPanel_login);
             dungeonForm1.Controls.Add(thunderGroupBox7);
             dungeonForm1.Controls.Add(thunderGroupBox6);
             dungeonForm1.Controls.Add(thunderGroupBox5);
@@ -321,6 +327,93 @@
             dungeonForm1.Text = "Settings";
             dungeonForm1.TitleColor = Color.FromArgb(223, 219, 210);
             dungeonForm1.Click += dungeonForm1_Click;
+            // 
+            // dPanel_login
+            // 
+            dPanel_login.BackgroundImage = (Image)resources.GetObject("dPanel_login.BackgroundImage");
+            dPanel_login.BackgroundImageLayout = ImageLayout.Stretch;
+            dPanel_login.Controls.Add(dTxtBox_password);
+            dPanel_login.Controls.Add(dButton_login);
+            dPanel_login.ForeColor = Color.FromArgb(250, 250, 250);
+            dPanel_login.LeftSideColor = Color.FromArgb(40, 45, 45);
+            dPanel_login.Location = new Point(23, 59);
+            dPanel_login.Name = "dPanel_login";
+            dPanel_login.RightSideColor = Color.FromArgb(40, 45, 45);
+            dPanel_login.Side = ReaLTaiizor.Controls.NightPanel.PanelSide.Left;
+            dPanel_login.Size = new Size(569, 472);
+            dPanel_login.TabIndex = 25;
+            // 
+            // dTxtBox_password
+            // 
+            dTxtBox_password.Alpha = 20;
+            dTxtBox_password.BackColor = Color.Transparent;
+            dTxtBox_password.Background_WidthPen = 3F;
+            dTxtBox_password.BackgroundPen = true;
+            dTxtBox_password.ColorBackground = Color.FromArgb(37, 52, 68);
+            dTxtBox_password.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            dTxtBox_password.ColorLighting = Color.FromArgb(29, 200, 238);
+            dTxtBox_password.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            dTxtBox_password.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            dTxtBox_password.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            dTxtBox_password.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dTxtBox_password.ForeColor = Color.FromArgb(245, 245, 245);
+            dTxtBox_password.Lighting = false;
+            dTxtBox_password.LinearGradientPen = false;
+            dTxtBox_password.Location = new Point(369, 429);
+            dTxtBox_password.Name = "dTxtBox_password";
+            dTxtBox_password.Password = true;
+            dTxtBox_password.PenWidth = 15;
+            dTxtBox_password.RGB = false;
+            dTxtBox_password.Rounding = true;
+            dTxtBox_password.RoundingInt = 60;
+            dTxtBox_password.Size = new Size(200, 40);
+            dTxtBox_password.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            dTxtBox_password.TabIndex = 1;
+            dTxtBox_password.Tag = "Cyber";
+            dTxtBox_password.TextButton = "";
+            dTxtBox_password.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            dTxtBox_password.Timer_RGB = 300;
+            // 
+            // dButton_login
+            // 
+            dButton_login.Alpha = 20;
+            dButton_login.BackColor = Color.Transparent;
+            dButton_login.Background = true;
+            dButton_login.Background_WidthPen = 4F;
+            dButton_login.BackgroundPen = true;
+            dButton_login.ColorBackground = Color.FromArgb(37, 52, 68);
+            dButton_login.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            dButton_login.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            dButton_login.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            dButton_login.ColorLighting = Color.FromArgb(29, 200, 238);
+            dButton_login.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            dButton_login.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            dButton_login.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            dButton_login.Effect_1 = true;
+            dButton_login.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            dButton_login.Effect_1_Transparency = 25;
+            dButton_login.Effect_2 = true;
+            dButton_login.Effect_2_ColorBackground = Color.White;
+            dButton_login.Effect_2_Transparency = 20;
+            dButton_login.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dButton_login.ForeColor = Color.FromArgb(245, 245, 245);
+            dButton_login.Lighting = false;
+            dButton_login.LinearGradient_Background = false;
+            dButton_login.LinearGradientPen = false;
+            dButton_login.Location = new Point(434, 381);
+            dButton_login.Name = "dButton_login";
+            dButton_login.PenWidth = 15;
+            dButton_login.Rounding = true;
+            dButton_login.RoundingInt = 70;
+            dButton_login.Size = new Size(130, 42);
+            dButton_login.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            dButton_login.TabIndex = 0;
+            dButton_login.Tag = "Cyber";
+            dButton_login.TextButton = "로 그 인";
+            dButton_login.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            dButton_login.Timer_Effect_1 = 5;
+            dButton_login.Timer_RGB = 300;
+            dButton_login.Click += dButton_login_Click;
             // 
             // thunderGroupBox7
             // 
@@ -711,6 +804,7 @@
             TransparencyKey = Color.Fuchsia;
             FormClosing += SettingForm_FormClosing;
             dungeonForm1.ResumeLayout(false);
+            dPanel_login.ResumeLayout(false);
             thunderGroupBox7.ResumeLayout(false);
             thunderGroupBox6.ResumeLayout(false);
             thunderGroupBox5.ResumeLayout(false);
@@ -755,5 +849,8 @@
         private Panel dPanel_plcCam2Cap;
         private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox7;
         private ReaLTaiizor.Controls.CyberCheckBox dCheckBox_jog;
+        private ReaLTaiizor.Controls.NightPanel dPanel_login;
+        private ReaLTaiizor.Controls.CyberTextBox dTxtBox_password;
+        private ReaLTaiizor.Controls.CyberButton dButton_login;
     }
 }

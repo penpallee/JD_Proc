@@ -60,6 +60,10 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             nightForm1 = new ReaLTaiizor.Forms.NightForm();
+            panel6 = new Panel();
+            panel5 = new Panel();
+            panel2 = new Panel();
+            thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             panel3 = new Panel();
             dLabel_Ng_L = new ReaLTaiizor.Controls.NightLabel();
             DBtn_jogDown_L = new ReaLTaiizor.Controls.Button();
@@ -146,6 +150,7 @@
             skyLabel1 = new ReaLTaiizor.Controls.SkyLabel();
             thunderControlBox1 = new ReaLTaiizor.Controls.ThunderControlBox();
             nightForm1.SuspendLayout();
+            panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dChart_R_5).BeginInit();
@@ -180,6 +185,9 @@
             // nightForm1
             // 
             nightForm1.BackColor = Color.FromArgb(23, 23, 23);
+            nightForm1.Controls.Add(panel6);
+            nightForm1.Controls.Add(panel5);
+            nightForm1.Controls.Add(panel2);
             nightForm1.Controls.Add(panel3);
             nightForm1.Controls.Add(panel1);
             nightForm1.Controls.Add(thunderControlBox1);
@@ -197,9 +205,47 @@
             nightForm1.TextAlignment = ReaLTaiizor.Forms.NightForm.Alignment.Left;
             nightForm1.TitleBarTextColor = Color.Gainsboro;
             // 
+            // panel6
+            // 
+            panel6.BackgroundImage = (Image)resources.GetObject("panel6.BackgroundImage");
+            panel6.BackgroundImageLayout = ImageLayout.Stretch;
+            panel6.Location = new Point(132, 6);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(72, 22);
+            panel6.TabIndex = 2;
+            // 
+            // panel5
+            // 
+            panel5.BackgroundImage = (Image)resources.GetObject("panel5.BackgroundImage");
+            panel5.BackgroundImageLayout = ImageLayout.Stretch;
+            panel5.Location = new Point(210, 6);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(72, 22);
+            panel5.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
+            panel2.BackgroundImageLayout = ImageLayout.Stretch;
+            panel2.Controls.Add(thunderLabel1);
+            panel2.Location = new Point(0, 1038);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1920, 38);
+            panel2.TabIndex = 9;
+            // 
+            // thunderLabel1
+            // 
+            thunderLabel1.BackColor = Color.Transparent;
+            thunderLabel1.ForeColor = Color.WhiteSmoke;
+            thunderLabel1.Location = new Point(1586, 18);
+            thunderLabel1.Name = "thunderLabel1";
+            thunderLabel1.Size = new Size(327, 16);
+            thunderLabel1.TabIndex = 0;
+            thunderLabel1.Text = "Copyriught 2024. DPS Vision Corp. all right Ver 0.1 Beta";
+            // 
             // panel3
             // 
-            panel3.BackColor = Color.FromArgb(35, 35, 35);
+            panel3.BackColor = Color.FromArgb(2, 2, 2);
             panel3.Controls.Add(dLabel_Ng_L);
             panel3.Controls.Add(DBtn_jogDown_L);
             panel3.Controls.Add(DBtn_jogUp_L);
@@ -229,10 +275,9 @@
             panel3.Controls.Add(dBtn_up_L);
             panel3.Controls.Add(dTbox_grid_L);
             panel3.Controls.Add(tableLayoutPanel3);
-            panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 99);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1920, 933);
+            panel3.Size = new Size(1920, 940);
             panel3.TabIndex = 8;
             // 
             // dLabel_Ng_L
@@ -289,7 +334,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(30, 30, 30);
+            panel4.BackColor = Color.Black;
             panel4.Controls.Add(dLabel_Ng_R);
             panel4.Controls.Add(DBtn_jogDown_R);
             panel4.Controls.Add(DBtn_jogUp_R);
@@ -1508,7 +1553,6 @@
             panel1.Controls.Add(tableLayoutPanel1);
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Controls.Add(skyLabel1);
-            panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 31);
             panel1.Name = "panel1";
             panel1.Size = new Size(1920, 68);
@@ -1762,7 +1806,8 @@
             // 
             // Form1
             // 
-            AutoScaleMode = AutoScaleMode.None;
+            AutoScaleMode = AutoScaleMode.Inherit;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(1920, 1032);
             Controls.Add(nightForm1);
             FormBorderStyle = FormBorderStyle.None;
@@ -1775,6 +1820,7 @@
             WindowState = FormWindowState.Maximized;
             FormClosing += Form1_FormClosing;
             nightForm1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
@@ -1898,5 +1944,9 @@
         private ReaLTaiizor.Controls.DungeonComboBox dComboBox_scale1;
         private ReaLTaiizor.Controls.NightLabel dLabel_Ng_L;
         private ReaLTaiizor.Controls.NightLabel dLabel_Ng_R;
+        private Panel panel2;
+        private ReaLTaiizor.Controls.ThunderLabel thunderLabel1;
+        private Panel panel5;
+        private Panel panel6;
     }
 }

@@ -24,6 +24,8 @@ using System.Security.Cryptography;
 using static System.Net.Mime.MediaTypeNames;
 using System.Runtime.InteropServices;
 using System.Net.Sockets;
+using JD_Proc.Log;
+using static JD_Proc.Log.LogManager;
 
 namespace JD_Proc
 {
@@ -38,6 +40,7 @@ namespace JD_Proc
 
         bool _grabImages_1 = false;
         bool _grabImages_2 = false;
+        bool _bVision_Heartbit = false;
 
         Thread _snapThread_1;
         Thread _snapThread_2;
@@ -102,9 +105,14 @@ namespace JD_Proc
 
         int panelBorder = 2;
 
+        int PLC_Heartbit_Count = 0;
+
+        int PLC_Heartbit_Checker = 0;
+
         string _MODE = "";
 
         System.Timers.Timer _AutoTimer = new System.Timers.Timer();
+        System.Threading.Timer _HeartbitTimer;
 
         object lockObject = new object();
         #endregion
@@ -121,7 +129,7 @@ namespace JD_Proc
 
             if (_MODE == "auto")
             {
-                Connect("generic1.xml", 1);
+                //Connect("generic1.xml", 1);
                 //Connect("generic2.xml", 2);
 
                 //_MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
@@ -159,6 +167,8 @@ namespace JD_Proc
 
             _AutoTimer.Interval = 3000;
             _AutoTimer.Elapsed += new ElapsedEventHandler(AutoTimer);
+
+            _HeartbitTimer = new System.Threading.Timer(VISION_Heartbit, null, 1000, 400);
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -187,6 +197,7 @@ namespace JD_Proc
         void AutoTimer(object sender, ElapsedEventArgs e)
         {
             bool PLC_AUTO = false;
+
             bool PLC_START_L = false;
             bool PLC_START_R = false;
 
@@ -200,14 +211,20 @@ namespace JD_Proc
             bool VISION_BUSY_R = false;
             bool VISION_END_R = false;
 
-
+            PLC_AUTO = PLC_Check_Status("B101"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
             if (PLC_AUTO)
             {
+
+                if (state == "auto") VISION_AUTO = true; //TJ 추가
+                else VISION_AUTO = false; //TJ 추가
+
                 if (VISION_AUTO)
                 {
+                    VISION_READY_L = true;  // TJ 추가
                     // Left camera
                     if (VISION_READY_L)
                     {
+                        PLC_START_L = PLC_Check_Status("B110"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
                         if (PLC_START_L)
                         {
                             VISION_READY_L = false;
@@ -230,9 +247,12 @@ namespace JD_Proc
                         }
                     }
 
+                    VISION_READY_R = true;  // TJ 추가
+
                     // Right camera
                     if (VISION_READY_R)
                     {
+                        PLC_START_R = PLC_Check_Status("B111"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
                         if (PLC_START_R)
                         {
                             VISION_READY_R = false;
@@ -257,27 +277,6 @@ namespace JD_Proc
                 }
             }
 
-            AutoSnap_L();
-            AutoProcess_L();
-
-            lock (lockObject)
-            {
-                pictureBox1.Invoke((MethodInvoker)delegate
-                {
-                    pictureBox1.Image = originBmap_L;
-                });
-            }
-
-            //AutoSnap_R();
-            //AutpProcess_R();
-
-            //lock (lockObject)
-            //{
-            //    pictureBox2.Invoke((MethodInvoker)delegate
-            //    {
-            //        pictureBox2.Image = originBmap_R;
-            //    });
-            //}
         }
 
         void AutoSnap_L()
@@ -901,7 +900,7 @@ namespace JD_Proc
             settingForm.Location = new System.Drawing.Point(500, 100);
 
             //settingForm.SetPlc();
-            // settingForm._timer.Start();
+            //settingForm._timer.Start();
 
             settingForm.ShowDialog();
 
@@ -1149,8 +1148,6 @@ namespace JD_Proc
                 DBtn_jogUp_R.Visible = false;
                 DBtn_jogDown_R.Visible = false;
             }
-
-
         }
         #endregion
 
@@ -2718,6 +2715,80 @@ namespace JD_Proc
                 {
                     dTxt_cam2.Text = reesult;
                 }
+            }
+        }
+        #endregion
+
+        #region [method - PLC Check Statue]
+        public bool PLC_Check_Status(string PLCDeviceaddr)
+        {
+            Form1._MELSEC.actUtlType64.GetDevice(PLCDeviceaddr, out int value);
+            return bool.Parse(value.ToString());
+        }
+        #endregion
+
+        #region [method - VISION Auto]
+        public void VISION_Auto()
+        {
+            Form1._MELSEC.actUtlType64.SetDevice("B3", 1);
+        }
+        #endregion
+
+        #region [method - VISION Manual]
+        public void VISION_Manual()
+        {
+            Form1._MELSEC.actUtlType64.SetDevice("B3", 0);
+        }
+        #endregion
+
+        #region [PLC, VISION Heartbit]
+        public void PLC_HealthCheck()
+        {
+            _MELSEC_HEART.actUtlType64.GetDevice("B100", out int heartbitvalue);
+            if (PLC_Heartbit_Checker == heartbitvalue)
+            {
+                PLC_Heartbit_Count++;
+                PLC_Heartbit_Checker = heartbitvalue;
+            }
+            else
+            {
+                PLC_Heartbit_Count = 0;
+                PLC_Heartbit_Checker = heartbitvalue;
+            }
+
+            if (PLC_Heartbit_Count > 20)
+            {
+                // PLC의 heartbit값을 검사하며 정상적이지 않을때 health Check 경고알람
+                this.BeginInvoke((MethodInvoker)(() =>
+                {
+                    dLabel_Ng_L.ForeColor = Color.Red;
+                    dLabel_Ng_L.Text = "PLC HealthCheck Error. - " + DateTime.Now.ToString("HH:mm:ss");
+                }));
+
+            }
+        }
+
+        public void VISION_Heartbit(object? o)
+        {
+            //PLC_HealthCheck();
+
+            try
+            {
+                if (_bVision_Heartbit == false)
+                {
+                    //_MELSEC_HEART.actUtlType64.SetDevice("B0", 1);
+                    _bVision_Heartbit = true;
+                }
+                else
+                {
+                    //_MELSEC_HEART.actUtlType64.SetDevice("B0", 0);
+                    _bVision_Heartbit = false;
+                }
+            }
+            catch
+            {
+                LogManager log = new LogManager(@"C:\JD\log\", LogType.Daily);
+                log.WriteLine("VISION HEARTBIT PLC에 Writing Error");
             }
         }
         #endregion

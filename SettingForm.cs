@@ -269,6 +269,21 @@ namespace JD_Proc
         }
         #endregion
 
+        #region event(login) - click
+        private void dButton_login_Click(object sender, EventArgs e)
+        {
+            Service.SettingsService settingService = new Service.SettingsService();
+
+            string realPassword = settingService.Read("password", "password");
+
+            string password = dTxtBox_password.TextButton;
+            if (password == realPassword)
+            {
+                dPanel_login.Visible = false;
+            }
+        }
+        #endregion
+
         #region event(form) - closing
         private void SettingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
