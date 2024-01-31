@@ -127,26 +127,25 @@ namespace JD_Proc
 
             rockey = new Rockey2();
 
-            if (rockey.Rockey_find_dongle != 1)
-            {
-                MessageBox.Show("Rockey2 동글이 연결되어 있지 않습니다.");
-                System.Environment.Exit(0);
-            }
+            
 
             Service.SettingsService service = new Service.SettingsService();
 
             //카메라 연결
             _MODE = service.Read("MODE", "MODE");
 
+
             if (_MODE == "auto")
             {
                 //Connect("generic1.xml", 1);
                 //Connect("generic2.xml", 2);
-
-                //_MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                //_MELSEC.Open();
-                //if (_MELSEC.IsConnected() == true)
-                //    dRadio_plc.Checked = true;
+                _MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                _MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                _MELSEC.Open();
+                _MELSEC_HEART.Open();
+                //if (_MELSEC.IsConnected() == true) dRadio_plc.Checked = true;
+                //if (_MELSEC_HEART.IsConnected() == true) Debug.Print("MELSEC_HEART OK");
+                //    
 
                 //_MELSEC_JOG = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
                 //_MELSEC_JOG.Open();
@@ -1113,6 +1112,9 @@ namespace JD_Proc
             //clean up
             _irDirectInterface_1.Disconnect();
             //_irDirectInterface_2.Disconnect();
+
+            rockey.Rockey_Closing();
+
         }
         #endregion
 
@@ -2789,12 +2791,12 @@ namespace JD_Proc
             {
                 if (_bVision_Heartbit == false)
                 {
-                    //_MELSEC_HEART.actUtlType64.SetDevice("B0", 1);
+                    _MELSEC_HEART.actUtlType64.SetDevice2("B0", 1);
                     _bVision_Heartbit = true;
                 }
                 else
                 {
-                    //_MELSEC_HEART.actUtlType64.SetDevice("B0", 0);
+                    _MELSEC_HEART.actUtlType64.SetDevice2("B0", 0);
                     _bVision_Heartbit = false;
                 }
             }
