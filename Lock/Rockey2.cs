@@ -59,7 +59,7 @@ namespace JD_Proc.Lock
                 }
                 
             }
-            Rockey_Read();
+            //Rockey_Read();
         }
 
         public int Rockey_opening(uint uid)
@@ -71,7 +71,7 @@ namespace JD_Proc.Lock
             // hid 2148170306
             // Rockey2를 열고 UID 및 HID를 사용하여 장치를 찾습니다.
             int status = RY2_Open(1, uid, out uint ohid);
-            //Debug.Print($"Rockey open result : {status.ToString()}");
+            Debug.Print($"Rockey open result : {status.ToString()}");
 
             return status;
         }
@@ -97,7 +97,7 @@ namespace JD_Proc.Lock
         public void Rockey_Read()
         {
             char[] buffer = new char[512];
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Debug.Print(RY2_Read(0, i, buffer).ToString());
                 string strvalue = new string(buffer);
