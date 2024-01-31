@@ -26,6 +26,7 @@ using System.Runtime.InteropServices;
 using System.Net.Sockets;
 using JD_Proc.Log;
 using static JD_Proc.Log.LogManager;
+using JD_Proc.Lock;
 
 namespace JD_Proc
 {
@@ -99,6 +100,8 @@ namespace JD_Proc
         System.Windows.Forms.Button _RIGHT_ROI_BTN_4;
         System.Windows.Forms.Button _RIGHT_ROI_BTN_5;
 
+        Rockey2 rockey;
+
         string state = "manual";
 
         string _Model_path = "";
@@ -121,6 +124,14 @@ namespace JD_Proc
         public Form1()
         {
             InitializeComponent();
+
+            rockey = new Rockey2();
+
+            if (rockey.Rockey_find_dongle != 1)
+            {
+                MessageBox.Show("Rockey2 동글이 연결되어 있지 않습니다.");
+                System.Environment.Exit(0);
+            }
 
             Service.SettingsService service = new Service.SettingsService();
 
@@ -169,6 +180,8 @@ namespace JD_Proc
             _AutoTimer.Elapsed += new ElapsedEventHandler(AutoTimer);
 
             _HeartbitTimer = new System.Threading.Timer(VISION_Heartbit, null, 1000, 400);
+
+            
         }
 
         void timer_Tick(object sender, EventArgs e)
