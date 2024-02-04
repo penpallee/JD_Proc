@@ -1,32 +1,11 @@
 using JD_Proc.ICam;
-using JD_Proc.Service;
-using Microsoft.Win32;
-using OpenCvSharp;
-using System.Data.Common;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
-using static System.Collections.Specialized.BitVector32;
-using System.Windows.Forms;
-using System.Diagnostics.Eventing.Reader;
-using System.Windows.Forms.DataVisualization.Charting;
-using ReaLTaiizor.Controls;
-using System;
-
-using System.IO;
-using System.Reflection.Metadata;
-using static OpenCvSharp.Stitcher;
-using System.Security;
-using System.Collections.Generic;
-using static System.Reflection.Metadata.BlobBuilder;
-using System.Timers;
-using System.Security.Cryptography;
-using static System.Net.Mime.MediaTypeNames;
-using System.Runtime.InteropServices;
-using System.Net.Sockets;
-using JD_Proc.Log;
-using static JD_Proc.Log.LogManager;
 using JD_Proc.Lock;
+using JD_Proc.Log;
+using JD_Proc.Service;
+using System.Diagnostics;
+using System.Timers;
+using System.Windows.Forms.DataVisualization.Charting;
+using static JD_Proc.Log.LogManager;
 
 namespace JD_Proc
 {
@@ -125,9 +104,9 @@ namespace JD_Proc
         {
             InitializeComponent();
 
-            rockey = new Rockey2();
+            //rockey = new Rockey2();
 
-            
+
 
             Service.SettingsService service = new Service.SettingsService();
 
@@ -180,7 +159,7 @@ namespace JD_Proc
 
             _HeartbitTimer = new System.Threading.Timer(VISION_Heartbit, null, 1000, 400);
 
-            
+
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -1110,10 +1089,10 @@ namespace JD_Proc
             //    _snapThread_2.Join(3000);
 
             //clean up
-            _irDirectInterface_1.Disconnect();
+            //_irDirectInterface_1.Disconnect();
             //_irDirectInterface_2.Disconnect();
 
-            rockey.Rockey_Closing();
+            //rockey.Rockey_Closing();
 
         }
         #endregion

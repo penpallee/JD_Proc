@@ -37,6 +37,9 @@ namespace JD_Proc
             _timer.Interval = 200;
             _timer.Elapsed += new ElapsedEventHandler(PlcCheckTimer);
 
+            // Developing
+            dPanel_login.Visible = false;
+
         }
         #endregion
 

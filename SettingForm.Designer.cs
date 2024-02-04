@@ -43,11 +43,7 @@
             ReaLTaiizor.Controls.FoxLabel foxLabel15;
             ReaLTaiizor.Controls.FoxLabel foxLabel16;
             ReaLTaiizor.Controls.FoxLabel foxLabel7;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingForm));
             dungeonForm1 = new ReaLTaiizor.Forms.DungeonForm();
-            dPanel_login = new ReaLTaiizor.Controls.NightPanel();
-            dTxtBox_password = new ReaLTaiizor.Controls.CyberTextBox();
-            dButton_login = new ReaLTaiizor.Controls.CyberButton();
             thunderGroupBox7 = new ReaLTaiizor.Controls.ThunderGroupBox();
             dCheckBox_jog = new ReaLTaiizor.Controls.CyberCheckBox();
             thunderGroupBox6 = new ReaLTaiizor.Controls.ThunderGroupBox();
@@ -75,6 +71,9 @@
             dBtn_pixelLoad = new ReaLTaiizor.Controls.DreamButton();
             dBtn_pixelSave = new ReaLTaiizor.Controls.DreamButton();
             controlBoxEdit1 = new ReaLTaiizor.Controls.ControlBoxEdit();
+            dButton_login = new ReaLTaiizor.Controls.CyberButton();
+            dTxtBox_password = new ReaLTaiizor.Controls.CyberTextBox();
+            dPanel_login = new ReaLTaiizor.Controls.NightPanel();
             foxLabel1 = new ReaLTaiizor.Controls.FoxLabel();
             foxLabel2 = new ReaLTaiizor.Controls.FoxLabel();
             foxLabel3 = new ReaLTaiizor.Controls.FoxLabel();
@@ -91,13 +90,13 @@
             foxLabel16 = new ReaLTaiizor.Controls.FoxLabel();
             foxLabel7 = new ReaLTaiizor.Controls.FoxLabel();
             dungeonForm1.SuspendLayout();
-            dPanel_login.SuspendLayout();
             thunderGroupBox7.SuspendLayout();
             thunderGroupBox6.SuspendLayout();
             thunderGroupBox5.SuspendLayout();
             thunderGroupBox3.SuspendLayout();
             thunderGroupBox2.SuspendLayout();
             thunderGroupBox1.SuspendLayout();
+            dPanel_login.SuspendLayout();
             SuspendLayout();
             // 
             // foxLabel1
@@ -106,10 +105,10 @@
             foxLabel1.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel1.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel1.Location = new Point(20, 35);
-            foxLabel1.Margin = new Padding(3, 10, 3, 3);
+            foxLabel1.Location = new Point(26, 47);
+            foxLabel1.Margin = new Padding(4, 13, 4, 4);
             foxLabel1.Name = "foxLabel1";
-            foxLabel1.Size = new Size(142, 29);
+            foxLabel1.Size = new Size(183, 39);
             foxLabel1.TabIndex = 2;
             foxLabel1.Text = "분해능(가로) μm  : ";
             // 
@@ -119,10 +118,10 @@
             foxLabel2.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel2.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel2.Location = new Point(20, 77);
-            foxLabel2.Margin = new Padding(3, 10, 3, 3);
+            foxLabel2.Location = new Point(26, 103);
+            foxLabel2.Margin = new Padding(4, 13, 4, 4);
             foxLabel2.Name = "foxLabel2";
-            foxLabel2.Size = new Size(142, 29);
+            foxLabel2.Size = new Size(183, 39);
             foxLabel2.TabIndex = 3;
             foxLabel2.Text = "분해능(세로) μm  : ";
             // 
@@ -132,10 +131,10 @@
             foxLabel3.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel3.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel3.Location = new Point(20, 35);
-            foxLabel3.Margin = new Padding(3, 10, 3, 3);
+            foxLabel3.Location = new Point(26, 47);
+            foxLabel3.Margin = new Padding(4, 13, 4, 4);
             foxLabel3.Name = "foxLabel3";
-            foxLabel3.Size = new Size(142, 29);
+            foxLabel3.Size = new Size(183, 39);
             foxLabel3.TabIndex = 2;
             foxLabel3.Text = "분해능(가로) μm  : ";
             // 
@@ -145,10 +144,10 @@
             foxLabel4.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel4.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel4.Location = new Point(20, 77);
-            foxLabel4.Margin = new Padding(3, 10, 3, 3);
+            foxLabel4.Location = new Point(26, 103);
+            foxLabel4.Margin = new Padding(4, 13, 4, 4);
             foxLabel4.Name = "foxLabel4";
-            foxLabel4.Size = new Size(142, 29);
+            foxLabel4.Size = new Size(183, 39);
             foxLabel4.TabIndex = 3;
             foxLabel4.Text = "분해능(세로) μm  : ";
             // 
@@ -158,10 +157,10 @@
             foxLabel5.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel5.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel5.Location = new Point(20, 31);
-            foxLabel5.Margin = new Padding(3, 10, 3, 3);
+            foxLabel5.Location = new Point(26, 41);
+            foxLabel5.Margin = new Padding(4, 13, 4, 4);
             foxLabel5.Name = "foxLabel5";
-            foxLabel5.Size = new Size(48, 29);
+            foxLabel5.Size = new Size(62, 39);
             foxLabel5.TabIndex = 3;
             foxLabel5.Text = "Auto";
             // 
@@ -171,10 +170,10 @@
             foxLabel6.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel6.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel6.Location = new Point(89, 31);
-            foxLabel6.Margin = new Padding(3, 10, 3, 3);
+            foxLabel6.Location = new Point(114, 41);
+            foxLabel6.Margin = new Padding(4, 13, 4, 4);
             foxLabel6.Name = "foxLabel6";
-            foxLabel6.Size = new Size(183, 29);
+            foxLabel6.Size = new Size(235, 39);
             foxLabel6.TabIndex = 4;
             foxLabel6.Text = "CAM 1 Capture Start";
             // 
@@ -184,10 +183,10 @@
             foxLabel9.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel9.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel9.Location = new Point(80, 31);
-            foxLabel9.Margin = new Padding(3, 10, 3, 3);
+            foxLabel9.Location = new Point(103, 41);
+            foxLabel9.Margin = new Padding(4, 13, 4, 4);
             foxLabel9.Name = "foxLabel9";
-            foxLabel9.Size = new Size(59, 29);
+            foxLabel9.Size = new Size(76, 39);
             foxLabel9.TabIndex = 4;
             foxLabel9.Text = "Ready";
             // 
@@ -197,10 +196,10 @@
             foxLabel10.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel10.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel10.Location = new Point(20, 31);
-            foxLabel10.Margin = new Padding(3, 10, 3, 3);
+            foxLabel10.Location = new Point(26, 41);
+            foxLabel10.Margin = new Padding(4, 13, 4, 4);
             foxLabel10.Name = "foxLabel10";
-            foxLabel10.Size = new Size(48, 29);
+            foxLabel10.Size = new Size(62, 39);
             foxLabel10.TabIndex = 3;
             foxLabel10.Text = "Auto";
             // 
@@ -210,10 +209,10 @@
             foxLabel11.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel11.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel11.Location = new Point(142, 31);
-            foxLabel11.Margin = new Padding(3, 10, 3, 3);
+            foxLabel11.Location = new Point(183, 41);
+            foxLabel11.Margin = new Padding(4, 13, 4, 4);
             foxLabel11.Name = "foxLabel11";
-            foxLabel11.Size = new Size(59, 29);
+            foxLabel11.Size = new Size(76, 39);
             foxLabel11.TabIndex = 6;
             foxLabel11.Text = "Busy";
             // 
@@ -223,10 +222,10 @@
             foxLabel12.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel12.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel12.Location = new Point(200, 31);
-            foxLabel12.Margin = new Padding(3, 10, 3, 3);
+            foxLabel12.Location = new Point(257, 41);
+            foxLabel12.Margin = new Padding(4, 13, 4, 4);
             foxLabel12.Name = "foxLabel12";
-            foxLabel12.Size = new Size(59, 29);
+            foxLabel12.Size = new Size(76, 39);
             foxLabel12.TabIndex = 8;
             foxLabel12.Text = "End";
             // 
@@ -236,10 +235,10 @@
             foxLabel13.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel13.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel13.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel13.Location = new Point(200, 31);
-            foxLabel13.Margin = new Padding(3, 10, 3, 3);
+            foxLabel13.Location = new Point(257, 41);
+            foxLabel13.Margin = new Padding(4, 13, 4, 4);
             foxLabel13.Name = "foxLabel13";
-            foxLabel13.Size = new Size(59, 29);
+            foxLabel13.Size = new Size(76, 39);
             foxLabel13.TabIndex = 8;
             foxLabel13.Text = "End";
             // 
@@ -249,10 +248,10 @@
             foxLabel14.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel14.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel14.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel14.Location = new Point(142, 31);
-            foxLabel14.Margin = new Padding(3, 10, 3, 3);
+            foxLabel14.Location = new Point(183, 41);
+            foxLabel14.Margin = new Padding(4, 13, 4, 4);
             foxLabel14.Name = "foxLabel14";
-            foxLabel14.Size = new Size(59, 29);
+            foxLabel14.Size = new Size(76, 39);
             foxLabel14.TabIndex = 6;
             foxLabel14.Text = "Busy";
             // 
@@ -262,10 +261,10 @@
             foxLabel15.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel15.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel15.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel15.Location = new Point(80, 31);
-            foxLabel15.Margin = new Padding(3, 10, 3, 3);
+            foxLabel15.Location = new Point(103, 41);
+            foxLabel15.Margin = new Padding(4, 13, 4, 4);
             foxLabel15.Name = "foxLabel15";
-            foxLabel15.Size = new Size(59, 29);
+            foxLabel15.Size = new Size(76, 39);
             foxLabel15.TabIndex = 4;
             foxLabel15.Text = "Ready";
             // 
@@ -275,10 +274,10 @@
             foxLabel16.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel16.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel16.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel16.Location = new Point(20, 31);
-            foxLabel16.Margin = new Padding(3, 10, 3, 3);
+            foxLabel16.Location = new Point(26, 41);
+            foxLabel16.Margin = new Padding(4, 13, 4, 4);
             foxLabel16.Name = "foxLabel16";
-            foxLabel16.Size = new Size(48, 29);
+            foxLabel16.Size = new Size(62, 39);
             foxLabel16.TabIndex = 3;
             foxLabel16.Text = "Auto";
             // 
@@ -288,10 +287,10 @@
             foxLabel7.BackColor = Color.FromArgb(46, 46, 46);
             foxLabel7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             foxLabel7.ForeColor = Color.FromArgb(29, 200, 238);
-            foxLabel7.Location = new Point(273, 31);
-            foxLabel7.Margin = new Padding(3, 10, 3, 3);
+            foxLabel7.Location = new Point(351, 41);
+            foxLabel7.Margin = new Padding(4, 13, 4, 4);
             foxLabel7.Name = "foxLabel7";
-            foxLabel7.Size = new Size(234, 29);
+            foxLabel7.Size = new Size(301, 39);
             foxLabel7.TabIndex = 6;
             foxLabel7.Text = "CAM 2 Capture Start";
             // 
@@ -316,104 +315,18 @@
             dungeonForm1.HeaderEdgeColorA = Color.FromArgb(87, 85, 77);
             dungeonForm1.HeaderEdgeColorB = Color.FromArgb(69, 68, 63);
             dungeonForm1.Location = new Point(0, 0);
+            dungeonForm1.Margin = new Padding(4);
             dungeonForm1.Name = "dungeonForm1";
-            dungeonForm1.Padding = new Padding(20, 56, 20, 16);
+            dungeonForm1.Padding = new Padding(26, 75, 26, 21);
             dungeonForm1.RoundCorners = true;
             dungeonForm1.Sizable = true;
-            dungeonForm1.Size = new Size(613, 550);
+            dungeonForm1.Size = new Size(788, 733);
             dungeonForm1.SmartBounds = true;
             dungeonForm1.StartPosition = FormStartPosition.WindowsDefaultLocation;
             dungeonForm1.TabIndex = 0;
             dungeonForm1.Text = "Settings";
             dungeonForm1.TitleColor = Color.FromArgb(223, 219, 210);
             dungeonForm1.Click += dungeonForm1_Click;
-            // 
-            // dPanel_login
-            // 
-            dPanel_login.BackgroundImage = (Image)resources.GetObject("dPanel_login.BackgroundImage");
-            dPanel_login.BackgroundImageLayout = ImageLayout.Stretch;
-            dPanel_login.Controls.Add(dTxtBox_password);
-            dPanel_login.Controls.Add(dButton_login);
-            dPanel_login.ForeColor = Color.FromArgb(250, 250, 250);
-            dPanel_login.LeftSideColor = Color.FromArgb(40, 45, 45);
-            dPanel_login.Location = new Point(23, 59);
-            dPanel_login.Name = "dPanel_login";
-            dPanel_login.RightSideColor = Color.FromArgb(40, 45, 45);
-            dPanel_login.Side = ReaLTaiizor.Controls.NightPanel.PanelSide.Left;
-            dPanel_login.Size = new Size(569, 472);
-            dPanel_login.TabIndex = 25;
-            // 
-            // dTxtBox_password
-            // 
-            dTxtBox_password.Alpha = 20;
-            dTxtBox_password.BackColor = Color.Transparent;
-            dTxtBox_password.Background_WidthPen = 3F;
-            dTxtBox_password.BackgroundPen = true;
-            dTxtBox_password.ColorBackground = Color.FromArgb(37, 52, 68);
-            dTxtBox_password.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            dTxtBox_password.ColorLighting = Color.FromArgb(29, 200, 238);
-            dTxtBox_password.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            dTxtBox_password.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            dTxtBox_password.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            dTxtBox_password.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dTxtBox_password.ForeColor = Color.FromArgb(245, 245, 245);
-            dTxtBox_password.Lighting = false;
-            dTxtBox_password.LinearGradientPen = false;
-            dTxtBox_password.Location = new Point(369, 429);
-            dTxtBox_password.Name = "dTxtBox_password";
-            dTxtBox_password.Password = true;
-            dTxtBox_password.PenWidth = 15;
-            dTxtBox_password.RGB = false;
-            dTxtBox_password.Rounding = true;
-            dTxtBox_password.RoundingInt = 60;
-            dTxtBox_password.Size = new Size(200, 40);
-            dTxtBox_password.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dTxtBox_password.TabIndex = 1;
-            dTxtBox_password.Tag = "Cyber";
-            dTxtBox_password.TextButton = "";
-            dTxtBox_password.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            dTxtBox_password.Timer_RGB = 300;
-            // 
-            // dButton_login
-            // 
-            dButton_login.Alpha = 20;
-            dButton_login.BackColor = Color.Transparent;
-            dButton_login.Background = true;
-            dButton_login.Background_WidthPen = 4F;
-            dButton_login.BackgroundPen = true;
-            dButton_login.ColorBackground = Color.FromArgb(37, 52, 68);
-            dButton_login.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            dButton_login.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            dButton_login.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            dButton_login.ColorLighting = Color.FromArgb(29, 200, 238);
-            dButton_login.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            dButton_login.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            dButton_login.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            dButton_login.Effect_1 = true;
-            dButton_login.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            dButton_login.Effect_1_Transparency = 25;
-            dButton_login.Effect_2 = true;
-            dButton_login.Effect_2_ColorBackground = Color.White;
-            dButton_login.Effect_2_Transparency = 20;
-            dButton_login.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dButton_login.ForeColor = Color.FromArgb(245, 245, 245);
-            dButton_login.Lighting = false;
-            dButton_login.LinearGradient_Background = false;
-            dButton_login.LinearGradientPen = false;
-            dButton_login.Location = new Point(434, 381);
-            dButton_login.Name = "dButton_login";
-            dButton_login.PenWidth = 15;
-            dButton_login.Rounding = true;
-            dButton_login.RoundingInt = 70;
-            dButton_login.Size = new Size(130, 42);
-            dButton_login.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dButton_login.TabIndex = 0;
-            dButton_login.Tag = "Cyber";
-            dButton_login.TextButton = "로 그 인";
-            dButton_login.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            dButton_login.Timer_Effect_1 = 5;
-            dButton_login.Timer_RGB = 300;
-            dButton_login.Click += dButton_login_Click;
             // 
             // thunderGroupBox7
             // 
@@ -424,9 +337,10 @@
             thunderGroupBox7.BodyColorD = Color.FromArgb(50, 55, 58);
             thunderGroupBox7.Controls.Add(dCheckBox_jog);
             thunderGroupBox7.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox7.Location = new Point(23, 464);
+            thunderGroupBox7.Location = new Point(30, 619);
+            thunderGroupBox7.Margin = new Padding(4);
             thunderGroupBox7.Name = "thunderGroupBox7";
-            thunderGroupBox7.Size = new Size(272, 67);
+            thunderGroupBox7.Size = new Size(350, 89);
             thunderGroupBox7.TabIndex = 24;
             thunderGroupBox7.Text = "JOG 활성화";
             // 
@@ -454,12 +368,13 @@
             dCheckBox_jog.ForeColor = Color.FromArgb(245, 245, 245);
             dCheckBox_jog.LinearGradient_Background = false;
             dCheckBox_jog.LinearGradientPen = false;
-            dCheckBox_jog.Location = new Point(3, 22);
+            dCheckBox_jog.Location = new Point(4, 29);
+            dCheckBox_jog.Margin = new Padding(4);
             dCheckBox_jog.Name = "dCheckBox_jog";
             dCheckBox_jog.RGB = false;
             dCheckBox_jog.Rounding = true;
             dCheckBox_jog.RoundingInt = 100;
-            dCheckBox_jog.Size = new Size(170, 45);
+            dCheckBox_jog.Size = new Size(219, 45);
             dCheckBox_jog.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             dCheckBox_jog.TabIndex = 1;
             dCheckBox_jog.Tag = "Cyber";
@@ -487,45 +402,50 @@
             thunderGroupBox6.Controls.Add(foxLabel16);
             thunderGroupBox6.Controls.Add(dPanel_visionCam2Auto);
             thunderGroupBox6.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox6.Location = new Point(318, 357);
+            thunderGroupBox6.Location = new Point(409, 476);
+            thunderGroupBox6.Margin = new Padding(4);
             thunderGroupBox6.Name = "thunderGroupBox6";
-            thunderGroupBox6.Size = new Size(272, 101);
+            thunderGroupBox6.Size = new Size(350, 135);
             thunderGroupBox6.TabIndex = 23;
             thunderGroupBox6.Text = "통신 CAM 2 (OUT)";
             // 
             // dPanel_visionCam2End
             // 
             dPanel_visionCam2End.BackColor = Color.Red;
-            dPanel_visionCam2End.Location = new Point(201, 66);
+            dPanel_visionCam2End.Location = new Point(258, 88);
+            dPanel_visionCam2End.Margin = new Padding(4);
             dPanel_visionCam2End.Name = "dPanel_visionCam2End";
-            dPanel_visionCam2End.Size = new Size(35, 24);
+            dPanel_visionCam2End.Size = new Size(45, 32);
             dPanel_visionCam2End.TabIndex = 7;
             dPanel_visionCam2End.Click += dPanel_visionCam2End_Click;
             // 
             // dPanel_visionCam2Busy
             // 
             dPanel_visionCam2Busy.BackColor = Color.Red;
-            dPanel_visionCam2Busy.Location = new Point(143, 66);
+            dPanel_visionCam2Busy.Location = new Point(184, 88);
+            dPanel_visionCam2Busy.Margin = new Padding(4);
             dPanel_visionCam2Busy.Name = "dPanel_visionCam2Busy";
-            dPanel_visionCam2Busy.Size = new Size(35, 24);
+            dPanel_visionCam2Busy.Size = new Size(45, 32);
             dPanel_visionCam2Busy.TabIndex = 5;
             dPanel_visionCam2Busy.Click += dPanel_visionCam2Busy_Click;
             // 
             // dPanel_visionCam2Ready
             // 
             dPanel_visionCam2Ready.BackColor = Color.Red;
-            dPanel_visionCam2Ready.Location = new Point(81, 66);
+            dPanel_visionCam2Ready.Location = new Point(104, 88);
+            dPanel_visionCam2Ready.Margin = new Padding(4);
             dPanel_visionCam2Ready.Name = "dPanel_visionCam2Ready";
-            dPanel_visionCam2Ready.Size = new Size(35, 24);
+            dPanel_visionCam2Ready.Size = new Size(45, 32);
             dPanel_visionCam2Ready.TabIndex = 1;
             dPanel_visionCam2Ready.Click += dPanel_visionCam2Ready_Click;
             // 
             // dPanel_visionCam2Auto
             // 
             dPanel_visionCam2Auto.BackColor = Color.Red;
-            dPanel_visionCam2Auto.Location = new Point(20, 66);
+            dPanel_visionCam2Auto.Location = new Point(26, 88);
+            dPanel_visionCam2Auto.Margin = new Padding(4);
             dPanel_visionCam2Auto.Name = "dPanel_visionCam2Auto";
-            dPanel_visionCam2Auto.Size = new Size(35, 24);
+            dPanel_visionCam2Auto.Size = new Size(45, 32);
             dPanel_visionCam2Auto.TabIndex = 0;
             dPanel_visionCam2Auto.Click += dPanel_visionCam2Auto_Click;
             // 
@@ -545,45 +465,50 @@
             thunderGroupBox5.Controls.Add(foxLabel10);
             thunderGroupBox5.Controls.Add(dPanel_visionCam1Auto);
             thunderGroupBox5.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox5.Location = new Point(23, 357);
+            thunderGroupBox5.Location = new Point(30, 476);
+            thunderGroupBox5.Margin = new Padding(4);
             thunderGroupBox5.Name = "thunderGroupBox5";
-            thunderGroupBox5.Size = new Size(272, 101);
+            thunderGroupBox5.Size = new Size(350, 135);
             thunderGroupBox5.TabIndex = 22;
             thunderGroupBox5.Text = "통신 CAM 1 (OUT)";
             // 
             // dPanel_visionCam1End
             // 
             dPanel_visionCam1End.BackColor = Color.Red;
-            dPanel_visionCam1End.Location = new Point(201, 66);
+            dPanel_visionCam1End.Location = new Point(258, 88);
+            dPanel_visionCam1End.Margin = new Padding(4);
             dPanel_visionCam1End.Name = "dPanel_visionCam1End";
-            dPanel_visionCam1End.Size = new Size(35, 24);
+            dPanel_visionCam1End.Size = new Size(45, 32);
             dPanel_visionCam1End.TabIndex = 7;
             dPanel_visionCam1End.Click += dPanel_visionCam1End_Click;
             // 
             // dPanel_visionCam1Busy
             // 
             dPanel_visionCam1Busy.BackColor = Color.Red;
-            dPanel_visionCam1Busy.Location = new Point(143, 66);
+            dPanel_visionCam1Busy.Location = new Point(184, 88);
+            dPanel_visionCam1Busy.Margin = new Padding(4);
             dPanel_visionCam1Busy.Name = "dPanel_visionCam1Busy";
-            dPanel_visionCam1Busy.Size = new Size(35, 24);
+            dPanel_visionCam1Busy.Size = new Size(45, 32);
             dPanel_visionCam1Busy.TabIndex = 5;
             dPanel_visionCam1Busy.Click += dPanel_visionCam1Busy_Click;
             // 
             // dPanel_visionCam1Ready
             // 
             dPanel_visionCam1Ready.BackColor = Color.Red;
-            dPanel_visionCam1Ready.Location = new Point(81, 66);
+            dPanel_visionCam1Ready.Location = new Point(104, 88);
+            dPanel_visionCam1Ready.Margin = new Padding(4);
             dPanel_visionCam1Ready.Name = "dPanel_visionCam1Ready";
-            dPanel_visionCam1Ready.Size = new Size(35, 24);
+            dPanel_visionCam1Ready.Size = new Size(45, 32);
             dPanel_visionCam1Ready.TabIndex = 1;
             dPanel_visionCam1Ready.Click += dPanel_visionCam1Ready_Click;
             // 
             // dPanel_visionCam1Auto
             // 
             dPanel_visionCam1Auto.BackColor = Color.Red;
-            dPanel_visionCam1Auto.Location = new Point(20, 66);
+            dPanel_visionCam1Auto.Location = new Point(26, 88);
+            dPanel_visionCam1Auto.Margin = new Padding(4);
             dPanel_visionCam1Auto.Name = "dPanel_visionCam1Auto";
-            dPanel_visionCam1Auto.Size = new Size(35, 24);
+            dPanel_visionCam1Auto.Size = new Size(45, 32);
             dPanel_visionCam1Auto.TabIndex = 0;
             dPanel_visionCam1Auto.Click += dPanel_visionCam1Auto_Click;
             dPanel_visionCam1Auto.Paint += dPanel_visionCam1Auto_Paint;
@@ -602,34 +527,38 @@
             thunderGroupBox3.Controls.Add(foxLabel5);
             thunderGroupBox3.Controls.Add(dPanel_plcAuto);
             thunderGroupBox3.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox3.Location = new Point(23, 239);
+            thunderGroupBox3.Location = new Point(30, 319);
+            thunderGroupBox3.Margin = new Padding(4);
             thunderGroupBox3.Name = "thunderGroupBox3";
-            thunderGroupBox3.Size = new Size(569, 101);
+            thunderGroupBox3.Size = new Size(732, 135);
             thunderGroupBox3.TabIndex = 21;
             thunderGroupBox3.Text = "통신 PLC (IN)";
             // 
             // dPanel_plcCam2Cap
             // 
             dPanel_plcCam2Cap.BackColor = Color.Red;
-            dPanel_plcCam2Cap.Location = new Point(274, 66);
+            dPanel_plcCam2Cap.Location = new Point(352, 88);
+            dPanel_plcCam2Cap.Margin = new Padding(4);
             dPanel_plcCam2Cap.Name = "dPanel_plcCam2Cap";
-            dPanel_plcCam2Cap.Size = new Size(35, 24);
+            dPanel_plcCam2Cap.Size = new Size(45, 32);
             dPanel_plcCam2Cap.TabIndex = 5;
             // 
             // dPanel_plcCam1Cap
             // 
             dPanel_plcCam1Cap.BackColor = Color.Red;
-            dPanel_plcCam1Cap.Location = new Point(90, 66);
+            dPanel_plcCam1Cap.Location = new Point(116, 88);
+            dPanel_plcCam1Cap.Margin = new Padding(4);
             dPanel_plcCam1Cap.Name = "dPanel_plcCam1Cap";
-            dPanel_plcCam1Cap.Size = new Size(35, 24);
+            dPanel_plcCam1Cap.Size = new Size(45, 32);
             dPanel_plcCam1Cap.TabIndex = 1;
             // 
             // dPanel_plcAuto
             // 
             dPanel_plcAuto.BackColor = Color.Red;
-            dPanel_plcAuto.Location = new Point(20, 66);
+            dPanel_plcAuto.Location = new Point(26, 88);
+            dPanel_plcAuto.Margin = new Padding(4);
             dPanel_plcAuto.Name = "dPanel_plcAuto";
-            dPanel_plcAuto.Size = new Size(35, 24);
+            dPanel_plcAuto.Size = new Size(45, 32);
             dPanel_plcAuto.TabIndex = 0;
             // 
             // thunderGroupBox2
@@ -646,9 +575,10 @@
             thunderGroupBox2.Controls.Add(foxLabel3);
             thunderGroupBox2.Controls.Add(foxLabel4);
             thunderGroupBox2.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox2.Location = new Point(320, 59);
+            thunderGroupBox2.Location = new Point(411, 79);
+            thunderGroupBox2.Margin = new Padding(4);
             thunderGroupBox2.Name = "thunderGroupBox2";
-            thunderGroupBox2.Size = new Size(272, 169);
+            thunderGroupBox2.Size = new Size(350, 225);
             thunderGroupBox2.TabIndex = 20;
             thunderGroupBox2.Text = "Resolution CAM 2";
             // 
@@ -657,9 +587,10 @@
             dTbox_y2.BackColor = Color.FromArgb(69, 73, 74);
             dTbox_y2.BorderStyle = BorderStyle.FixedSingle;
             dTbox_y2.ForeColor = Color.FromArgb(220, 220, 220);
-            dTbox_y2.Location = new Point(168, 77);
+            dTbox_y2.Location = new Point(216, 103);
+            dTbox_y2.Margin = new Padding(4);
             dTbox_y2.Name = "dTbox_y2";
-            dTbox_y2.Size = new Size(88, 23);
+            dTbox_y2.Size = new Size(113, 27);
             dTbox_y2.TabIndex = 24;
             dTbox_y2.Text = "0";
             // 
@@ -668,9 +599,10 @@
             dTbox_x2.BackColor = Color.FromArgb(69, 73, 74);
             dTbox_x2.BorderStyle = BorderStyle.FixedSingle;
             dTbox_x2.ForeColor = Color.FromArgb(220, 220, 220);
-            dTbox_x2.Location = new Point(168, 38);
+            dTbox_x2.Location = new Point(216, 51);
+            dTbox_x2.Margin = new Padding(4);
             dTbox_x2.Name = "dTbox_x2";
-            dTbox_x2.Size = new Size(88, 23);
+            dTbox_x2.Size = new Size(113, 27);
             dTbox_x2.TabIndex = 23;
             dTbox_x2.Text = "0";
             // 
@@ -682,9 +614,10 @@
             dBtn_pixelLoad2.ColorD = Color.FromArgb(0, 0, 0, 0);
             dBtn_pixelLoad2.ColorE = Color.FromArgb(25, 255, 255, 255);
             dBtn_pixelLoad2.ForeColor = Color.FromArgb(40, 218, 255);
-            dBtn_pixelLoad2.Location = new Point(151, 112);
+            dBtn_pixelLoad2.Location = new Point(194, 149);
+            dBtn_pixelLoad2.Margin = new Padding(4);
             dBtn_pixelLoad2.Name = "dBtn_pixelLoad2";
-            dBtn_pixelLoad2.Size = new Size(105, 40);
+            dBtn_pixelLoad2.Size = new Size(135, 53);
             dBtn_pixelLoad2.TabIndex = 19;
             dBtn_pixelLoad2.Text = "불러오기";
             dBtn_pixelLoad2.UseVisualStyleBackColor = true;
@@ -698,9 +631,10 @@
             dBtn_pixelSave2.ColorD = Color.FromArgb(0, 0, 0, 0);
             dBtn_pixelSave2.ColorE = Color.FromArgb(25, 255, 255, 255);
             dBtn_pixelSave2.ForeColor = Color.FromArgb(40, 218, 255);
-            dBtn_pixelSave2.Location = new Point(20, 112);
+            dBtn_pixelSave2.Location = new Point(26, 149);
+            dBtn_pixelSave2.Margin = new Padding(4);
             dBtn_pixelSave2.Name = "dBtn_pixelSave2";
-            dBtn_pixelSave2.Size = new Size(105, 40);
+            dBtn_pixelSave2.Size = new Size(135, 53);
             dBtn_pixelSave2.TabIndex = 18;
             dBtn_pixelSave2.Text = "저 장";
             dBtn_pixelSave2.UseVisualStyleBackColor = true;
@@ -720,9 +654,10 @@
             thunderGroupBox1.Controls.Add(foxLabel1);
             thunderGroupBox1.Controls.Add(foxLabel2);
             thunderGroupBox1.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox1.Location = new Point(23, 59);
+            thunderGroupBox1.Location = new Point(30, 79);
+            thunderGroupBox1.Margin = new Padding(4);
             thunderGroupBox1.Name = "thunderGroupBox1";
-            thunderGroupBox1.Size = new Size(272, 169);
+            thunderGroupBox1.Size = new Size(350, 225);
             thunderGroupBox1.TabIndex = 18;
             thunderGroupBox1.Text = "Resolution CAM 1";
             // 
@@ -731,9 +666,10 @@
             dTbox_y1.BackColor = Color.FromArgb(69, 73, 74);
             dTbox_y1.BorderStyle = BorderStyle.FixedSingle;
             dTbox_y1.ForeColor = Color.FromArgb(220, 220, 220);
-            dTbox_y1.Location = new Point(168, 77);
+            dTbox_y1.Location = new Point(216, 103);
+            dTbox_y1.Margin = new Padding(4);
             dTbox_y1.Name = "dTbox_y1";
-            dTbox_y1.Size = new Size(88, 23);
+            dTbox_y1.Size = new Size(113, 27);
             dTbox_y1.TabIndex = 22;
             dTbox_y1.Text = "0";
             // 
@@ -742,9 +678,10 @@
             dTbox_x1.BackColor = Color.FromArgb(69, 73, 74);
             dTbox_x1.BorderStyle = BorderStyle.FixedSingle;
             dTbox_x1.ForeColor = Color.FromArgb(220, 220, 220);
-            dTbox_x1.Location = new Point(168, 38);
+            dTbox_x1.Location = new Point(216, 51);
+            dTbox_x1.Margin = new Padding(4);
             dTbox_x1.Name = "dTbox_x1";
-            dTbox_x1.Size = new Size(88, 23);
+            dTbox_x1.Size = new Size(113, 27);
             dTbox_x1.TabIndex = 21;
             dTbox_x1.Text = "0";
             // 
@@ -756,9 +693,10 @@
             dBtn_pixelLoad.ColorD = Color.FromArgb(0, 0, 0, 0);
             dBtn_pixelLoad.ColorE = Color.FromArgb(25, 255, 255, 255);
             dBtn_pixelLoad.ForeColor = Color.FromArgb(40, 218, 255);
-            dBtn_pixelLoad.Location = new Point(151, 112);
+            dBtn_pixelLoad.Location = new Point(194, 149);
+            dBtn_pixelLoad.Margin = new Padding(4);
             dBtn_pixelLoad.Name = "dBtn_pixelLoad";
-            dBtn_pixelLoad.Size = new Size(105, 40);
+            dBtn_pixelLoad.Size = new Size(135, 53);
             dBtn_pixelLoad.TabIndex = 19;
             dBtn_pixelLoad.Text = "불러오기";
             dBtn_pixelLoad.UseVisualStyleBackColor = true;
@@ -772,9 +710,10 @@
             dBtn_pixelSave.ColorD = Color.FromArgb(0, 0, 0, 0);
             dBtn_pixelSave.ColorE = Color.FromArgb(25, 255, 255, 255);
             dBtn_pixelSave.ForeColor = Color.FromArgb(40, 218, 255);
-            dBtn_pixelSave.Location = new Point(20, 112);
+            dBtn_pixelSave.Location = new Point(26, 149);
+            dBtn_pixelSave.Margin = new Padding(4);
             dBtn_pixelSave.Name = "dBtn_pixelSave";
-            dBtn_pixelSave.Size = new Size(105, 40);
+            dBtn_pixelSave.Size = new Size(135, 53);
             dBtn_pixelSave.TabIndex = 18;
             dBtn_pixelSave.Text = "저 장";
             dBtn_pixelSave.UseVisualStyleBackColor = true;
@@ -785,26 +724,116 @@
             controlBoxEdit1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             controlBoxEdit1.BackColor = Color.Transparent;
             controlBoxEdit1.DefaultLocation = true;
-            controlBoxEdit1.Location = new Point(532, -1);
+            controlBoxEdit1.Location = new Point(684, -1);
+            controlBoxEdit1.Margin = new Padding(4);
             controlBoxEdit1.Name = "controlBoxEdit1";
             controlBoxEdit1.Size = new Size(77, 19);
             controlBoxEdit1.TabIndex = 1;
             controlBoxEdit1.Text = "controlBoxEdit1";
             // 
+            // dButton_login
+            // 
+            dButton_login.Alpha = 20;
+            dButton_login.BackColor = Color.Transparent;
+            dButton_login.Background = true;
+            dButton_login.Background_WidthPen = 4F;
+            dButton_login.BackgroundPen = true;
+            dButton_login.ColorBackground = Color.FromArgb(37, 52, 68);
+            dButton_login.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            dButton_login.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            dButton_login.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            dButton_login.ColorLighting = Color.FromArgb(29, 200, 238);
+            dButton_login.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            dButton_login.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            dButton_login.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            dButton_login.Effect_1 = true;
+            dButton_login.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            dButton_login.Effect_1_Transparency = 25;
+            dButton_login.Effect_2 = true;
+            dButton_login.Effect_2_ColorBackground = Color.White;
+            dButton_login.Effect_2_Transparency = 20;
+            dButton_login.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dButton_login.ForeColor = Color.FromArgb(245, 245, 245);
+            dButton_login.Lighting = false;
+            dButton_login.LinearGradient_Background = false;
+            dButton_login.LinearGradientPen = false;
+            dButton_login.Location = new Point(558, 508);
+            dButton_login.Margin = new Padding(4);
+            dButton_login.Name = "dButton_login";
+            dButton_login.PenWidth = 15;
+            dButton_login.Rounding = true;
+            dButton_login.RoundingInt = 70;
+            dButton_login.Size = new Size(167, 56);
+            dButton_login.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            dButton_login.TabIndex = 0;
+            dButton_login.Tag = "Cyber";
+            dButton_login.TextButton = "로 그 인";
+            dButton_login.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            dButton_login.Timer_Effect_1 = 5;
+            dButton_login.Timer_RGB = 300;
+            dButton_login.Click += dButton_login_Click;
+            // 
+            // dTxtBox_password
+            // 
+            dTxtBox_password.Alpha = 20;
+            dTxtBox_password.BackColor = Color.Transparent;
+            dTxtBox_password.Background_WidthPen = 3F;
+            dTxtBox_password.BackgroundPen = true;
+            dTxtBox_password.ColorBackground = Color.FromArgb(37, 52, 68);
+            dTxtBox_password.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            dTxtBox_password.ColorLighting = Color.FromArgb(29, 200, 238);
+            dTxtBox_password.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            dTxtBox_password.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            dTxtBox_password.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            dTxtBox_password.Font = new Font("Arial", 17F, FontStyle.Regular, GraphicsUnit.Point);
+            dTxtBox_password.ForeColor = Color.FromArgb(245, 245, 245);
+            dTxtBox_password.Lighting = false;
+            dTxtBox_password.LinearGradientPen = false;
+            dTxtBox_password.Location = new Point(609, 763);
+            dTxtBox_password.Margin = new Padding(5);
+            dTxtBox_password.Name = "dTxtBox_password";
+            dTxtBox_password.Password = true;
+            dTxtBox_password.PenWidth = 15;
+            dTxtBox_password.RGB = false;
+            dTxtBox_password.Rounding = true;
+            dTxtBox_password.RoundingInt = 60;
+            dTxtBox_password.Size = new Size(330, 71);
+            dTxtBox_password.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            dTxtBox_password.TabIndex = 1;
+            dTxtBox_password.Tag = "Cyber";
+            dTxtBox_password.TextButton = "";
+            dTxtBox_password.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            dTxtBox_password.Timer_RGB = 300;
+            // 
+            // dPanel_login
+            // 
+            dPanel_login.BackgroundImageLayout = ImageLayout.Stretch;
+            dPanel_login.Controls.Add(dTxtBox_password);
+            dPanel_login.Controls.Add(dButton_login);
+            dPanel_login.ForeColor = Color.FromArgb(250, 250, 250);
+            dPanel_login.LeftSideColor = Color.FromArgb(40, 45, 45);
+            dPanel_login.Location = new Point(13, 79);
+            dPanel_login.Margin = new Padding(4);
+            dPanel_login.Name = "dPanel_login";
+            dPanel_login.RightSideColor = Color.FromArgb(40, 45, 45);
+            dPanel_login.Side = ReaLTaiizor.Controls.NightPanel.PanelSide.Left;
+            dPanel_login.Size = new Size(749, 641);
+            dPanel_login.TabIndex = 25;
+            // 
             // SettingForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(613, 550);
+            ClientSize = new Size(788, 733);
             Controls.Add(dungeonForm1);
             FormBorderStyle = FormBorderStyle.None;
-            MinimumSize = new Size(261, 65);
+            Margin = new Padding(4);
+            MinimumSize = new Size(336, 87);
             Name = "SettingForm";
             Text = "Settings";
             TransparencyKey = Color.Fuchsia;
             FormClosing += SettingForm_FormClosing;
             dungeonForm1.ResumeLayout(false);
-            dPanel_login.ResumeLayout(false);
             thunderGroupBox7.ResumeLayout(false);
             thunderGroupBox6.ResumeLayout(false);
             thunderGroupBox5.ResumeLayout(false);
@@ -813,6 +842,7 @@
             thunderGroupBox2.PerformLayout();
             thunderGroupBox1.ResumeLayout(false);
             thunderGroupBox1.PerformLayout();
+            dPanel_login.ResumeLayout(false);
             ResumeLayout(false);
         }
 
