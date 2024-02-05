@@ -12,6 +12,14 @@ namespace JD_Proc
     public partial class Form1 : Form
     {
         #region var
+        public static Model.Models _Model = new Model.Models();
+
+        SettingForm _settingForm;
+        AlignSettingForm _AlignSettingform;
+        TempGraphForm _TempGraphform;
+
+        public ThermalPaletteImage _images;
+
         IrDirectInterface _irDirectInterface_1;
         IrDirectInterface _irDirectInterface_2;
 
@@ -41,7 +49,7 @@ namespace JD_Proc
         double[,] _tempData_L = new double[640, 480];
         double[,] _tempData_R = new double[640, 480];
 
-        Model.Models _Model = new Model.Models();
+        
 
         List<Model.ProcessData> _Data_1_L = new List<Model.ProcessData>();
         List<Model.ProcessData> _Data_2_L = new List<Model.ProcessData>();
@@ -84,8 +92,6 @@ namespace JD_Proc
         string state = "manual";
 
         string _Model_path = "";
-
-        int panelBorder = 2;
 
         int PLC_Heartbit_Count = 0;
 
@@ -202,71 +208,71 @@ namespace JD_Proc
             bool VISION_BUSY_R = false;
             bool VISION_END_R = false;
 
-            PLC_AUTO = PLC_Check_Status("B101"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
-            if (PLC_AUTO)
-            {
+            //PLC_AUTO = PLC_Check_Status("B101"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
+            //if (PLC_AUTO)
+            //{
 
-                if (state == "auto") VISION_AUTO = true; //TJ 추가
-                else VISION_AUTO = false; //TJ 추가
+            //    if (state == "auto") VISION_AUTO = true; //TJ 추가
+            //    else VISION_AUTO = false; //TJ 추가
 
-                if (VISION_AUTO)
-                {
-                    VISION_READY_L = true;  // TJ 추가
-                    // Left camera
-                    if (VISION_READY_L)
-                    {
-                        PLC_START_L = PLC_Check_Status("B110"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
-                        if (PLC_START_L)
-                        {
-                            VISION_READY_L = false;
-                            VISION_END_L = false;
-                            VISION_BUSY_L = true;
+            //    if (VISION_AUTO)
+            //    {
+            //        VISION_READY_L = true;  // TJ 추가
+            //        // Left camera
+            //        if (VISION_READY_L)
+            //        {
+            //            PLC_START_L = PLC_Check_Status("B110"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
+            //            if (PLC_START_L)
+            //            {
+            //                VISION_READY_L = false;
+            //                VISION_END_L = false;
+            //                VISION_BUSY_L = true;
 
-                            AutoSnap_L();
-                            AutoProcess_L();
+            //                AutoSnap_L();
+            //                AutoProcess_L();
 
-                            lock (lockObject)
-                            {
-                                pictureBox1.Invoke((MethodInvoker)delegate
-                                {
-                                    pictureBox1.Image = originBmap_L;
-                                });
-                            }
+            //                lock (lockObject)
+            //                {
+            //                    pictureBox1.Invoke((MethodInvoker)delegate
+            //                    {
+            //                        pictureBox1.Image = originBmap_L;
+            //                    });
+            //                }
 
-                            VISION_BUSY_L = false;
-                            VISION_END_L = true;
-                        }
-                    }
+            //                VISION_BUSY_L = false;
+            //                VISION_END_L = true;
+            //            }
+            //        }
 
-                    VISION_READY_R = true;  // TJ 추가
+            //        VISION_READY_R = true;  // TJ 추가
 
-                    // Right camera
-                    if (VISION_READY_R)
-                    {
-                        PLC_START_R = PLC_Check_Status("B111"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
-                        if (PLC_START_R)
-                        {
-                            VISION_READY_R = false;
-                            VISION_END_R = false;
-                            VISION_BUSY_R = true;
+            //        // Right camera
+            //        if (VISION_READY_R)
+            //        {
+            //            PLC_START_R = PLC_Check_Status("B111"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
+            //            if (PLC_START_R)
+            //            {
+            //                VISION_READY_R = false;
+            //                VISION_END_R = false;
+            //                VISION_BUSY_R = true;
 
-                            AutoSnap_R();
-                            AutpProcess_R();
+            //                AutoSnap_R();
+            //                AutpProcess_R();
 
-                            lock (lockObject)
-                            {
-                                pictureBox2.Invoke((MethodInvoker)delegate
-                                {
-                                    pictureBox2.Image = originBmap_R;
-                                });
-                            }
+            //                lock (lockObject)
+            //                {
+            //                    pictureBox2.Invoke((MethodInvoker)delegate
+            //                    {
+            //                        pictureBox2.Image = originBmap_R;
+            //                    });
+            //                }
 
-                            VISION_BUSY_R = false;
-                            VISION_END_R = true;
-                        }
-                    }
-                }
-            }
+            //                VISION_BUSY_R = false;
+            //                VISION_END_R = true;
+            //            }
+            //        }
+            //    }
+            //}
 
         }
 
@@ -564,6 +570,7 @@ namespace JD_Proc
                 dBtn_Process1.Enabled = false;
                 dBtn_Process2.Enabled = false;
                 dBtn_settings.Enabled = false;
+                tableLayoutPanel_Auto.Visible = true;
 
                 _AutoTimer.Start();
             }
@@ -588,6 +595,7 @@ namespace JD_Proc
                 dBtn_Process1.Enabled = true;
                 dBtn_Process2.Enabled = true;
                 dBtn_settings.Enabled = true;
+                tableLayoutPanel_Auto.Visible = false;
 
                 _AutoTimer.Stop();
             }
@@ -730,6 +738,20 @@ namespace JD_Proc
         }
         #endregion
 
+        #region event(Measure) - click
+        private void dBtn_Measure1_Click(object sender, EventArgs e)
+        {
+            dBtn_snap1_Click(sender, e);
+            dBtn_Process1_Click(sender, e);
+        }
+
+        private void dBtn_Measure2_Click(object sender, EventArgs e)
+        {
+            dBtn_snap2_Click(sender, e);
+            dBtn_Process2_Click(sender, e);
+        }
+        #endregion
+
         #region event(lmage load) - click
         private void dBtn_load1_Click(object sender, EventArgs e)
         {
@@ -749,6 +771,7 @@ namespace JD_Proc
                 if (File.Exists(csvFile))
                 {
                     pictureBox1.Image = Bitmap.FromFile(image_file);
+                    pictureBox1_Auto.Image = pictureBox1.Image;
 
                     StreamReader sr = new StreamReader(csvFile);
 
@@ -793,7 +816,7 @@ namespace JD_Proc
                 if (File.Exists(csvFile))
                 {
                     pictureBox2.Image = Bitmap.FromFile(image_file);
-
+                    pictureBox2_Auto.Image = pictureBox2.Image;
                     StreamReader sr = new StreamReader(csvFile);
 
                     int row = 0;
@@ -830,6 +853,7 @@ namespace JD_Proc
                 System.IO.Directory.CreateDirectory(saveFolder);
 
             pictureBox1.Image.Save(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+            pictureBox1_Auto.Image.Save(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
 
             //csv 파일 저장
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".csv"))
@@ -860,6 +884,7 @@ namespace JD_Proc
                 System.IO.Directory.CreateDirectory(saveFolder);
 
             pictureBox2.Image.Save(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+            pictureBox2_Auto.Image.Save(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
 
             //csv 파일 저장
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".csv"))
@@ -886,126 +911,89 @@ namespace JD_Proc
         #region event(settings) - click
         private void dBtn_settings_Click(object sender, EventArgs e)
         {
-            SettingForm settingForm = new SettingForm(this);
-            settingForm.StartPosition = FormStartPosition.Manual;
-            settingForm.Location = new System.Drawing.Point(500, 100);
+            _AlignSettingform = new AlignSettingForm(this, pictureBox1, pictureBox2);
+            _TempGraphform = new TempGraphForm();
+
+            _settingForm = new SettingForm(this, _AlignSettingform, _TempGraphform);
+            _settingForm.StartPosition = FormStartPosition.Manual;
+            _settingForm.Location = new System.Drawing.Point(200, 100);
 
             //settingForm.SetPlc();
             //settingForm._timer.Start();
 
-            settingForm.ShowDialog();
+            //ASform.ShowDialog();
+            //Temperform.ShowDialog();
+            _settingForm.ShowDialog();
 
             //settingForm._timer.Stop();
         }
         #endregion
 
-        #region event(grid view) - click
-        private void dBtn_gridView1_Click(object sender, EventArgs e)
-        {
-            if (dPan_grid_L_1.Visible == true)
-            {
-                dPan_grid_L_1.Visible = false;
-                dPan_grid_L_2.Visible = false;
-                dPan_grid_L_3.Visible = false;
-                dPan_grid_L_4.Visible = false;
-                dPan_grid_L_5.Visible = false;
-            }
-            else if (dPan_grid_L_1.Visible == false)
-            {
-                dPan_grid_L_1.Visible = true;
-                dPan_grid_L_2.Visible = true;
-                dPan_grid_L_3.Visible = true;
-                dPan_grid_L_4.Visible = true;
-                dPan_grid_L_5.Visible = true;
-            }
-        }
+        //#region event(화살표) - click 
+        //private void dBtn_up_L_Click(object sender, EventArgs e)
+        //{
+        //    int y = dPan_grid_L_1.Top - 1;
 
-        private void dBtn_gridView2_Click(object sender, EventArgs e)
-        {
-            if (dPan_grid_R_1.Visible == true)
-            {
-                dPan_grid_R_1.Visible = false;
-                dPan_grid_R_2.Visible = false;
-                dPan_grid_R_3.Visible = false;
-                dPan_grid_R_4.Visible = false;
-                dPan_grid_R_5.Visible = false;
-            }
-            else if (dPan_grid_R_1.Visible == false)
-            {
-                dPan_grid_R_1.Visible = true;
-                dPan_grid_R_2.Visible = true;
-                dPan_grid_R_3.Visible = true;
-                dPan_grid_R_4.Visible = true;
-                dPan_grid_R_5.Visible = true;
-            }
-        }
-        #endregion
+        //    dPan_grid_L_1.Top = y;
+        //    dPan_grid_L_2.Top = dPan_grid_L_1.Bottom + _Model.Grid_pixel_L + panelBorder;
+        //    dPan_grid_L_3.Top = dPan_grid_L_2.Bottom + _Model.Grid_pixel_L + panelBorder;
+        //    dPan_grid_L_4.Top = dPan_grid_L_3.Bottom + _Model.Grid_pixel_L + panelBorder;
+        //    dPan_grid_L_5.Top = dPan_grid_L_4.Bottom + _Model.Grid_pixel_L + panelBorder;
+        //}
 
-        #region event(화살표) - click 
-        private void dBtn_up_L_Click(object sender, EventArgs e)
-        {
-            int y = dPan_grid_L_1.Top - 1;
+        //private void dBtn_up_R_Click(object sender, EventArgs e)
+        //{
+        //    int y = dPan_grid_R_1.Top - 1;
 
-            dPan_grid_L_1.Top = y;
-            dPan_grid_L_2.Top = dPan_grid_L_1.Bottom + _Model.Grid_pixel_L + panelBorder;
-            dPan_grid_L_3.Top = dPan_grid_L_2.Bottom + _Model.Grid_pixel_L + panelBorder;
-            dPan_grid_L_4.Top = dPan_grid_L_3.Bottom + _Model.Grid_pixel_L + panelBorder;
-            dPan_grid_L_5.Top = dPan_grid_L_4.Bottom + _Model.Grid_pixel_L + panelBorder;
-        }
+        //    dPan_grid_R_1.Top = y;
+        //    dPan_grid_R_2.Top = dPan_grid_R_1.Bottom + _Model.Grid_pixel_R + panelBorder;
+        //    dPan_grid_R_3.Top = dPan_grid_R_2.Bottom + _Model.Grid_pixel_R + panelBorder;
+        //    dPan_grid_R_4.Top = dPan_grid_R_3.Bottom + _Model.Grid_pixel_R + panelBorder;
+        //    dPan_grid_R_5.Top = dPan_grid_R_4.Bottom + _Model.Grid_pixel_R + panelBorder;
+        //}
 
-        private void dBtn_up_R_Click(object sender, EventArgs e)
-        {
-            int y = dPan_grid_R_1.Top - 1;
+        //private void dBtn_dw_L_Click(object sender, EventArgs e)
+        //{
+        //    int y = dPan_grid_L_1.Top + 1;
 
-            dPan_grid_R_1.Top = y;
-            dPan_grid_R_2.Top = dPan_grid_R_1.Bottom + _Model.Grid_pixel_R + panelBorder;
-            dPan_grid_R_3.Top = dPan_grid_R_2.Bottom + _Model.Grid_pixel_R + panelBorder;
-            dPan_grid_R_4.Top = dPan_grid_R_3.Bottom + _Model.Grid_pixel_R + panelBorder;
-            dPan_grid_R_5.Top = dPan_grid_R_4.Bottom + _Model.Grid_pixel_R + panelBorder;
-        }
+        //    dPan_grid_L_1.Top = y;
+        //    dPan_grid_L_2.Top = dPan_grid_L_1.Bottom + _Model.Grid_pixel_L + panelBorder;
+        //    dPan_grid_L_3.Top = dPan_grid_L_2.Bottom + _Model.Grid_pixel_L + panelBorder;
+        //    dPan_grid_L_4.Top = dPan_grid_L_3.Bottom + _Model.Grid_pixel_L + panelBorder;
+        //    dPan_grid_L_5.Top = dPan_grid_L_4.Bottom + _Model.Grid_pixel_L + panelBorder;
+        //}
 
-        private void dBtn_dw_L_Click(object sender, EventArgs e)
-        {
-            int y = dPan_grid_L_1.Top + 1;
+        //private void dBtn_dw_R_Click(object sender, EventArgs e)
+        //{
+        //    int y = dPan_grid_R_1.Top + 1;
 
-            dPan_grid_L_1.Top = y;
-            dPan_grid_L_2.Top = dPan_grid_L_1.Bottom + _Model.Grid_pixel_L + panelBorder;
-            dPan_grid_L_3.Top = dPan_grid_L_2.Bottom + _Model.Grid_pixel_L + panelBorder;
-            dPan_grid_L_4.Top = dPan_grid_L_3.Bottom + _Model.Grid_pixel_L + panelBorder;
-            dPan_grid_L_5.Top = dPan_grid_L_4.Bottom + _Model.Grid_pixel_L + panelBorder;
-        }
-
-        private void dBtn_dw_R_Click(object sender, EventArgs e)
-        {
-            int y = dPan_grid_R_1.Top + 1;
-
-            dPan_grid_R_1.Top = y;
-            dPan_grid_R_2.Top = dPan_grid_R_1.Bottom + _Model.Grid_pixel_R + panelBorder;
-            dPan_grid_R_3.Top = dPan_grid_R_2.Bottom + _Model.Grid_pixel_R + panelBorder;
-            dPan_grid_R_4.Top = dPan_grid_R_3.Bottom + _Model.Grid_pixel_R + panelBorder;
-            dPan_grid_R_5.Top = dPan_grid_R_4.Bottom + _Model.Grid_pixel_R + panelBorder;
-        }
-        #endregion
+        //    dPan_grid_R_1.Top = y;
+        //    dPan_grid_R_2.Top = dPan_grid_R_1.Bottom + _Model.Grid_pixel_R + panelBorder;
+        //    dPan_grid_R_3.Top = dPan_grid_R_2.Bottom + _Model.Grid_pixel_R + panelBorder;
+        //    dPan_grid_R_4.Top = dPan_grid_R_3.Bottom + _Model.Grid_pixel_R + panelBorder;
+        //    dPan_grid_R_5.Top = dPan_grid_R_4.Bottom + _Model.Grid_pixel_R + panelBorder;
+        //}
+        //#endregion
 
         #region event(save) - click 
         private void dBtn_save_L_Click(object sender, EventArgs e)
         {
-            int y_L = dPan_grid_L_1.Top - pictureBox1.Top;
-            int y_R = dPan_grid_L_2.Top - pictureBox1.Top;
+            //int y_L = dPan_grid_L_1.Top - pictureBox1.Top;
+            //int y_R = dPan_grid_L_2.Top - pictureBox1.Top;
 
             Service.ModelsService modelService = new Service.ModelsService();
 
-            modelService.WriteOne("roi_L", "gridview_y", y_L.ToString(), _Model_path);
-            modelService.WriteOne("roi_R", "gridview_y", y_R.ToString(), _Model_path);
+            //modelService.WriteOne("roi_L", "gridview_y", y_L.ToString(), _Model_path);
+            //modelService.WriteOne("roi_R", "gridview_y", y_R.ToString(), _Model_path);
 
             int num_L = 0;
             int num_R = 0;
 
-            bool isNumeric_L = int.TryParse(dTbox_grid_L.Text, out num_L);
-            bool isNumeric_R = int.TryParse(dTbox_grid_R.Text, out num_R);
+            //bool isNumeric_L = int.TryParse(dTbox_grid_L.Text, out num_L);
+            //bool isNumeric_R = int.TryParse(dTbox_grid_R.Text, out num_R);
 
-            if (isNumeric_L) modelService.WriteOne("roi_L", "gridview", num_L.ToString(), _Model_path);
-            if (isNumeric_R) modelService.WriteOne("roi_R", "gridview", num_R.ToString(), _Model_path);
+            //if (isNumeric_L) modelService.WriteOne("roi_L", "gridview", num_L.ToString(), _Model_path);
+            //if (isNumeric_R) modelService.WriteOne("roi_R", "gridview", num_R.ToString(), _Model_path);
 
             SetModel(_Model_path);
         }
@@ -1151,18 +1139,18 @@ namespace JD_Proc
             while (_grabImages_1)
             {
                 //get the newest image, blocks till new image
-                ThermalPaletteImage images = _irDirectInterface_1.GetThermalPaletteImage();
+                _images = _irDirectInterface_1.GetThermalPaletteImage();
 
                 //calculate mean temperature
-                int rows = images.ThermalImage.GetLength(0);
-                int columns = images.ThermalImage.GetLength(1);
+                int rows = _images.ThermalImage.GetLength(0);
+                int columns = _images.ThermalImage.GetLength(1);
 
                 double mean = 0;
                 for (int row = 0; row < rows; row++)
                 {
                     for (int column = 0; column < columns; column++)
                     {
-                        ushort value = images.ThermalImage[row, column];
+                        ushort value = _images.ThermalImage[row, column];
                         mean += value;
                         _tempData_L[column, row] = ((double)value - 1000.0) / 10.0;
                     }
@@ -1177,7 +1165,12 @@ namespace JD_Proc
                 //Invoke UI-Thread for update of ui
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
-                    pictureBox1.Image = images.PaletteImage;
+                    pictureBox1.Image = _images.PaletteImage;
+                    pictureBox1_Auto.Image = _images.PaletteImage;
+                    //_AlignSettingform.BeginInvoke((MethodInvoker)(() =>
+                    //{
+                    //    pictureBox1.Image = images.PaletteImage;
+                    //}));
                     dLable_tmp1.Text = Math.Round(mean, 2).ToString();
                 }));
             }
@@ -1215,6 +1208,7 @@ namespace JD_Proc
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
                     pictureBox2.Image = images.PaletteImage;
+                    pictureBox2_Auto.Image = images.PaletteImage;
                     dLable_tmp2.Text = Math.Round(mean, 2).ToString();
                 }));
             }
@@ -1252,6 +1246,7 @@ namespace JD_Proc
             this.BeginInvoke((MethodInvoker)(() =>
             {
                 pictureBox1.Image = images.PaletteImage;
+                pictureBox1_Auto.Image = images.PaletteImage;
                 dLable_tmp1.Text = Math.Round(mean, 1).ToString();
 
             }));
@@ -1286,6 +1281,7 @@ namespace JD_Proc
             this.BeginInvoke((MethodInvoker)(() =>
             {
                 pictureBox2.Image = images.PaletteImage;
+                pictureBox2_Auto.Image = images.PaletteImage;
                 dLable_tmp2.Text = Math.Round(mean, 1).ToString();
             }));
         }
@@ -1295,17 +1291,17 @@ namespace JD_Proc
         #region method - make Roi
         void MakeROI()
         {
-            (_LEFT_ROI_BTN_5, _LEFT_ROI_5) = MakeRect("LEFT_ROI_5", 0, 0, 5, 5, Brushes.Yellow, "LEFT_5", Color.White, "LEFT");
-            (_LEFT_ROI_BTN_4, _LEFT_ROI_4) = MakeRect("LEFT_ROI_4", 0, 0, 5, 5, Brushes.Yellow, "LEFT_4", Color.White, "LEFT");
-            (_LEFT_ROI_BTN_3, _LEFT_ROI_3) = MakeRect("LEFT_ROI_3", 0, 0, 5, 5, Brushes.Yellow, "LEFT_3", Color.White, "LEFT");
-            (_LEFT_ROI_BTN_2, _LEFT_ROI_2) = MakeRect("LEFT_ROI_2", 0, 0, 5, 5, Brushes.Yellow, "LEFT_2", Color.White, "LEFT");
-            (_LEFT_ROI_BTN_1, _LEFT_ROI_1) = MakeRect("LEFT_ROI_1", 0, 0, 5, 5, Brushes.Yellow, "LEFT_1", Color.White, "LEFT");
+            (_LEFT_ROI_BTN_5, _LEFT_ROI_5) = MakeRect("LEFT_ROI_5", 0, 0, 5, 5, Brushes.Yellow, "L_CAM_AREA5", Color.White, "LEFT");
+            (_LEFT_ROI_BTN_4, _LEFT_ROI_4) = MakeRect("LEFT_ROI_4", 0, 0, 5, 5, Brushes.Yellow, "L_CAM_AREA4", Color.White, "LEFT");
+            (_LEFT_ROI_BTN_3, _LEFT_ROI_3) = MakeRect("LEFT_ROI_3", 0, 0, 5, 5, Brushes.Yellow, "L_CAM_AREA3", Color.White, "LEFT");
+            (_LEFT_ROI_BTN_2, _LEFT_ROI_2) = MakeRect("LEFT_ROI_2", 0, 0, 5, 5, Brushes.Yellow, "L_CAM_AREA2", Color.White, "LEFT");
+            (_LEFT_ROI_BTN_1, _LEFT_ROI_1) = MakeRect("LEFT_ROI_1", 0, 0, 5, 5, Brushes.Yellow, "L_CAM_AREA1", Color.White, "LEFT");
 
-            (_RIGHT_ROI_BTN_5, _RIGHT_ROI_5) = MakeRect("RIGHT_ROI_5", 0, 0, 5, 5, Brushes.Yellow, "RIGHT_5", Color.White, "RIGHT");
-            (_RIGHT_ROI_BTN_4, _RIGHT_ROI_4) = MakeRect("RIGHT_ROI_4", 0, 0, 5, 5, Brushes.Yellow, "RIGHT_4", Color.White, "RIGHT");
-            (_RIGHT_ROI_BTN_3, _RIGHT_ROI_3) = MakeRect("RIGHT_ROI_3", 0, 0, 5, 5, Brushes.Yellow, "RIGHT_3", Color.White, "RIGHT");
-            (_RIGHT_ROI_BTN_2, _RIGHT_ROI_2) = MakeRect("RIGHT_ROI_2", 0, 0, 5, 5, Brushes.Yellow, "RIGHT_2", Color.White, "RIGHT");
-            (_RIGHT_ROI_BTN_1, _RIGHT_ROI_1) = MakeRect("RIGHT_ROI_1", 0, 0, 5, 5, Brushes.Yellow, "RIGHT_1", Color.White, "RIGHT");
+            (_RIGHT_ROI_BTN_5, _RIGHT_ROI_5) = MakeRect("RIGHT_ROI_5", 0, 0, 5, 5, Brushes.Yellow, "R_CAM_AREA5", Color.White, "RIGHT");
+            (_RIGHT_ROI_BTN_4, _RIGHT_ROI_4) = MakeRect("RIGHT_ROI_4", 0, 0, 5, 5, Brushes.Yellow, "R_CAM_AREA4", Color.White, "RIGHT");
+            (_RIGHT_ROI_BTN_3, _RIGHT_ROI_3) = MakeRect("RIGHT_ROI_3", 0, 0, 5, 5, Brushes.Yellow, "R_CAM_AREA3", Color.White, "RIGHT");
+            (_RIGHT_ROI_BTN_2, _RIGHT_ROI_2) = MakeRect("RIGHT_ROI_2", 0, 0, 5, 5, Brushes.Yellow, "R_CAM_AREA2", Color.White, "RIGHT");
+            (_RIGHT_ROI_BTN_1, _RIGHT_ROI_1) = MakeRect("RIGHT_ROI_1", 0, 0, 5, 5, Brushes.Yellow, "R_CAM_AREA1", Color.White, "RIGHT");
         }
 
         private (System.Windows.Forms.Button, RectTracker) MakeRect(string roiName, int x, int y, int width, int height, Brush roiColor, string labalName, Color labelColor, string cam)
@@ -1351,7 +1347,7 @@ namespace JD_Proc
                 _ROIRect.roiLabel.Name = "lbl" + roiName;
                 _ROIRect.roiLabel.Text = labalName;
                 _ROIRect.roiLabel.Location = new System.Drawing.Point(x - 5, y + height + 10);
-                _ROIRect.roiLabel.Size = new System.Drawing.Size(80, 20);
+                _ROIRect.roiLabel.Size = new System.Drawing.Size(100, 20);
                 _ROIRect.roiLabel.ForeColor = labelColor;
                 _ROIRect.roiLabel.BringToFront();
                 _ROIRect.roiLabel.Capture = false;
@@ -1422,13 +1418,7 @@ namespace JD_Proc
             _LEFT_ROI_BTN_2.Height = _Model.Height_L;
             _LEFT_ROI_BTN_1.Height = _Model.Height_L;
 
-            dTbox_grid_L.Text = _Model.Grid_L.ToString();
-
-            dPan_grid_L_1.Top = pictureBox1.Top + _Model.Grid_Y_L;
-            dPan_grid_L_2.Top = dPan_grid_L_1.Bottom + _Model.Grid_pixel_L + panelBorder;
-            dPan_grid_L_3.Top = dPan_grid_L_2.Bottom + _Model.Grid_pixel_L + panelBorder;
-            dPan_grid_L_4.Top = dPan_grid_L_3.Bottom + _Model.Grid_pixel_L + panelBorder;
-            dPan_grid_L_5.Top = dPan_grid_L_4.Bottom + _Model.Grid_pixel_L + panelBorder;
+            //dTbox_grid_L.Text = _Model.Grid_L.ToString();
 
             //RIGHT
             _RIGHT_ROI_5.Left = _Model.X_5_R;
@@ -1467,13 +1457,7 @@ namespace JD_Proc
             _RIGHT_ROI_BTN_2.Height = _Model.Height_R;
             _RIGHT_ROI_BTN_1.Height = _Model.Height_R;
 
-            dTbox_grid_R.Text = _Model.Grid_R.ToString();
-
-            dPan_grid_R_1.Top = pictureBox2.Top + _Model.Grid_Y_R;
-            dPan_grid_R_2.Top = dPan_grid_R_1.Bottom + _Model.Grid_pixel_R + panelBorder;
-            dPan_grid_R_3.Top = dPan_grid_R_2.Bottom + _Model.Grid_pixel_R + panelBorder;
-            dPan_grid_R_4.Top = dPan_grid_R_3.Bottom + _Model.Grid_pixel_R + panelBorder;
-            dPan_grid_R_5.Top = dPan_grid_R_4.Bottom + _Model.Grid_pixel_R + panelBorder;
+            //dTbox_grid_R.Text = _Model.Grid_R.ToString();
 
             _LEFT_ROI_1.Visible = false;
             _LEFT_ROI_2.Visible = false;
@@ -1919,6 +1903,8 @@ namespace JD_Proc
             }
         }
         #endregion
+
+
 
         #region method - sub pixel 연산
         int GetSubPixel(int value, int nextValue)
@@ -2794,5 +2780,10 @@ namespace JD_Proc
         }
         #endregion
 
+
+        private void tableLayoutPanel_Auto_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

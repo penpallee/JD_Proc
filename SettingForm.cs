@@ -1,18 +1,6 @@
 ﻿using JD_Proc.Log;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
-using System.Windows.Forms;
 using static JD_Proc.Log.LogManager;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace JD_Proc
 {
@@ -21,14 +9,18 @@ namespace JD_Proc
         #region var
         public System.Timers.Timer _timer = new System.Timers.Timer();
         Form1 _form1;
+        AlignSettingForm _alignsettingform;
+        TempGraphForm _tempgraphform;
         #endregion
 
         #region 생성자
-        public SettingForm(Form1 form1)
+        public SettingForm(Form1 form1, AlignSettingForm alignSettingForm, TempGraphForm tempgraphform)
         {
             InitializeComponent();
 
             _form1 = form1;
+            _alignsettingform = alignSettingForm;
+            _tempgraphform = tempgraphform;
 
             GetResolution_1();
             GetResolution_2();
@@ -39,6 +31,24 @@ namespace JD_Proc
 
             // Developing
             dPanel_login.Visible = false;
+
+            Point parentPoint = this.Location;
+
+            //_alignsettingform = new AlignSettingForm();
+            //_tempgraphform = new TempGraphForm();
+
+
+            _alignsettingform.Show();
+            _alignsettingform.StartPosition = FormStartPosition.Manual;
+            _alignsettingform.Location = new System.Drawing.Point(810, 100);
+            _tempgraphform.Show();
+            _tempgraphform.StartPosition = FormStartPosition.Manual;
+            _tempgraphform.Location = new System.Drawing.Point(200, 650);
+
+            cyberCheckBox1.Checked = true;
+            cyberCheckBox2.Checked = true;
+            _alignsettingform.Visible = true;
+            _tempgraphform.Visible = true;
 
         }
         #endregion
@@ -290,6 +300,9 @@ namespace JD_Proc
         #region event(form) - closing
         private void SettingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
+            _alignsettingform.Close();
+            _tempgraphform.Close();
         }
         #endregion
 
@@ -407,6 +420,23 @@ namespace JD_Proc
         private void dCheckBox_jog_CheckedChanged()
         {
             _form1.JogVisibleChanged(dCheckBox_jog.Checked);
+        }
+        #endregion
+
+        #region event(Additional Window) - On/Off
+        private void cyberCheckBox1_CheckedChanged()
+        {
+            if (cyberCheckBox1.Checked != true)
+                _alignsettingform.Visible = false;
+            else _alignsettingform.Visible = true;
+
+        }
+
+        private void cyberCheckBox2_CheckedChanged()
+        {
+            if (cyberCheckBox2.Checked != true)
+                _tempgraphform.Visible = false;
+            else _tempgraphform.Visible = true;
         }
         #endregion
     }

@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -53,24 +59,16 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             nightForm1 = new ReaLTaiizor.Forms.NightForm();
             panel6 = new Panel();
-            panel5 = new Panel();
             panel2 = new Panel();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             panel3 = new Panel();
+            tableLayoutPanel_Auto = new TableLayoutPanel();
+            pictureBox2_Auto = new PictureBox();
+            pictureBox1_Auto = new PictureBox();
+            parrotLineGraph1 = new ReaLTaiizor.Controls.ParrotLineGraph();
+            parrotLineGraph2 = new ReaLTaiizor.Controls.ParrotLineGraph();
             dLabel_Ng_L = new ReaLTaiizor.Controls.NightLabel();
             DBtn_jogDown_L = new ReaLTaiizor.Controls.Button();
             DBtn_jogUp_L = new ReaLTaiizor.Controls.Button();
@@ -88,28 +86,19 @@
             dPic_roi_3_R = new ReaLTaiizor.Controls.HopePictureBox();
             dPic_roi_2_R = new ReaLTaiizor.Controls.HopePictureBox();
             dPic_roi_1_R = new ReaLTaiizor.Controls.HopePictureBox();
-            dPan_grid_R_1 = new Panel();
-            dPan_grid_R_2 = new Panel();
-            dPan_grid_R_4 = new Panel();
-            dPan_grid_R_5 = new Panel();
-            dPan_grid_R_3 = new Panel();
             dLable_tmp2 = new ReaLTaiizor.Controls.NightLabel();
             dComboBox_scale2 = new ReaLTaiizor.Controls.DungeonComboBox();
             dComboBox_cam2 = new ReaLTaiizor.Controls.DungeonComboBox();
-            moonLabel2 = new ReaLTaiizor.Controls.MoonLabel();
             pictureBox2 = new PictureBox();
             dTxt_cam2 = new ReaLTaiizor.Controls.NightTextBox();
-            dBtn_dw_R = new ReaLTaiizor.Controls.Button();
-            dBtn_up_R = new ReaLTaiizor.Controls.Button();
-            dTbox_grid_R = new ReaLTaiizor.Controls.ForeverTextBox();
             tableLayoutPanel4 = new TableLayoutPanel();
-            dBtn_gridView2 = new ReaLTaiizor.Controls.NightButton();
             dBtn_load2 = new ReaLTaiizor.Controls.NightButton();
             dBtn_imageSave2 = new ReaLTaiizor.Controls.NightButton();
             dBtn_live2 = new ReaLTaiizor.Controls.NightButton();
             dBtn_stop2 = new ReaLTaiizor.Controls.NightButton();
-            dBtn_Process2 = new ReaLTaiizor.Controls.NightButton();
             dBtn_snap2 = new ReaLTaiizor.Controls.NightButton();
+            dBtn_Process2 = new ReaLTaiizor.Controls.NightButton();
+            dBtn_Measure2 = new ReaLTaiizor.Controls.NightButton();
             dChart_L_5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             dChart_L_4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             dChart_L_3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -120,28 +109,19 @@
             dPic_roi_3_L = new ReaLTaiizor.Controls.HopePictureBox();
             dPic_roi_2_L = new ReaLTaiizor.Controls.HopePictureBox();
             dPic_roi_1_L = new ReaLTaiizor.Controls.HopePictureBox();
-            dPan_grid_L_1 = new Panel();
-            dPan_grid_L_2 = new Panel();
-            dPan_grid_L_4 = new Panel();
-            dPan_grid_L_5 = new Panel();
-            dPan_grid_L_3 = new Panel();
             dComboBox_scale1 = new ReaLTaiizor.Controls.DungeonComboBox();
             dLable_tmp1 = new ReaLTaiizor.Controls.NightLabel();
             dComboBox_cam1 = new ReaLTaiizor.Controls.DungeonComboBox();
-            moonLabel1 = new ReaLTaiizor.Controls.MoonLabel();
             dTxt_cam1 = new ReaLTaiizor.Controls.NightTextBox();
             pictureBox1 = new PictureBox();
-            dBtn_dw_L = new ReaLTaiizor.Controls.Button();
-            dBtn_up_L = new ReaLTaiizor.Controls.Button();
-            dTbox_grid_L = new ReaLTaiizor.Controls.ForeverTextBox();
             tableLayoutPanel3 = new TableLayoutPanel();
-            dBtn_gridView1 = new ReaLTaiizor.Controls.NightButton();
             dBtn_load1 = new ReaLTaiizor.Controls.NightButton();
             dBtn_imageSave1 = new ReaLTaiizor.Controls.NightButton();
             dBtn_live1 = new ReaLTaiizor.Controls.NightButton();
             dBtn_stop1 = new ReaLTaiizor.Controls.NightButton();
-            dBtn_Process1 = new ReaLTaiizor.Controls.NightButton();
             dBtn_snap1 = new ReaLTaiizor.Controls.NightButton();
+            dBtn_Process1 = new ReaLTaiizor.Controls.NightButton();
+            dBtn_Measure1 = new ReaLTaiizor.Controls.NightButton();
             panel1 = new Panel();
             dLabel_autoState = new ReaLTaiizor.Controls.NightLabel();
             dBtn_settings = new ReaLTaiizor.Controls.Button();
@@ -155,14 +135,12 @@
             dRadio_cam1 = new ReaLTaiizor.Controls.CyberRadioButton();
             skyLabel1 = new ReaLTaiizor.Controls.SkyLabel();
             thunderControlBox1 = new ReaLTaiizor.Controls.ThunderControlBox();
-            tableLayoutPanel_Auto = new TableLayoutPanel();
-            pictureBox1_Auto = new PictureBox();
-            pictureBox2_Auto = new PictureBox();
-            Chart_GapValue_Auto = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            Chart2_GapValue_Auto = new System.Windows.Forms.DataVisualization.Charting.Chart();
             nightForm1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            tableLayoutPanel_Auto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2_Auto).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1_Auto).BeginInit();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dChart_R_5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dChart_R_4).BeginInit();
@@ -191,18 +169,12 @@
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel_Auto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1_Auto).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2_Auto).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Chart_GapValue_Auto).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Chart2_GapValue_Auto).BeginInit();
             SuspendLayout();
             // 
             // nightForm1
             // 
             nightForm1.BackColor = Color.FromArgb(23, 23, 23);
             nightForm1.Controls.Add(panel6);
-            nightForm1.Controls.Add(panel5);
             nightForm1.Controls.Add(panel2);
             nightForm1.Controls.Add(panel3);
             nightForm1.Controls.Add(panel1);
@@ -229,15 +201,6 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(72, 22);
             panel6.TabIndex = 2;
-            // 
-            // panel5
-            // 
-            panel5.BackgroundImage = (Image)resources.GetObject("panel5.BackgroundImage");
-            panel5.BackgroundImageLayout = ImageLayout.Stretch;
-            panel5.Location = new Point(210, 6);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(72, 22);
-            panel5.TabIndex = 1;
             // 
             // panel2
             // 
@@ -277,25 +240,115 @@
             panel3.Controls.Add(dPic_roi_3_L);
             panel3.Controls.Add(dPic_roi_2_L);
             panel3.Controls.Add(dPic_roi_1_L);
-            panel3.Controls.Add(dPan_grid_L_1);
-            panel3.Controls.Add(dPan_grid_L_2);
-            panel3.Controls.Add(dPan_grid_L_4);
-            panel3.Controls.Add(dPan_grid_L_5);
-            panel3.Controls.Add(dPan_grid_L_3);
             panel3.Controls.Add(dComboBox_scale1);
             panel3.Controls.Add(dLable_tmp1);
             panel3.Controls.Add(dComboBox_cam1);
-            panel3.Controls.Add(moonLabel1);
             panel3.Controls.Add(dTxt_cam1);
             panel3.Controls.Add(pictureBox1);
-            panel3.Controls.Add(dBtn_dw_L);
-            panel3.Controls.Add(dBtn_up_L);
-            panel3.Controls.Add(dTbox_grid_L);
             panel3.Controls.Add(tableLayoutPanel3);
             panel3.Location = new Point(0, 99);
             panel3.Name = "panel3";
             panel3.Size = new Size(1920, 940);
             panel3.TabIndex = 8;
+            // 
+            // tableLayoutPanel_Auto
+            // 
+            tableLayoutPanel_Auto.ColumnCount = 2;
+            tableLayoutPanel_Auto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_Auto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_Auto.Controls.Add(pictureBox2_Auto, 1, 0);
+            tableLayoutPanel_Auto.Controls.Add(pictureBox1_Auto, 0, 0);
+            tableLayoutPanel_Auto.Controls.Add(parrotLineGraph1, 0, 1);
+            tableLayoutPanel_Auto.Controls.Add(parrotLineGraph2, 1, 1);
+            tableLayoutPanel_Auto.Dock = DockStyle.Fill;
+            tableLayoutPanel_Auto.Location = new Point(0, 0);
+            tableLayoutPanel_Auto.Name = "tableLayoutPanel_Auto";
+            tableLayoutPanel_Auto.RowCount = 2;
+            tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_Auto.Size = new Size(1920, 940);
+            tableLayoutPanel_Auto.TabIndex = 35;
+            tableLayoutPanel_Auto.Visible = false;
+            tableLayoutPanel_Auto.Paint += tableLayoutPanel_Auto_Paint;
+            // 
+            // pictureBox2_Auto
+            // 
+            pictureBox2_Auto.Dock = DockStyle.Fill;
+            pictureBox2_Auto.Location = new Point(963, 3);
+            pictureBox2_Auto.Name = "pictureBox2_Auto";
+            pictureBox2_Auto.Size = new Size(954, 558);
+            pictureBox2_Auto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2_Auto.TabIndex = 1;
+            pictureBox2_Auto.TabStop = false;
+            // 
+            // pictureBox1_Auto
+            // 
+            pictureBox1_Auto.Dock = DockStyle.Fill;
+            pictureBox1_Auto.Location = new Point(3, 3);
+            pictureBox1_Auto.Name = "pictureBox1_Auto";
+            pictureBox1_Auto.Size = new Size(954, 558);
+            pictureBox1_Auto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1_Auto.TabIndex = 0;
+            pictureBox1_Auto.TabStop = false;
+            // 
+            // parrotLineGraph1
+            // 
+            parrotLineGraph1.BackGroundColor = Color.Black;
+            parrotLineGraph1.BelowLineColor = Color.FromArgb(24, 202, 142);
+            parrotLineGraph1.BorderColor = Color.White;
+            parrotLineGraph1.Dock = DockStyle.Fill;
+            parrotLineGraph1.GraphStyle = ReaLTaiizor.Controls.ParrotLineGraph.Style.Curved;
+            parrotLineGraph1.GraphTitle = "L_Cam_Gap_Distance";
+            parrotLineGraph1.GraphTitleColor = Color.Gold;
+            parrotLineGraph1.Items = (List<int>)resources.GetObject("parrotLineGraph1.Items");
+            parrotLineGraph1.LineColor = Color.Red;
+            parrotLineGraph1.Location = new Point(10, 574);
+            parrotLineGraph1.Margin = new Padding(10);
+            parrotLineGraph1.Name = "parrotLineGraph1";
+            parrotLineGraph1.Padding = new Padding(3);
+            parrotLineGraph1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            parrotLineGraph1.PointSize = 12;
+            parrotLineGraph1.ShowBorder = true;
+            parrotLineGraph1.ShowPoints = true;
+            parrotLineGraph1.ShowTitle = true;
+            parrotLineGraph1.ShowVerticalLines = false;
+            parrotLineGraph1.Size = new Size(940, 356);
+            parrotLineGraph1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            parrotLineGraph1.TabIndex = 2;
+            parrotLineGraph1.Text = "parrotLineGraph1";
+            parrotLineGraph1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            parrotLineGraph1.TitleAlignment = StringAlignment.Near;
+            parrotLineGraph1.VerticalLineColor = Color.DimGray;
+            // 
+            // parrotLineGraph2
+            // 
+            parrotLineGraph2.BackGroundColor = Color.Black;
+            parrotLineGraph2.BelowLineColor = Color.Yellow;
+            parrotLineGraph2.BorderColor = Color.White;
+            parrotLineGraph2.Dock = DockStyle.Fill;
+            parrotLineGraph2.GraphStyle = ReaLTaiizor.Controls.ParrotLineGraph.Style.Curved;
+            parrotLineGraph2.GraphTitle = "R_Cam_Gap_Distance";
+            parrotLineGraph2.GraphTitleColor = Color.Gold;
+            parrotLineGraph2.Items = (List<int>)resources.GetObject("parrotLineGraph2.Items");
+            parrotLineGraph2.LineColor = Color.Red;
+            parrotLineGraph2.Location = new Point(970, 574);
+            parrotLineGraph2.Margin = new Padding(10);
+            parrotLineGraph2.Name = "parrotLineGraph2";
+            parrotLineGraph2.Padding = new Padding(3);
+            parrotLineGraph2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            parrotLineGraph2.PointSize = 12;
+            parrotLineGraph2.ShowBorder = true;
+            parrotLineGraph2.ShowPoints = true;
+            parrotLineGraph2.ShowTitle = true;
+            parrotLineGraph2.ShowVerticalLines = false;
+            parrotLineGraph2.Size = new Size(940, 356);
+            parrotLineGraph2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            parrotLineGraph2.TabIndex = 3;
+            parrotLineGraph2.Text = "parrotLineGraph2";
+            parrotLineGraph2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            parrotLineGraph2.TitleAlignment = StringAlignment.Near;
+            parrotLineGraph2.VerticalLineColor = Color.DimGray;
             // 
             // dLabel_Ng_L
             // 
@@ -305,7 +358,7 @@
             dLabel_Ng_L.ForeColor = Color.FromArgb(114, 118, 127);
             dLabel_Ng_L.Location = new Point(201, 453);
             dLabel_Ng_L.Name = "dLabel_Ng_L";
-            dLabel_Ng_L.Size = new Size(125, 37);
+            dLabel_Ng_L.Size = new Size(97, 30);
             dLabel_Ng_L.TabIndex = 34;
             dLabel_Ng_L.Text = "작업상태";
             // 
@@ -365,20 +418,11 @@
             panel4.Controls.Add(dPic_roi_3_R);
             panel4.Controls.Add(dPic_roi_2_R);
             panel4.Controls.Add(dPic_roi_1_R);
-            panel4.Controls.Add(dPan_grid_R_1);
-            panel4.Controls.Add(dPan_grid_R_2);
-            panel4.Controls.Add(dPan_grid_R_4);
-            panel4.Controls.Add(dPan_grid_R_5);
-            panel4.Controls.Add(dPan_grid_R_3);
             panel4.Controls.Add(dLable_tmp2);
             panel4.Controls.Add(dComboBox_scale2);
             panel4.Controls.Add(dComboBox_cam2);
-            panel4.Controls.Add(moonLabel2);
             panel4.Controls.Add(pictureBox2);
             panel4.Controls.Add(dTxt_cam2);
-            panel4.Controls.Add(dBtn_dw_R);
-            panel4.Controls.Add(dBtn_up_R);
-            panel4.Controls.Add(dTbox_grid_R);
             panel4.Controls.Add(tableLayoutPanel4);
             panel4.Location = new Point(962, 1);
             panel4.Name = "panel4";
@@ -394,7 +438,7 @@
             dLabel_Ng_R.ForeColor = Color.FromArgb(114, 118, 127);
             dLabel_Ng_R.Location = new Point(196, 453);
             dLabel_Ng_R.Name = "dLabel_Ng_R";
-            dLabel_Ng_R.Size = new Size(125, 37);
+            dLabel_Ng_R.Size = new Size(97, 30);
             dLabel_Ng_R.TabIndex = 35;
             dLabel_Ng_R.Text = "작업상태";
             // 
@@ -441,18 +485,18 @@
             // dChart_R_5
             // 
             dChart_R_5.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea3.Name = "ChartArea1";
-            dChart_R_5.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            dChart_R_5.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            dChart_R_5.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            dChart_R_5.Legends.Add(legend1);
             dChart_R_5.Location = new Point(308, 844);
             dChart_R_5.Name = "dChart_R_5";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.LabelForeColor = Color.IndianRed;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            dChart_R_5.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.LabelForeColor = Color.IndianRed;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            dChart_R_5.Series.Add(series1);
             dChart_R_5.Size = new Size(640, 80);
             dChart_R_5.TabIndex = 36;
             dChart_R_5.Text = "chart5";
@@ -460,18 +504,18 @@
             // dChart_R_4
             // 
             dChart_R_4.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea4.Name = "ChartArea1";
-            dChart_R_4.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            dChart_R_4.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            dChart_R_4.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            dChart_R_4.Legends.Add(legend2);
             dChart_R_4.Location = new Point(308, 757);
             dChart_R_4.Name = "dChart_R_4";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.LabelForeColor = Color.IndianRed;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            dChart_R_4.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.LabelForeColor = Color.IndianRed;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            dChart_R_4.Series.Add(series2);
             dChart_R_4.Size = new Size(640, 80);
             dChart_R_4.TabIndex = 35;
             dChart_R_4.Text = "chart4";
@@ -479,18 +523,18 @@
             // dChart_R_3
             // 
             dChart_R_3.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea5.Name = "ChartArea1";
-            dChart_R_3.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            dChart_R_3.Legends.Add(legend5);
+            chartArea3.Name = "ChartArea1";
+            dChart_R_3.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            dChart_R_3.Legends.Add(legend3);
             dChart_R_3.Location = new Point(308, 671);
             dChart_R_3.Name = "dChart_R_3";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.LabelForeColor = Color.IndianRed;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            dChart_R_3.Series.Add(series5);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.LabelForeColor = Color.IndianRed;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            dChart_R_3.Series.Add(series3);
             dChart_R_3.Size = new Size(640, 80);
             dChart_R_3.TabIndex = 34;
             dChart_R_3.Text = "chart3";
@@ -498,18 +542,18 @@
             // dChart_R_2
             // 
             dChart_R_2.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea6.Name = "ChartArea1";
-            dChart_R_2.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            dChart_R_2.Legends.Add(legend6);
+            chartArea4.Name = "ChartArea1";
+            dChart_R_2.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            dChart_R_2.Legends.Add(legend4);
             dChart_R_2.Location = new Point(308, 585);
             dChart_R_2.Name = "dChart_R_2";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.LabelForeColor = Color.IndianRed;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            dChart_R_2.Series.Add(series6);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.LabelForeColor = Color.IndianRed;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            dChart_R_2.Series.Add(series4);
             dChart_R_2.Size = new Size(640, 80);
             dChart_R_2.TabIndex = 33;
             dChart_R_2.Text = "chart2";
@@ -517,18 +561,18 @@
             // dChart_R_1
             // 
             dChart_R_1.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea7.Name = "ChartArea1";
-            dChart_R_1.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            dChart_R_1.Legends.Add(legend7);
+            chartArea5.Name = "ChartArea1";
+            dChart_R_1.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            dChart_R_1.Legends.Add(legend5);
             dChart_R_1.Location = new Point(308, 499);
             dChart_R_1.Name = "dChart_R_1";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.LabelForeColor = Color.IndianRed;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            dChart_R_1.Series.Add(series7);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.LabelForeColor = Color.IndianRed;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            dChart_R_1.Series.Add(series5);
             dChart_R_1.Size = new Size(640, 80);
             dChart_R_1.TabIndex = 32;
             dChart_R_1.Text = "chart1";
@@ -598,51 +642,6 @@
             dPic_roi_1_R.TabStop = false;
             dPic_roi_1_R.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // dPan_grid_R_1
-            // 
-            dPan_grid_R_1.BackColor = Color.Lime;
-            dPan_grid_R_1.Location = new Point(182, 340);
-            dPan_grid_R_1.Margin = new Padding(0);
-            dPan_grid_R_1.Name = "dPan_grid_R_1";
-            dPan_grid_R_1.Size = new Size(663, 1);
-            dPan_grid_R_1.TabIndex = 26;
-            // 
-            // dPan_grid_R_2
-            // 
-            dPan_grid_R_2.BackColor = Color.Lime;
-            dPan_grid_R_2.Location = new Point(182, 365);
-            dPan_grid_R_2.Margin = new Padding(0);
-            dPan_grid_R_2.Name = "dPan_grid_R_2";
-            dPan_grid_R_2.Size = new Size(663, 1);
-            dPan_grid_R_2.TabIndex = 23;
-            // 
-            // dPan_grid_R_4
-            // 
-            dPan_grid_R_4.BackColor = Color.Lime;
-            dPan_grid_R_4.Location = new Point(182, 415);
-            dPan_grid_R_4.Margin = new Padding(0);
-            dPan_grid_R_4.Name = "dPan_grid_R_4";
-            dPan_grid_R_4.Size = new Size(663, 1);
-            dPan_grid_R_4.TabIndex = 24;
-            // 
-            // dPan_grid_R_5
-            // 
-            dPan_grid_R_5.BackColor = Color.Lime;
-            dPan_grid_R_5.Location = new Point(182, 440);
-            dPan_grid_R_5.Margin = new Padding(0);
-            dPan_grid_R_5.Name = "dPan_grid_R_5";
-            dPan_grid_R_5.Size = new Size(663, 1);
-            dPan_grid_R_5.TabIndex = 25;
-            // 
-            // dPan_grid_R_3
-            // 
-            dPan_grid_R_3.BackColor = Color.Lime;
-            dPan_grid_R_3.Location = new Point(182, 390);
-            dPan_grid_R_3.Margin = new Padding(0);
-            dPan_grid_R_3.Name = "dPan_grid_R_3";
-            dPan_grid_R_3.Size = new Size(663, 1);
-            dPan_grid_R_3.TabIndex = 22;
-            // 
             // dLable_tmp2
             // 
             dLable_tmp2.AutoSize = true;
@@ -651,7 +650,7 @@
             dLable_tmp2.ForeColor = Color.FromArgb(114, 118, 127);
             dLable_tmp2.Location = new Point(12, 456);
             dLable_tmp2.Name = "dLable_tmp2";
-            dLable_tmp2.Size = new Size(33, 37);
+            dLable_tmp2.Size = new Size(25, 30);
             dLable_tmp2.TabIndex = 20;
             dLable_tmp2.Text = "0";
             // 
@@ -713,17 +712,6 @@
             dComboBox_cam2.TabIndex = 13;
             dComboBox_cam2.SelectedIndexChanged += dComboBox_cam2_SelectedIndexChanged;
             // 
-            // moonLabel2
-            // 
-            moonLabel2.AutoSize = true;
-            moonLabel2.BackColor = Color.Transparent;
-            moonLabel2.ForeColor = Color.Gray;
-            moonLabel2.Location = new Point(931, 365);
-            moonLabel2.Name = "moonLabel2";
-            moonLabel2.Size = new Size(31, 20);
-            moonLabel2.TabIndex = 12;
-            moonLabel2.Text = "μm";
-            // 
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources._250_l_1;
@@ -759,74 +747,17 @@
             dTxt_cam2.Watermark = "";
             dTxt_cam2.WatermarkColor = Color.FromArgb(116, 120, 129);
             // 
-            // dBtn_dw_R
-            // 
-            dBtn_dw_R.BackColor = Color.Transparent;
-            dBtn_dw_R.BorderColor = Color.FromArgb(32, 34, 37);
-            dBtn_dw_R.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            dBtn_dw_R.EnteredColor = Color.FromArgb(32, 34, 37);
-            dBtn_dw_R.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_dw_R.Image = (Image)resources.GetObject("dBtn_dw_R.Image");
-            dBtn_dw_R.ImageAlign = ContentAlignment.MiddleLeft;
-            dBtn_dw_R.InactiveColor = Color.FromArgb(32, 34, 37);
-            dBtn_dw_R.Location = new Point(905, 393);
-            dBtn_dw_R.Name = "dBtn_dw_R";
-            dBtn_dw_R.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            dBtn_dw_R.PressedColor = Color.FromArgb(165, 37, 37);
-            dBtn_dw_R.Size = new Size(51, 47);
-            dBtn_dw_R.TabIndex = 9;
-            dBtn_dw_R.TextAlignment = StringAlignment.Center;
-            dBtn_dw_R.Click += dBtn_dw_R_Click;
-            // 
-            // dBtn_up_R
-            // 
-            dBtn_up_R.BackColor = Color.Transparent;
-            dBtn_up_R.BorderColor = Color.FromArgb(32, 34, 37);
-            dBtn_up_R.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            dBtn_up_R.EnteredColor = Color.FromArgb(32, 34, 37);
-            dBtn_up_R.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_up_R.Image = (Image)resources.GetObject("dBtn_up_R.Image");
-            dBtn_up_R.ImageAlign = ContentAlignment.MiddleLeft;
-            dBtn_up_R.InactiveColor = Color.FromArgb(32, 34, 37);
-            dBtn_up_R.Location = new Point(846, 393);
-            dBtn_up_R.Name = "dBtn_up_R";
-            dBtn_up_R.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            dBtn_up_R.PressedColor = Color.FromArgb(165, 37, 37);
-            dBtn_up_R.Size = new Size(51, 47);
-            dBtn_up_R.TabIndex = 8;
-            dBtn_up_R.TextAlignment = StringAlignment.Center;
-            dBtn_up_R.Click += dBtn_up_R_Click;
-            // 
-            // dTbox_grid_R
-            // 
-            dTbox_grid_R.BackColor = Color.Transparent;
-            dTbox_grid_R.BaseColor = Color.FromArgb(45, 47, 49);
-            dTbox_grid_R.BorderColor = Color.FromArgb(242, 93, 75);
-            dTbox_grid_R.FocusOnHover = false;
-            dTbox_grid_R.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dTbox_grid_R.ForeColor = Color.FromArgb(192, 192, 192);
-            dTbox_grid_R.Location = new Point(856, 358);
-            dTbox_grid_R.MaxLength = 32767;
-            dTbox_grid_R.Multiline = false;
-            dTbox_grid_R.Name = "dTbox_grid_R";
-            dTbox_grid_R.ReadOnly = false;
-            dTbox_grid_R.Size = new Size(73, 33);
-            dTbox_grid_R.TabIndex = 6;
-            dTbox_grid_R.Text = "250";
-            dTbox_grid_R.TextAlign = HorizontalAlignment.Left;
-            dTbox_grid_R.UseSystemPasswordChar = false;
-            // 
             // tableLayoutPanel4
             // 
             tableLayoutPanel4.ColumnCount = 1;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Controls.Add(dBtn_gridView2, 0, 5);
             tableLayoutPanel4.Controls.Add(dBtn_load2, 0, 0);
             tableLayoutPanel4.Controls.Add(dBtn_imageSave2, 0, 1);
             tableLayoutPanel4.Controls.Add(dBtn_live2, 0, 2);
             tableLayoutPanel4.Controls.Add(dBtn_stop2, 0, 3);
-            tableLayoutPanel4.Controls.Add(dBtn_Process2, 0, 6);
             tableLayoutPanel4.Controls.Add(dBtn_snap2, 0, 4);
+            tableLayoutPanel4.Controls.Add(dBtn_Process2, 0, 5);
+            tableLayoutPanel4.Controls.Add(dBtn_Measure2, 0, 6);
             tableLayoutPanel4.Location = new Point(848, 3);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 7;
@@ -839,29 +770,6 @@
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanel4.Size = new Size(108, 340);
             tableLayoutPanel4.TabIndex = 6;
-            // 
-            // dBtn_gridView2
-            // 
-            dBtn_gridView2.BackColor = Color.Transparent;
-            dBtn_gridView2.DialogResult = DialogResult.None;
-            dBtn_gridView2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_gridView2.ForeColor = Color.FromArgb(192, 0, 0);
-            dBtn_gridView2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_gridView2.HoverForeColor = Color.White;
-            dBtn_gridView2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_gridView2.Location = new Point(3, 243);
-            dBtn_gridView2.MinimumSize = new Size(100, 50);
-            dBtn_gridView2.Name = "dBtn_gridView2";
-            dBtn_gridView2.NormalBackColor = Color.White;
-            dBtn_gridView2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_gridView2.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_gridView2.PressedForeColor = Color.White;
-            dBtn_gridView2.Radius = 20;
-            dBtn_gridView2.Size = new Size(100, 50);
-            dBtn_gridView2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_gridView2.TabIndex = 5;
-            dBtn_gridView2.Text = "grid view";
-            dBtn_gridView2.Click += dBtn_gridView2_Click;
             // 
             // dBtn_load2
             // 
@@ -956,29 +864,6 @@
             dBtn_stop2.Text = "live stop";
             dBtn_stop2.Click += dBtn_stop2_Click;
             // 
-            // dBtn_Process2
-            // 
-            dBtn_Process2.BackColor = Color.Transparent;
-            dBtn_Process2.DialogResult = DialogResult.None;
-            dBtn_Process2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_Process2.ForeColor = Color.FromArgb(192, 0, 0);
-            dBtn_Process2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_Process2.HoverForeColor = Color.White;
-            dBtn_Process2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_Process2.Location = new Point(3, 291);
-            dBtn_Process2.MinimumSize = new Size(100, 50);
-            dBtn_Process2.Name = "dBtn_Process2";
-            dBtn_Process2.NormalBackColor = Color.White;
-            dBtn_Process2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_Process2.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_Process2.PressedForeColor = Color.White;
-            dBtn_Process2.Radius = 20;
-            dBtn_Process2.Size = new Size(100, 50);
-            dBtn_Process2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_Process2.TabIndex = 4;
-            dBtn_Process2.Text = "Process";
-            dBtn_Process2.Click += dBtn_Process2_Click;
-            // 
             // dBtn_snap2
             // 
             dBtn_snap2.BackColor = Color.Transparent;
@@ -1002,20 +887,67 @@
             dBtn_snap2.Text = "snap";
             dBtn_snap2.Click += dBtn_snap2_Click;
             // 
+            // dBtn_Process2
+            // 
+            dBtn_Process2.BackColor = Color.Transparent;
+            dBtn_Process2.DialogResult = DialogResult.None;
+            dBtn_Process2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_Process2.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_Process2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_Process2.HoverForeColor = Color.White;
+            dBtn_Process2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_Process2.Location = new Point(3, 243);
+            dBtn_Process2.MinimumSize = new Size(100, 50);
+            dBtn_Process2.Name = "dBtn_Process2";
+            dBtn_Process2.NormalBackColor = Color.White;
+            dBtn_Process2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_Process2.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_Process2.PressedForeColor = Color.White;
+            dBtn_Process2.Radius = 20;
+            dBtn_Process2.Size = new Size(100, 50);
+            dBtn_Process2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_Process2.TabIndex = 4;
+            dBtn_Process2.Text = "Process";
+            dBtn_Process2.Click += dBtn_Process2_Click;
+            // 
+            // dBtn_Measure2
+            // 
+            dBtn_Measure2.BackColor = Color.Transparent;
+            dBtn_Measure2.DialogResult = DialogResult.None;
+            dBtn_Measure2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_Measure2.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_Measure2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_Measure2.HoverForeColor = Color.White;
+            dBtn_Measure2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_Measure2.Location = new Point(3, 291);
+            dBtn_Measure2.MinimumSize = new Size(100, 50);
+            dBtn_Measure2.Name = "dBtn_Measure2";
+            dBtn_Measure2.NormalBackColor = Color.White;
+            dBtn_Measure2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_Measure2.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_Measure2.PressedForeColor = Color.White;
+            dBtn_Measure2.Radius = 20;
+            dBtn_Measure2.RightToLeft = RightToLeft.No;
+            dBtn_Measure2.Size = new Size(100, 50);
+            dBtn_Measure2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_Measure2.TabIndex = 37;
+            dBtn_Measure2.Text = "Measure";
+            dBtn_Measure2.Click += dBtn_Measure2_Click;
+            // 
             // dChart_L_5
             // 
             dChart_L_5.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea8.Name = "ChartArea1";
-            dChart_L_5.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            dChart_L_5.Legends.Add(legend8);
+            chartArea6.Name = "ChartArea1";
+            dChart_L_5.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            dChart_L_5.Legends.Add(legend6);
             dChart_L_5.Location = new Point(308, 844);
             dChart_L_5.Name = "dChart_L_5";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            dChart_L_5.Series.Add(series8);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            dChart_L_5.Series.Add(series6);
             dChart_L_5.Size = new Size(640, 80);
             dChart_L_5.TabIndex = 31;
             dChart_L_5.Text = "chart5";
@@ -1023,17 +955,17 @@
             // dChart_L_4
             // 
             dChart_L_4.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea9.Name = "ChartArea1";
-            dChart_L_4.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            dChart_L_4.Legends.Add(legend9);
+            chartArea7.Name = "ChartArea1";
+            dChart_L_4.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            dChart_L_4.Legends.Add(legend7);
             dChart_L_4.Location = new Point(308, 757);
             dChart_L_4.Name = "dChart_L_4";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            dChart_L_4.Series.Add(series9);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            dChart_L_4.Series.Add(series7);
             dChart_L_4.Size = new Size(640, 80);
             dChart_L_4.TabIndex = 30;
             dChart_L_4.Text = "chart4";
@@ -1041,17 +973,17 @@
             // dChart_L_3
             // 
             dChart_L_3.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea10.Name = "ChartArea1";
-            dChart_L_3.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            dChart_L_3.Legends.Add(legend10);
+            chartArea8.Name = "ChartArea1";
+            dChart_L_3.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            dChart_L_3.Legends.Add(legend8);
             dChart_L_3.Location = new Point(308, 671);
             dChart_L_3.Name = "dChart_L_3";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            dChart_L_3.Series.Add(series10);
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            dChart_L_3.Series.Add(series8);
             dChart_L_3.Size = new Size(640, 80);
             dChart_L_3.TabIndex = 29;
             dChart_L_3.Text = "chart3";
@@ -1059,17 +991,17 @@
             // dChart_L_2
             // 
             dChart_L_2.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea11.Name = "ChartArea1";
-            dChart_L_2.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            dChart_L_2.Legends.Add(legend11);
+            chartArea9.Name = "ChartArea1";
+            dChart_L_2.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            dChart_L_2.Legends.Add(legend9);
             dChart_L_2.Location = new Point(308, 585);
             dChart_L_2.Name = "dChart_L_2";
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            dChart_L_2.Series.Add(series11);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            dChart_L_2.Series.Add(series9);
             dChart_L_2.Size = new Size(640, 80);
             dChart_L_2.TabIndex = 28;
             dChart_L_2.Text = "chart2";
@@ -1077,18 +1009,18 @@
             // dChart_L_1
             // 
             dChart_L_1.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea12.Name = "ChartArea1";
-            dChart_L_1.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            dChart_L_1.Legends.Add(legend12);
+            chartArea10.Name = "ChartArea1";
+            dChart_L_1.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            dChart_L_1.Legends.Add(legend10);
             dChart_L_1.Location = new Point(308, 499);
             dChart_L_1.Name = "dChart_L_1";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.LabelForeColor = Color.IndianRed;
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            dChart_L_1.Series.Add(series12);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series10.LabelForeColor = Color.IndianRed;
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            dChart_L_1.Series.Add(series10);
             dChart_L_1.Size = new Size(640, 80);
             dChart_L_1.TabIndex = 27;
             dChart_L_1.Text = "chart1";
@@ -1158,51 +1090,6 @@
             dPic_roi_1_L.TabStop = false;
             dPic_roi_1_L.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
-            // dPan_grid_L_1
-            // 
-            dPan_grid_L_1.BackColor = Color.Lime;
-            dPan_grid_L_1.Location = new Point(189, 340);
-            dPan_grid_L_1.Margin = new Padding(0);
-            dPan_grid_L_1.Name = "dPan_grid_L_1";
-            dPan_grid_L_1.Size = new Size(659, 1);
-            dPan_grid_L_1.TabIndex = 21;
-            // 
-            // dPan_grid_L_2
-            // 
-            dPan_grid_L_2.BackColor = Color.Lime;
-            dPan_grid_L_2.Location = new Point(189, 365);
-            dPan_grid_L_2.Margin = new Padding(0);
-            dPan_grid_L_2.Name = "dPan_grid_L_2";
-            dPan_grid_L_2.Size = new Size(659, 1);
-            dPan_grid_L_2.TabIndex = 20;
-            // 
-            // dPan_grid_L_4
-            // 
-            dPan_grid_L_4.BackColor = Color.Lime;
-            dPan_grid_L_4.Location = new Point(189, 415);
-            dPan_grid_L_4.Margin = new Padding(0);
-            dPan_grid_L_4.Name = "dPan_grid_L_4";
-            dPan_grid_L_4.Size = new Size(659, 1);
-            dPan_grid_L_4.TabIndex = 20;
-            // 
-            // dPan_grid_L_5
-            // 
-            dPan_grid_L_5.BackColor = Color.Lime;
-            dPan_grid_L_5.Location = new Point(189, 440);
-            dPan_grid_L_5.Margin = new Padding(0);
-            dPan_grid_L_5.Name = "dPan_grid_L_5";
-            dPan_grid_L_5.Size = new Size(659, 1);
-            dPan_grid_L_5.TabIndex = 20;
-            // 
-            // dPan_grid_L_3
-            // 
-            dPan_grid_L_3.BackColor = Color.Lime;
-            dPan_grid_L_3.Location = new Point(189, 390);
-            dPan_grid_L_3.Margin = new Padding(0);
-            dPan_grid_L_3.Name = "dPan_grid_L_3";
-            dPan_grid_L_3.Size = new Size(659, 1);
-            dPan_grid_L_3.TabIndex = 19;
-            // 
             // dComboBox_scale1
             // 
             dComboBox_scale1.BackColor = Color.FromArgb(246, 246, 246);
@@ -1240,7 +1127,7 @@
             dLable_tmp1.ForeColor = Color.FromArgb(114, 118, 127);
             dLable_tmp1.Location = new Point(12, 456);
             dLable_tmp1.Name = "dLable_tmp1";
-            dLable_tmp1.Size = new Size(33, 37);
+            dLable_tmp1.Size = new Size(25, 30);
             dLable_tmp1.TabIndex = 13;
             dLable_tmp1.Text = "0";
             // 
@@ -1272,17 +1159,6 @@
             dComboBox_cam1.StartIndex = 1;
             dComboBox_cam1.TabIndex = 12;
             dComboBox_cam1.SelectedIndexChanged += dComboBox_cam1_SelectedIndexChanged;
-            // 
-            // moonLabel1
-            // 
-            moonLabel1.AutoSize = true;
-            moonLabel1.BackColor = Color.Transparent;
-            moonLabel1.ForeColor = Color.Gray;
-            moonLabel1.Location = new Point(931, 365);
-            moonLabel1.Name = "moonLabel1";
-            moonLabel1.Size = new Size(31, 20);
-            moonLabel1.TabIndex = 11;
-            moonLabel1.Text = "μm";
             // 
             // dTxt_cam1
             // 
@@ -1319,74 +1195,17 @@
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
-            // dBtn_dw_L
-            // 
-            dBtn_dw_L.BackColor = Color.Transparent;
-            dBtn_dw_L.BorderColor = Color.FromArgb(32, 34, 37);
-            dBtn_dw_L.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            dBtn_dw_L.EnteredColor = Color.FromArgb(32, 34, 37);
-            dBtn_dw_L.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_dw_L.Image = (Image)resources.GetObject("dBtn_dw_L.Image");
-            dBtn_dw_L.ImageAlign = ContentAlignment.MiddleLeft;
-            dBtn_dw_L.InactiveColor = Color.FromArgb(32, 34, 37);
-            dBtn_dw_L.Location = new Point(905, 393);
-            dBtn_dw_L.Name = "dBtn_dw_L";
-            dBtn_dw_L.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            dBtn_dw_L.PressedColor = Color.FromArgb(165, 37, 37);
-            dBtn_dw_L.Size = new Size(51, 47);
-            dBtn_dw_L.TabIndex = 7;
-            dBtn_dw_L.TextAlignment = StringAlignment.Center;
-            dBtn_dw_L.Click += dBtn_dw_L_Click;
-            // 
-            // dBtn_up_L
-            // 
-            dBtn_up_L.BackColor = Color.Transparent;
-            dBtn_up_L.BorderColor = Color.FromArgb(32, 34, 37);
-            dBtn_up_L.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            dBtn_up_L.EnteredColor = Color.FromArgb(32, 34, 37);
-            dBtn_up_L.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_up_L.Image = (Image)resources.GetObject("dBtn_up_L.Image");
-            dBtn_up_L.ImageAlign = ContentAlignment.MiddleLeft;
-            dBtn_up_L.InactiveColor = Color.FromArgb(32, 34, 37);
-            dBtn_up_L.Location = new Point(846, 393);
-            dBtn_up_L.Name = "dBtn_up_L";
-            dBtn_up_L.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            dBtn_up_L.PressedColor = Color.FromArgb(165, 37, 37);
-            dBtn_up_L.Size = new Size(51, 47);
-            dBtn_up_L.TabIndex = 6;
-            dBtn_up_L.TextAlignment = StringAlignment.Center;
-            dBtn_up_L.Click += dBtn_up_L_Click;
-            // 
-            // dTbox_grid_L
-            // 
-            dTbox_grid_L.BackColor = Color.Transparent;
-            dTbox_grid_L.BaseColor = Color.FromArgb(45, 47, 49);
-            dTbox_grid_L.BorderColor = Color.FromArgb(242, 93, 75);
-            dTbox_grid_L.FocusOnHover = false;
-            dTbox_grid_L.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dTbox_grid_L.ForeColor = Color.FromArgb(192, 192, 192);
-            dTbox_grid_L.Location = new Point(856, 358);
-            dTbox_grid_L.MaxLength = 32767;
-            dTbox_grid_L.Multiline = false;
-            dTbox_grid_L.Name = "dTbox_grid_L";
-            dTbox_grid_L.ReadOnly = false;
-            dTbox_grid_L.Size = new Size(73, 33);
-            dTbox_grid_L.TabIndex = 5;
-            dTbox_grid_L.Text = "450";
-            dTbox_grid_L.TextAlign = HorizontalAlignment.Left;
-            dTbox_grid_L.UseSystemPasswordChar = false;
-            // 
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 1;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Controls.Add(dBtn_gridView1, 0, 5);
             tableLayoutPanel3.Controls.Add(dBtn_load1, 0, 0);
             tableLayoutPanel3.Controls.Add(dBtn_imageSave1, 0, 1);
             tableLayoutPanel3.Controls.Add(dBtn_live1, 0, 2);
             tableLayoutPanel3.Controls.Add(dBtn_stop1, 0, 3);
-            tableLayoutPanel3.Controls.Add(dBtn_Process1, 0, 6);
             tableLayoutPanel3.Controls.Add(dBtn_snap1, 0, 4);
+            tableLayoutPanel3.Controls.Add(dBtn_Process1, 0, 5);
+            tableLayoutPanel3.Controls.Add(dBtn_Measure1, 0, 6);
             tableLayoutPanel3.Location = new Point(853, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 7;
@@ -1397,31 +1216,9 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.Size = new Size(107, 340);
             tableLayoutPanel3.TabIndex = 4;
-            // 
-            // dBtn_gridView1
-            // 
-            dBtn_gridView1.BackColor = Color.Transparent;
-            dBtn_gridView1.DialogResult = DialogResult.None;
-            dBtn_gridView1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_gridView1.ForeColor = Color.FromArgb(192, 0, 0);
-            dBtn_gridView1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_gridView1.HoverForeColor = Color.White;
-            dBtn_gridView1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_gridView1.Location = new Point(3, 243);
-            dBtn_gridView1.MinimumSize = new Size(100, 50);
-            dBtn_gridView1.Name = "dBtn_gridView1";
-            dBtn_gridView1.NormalBackColor = Color.White;
-            dBtn_gridView1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_gridView1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_gridView1.PressedForeColor = Color.White;
-            dBtn_gridView1.Radius = 20;
-            dBtn_gridView1.Size = new Size(100, 50);
-            dBtn_gridView1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_gridView1.TabIndex = 5;
-            dBtn_gridView1.Text = "grid view";
-            dBtn_gridView1.Click += dBtn_gridView1_Click;
             // 
             // dBtn_load1
             // 
@@ -1516,29 +1313,6 @@
             dBtn_stop1.Text = "live stop";
             dBtn_stop1.Click += dBtn_stop1_Click;
             // 
-            // dBtn_Process1
-            // 
-            dBtn_Process1.BackColor = Color.Transparent;
-            dBtn_Process1.DialogResult = DialogResult.None;
-            dBtn_Process1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_Process1.ForeColor = Color.FromArgb(192, 0, 0);
-            dBtn_Process1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_Process1.HoverForeColor = Color.White;
-            dBtn_Process1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_Process1.Location = new Point(3, 291);
-            dBtn_Process1.MinimumSize = new Size(100, 50);
-            dBtn_Process1.Name = "dBtn_Process1";
-            dBtn_Process1.NormalBackColor = Color.White;
-            dBtn_Process1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_Process1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_Process1.PressedForeColor = Color.White;
-            dBtn_Process1.Radius = 20;
-            dBtn_Process1.Size = new Size(100, 50);
-            dBtn_Process1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_Process1.TabIndex = 4;
-            dBtn_Process1.Text = "Process";
-            dBtn_Process1.Click += dBtn_Process1_Click;
-            // 
             // dBtn_snap1
             // 
             dBtn_snap1.BackColor = Color.Transparent;
@@ -1562,6 +1336,52 @@
             dBtn_snap1.Text = "snap";
             dBtn_snap1.Click += dBtn_snap1_Click;
             // 
+            // dBtn_Process1
+            // 
+            dBtn_Process1.BackColor = Color.Transparent;
+            dBtn_Process1.DialogResult = DialogResult.None;
+            dBtn_Process1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_Process1.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_Process1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_Process1.HoverForeColor = Color.White;
+            dBtn_Process1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_Process1.Location = new Point(3, 243);
+            dBtn_Process1.MinimumSize = new Size(100, 50);
+            dBtn_Process1.Name = "dBtn_Process1";
+            dBtn_Process1.NormalBackColor = Color.White;
+            dBtn_Process1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_Process1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_Process1.PressedForeColor = Color.White;
+            dBtn_Process1.Radius = 20;
+            dBtn_Process1.Size = new Size(100, 50);
+            dBtn_Process1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_Process1.TabIndex = 4;
+            dBtn_Process1.Text = "Process";
+            dBtn_Process1.Click += dBtn_Process1_Click;
+            // 
+            // dBtn_Measure1
+            // 
+            dBtn_Measure1.BackColor = Color.Transparent;
+            dBtn_Measure1.DialogResult = DialogResult.None;
+            dBtn_Measure1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_Measure1.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_Measure1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_Measure1.HoverForeColor = Color.White;
+            dBtn_Measure1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_Measure1.Location = new Point(3, 291);
+            dBtn_Measure1.MinimumSize = new Size(100, 50);
+            dBtn_Measure1.Name = "dBtn_Measure1";
+            dBtn_Measure1.NormalBackColor = Color.White;
+            dBtn_Measure1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_Measure1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_Measure1.PressedForeColor = Color.White;
+            dBtn_Measure1.Radius = 20;
+            dBtn_Measure1.Size = new Size(100, 50);
+            dBtn_Measure1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_Measure1.TabIndex = 36;
+            dBtn_Measure1.Text = "Measure";
+            dBtn_Measure1.Click += dBtn_Measure1_Click;
+            // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(23, 23, 23);
@@ -1583,7 +1403,7 @@
             dLabel_autoState.ForeColor = Color.FromArgb(114, 118, 127);
             dLabel_autoState.Location = new Point(510, 15);
             dLabel_autoState.Name = "dLabel_autoState";
-            dLabel_autoState.Size = new Size(218, 60);
+            dLabel_autoState.Size = new Size(174, 47);
             dLabel_autoState.TabIndex = 14;
             dLabel_autoState.Text = "MANUAL";
             // 
@@ -1805,7 +1625,7 @@
             skyLabel1.ForeColor = Color.FromArgb(27, 94, 137);
             skyLabel1.Location = new Point(1106, 15);
             skyLabel1.Name = "skyLabel1";
-            skyLabel1.Size = new Size(216, 53);
+            skyLabel1.Size = new Size(171, 42);
             skyLabel1.TabIndex = 4;
             skyLabel1.Text = "Model 1";
             // 
@@ -1820,76 +1640,6 @@
             thunderControlBox1.Size = new Size(75, 23);
             thunderControlBox1.TabIndex = 0;
             thunderControlBox1.Text = "thunderControlBox1";
-            // 
-            // tableLayoutPanel_Auto
-            // 
-            tableLayoutPanel_Auto.ColumnCount = 2;
-            tableLayoutPanel_Auto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_Auto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_Auto.Controls.Add(Chart2_GapValue_Auto, 1, 1);
-            tableLayoutPanel_Auto.Controls.Add(pictureBox2_Auto, 1, 0);
-            tableLayoutPanel_Auto.Controls.Add(pictureBox1_Auto, 0, 0);
-            tableLayoutPanel_Auto.Controls.Add(Chart_GapValue_Auto, 0, 1);
-            tableLayoutPanel_Auto.Dock = DockStyle.Fill;
-            tableLayoutPanel_Auto.Location = new Point(0, 0);
-            tableLayoutPanel_Auto.Name = "tableLayoutPanel_Auto";
-            tableLayoutPanel_Auto.RowCount = 2;
-            tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel_Auto.Size = new Size(1920, 940);
-            tableLayoutPanel_Auto.TabIndex = 35;
-            // 
-            // pictureBox1_Auto
-            // 
-            pictureBox1_Auto.Dock = DockStyle.Fill;
-            pictureBox1_Auto.Location = new Point(3, 3);
-            pictureBox1_Auto.Name = "pictureBox1_Auto";
-            pictureBox1_Auto.Size = new Size(954, 558);
-            pictureBox1_Auto.TabIndex = 0;
-            pictureBox1_Auto.TabStop = false;
-            // 
-            // pictureBox2_Auto
-            // 
-            pictureBox2_Auto.Dock = DockStyle.Fill;
-            pictureBox2_Auto.Location = new Point(963, 3);
-            pictureBox2_Auto.Name = "pictureBox2_Auto";
-            pictureBox2_Auto.Size = new Size(954, 558);
-            pictureBox2_Auto.TabIndex = 1;
-            pictureBox2_Auto.TabStop = false;
-            // 
-            // Chart_GapValue_Auto
-            // 
-            chartArea2.Name = "ChartArea1";
-            Chart_GapValue_Auto.ChartAreas.Add(chartArea2);
-            Chart_GapValue_Auto.Dock = DockStyle.Fill;
-            legend2.Name = "Legend1";
-            Chart_GapValue_Auto.Legends.Add(legend2);
-            Chart_GapValue_Auto.Location = new Point(3, 567);
-            Chart_GapValue_Auto.Name = "Chart_GapValue_Auto";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            Chart_GapValue_Auto.Series.Add(series2);
-            Chart_GapValue_Auto.Size = new Size(954, 370);
-            Chart_GapValue_Auto.TabIndex = 2;
-            Chart_GapValue_Auto.Text = "chart1";
-            // 
-            // Chart2_GapValue_Auto
-            // 
-            chartArea1.Name = "ChartArea1";
-            Chart2_GapValue_Auto.ChartAreas.Add(chartArea1);
-            Chart2_GapValue_Auto.Dock = DockStyle.Fill;
-            legend1.Name = "Legend1";
-            Chart2_GapValue_Auto.Legends.Add(legend1);
-            Chart2_GapValue_Auto.Location = new Point(963, 567);
-            Chart2_GapValue_Auto.Name = "Chart2_GapValue_Auto";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            Chart2_GapValue_Auto.Series.Add(series1);
-            Chart2_GapValue_Auto.Size = new Size(954, 370);
-            Chart2_GapValue_Auto.TabIndex = 3;
-            Chart2_GapValue_Auto.Text = "chart1";
             // 
             // Form1
             // 
@@ -1910,6 +1660,9 @@
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            tableLayoutPanel_Auto.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2_Auto).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1_Auto).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dChart_R_5).EndInit();
@@ -1940,11 +1693,6 @@
             panel1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel_Auto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1_Auto).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2_Auto).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Chart_GapValue_Auto).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Chart2_GapValue_Auto).EndInit();
             ResumeLayout(false);
         }
 
@@ -1965,32 +1713,22 @@
         private Panel panel3;
         private Panel panel1;
         private TableLayoutPanel tableLayoutPanel3;
-        private ReaLTaiizor.Controls.NightButton dBtn_gridView1;
         private ReaLTaiizor.Controls.NightButton dBtn_Process1;
         private ReaLTaiizor.Controls.NightButton dBtn_load1;
         private ReaLTaiizor.Controls.NightButton dBtn_snap1;
         private ReaLTaiizor.Controls.NightButton dBtn_imageSave1;
         private ReaLTaiizor.Controls.NightButton dBtn_live1;
-        private ReaLTaiizor.Controls.ForeverTextBox dTbox_grid_R;
         private TableLayoutPanel tableLayoutPanel4;
-        private ReaLTaiizor.Controls.NightButton dBtn_gridView2;
         private ReaLTaiizor.Controls.NightButton dBtn_Process2;
         private ReaLTaiizor.Controls.NightButton dBtn_load2;
         private ReaLTaiizor.Controls.NightButton dBtn_snap2;
         private ReaLTaiizor.Controls.NightButton dBtn_imageSave2;
         private ReaLTaiizor.Controls.NightButton dBtn_live2;
-        private ReaLTaiizor.Controls.ForeverTextBox dTbox_grid_L;
-        private ReaLTaiizor.Controls.Button dBtn_dw_R;
-        private ReaLTaiizor.Controls.Button dBtn_up_R;
-        private ReaLTaiizor.Controls.Button dBtn_dw_L;
-        private ReaLTaiizor.Controls.Button dBtn_up_L;
         private ReaLTaiizor.Controls.NightTextBox dTxt_cam1;
         private ReaLTaiizor.Controls.NightTextBox dTxt_cam2;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private ReaLTaiizor.Controls.Button dBtn_settings;
-        private ReaLTaiizor.Controls.MoonLabel moonLabel2;
-        private ReaLTaiizor.Controls.MoonLabel moonLabel1;
         private ReaLTaiizor.Controls.DungeonComboBox dComboBox_cam1;
         private ReaLTaiizor.Controls.NightLabel dLable_tmp1;
         private ReaLTaiizor.Controls.DungeonComboBox dComboBox_cam2;
@@ -1999,16 +1737,6 @@
         private ReaLTaiizor.Controls.NightButton dBtn_stop2;
         private ReaLTaiizor.Controls.NightButton dBtn_stop1;
         private ReaLTaiizor.Controls.NightLabel dLabel_autoState;
-        private Panel dPan_grid_R_1;
-        private Panel dPan_grid_R_2;
-        private Panel dPan_grid_R_4;
-        private Panel dPan_grid_R_5;
-        private Panel dPan_grid_R_3;
-        private Panel dPan_grid_L_1;
-        private Panel dPan_grid_L_2;
-        private Panel dPan_grid_L_4;
-        private Panel dPan_grid_L_5;
-        private Panel dPan_grid_L_3;
         private ReaLTaiizor.Controls.HopePictureBox dPic_roi_1_L;
         private ReaLTaiizor.Controls.HopePictureBox dPic_roi_5_L;
         private ReaLTaiizor.Controls.HopePictureBox dPic_roi_4_L;
@@ -2038,12 +1766,13 @@
         private ReaLTaiizor.Controls.NightLabel dLabel_Ng_R;
         private Panel panel2;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel1;
-        private Panel panel5;
         private Panel panel6;
         private TableLayoutPanel tableLayoutPanel_Auto;
         private PictureBox pictureBox2_Auto;
         private PictureBox pictureBox1_Auto;
-        private System.Windows.Forms.DataVisualization.Charting.Chart Chart_GapValue_Auto;
-        private System.Windows.Forms.DataVisualization.Charting.Chart Chart2_GapValue_Auto;
+        private ReaLTaiizor.Controls.ParrotLineGraph parrotLineGraph1;
+        private ReaLTaiizor.Controls.ParrotLineGraph parrotLineGraph2;
+        private ReaLTaiizor.Controls.NightButton dBtn_Measure2;
+        private ReaLTaiizor.Controls.NightButton dBtn_Measure1;
     }
 }

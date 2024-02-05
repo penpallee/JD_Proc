@@ -15,6 +15,8 @@ namespace JD_Proc
         public TempGraphForm()
         {
             InitializeComponent();
+
+            
         }
     }
 }

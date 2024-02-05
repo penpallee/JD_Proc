@@ -400,7 +400,7 @@ namespace JD_Proc
             // roiLabel
             // 
             this.roiLabel.BackColor = System.Drawing.Color.Transparent;
-            this.roiLabel.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.roiLabel.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.roiLabel.Location = new System.Drawing.Point(13, 11);
             this.roiLabel.Name = "roiLabel";
             this.roiLabel.Size = new System.Drawing.Size(33, 11);

@@ -48,11 +48,12 @@
             dungeonForm1.HeaderEdgeColorA = Color.FromArgb(87, 85, 77);
             dungeonForm1.HeaderEdgeColorB = Color.FromArgb(69, 68, 63);
             dungeonForm1.Location = new Point(0, 0);
+            dungeonForm1.Margin = new Padding(2);
             dungeonForm1.Name = "dungeonForm1";
-            dungeonForm1.Padding = new Padding(20, 56, 20, 16);
+            dungeonForm1.Padding = new Padding(16, 42, 16, 12);
             dungeonForm1.RoundCorners = true;
             dungeonForm1.Sizable = true;
-            dungeonForm1.Size = new Size(1370, 292);
+            dungeonForm1.Size = new Size(1066, 219);
             dungeonForm1.SmartBounds = true;
             dungeonForm1.StartPosition = FormStartPosition.WindowsDefaultLocation;
             dungeonForm1.TabIndex = 0;
@@ -61,38 +62,40 @@
             // 
             // parrotLineGraph1
             // 
-            parrotLineGraph1.BackGroundColor = Color.FromArgb(102, 217, 174);
-            parrotLineGraph1.BelowLineColor = Color.FromArgb(24, 202, 142);
+            parrotLineGraph1.BackGroundColor = Color.Black;
+            parrotLineGraph1.BelowLineColor = Color.AliceBlue;
             parrotLineGraph1.BorderColor = Color.White;
-            parrotLineGraph1.GraphStyle = ReaLTaiizor.Controls.ParrotLineGraph.Style.Material;
+            parrotLineGraph1.GraphStyle = ReaLTaiizor.Controls.ParrotLineGraph.Style.Curved;
             parrotLineGraph1.GraphTitle = "Parrot Line Graph";
             parrotLineGraph1.GraphTitleColor = Color.Gray;
             parrotLineGraph1.Items = (List<int>)resources.GetObject("parrotLineGraph1.Items");
-            parrotLineGraph1.LineColor = Color.White;
-            parrotLineGraph1.Location = new Point(0, 46);
+            parrotLineGraph1.LineColor = Color.Lime;
+            parrotLineGraph1.Location = new Point(0, 34);
+            parrotLineGraph1.Margin = new Padding(2);
             parrotLineGraph1.Name = "parrotLineGraph1";
             parrotLineGraph1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            parrotLineGraph1.PointSize = 7;
+            parrotLineGraph1.PointSize = 0;
             parrotLineGraph1.ShowBorder = false;
             parrotLineGraph1.ShowPoints = true;
             parrotLineGraph1.ShowTitle = false;
-            parrotLineGraph1.ShowVerticalLines = false;
-            parrotLineGraph1.Size = new Size(1370, 246);
+            parrotLineGraph1.ShowVerticalLines = true;
+            parrotLineGraph1.Size = new Size(1066, 184);
             parrotLineGraph1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             parrotLineGraph1.TabIndex = 0;
             parrotLineGraph1.Text = "parrotLineGraph1";
             parrotLineGraph1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            parrotLineGraph1.TitleAlignment = StringAlignment.Near;
+            parrotLineGraph1.TitleAlignment = StringAlignment.Center;
             parrotLineGraph1.VerticalLineColor = Color.DimGray;
             // 
             // TempGraphForm
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1370, 292);
+            ClientSize = new Size(1066, 219);
             Controls.Add(dungeonForm1);
             FormBorderStyle = FormBorderStyle.None;
-            MinimumSize = new Size(261, 65);
+            Margin = new Padding(2);
+            MinimumSize = new Size(203, 49);
             Name = "TempGraphForm";
             Text = "Gap Temperature Graph";
             TransparencyKey = Color.Fuchsia;
