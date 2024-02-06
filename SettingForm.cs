@@ -34,16 +34,13 @@ namespace JD_Proc
 
             Point parentPoint = this.Location;
 
-            //_alignsettingform = new AlignSettingForm();
-            //_tempgraphform = new TempGraphForm();
-
-
             _alignsettingform.Show();
             _alignsettingform.StartPosition = FormStartPosition.Manual;
-            _alignsettingform.Location = new System.Drawing.Point(810, 100);
+            _alignsettingform.Location = new Point(this.Location.X + this.Width, this.Location.Y);
             _tempgraphform.Show();
             _tempgraphform.StartPosition = FormStartPosition.Manual;
-            _tempgraphform.Location = new System.Drawing.Point(200, 650);
+            _tempgraphform.Location = new Point(this.Location.X, this.Location.Y + this.Height);
+
 
             cyberCheckBox1.Checked = true;
             cyberCheckBox2.Checked = true;
@@ -300,7 +297,7 @@ namespace JD_Proc
         #region event(form) - closing
         private void SettingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+
             _alignsettingform.Close();
             _tempgraphform.Close();
         }
@@ -439,6 +436,12 @@ namespace JD_Proc
             else _tempgraphform.Visible = true;
         }
         #endregion
+
+        private void SettingForm_Move(object sender, EventArgs e)
+        {
+            _tempgraphform.Location = new Point(this.Location.X, this.Location.Y + this.Height);
+            _alignsettingform.Location = new Point(this.Location.X + this.Width, this.Location.Y);
+        }
     }
 }
 

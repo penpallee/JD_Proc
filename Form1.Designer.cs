@@ -270,7 +270,6 @@
             tableLayoutPanel_Auto.Size = new Size(1920, 940);
             tableLayoutPanel_Auto.TabIndex = 35;
             tableLayoutPanel_Auto.Visible = false;
-            tableLayoutPanel_Auto.Paint += tableLayoutPanel_Auto_Paint;
             // 
             // pictureBox2_Auto
             // 

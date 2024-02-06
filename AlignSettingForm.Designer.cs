@@ -36,17 +36,11 @@
             dPan_grid_L_4 = new Panel();
             dPan_grid_L_5 = new Panel();
             dPan_grid_L_3 = new Panel();
-            dPan_grid_R_1 = new Panel();
-            dPan_grid_R_2 = new Panel();
-            dPan_grid_R_4 = new Panel();
-            dPan_grid_R_5 = new Panel();
-            dPan_grid_R_3 = new Panel();
             pictureBox1 = new PictureBox();
             thunderGroupBox5 = new ReaLTaiizor.Controls.ThunderGroupBox();
-            cyberButton2 = new ReaLTaiizor.Controls.CyberButton();
-            cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
+            Btn_SelectCam2 = new ReaLTaiizor.Controls.CyberButton();
+            Btn_SelectCam1 = new ReaLTaiizor.Controls.CyberButton();
             thunderGroupBox4 = new ReaLTaiizor.Controls.ThunderGroupBox();
-            dCheckBox_jog = new ReaLTaiizor.Controls.CyberCheckBox();
             thunderGroupBox3 = new ReaLTaiizor.Controls.ThunderGroupBox();
             button2 = new ReaLTaiizor.Controls.Button();
             button1 = new ReaLTaiizor.Controls.Button();
@@ -55,7 +49,11 @@
             dBtn_dw_L = new ReaLTaiizor.Controls.Button();
             thunderGroupBox2 = new ReaLTaiizor.Controls.ThunderGroupBox();
             moonLabel1 = new ReaLTaiizor.Controls.MoonLabel();
-            dTbox_grid_L = new ReaLTaiizor.Controls.ForeverTextBox();
+            Tbox_GridViewValue = new ReaLTaiizor.Controls.ForeverTextBox();
+            moonLabel2 = new ReaLTaiizor.Controls.MoonLabel();
+            Tbox_JogMovingValue = new ReaLTaiizor.Controls.ForeverTextBox();
+            Btn_GridView_Check = new ReaLTaiizor.Controls.Button();
+            Btn_JogMoveValue_Check = new ReaLTaiizor.Controls.Button();
             dreamForm1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -96,17 +94,13 @@
             // 
             // panel1
             // 
+            panel1.AutoScroll = true;
             panel1.BackColor = Color.Black;
             panel1.Controls.Add(dPan_grid_L_1);
             panel1.Controls.Add(dPan_grid_L_2);
             panel1.Controls.Add(dPan_grid_L_4);
             panel1.Controls.Add(dPan_grid_L_5);
             panel1.Controls.Add(dPan_grid_L_3);
-            panel1.Controls.Add(dPan_grid_R_1);
-            panel1.Controls.Add(dPan_grid_R_2);
-            panel1.Controls.Add(dPan_grid_R_4);
-            panel1.Controls.Add(dPan_grid_R_5);
-            panel1.Controls.Add(dPan_grid_R_3);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(9, 21);
             panel1.Name = "panel1";
@@ -116,10 +110,10 @@
             // dPan_grid_L_1
             // 
             dPan_grid_L_1.BackColor = Color.Lime;
-            dPan_grid_L_1.Location = new Point(189, 340);
+            dPan_grid_L_1.Location = new Point(189, 331);
             dPan_grid_L_1.Margin = new Padding(0);
             dPan_grid_L_1.Name = "dPan_grid_L_1";
-            dPan_grid_L_1.Size = new Size(659, 1);
+            dPan_grid_L_1.Size = new Size(640, 1);
             dPan_grid_L_1.TabIndex = 21;
             // 
             // dPan_grid_L_2
@@ -128,7 +122,7 @@
             dPan_grid_L_2.Location = new Point(189, 365);
             dPan_grid_L_2.Margin = new Padding(0);
             dPan_grid_L_2.Name = "dPan_grid_L_2";
-            dPan_grid_L_2.Size = new Size(659, 1);
+            dPan_grid_L_2.Size = new Size(640, 1);
             dPan_grid_L_2.TabIndex = 20;
             // 
             // dPan_grid_L_4
@@ -137,7 +131,7 @@
             dPan_grid_L_4.Location = new Point(189, 415);
             dPan_grid_L_4.Margin = new Padding(0);
             dPan_grid_L_4.Name = "dPan_grid_L_4";
-            dPan_grid_L_4.Size = new Size(659, 1);
+            dPan_grid_L_4.Size = new Size(640, 1);
             dPan_grid_L_4.TabIndex = 20;
             // 
             // dPan_grid_L_5
@@ -146,7 +140,7 @@
             dPan_grid_L_5.Location = new Point(189, 440);
             dPan_grid_L_5.Margin = new Padding(0);
             dPan_grid_L_5.Name = "dPan_grid_L_5";
-            dPan_grid_L_5.Size = new Size(659, 1);
+            dPan_grid_L_5.Size = new Size(640, 1);
             dPan_grid_L_5.TabIndex = 20;
             // 
             // dPan_grid_L_3
@@ -155,60 +149,16 @@
             dPan_grid_L_3.Location = new Point(189, 390);
             dPan_grid_L_3.Margin = new Padding(0);
             dPan_grid_L_3.Name = "dPan_grid_L_3";
-            dPan_grid_L_3.Size = new Size(659, 1);
+            dPan_grid_L_3.Size = new Size(640, 1);
             dPan_grid_L_3.TabIndex = 19;
-            // 
-            // dPan_grid_R_1
-            // 
-            dPan_grid_R_1.BackColor = Color.Lime;
-            dPan_grid_R_1.Location = new Point(182, 340);
-            dPan_grid_R_1.Margin = new Padding(0);
-            dPan_grid_R_1.Name = "dPan_grid_R_1";
-            dPan_grid_R_1.Size = new Size(663, 1);
-            dPan_grid_R_1.TabIndex = 26;
-            // 
-            // dPan_grid_R_2
-            // 
-            dPan_grid_R_2.BackColor = Color.Lime;
-            dPan_grid_R_2.Location = new Point(182, 365);
-            dPan_grid_R_2.Margin = new Padding(0);
-            dPan_grid_R_2.Name = "dPan_grid_R_2";
-            dPan_grid_R_2.Size = new Size(663, 1);
-            dPan_grid_R_2.TabIndex = 23;
-            // 
-            // dPan_grid_R_4
-            // 
-            dPan_grid_R_4.BackColor = Color.Lime;
-            dPan_grid_R_4.Location = new Point(182, 415);
-            dPan_grid_R_4.Margin = new Padding(0);
-            dPan_grid_R_4.Name = "dPan_grid_R_4";
-            dPan_grid_R_4.Size = new Size(663, 1);
-            dPan_grid_R_4.TabIndex = 24;
-            // 
-            // dPan_grid_R_5
-            // 
-            dPan_grid_R_5.BackColor = Color.Lime;
-            dPan_grid_R_5.Location = new Point(182, 440);
-            dPan_grid_R_5.Margin = new Padding(0);
-            dPan_grid_R_5.Name = "dPan_grid_R_5";
-            dPan_grid_R_5.Size = new Size(663, 1);
-            dPan_grid_R_5.TabIndex = 25;
-            // 
-            // dPan_grid_R_3
-            // 
-            dPan_grid_R_3.BackColor = Color.Lime;
-            dPan_grid_R_3.Location = new Point(182, 390);
-            dPan_grid_R_3.Margin = new Padding(0);
-            dPan_grid_R_3.Name = "dPan_grid_R_3";
-            dPan_grid_R_3.Size = new Size(663, 1);
-            dPan_grid_R_3.TabIndex = 22;
             // 
             // pictureBox1
             // 
             pictureBox1.Location = new Point(2, 2);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(430, 313);
+            pictureBox1.Size = new Size(640, 313);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -219,8 +169,8 @@
             thunderGroupBox5.BodyColorB = Color.FromArgb(30, 30, 30);
             thunderGroupBox5.BodyColorC = Color.FromArgb(46, 46, 46);
             thunderGroupBox5.BodyColorD = Color.FromArgb(50, 55, 58);
-            thunderGroupBox5.Controls.Add(cyberButton2);
-            thunderGroupBox5.Controls.Add(cyberButton1);
+            thunderGroupBox5.Controls.Add(Btn_SelectCam2);
+            thunderGroupBox5.Controls.Add(Btn_SelectCam1);
             thunderGroupBox5.ForeColor = Color.WhiteSmoke;
             thunderGroupBox5.Location = new Point(348, 344);
             thunderGroupBox5.Name = "thunderGroupBox5";
@@ -228,85 +178,87 @@
             thunderGroupBox5.TabIndex = 6;
             thunderGroupBox5.Text = "Select View       1";
             // 
-            // cyberButton2
+            // Btn_SelectCam2
             // 
-            cyberButton2.Alpha = 20;
-            cyberButton2.BackColor = Color.Transparent;
-            cyberButton2.Background = true;
-            cyberButton2.Background_WidthPen = 4F;
-            cyberButton2.BackgroundPen = true;
-            cyberButton2.ColorBackground = Color.FromArgb(37, 52, 68);
-            cyberButton2.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton2.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton2.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            cyberButton2.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton2.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton2.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton2.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton2.Effect_1 = true;
-            cyberButton2.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton2.Effect_1_Transparency = 25;
-            cyberButton2.Effect_2 = true;
-            cyberButton2.Effect_2_ColorBackground = Color.White;
-            cyberButton2.Effect_2_Transparency = 20;
-            cyberButton2.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            cyberButton2.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton2.Lighting = false;
-            cyberButton2.LinearGradient_Background = false;
-            cyberButton2.LinearGradientPen = false;
-            cyberButton2.Location = new Point(3, 109);
-            cyberButton2.Name = "cyberButton2";
-            cyberButton2.PenWidth = 15;
-            cyberButton2.Rounding = true;
-            cyberButton2.RoundingInt = 70;
-            cyberButton2.Size = new Size(92, 74);
-            cyberButton2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton2.TabIndex = 1;
-            cyberButton2.Tag = "Cyber";
-            cyberButton2.TextButton = "Cam 2";
-            cyberButton2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton2.Timer_Effect_1 = 5;
-            cyberButton2.Timer_RGB = 300;
+            Btn_SelectCam2.Alpha = 20;
+            Btn_SelectCam2.BackColor = Color.Transparent;
+            Btn_SelectCam2.Background = true;
+            Btn_SelectCam2.Background_WidthPen = 4F;
+            Btn_SelectCam2.BackgroundPen = true;
+            Btn_SelectCam2.ColorBackground = Color.FromArgb(37, 52, 68);
+            Btn_SelectCam2.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            Btn_SelectCam2.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            Btn_SelectCam2.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            Btn_SelectCam2.ColorLighting = Color.FromArgb(29, 200, 238);
+            Btn_SelectCam2.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            Btn_SelectCam2.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            Btn_SelectCam2.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            Btn_SelectCam2.Effect_1 = true;
+            Btn_SelectCam2.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            Btn_SelectCam2.Effect_1_Transparency = 25;
+            Btn_SelectCam2.Effect_2 = true;
+            Btn_SelectCam2.Effect_2_ColorBackground = Color.White;
+            Btn_SelectCam2.Effect_2_Transparency = 20;
+            Btn_SelectCam2.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_SelectCam2.ForeColor = Color.FromArgb(245, 245, 245);
+            Btn_SelectCam2.Lighting = false;
+            Btn_SelectCam2.LinearGradient_Background = false;
+            Btn_SelectCam2.LinearGradientPen = false;
+            Btn_SelectCam2.Location = new Point(3, 109);
+            Btn_SelectCam2.Name = "Btn_SelectCam2";
+            Btn_SelectCam2.PenWidth = 15;
+            Btn_SelectCam2.Rounding = true;
+            Btn_SelectCam2.RoundingInt = 70;
+            Btn_SelectCam2.Size = new Size(92, 74);
+            Btn_SelectCam2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Btn_SelectCam2.TabIndex = 1;
+            Btn_SelectCam2.Tag = "Cyber";
+            Btn_SelectCam2.TextButton = "Cam 2";
+            Btn_SelectCam2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            Btn_SelectCam2.Timer_Effect_1 = 5;
+            Btn_SelectCam2.Timer_RGB = 300;
+            Btn_SelectCam2.Click += Btn_SelectCam2_Click;
             // 
-            // cyberButton1
+            // Btn_SelectCam1
             // 
-            cyberButton1.Alpha = 20;
-            cyberButton1.BackColor = Color.Transparent;
-            cyberButton1.Background = true;
-            cyberButton1.Background_WidthPen = 4F;
-            cyberButton1.BackgroundPen = true;
-            cyberButton1.ColorBackground = Color.FromArgb(37, 52, 68);
-            cyberButton1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            cyberButton1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            cyberButton1.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            cyberButton1.ColorLighting = Color.FromArgb(29, 200, 238);
-            cyberButton1.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            cyberButton1.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            cyberButton1.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton1.Effect_1 = true;
-            cyberButton1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            cyberButton1.Effect_1_Transparency = 25;
-            cyberButton1.Effect_2 = true;
-            cyberButton1.Effect_2_ColorBackground = Color.White;
-            cyberButton1.Effect_2_Transparency = 20;
-            cyberButton1.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            cyberButton1.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton1.Lighting = false;
-            cyberButton1.LinearGradient_Background = false;
-            cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(3, 30);
-            cyberButton1.Name = "cyberButton1";
-            cyberButton1.PenWidth = 15;
-            cyberButton1.Rounding = true;
-            cyberButton1.RoundingInt = 70;
-            cyberButton1.Size = new Size(92, 74);
-            cyberButton1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton1.TabIndex = 0;
-            cyberButton1.Tag = "Cyber";
-            cyberButton1.TextButton = "Cam 1";
-            cyberButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton1.Timer_Effect_1 = 5;
-            cyberButton1.Timer_RGB = 300;
+            Btn_SelectCam1.Alpha = 20;
+            Btn_SelectCam1.BackColor = Color.Transparent;
+            Btn_SelectCam1.Background = true;
+            Btn_SelectCam1.Background_WidthPen = 4F;
+            Btn_SelectCam1.BackgroundPen = true;
+            Btn_SelectCam1.ColorBackground = Color.FromArgb(37, 52, 68);
+            Btn_SelectCam1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            Btn_SelectCam1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            Btn_SelectCam1.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            Btn_SelectCam1.ColorLighting = Color.FromArgb(29, 200, 238);
+            Btn_SelectCam1.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            Btn_SelectCam1.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            Btn_SelectCam1.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            Btn_SelectCam1.Effect_1 = true;
+            Btn_SelectCam1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            Btn_SelectCam1.Effect_1_Transparency = 25;
+            Btn_SelectCam1.Effect_2 = true;
+            Btn_SelectCam1.Effect_2_ColorBackground = Color.White;
+            Btn_SelectCam1.Effect_2_Transparency = 20;
+            Btn_SelectCam1.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_SelectCam1.ForeColor = Color.FromArgb(245, 245, 245);
+            Btn_SelectCam1.Lighting = false;
+            Btn_SelectCam1.LinearGradient_Background = false;
+            Btn_SelectCam1.LinearGradientPen = false;
+            Btn_SelectCam1.Location = new Point(3, 30);
+            Btn_SelectCam1.Name = "Btn_SelectCam1";
+            Btn_SelectCam1.PenWidth = 15;
+            Btn_SelectCam1.Rounding = true;
+            Btn_SelectCam1.RoundingInt = 70;
+            Btn_SelectCam1.Size = new Size(92, 74);
+            Btn_SelectCam1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Btn_SelectCam1.TabIndex = 0;
+            Btn_SelectCam1.Tag = "Cyber";
+            Btn_SelectCam1.TextButton = "Cam 1";
+            Btn_SelectCam1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            Btn_SelectCam1.Timer_Effect_1 = 5;
+            Btn_SelectCam1.Timer_RGB = 300;
+            Btn_SelectCam1.Click += Btn_SelectCam1_Click;
             // 
             // thunderGroupBox4
             // 
@@ -315,52 +267,16 @@
             thunderGroupBox4.BodyColorB = Color.FromArgb(30, 30, 30);
             thunderGroupBox4.BodyColorC = Color.FromArgb(46, 46, 46);
             thunderGroupBox4.BodyColorD = Color.FromArgb(50, 55, 58);
-            thunderGroupBox4.Controls.Add(dCheckBox_jog);
+            thunderGroupBox4.Controls.Add(Btn_JogMoveValue_Check);
+            thunderGroupBox4.Controls.Add(moonLabel2);
+            thunderGroupBox4.Controls.Add(Tbox_JogMovingValue);
             thunderGroupBox4.ForeColor = Color.WhiteSmoke;
             thunderGroupBox4.Location = new Point(9, 442);
             thunderGroupBox4.Margin = new Padding(2);
             thunderGroupBox4.Name = "thunderGroupBox4";
             thunderGroupBox4.Size = new Size(221, 98);
             thunderGroupBox4.TabIndex = 5;
-            thunderGroupBox4.Text = " Gap Temperature Graph On/Off";
-            // 
-            // dCheckBox_jog
-            // 
-            dCheckBox_jog.BackColor = Color.Transparent;
-            dCheckBox_jog.Background = true;
-            dCheckBox_jog.Background_WidthPen = 2F;
-            dCheckBox_jog.BackgroundPen = true;
-            dCheckBox_jog.Checked = false;
-            dCheckBox_jog.ColorBackground = Color.FromArgb(37, 52, 68);
-            dCheckBox_jog.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            dCheckBox_jog.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            dCheckBox_jog.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            dCheckBox_jog.ColorChecked = Color.FromArgb(29, 200, 238);
-            dCheckBox_jog.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            dCheckBox_jog.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            dCheckBox_jog.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            dCheckBox_jog.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            dCheckBox_jog.Effect_1_Transparency = 25;
-            dCheckBox_jog.Effect_2 = true;
-            dCheckBox_jog.Effect_2_ColorBackground = Color.White;
-            dCheckBox_jog.Effect_2_Transparency = 15;
-            dCheckBox_jog.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dCheckBox_jog.ForeColor = Color.FromArgb(245, 245, 245);
-            dCheckBox_jog.LinearGradient_Background = false;
-            dCheckBox_jog.LinearGradientPen = false;
-            dCheckBox_jog.Location = new Point(18, 40);
-            dCheckBox_jog.Name = "dCheckBox_jog";
-            dCheckBox_jog.RGB = false;
-            dCheckBox_jog.Rounding = true;
-            dCheckBox_jog.RoundingInt = 100;
-            dCheckBox_jog.Size = new Size(170, 45);
-            dCheckBox_jog.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dCheckBox_jog.TabIndex = 2;
-            dCheckBox_jog.Tag = "Cyber";
-            dCheckBox_jog.TextButton = "Gap Temperature";
-            dCheckBox_jog.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
-            dCheckBox_jog.Timer_Effect_1 = 1;
-            dCheckBox_jog.Timer_RGB = 300;
+            thunderGroupBox4.Text = "Jog 이동값 설정";
             // 
             // thunderGroupBox3
             // 
@@ -378,7 +294,7 @@
             thunderGroupBox3.Name = "thunderGroupBox3";
             thunderGroupBox3.Size = new Size(50, 196);
             thunderGroupBox3.TabIndex = 4;
-            thunderGroupBox3.Text = "Jog                  1";
+            thunderGroupBox3.Text = "Jog                     1";
             // 
             // button2
             // 
@@ -435,7 +351,7 @@
             thunderGroupBox1.RightToLeft = RightToLeft.No;
             thunderGroupBox1.Size = new Size(52, 196);
             thunderGroupBox1.TabIndex = 3;
-            thunderGroupBox1.Text = "Ruler                1";
+            thunderGroupBox1.Text = "Ruler                   1";
             // 
             // dBtn_up_L
             // 
@@ -455,6 +371,7 @@
             dBtn_up_L.Size = new Size(47, 74);
             dBtn_up_L.TabIndex = 9;
             dBtn_up_L.TextAlignment = StringAlignment.Center;
+            dBtn_up_L.Click += dBtn_up_L_Click_1;
             // 
             // dBtn_dw_L
             // 
@@ -474,6 +391,7 @@
             dBtn_dw_L.Size = new Size(47, 96);
             dBtn_dw_L.TabIndex = 8;
             dBtn_dw_L.TextAlignment = StringAlignment.Center;
+            dBtn_dw_L.Click += dBtn_dw_L_Click_1;
             // 
             // thunderGroupBox2
             // 
@@ -482,47 +400,118 @@
             thunderGroupBox2.BodyColorB = Color.FromArgb(30, 30, 30);
             thunderGroupBox2.BodyColorC = Color.FromArgb(46, 46, 46);
             thunderGroupBox2.BodyColorD = Color.FromArgb(50, 55, 58);
+            thunderGroupBox2.Controls.Add(Btn_GridView_Check);
             thunderGroupBox2.Controls.Add(moonLabel1);
-            thunderGroupBox2.Controls.Add(dTbox_grid_L);
+            thunderGroupBox2.Controls.Add(Tbox_GridViewValue);
             thunderGroupBox2.ForeColor = Color.WhiteSmoke;
             thunderGroupBox2.Location = new Point(9, 344);
             thunderGroupBox2.Margin = new Padding(2);
             thunderGroupBox2.Name = "thunderGroupBox2";
             thunderGroupBox2.Size = new Size(221, 94);
             thunderGroupBox2.TabIndex = 2;
-            thunderGroupBox2.Text = "Jog 이동값 설정";
+            thunderGroupBox2.Text = "GridView 폭 설정";
             // 
             // moonLabel1
             // 
             moonLabel1.AutoSize = true;
             moonLabel1.BackColor = Color.Transparent;
             moonLabel1.ForeColor = Color.Gray;
-            moonLabel1.Location = new Point(131, 46);
+            moonLabel1.Location = new Point(74, 46);
             moonLabel1.Margin = new Padding(2, 0, 2, 0);
             moonLabel1.Name = "moonLabel1";
             moonLabel1.Size = new Size(25, 15);
             moonLabel1.TabIndex = 13;
             moonLabel1.Text = "μm";
             // 
-            // dTbox_grid_L
+            // Tbox_GridViewValue
             // 
-            dTbox_grid_L.BackColor = Color.Transparent;
-            dTbox_grid_L.BaseColor = Color.FromArgb(45, 47, 49);
-            dTbox_grid_L.BorderColor = Color.FromArgb(242, 93, 75);
-            dTbox_grid_L.FocusOnHover = false;
-            dTbox_grid_L.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dTbox_grid_L.ForeColor = Color.FromArgb(192, 192, 192);
-            dTbox_grid_L.Location = new Point(20, 41);
-            dTbox_grid_L.Margin = new Padding(2);
-            dTbox_grid_L.MaxLength = 32767;
-            dTbox_grid_L.Multiline = false;
-            dTbox_grid_L.Name = "dTbox_grid_L";
-            dTbox_grid_L.ReadOnly = false;
-            dTbox_grid_L.Size = new Size(109, 29);
-            dTbox_grid_L.TabIndex = 12;
-            dTbox_grid_L.Text = "450";
-            dTbox_grid_L.TextAlign = HorizontalAlignment.Left;
-            dTbox_grid_L.UseSystemPasswordChar = false;
+            Tbox_GridViewValue.BackColor = Color.Transparent;
+            Tbox_GridViewValue.BaseColor = Color.FromArgb(45, 47, 49);
+            Tbox_GridViewValue.BorderColor = Color.FromArgb(242, 93, 75);
+            Tbox_GridViewValue.FocusOnHover = false;
+            Tbox_GridViewValue.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Tbox_GridViewValue.ForeColor = Color.FromArgb(192, 192, 192);
+            Tbox_GridViewValue.Location = new Point(18, 41);
+            Tbox_GridViewValue.Margin = new Padding(2);
+            Tbox_GridViewValue.MaxLength = 32767;
+            Tbox_GridViewValue.Multiline = false;
+            Tbox_GridViewValue.Name = "Tbox_GridViewValue";
+            Tbox_GridViewValue.ReadOnly = false;
+            Tbox_GridViewValue.Size = new Size(56, 29);
+            Tbox_GridViewValue.TabIndex = 12;
+            Tbox_GridViewValue.TextAlign = HorizontalAlignment.Left;
+            Tbox_GridViewValue.UseSystemPasswordChar = false;
+            // 
+            // moonLabel2
+            // 
+            moonLabel2.AutoSize = true;
+            moonLabel2.BackColor = Color.Transparent;
+            moonLabel2.ForeColor = Color.Gray;
+            moonLabel2.Location = new Point(74, 49);
+            moonLabel2.Margin = new Padding(2, 0, 2, 0);
+            moonLabel2.Name = "moonLabel2";
+            moonLabel2.Size = new Size(25, 15);
+            moonLabel2.TabIndex = 15;
+            moonLabel2.Text = "μm";
+            // 
+            // Tbox_JogMovingValue
+            // 
+            Tbox_JogMovingValue.BackColor = Color.Transparent;
+            Tbox_JogMovingValue.BaseColor = Color.FromArgb(45, 47, 49);
+            Tbox_JogMovingValue.BorderColor = Color.FromArgb(242, 93, 75);
+            Tbox_JogMovingValue.FocusOnHover = false;
+            Tbox_JogMovingValue.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Tbox_JogMovingValue.ForeColor = Color.FromArgb(192, 192, 192);
+            Tbox_JogMovingValue.Location = new Point(18, 42);
+            Tbox_JogMovingValue.Margin = new Padding(2);
+            Tbox_JogMovingValue.MaxLength = 32767;
+            Tbox_JogMovingValue.Multiline = false;
+            Tbox_JogMovingValue.Name = "Tbox_JogMovingValue";
+            Tbox_JogMovingValue.ReadOnly = false;
+            Tbox_JogMovingValue.Size = new Size(56, 29);
+            Tbox_JogMovingValue.TabIndex = 14;
+            Tbox_JogMovingValue.TextAlign = HorizontalAlignment.Left;
+            Tbox_JogMovingValue.UseSystemPasswordChar = false;
+            // 
+            // Btn_GridView_Check
+            // 
+            Btn_GridView_Check.BackColor = Color.Transparent;
+            Btn_GridView_Check.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_GridView_Check.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_GridView_Check.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_GridView_Check.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_GridView_Check.Image = null;
+            Btn_GridView_Check.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_GridView_Check.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_GridView_Check.Location = new Point(115, 41);
+            Btn_GridView_Check.Name = "Btn_GridView_Check";
+            Btn_GridView_Check.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_GridView_Check.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_GridView_Check.Size = new Size(81, 29);
+            Btn_GridView_Check.TabIndex = 14;
+            Btn_GridView_Check.Text = "확인";
+            Btn_GridView_Check.TextAlignment = StringAlignment.Center;
+            Btn_GridView_Check.Click += Btn_GridView_Check_Click;
+            // 
+            // Btn_JogMoveValue_Check
+            // 
+            Btn_JogMoveValue_Check.BackColor = Color.Transparent;
+            Btn_JogMoveValue_Check.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_JogMoveValue_Check.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogMoveValue_Check.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_JogMoveValue_Check.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_JogMoveValue_Check.Image = null;
+            Btn_JogMoveValue_Check.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_JogMoveValue_Check.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_JogMoveValue_Check.Location = new Point(115, 42);
+            Btn_JogMoveValue_Check.Name = "Btn_JogMoveValue_Check";
+            Btn_JogMoveValue_Check.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogMoveValue_Check.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_JogMoveValue_Check.Size = new Size(81, 29);
+            Btn_JogMoveValue_Check.TabIndex = 16;
+            Btn_JogMoveValue_Check.Text = "확인";
+            Btn_JogMoveValue_Check.TextAlignment = StringAlignment.Center;
+            Btn_JogMoveValue_Check.Click += Btn_JogMoveValue_Check_Click;
             // 
             // AlignSettingForm
             // 
@@ -537,9 +526,11 @@
             Load += AlignSettingForm_Load;
             dreamForm1.ResumeLayout(false);
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             thunderGroupBox5.ResumeLayout(false);
             thunderGroupBox4.ResumeLayout(false);
+            thunderGroupBox4.PerformLayout();
             thunderGroupBox3.ResumeLayout(false);
             thunderGroupBox1.ResumeLayout(false);
             thunderGroupBox2.ResumeLayout(false);
@@ -560,21 +551,19 @@
         private ReaLTaiizor.Controls.Button button2;
         private ReaLTaiizor.Controls.Button dBtn_up_L;
         private ReaLTaiizor.Controls.MoonLabel moonLabel1;
-        private ReaLTaiizor.Controls.ForeverTextBox dTbox_grid_L;
-        private ReaLTaiizor.Controls.CyberCheckBox dCheckBox_jog;
+        private ReaLTaiizor.Controls.ForeverTextBox Tbox_GridViewValue;
         private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox5;
-        private ReaLTaiizor.Controls.CyberButton cyberButton1;
-        private ReaLTaiizor.Controls.CyberButton cyberButton2;
+        private ReaLTaiizor.Controls.CyberButton Btn_SelectCam1;
+        private ReaLTaiizor.Controls.CyberButton Btn_SelectCam2;
         private Panel panel1;
-        private Panel dPan_grid_R_1;
-        private Panel dPan_grid_R_2;
-        private Panel dPan_grid_R_4;
-        private Panel dPan_grid_R_5;
-        private Panel dPan_grid_R_3;
         private Panel dPan_grid_L_1;
         private Panel dPan_grid_L_2;
         private Panel dPan_grid_L_4;
         private Panel dPan_grid_L_5;
         private Panel dPan_grid_L_3;
+        private ReaLTaiizor.Controls.Button Btn_JogMoveValue_Check;
+        private ReaLTaiizor.Controls.MoonLabel moonLabel2;
+        private ReaLTaiizor.Controls.ForeverTextBox Tbox_JogMovingValue;
+        private ReaLTaiizor.Controls.Button Btn_GridView_Check;
     }
 }

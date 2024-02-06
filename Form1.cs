@@ -49,7 +49,7 @@ namespace JD_Proc
         double[,] _tempData_L = new double[640, 480];
         double[,] _tempData_R = new double[640, 480];
 
-        
+
 
         List<Model.ProcessData> _Data_1_L = new List<Model.ProcessData>();
         List<Model.ProcessData> _Data_2_L = new List<Model.ProcessData>();
@@ -97,6 +97,9 @@ namespace JD_Proc
 
         int PLC_Heartbit_Checker = 0;
 
+        int gapDistAvg_L = 0;
+        int gapDistAvg_R = 0;
+
         string _MODE = "";
 
         System.Timers.Timer _AutoTimer = new System.Timers.Timer();
@@ -109,11 +112,8 @@ namespace JD_Proc
         public Form1()
         {
             InitializeComponent();
-
+            // USB 동글 Lock, 아래 주석을 해제하면 Dongle USB꽂지 않으면 프로그램 실행 X
             //rockey = new Rockey2();
-
-
-
             Service.SettingsService service = new Service.SettingsService();
 
             //카메라 연결
@@ -122,18 +122,19 @@ namespace JD_Proc
 
             if (_MODE == "auto")
             {
-                //Connect("generic1.xml", 1);
+                Connect("generic1.xml", 1);
+                //[Developing]
                 //Connect("generic2.xml", 2);
-                _MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                _MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                _MELSEC.Open();
-                _MELSEC_HEART.Open();
+                //_MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                //_MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                //_MELSEC.Open();
+                //_MELSEC_HEART.Open();
                 //if (_MELSEC.IsConnected() == true) dRadio_plc.Checked = true;
                 //if (_MELSEC_HEART.IsConnected() == true) Debug.Print("MELSEC_HEART OK");
-                //    
+                //[End Developing]
 
-                //_MELSEC_JOG = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                //_MELSEC_JOG.Open();
+                _MELSEC_JOG = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                _MELSEC_JOG.Open();
 
                 dRadio_cam1.Checked = true;
                 dRadio_cam2.Checked = true;
@@ -208,7 +209,9 @@ namespace JD_Proc
             bool VISION_BUSY_R = false;
             bool VISION_END_R = false;
 
+            //[Developing]
             //PLC_AUTO = PLC_Check_Status("B101"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
+            ////PLC_AUTO = PLC_Check_Status("M20288"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
             //if (PLC_AUTO)
             //{
 
@@ -222,21 +225,21 @@ namespace JD_Proc
             //        if (VISION_READY_L)
             //        {
             //            PLC_START_L = PLC_Check_Status("B110"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
+            //            //PLC_START_L = PLC_Check_Status("M20289"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
             //            if (PLC_START_L)
             //            {
             //                VISION_READY_L = false;
             //                VISION_END_L = false;
             //                VISION_BUSY_L = true;
 
-            //                AutoSnap_L();
-            //                AutoProcess_L();
+            //                //AutoSnap_L();
+            //                //AutoProcess_L();
 
             //                lock (lockObject)
             //                {
-            //                    pictureBox1.Invoke((MethodInvoker)delegate
-            //                    {
-            //                        pictureBox1.Image = originBmap_L;
-            //                    });
+            //                    //[Developing]
+            //                    ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_L);
+            //                    //[end developing]
             //                }
 
             //                VISION_BUSY_L = false;
@@ -261,10 +264,9 @@ namespace JD_Proc
 
             //                lock (lockObject)
             //                {
-            //                    pictureBox2.Invoke((MethodInvoker)delegate
-            //                    {
-            //                        pictureBox2.Image = originBmap_R;
-            //                    });
+            //                    //[Developing]
+            //                    ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_R);
+            //                    //[end developing]
             //                }
 
             //                VISION_BUSY_R = false;
@@ -273,6 +275,7 @@ namespace JD_Proc
             //        }
             //    }
             //}
+            //[End Developing]
 
         }
 
@@ -368,7 +371,7 @@ namespace JD_Proc
 
                 DrawChart_L(true);
 
-                WriteGapAvg("cam1", true);
+                gapDistAvg_L = (int)(WriteGapAvg("cam1", true));
 
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
@@ -430,8 +433,7 @@ namespace JD_Proc
 
                 DrawChart_R(true);
 
-                WriteGapAvg("cam2", true);
-
+                gapDistAvg_R = (int)(WriteGapAvg("cam2", true));
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
                     dLabel_Ng_R.ForeColor = Color.Lime;
@@ -911,19 +913,22 @@ namespace JD_Proc
         #region event(settings) - click
         private void dBtn_settings_Click(object sender, EventArgs e)
         {
+
             _AlignSettingform = new AlignSettingForm(this, pictureBox1, pictureBox2);
             _TempGraphform = new TempGraphForm();
 
             _settingForm = new SettingForm(this, _AlignSettingform, _TempGraphform);
-            _settingForm.StartPosition = FormStartPosition.Manual;
-            _settingForm.Location = new System.Drawing.Point(200, 100);
+
+
+
+
 
             //settingForm.SetPlc();
             //settingForm._timer.Start();
 
             //ASform.ShowDialog();
             //Temperform.ShowDialog();
-            _settingForm.ShowDialog();
+            _settingForm.Show();
 
             //settingForm._timer.Stop();
         }
@@ -2626,7 +2631,7 @@ namespace JD_Proc
         #endregion
 
         #region method - gap평균 텍스에 찍어주기
-        void WriteGapAvg(string cam, bool isThread)
+        double WriteGapAvg(string cam, bool isThread)
         {
             if (cam == "cam1")
             {
@@ -2661,6 +2666,8 @@ namespace JD_Proc
                 {
                     dTxt_cam1.Text = reesult;
                 }
+
+                return totalAVg;
             }
             else if (cam == "cam2")
             {
@@ -2695,7 +2702,10 @@ namespace JD_Proc
                 {
                     dTxt_cam2.Text = reesult;
                 }
+
+                return totalAVg;
             }
+            return 0;
         }
         #endregion
 
@@ -2703,7 +2713,8 @@ namespace JD_Proc
         public bool PLC_Check_Status(string PLCDeviceaddr)
         {
             Form1._MELSEC.actUtlType64.GetDevice(PLCDeviceaddr, out int value);
-            return bool.Parse(value.ToString());
+            return (value == 1) ? true : false;
+            //return bool.Parse(value.ToString());
         }
         #endregion
 
@@ -2721,10 +2732,68 @@ namespace JD_Proc
         }
         #endregion
 
+        #region [method - Graph Generate Point]
+        public void ParrotGraphGenerateData(bool isVisionBusy, int gapDistance)
+        {
+            if (isVisionBusy == true) { 
+            if (parrotLineGraph1.Items.Count < parrotLineGraph1.Items.Capacity)
+            {
+                parrotLineGraph1.Items.Add(gapDistance);
+                parrotLineGraph1.Invoke((MethodInvoker)delegate
+                {
+
+                    parrotLineGraph1.Update();
+                    parrotLineGraph1.Refresh();
+                });
+
+            }
+
+            else
+            {
+                parrotLineGraph1.Items.RemoveAt(0);
+                parrotLineGraph1.Items.Add(gapDistance);
+                parrotLineGraph1.Invoke((MethodInvoker)delegate
+                {
+
+                    parrotLineGraph1.Update();
+                    parrotLineGraph1.Refresh();
+                });
+            }
+            }
+            else
+            {
+                if (parrotLineGraph2.Items.Count < parrotLineGraph2.Items.Capacity)
+                {
+                    parrotLineGraph2.Items.Add(gapDistance);
+                    parrotLineGraph2.Invoke((MethodInvoker)delegate
+                    {
+
+                        parrotLineGraph2.Update();
+                        parrotLineGraph2.Refresh();
+                    });
+
+                }
+
+                else
+                {
+                    parrotLineGraph2.Items.RemoveAt(0);
+                    parrotLineGraph2.Items.Add(gapDistance);
+                    parrotLineGraph2.Invoke((MethodInvoker)delegate
+                    {
+
+                        parrotLineGraph2.Update();
+                        parrotLineGraph2.Refresh();
+                    });
+                }
+            }
+        }
+        #endregion
+
         #region [PLC, VISION Heartbit]
         public void PLC_HealthCheck()
         {
             _MELSEC_HEART.actUtlType64.GetDevice("B100", out int heartbitvalue);
+            //_MELSEC_HEART.actUtlType64.GetDevice("M20303", out int heartbitvalue);
             if (PLC_Heartbit_Checker == heartbitvalue)
             {
                 PLC_Heartbit_Count++;
@@ -2741,6 +2810,7 @@ namespace JD_Proc
                 // PLC의 heartbit값을 검사하며 정상적이지 않을때 health Check 경고알람
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
+                    //Debug.Print("BEEEEEEEEEEEEEEEEEEEEEEEEP");
                     dLabel_Ng_L.ForeColor = Color.Red;
                     dLabel_Ng_L.Text = "PLC HealthCheck Error. - " + DateTime.Now.ToString("HH:mm:ss");
                 }));
@@ -2757,12 +2827,16 @@ namespace JD_Proc
                 if (_bVision_Heartbit == false)
                 {
                     _MELSEC_HEART.actUtlType64.SetDevice2("B0", 1);
+                    //_MELSEC_HEART.actUtlType64.SetDevice2("M20305", 1);
                     _bVision_Heartbit = true;
+                    //Debug.Print("hoo");
                 }
                 else
                 {
                     _MELSEC_HEART.actUtlType64.SetDevice2("B0", 0);
+                    //_MELSEC_HEART.actUtlType64.SetDevice2("M20305", 0);
                     _bVision_Heartbit = false;
+                    //Debug.Print("woo");
                 }
             }
             catch
@@ -2781,9 +2855,5 @@ namespace JD_Proc
         #endregion
 
 
-        private void tableLayoutPanel_Auto_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

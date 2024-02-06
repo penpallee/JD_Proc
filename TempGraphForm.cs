@@ -12,11 +12,10 @@ namespace JD_Proc
 {
     public partial class TempGraphForm : Form
     {
+
         public TempGraphForm()
         {
             InitializeComponent();
-
-            
         }
     }
 }

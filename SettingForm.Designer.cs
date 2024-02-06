@@ -66,7 +66,6 @@
             dPanel_plcCam2Cap = new Panel();
             dPanel_plcCam1Cap = new Panel();
             dPanel_plcAuto = new Panel();
-
             thunderGroupBox2 = new ReaLTaiizor.Controls.ThunderGroupBox();
             dTbox_y2 = new ReaLTaiizor.Controls.CrownTextBox();
             dTbox_x2 = new ReaLTaiizor.Controls.CrownTextBox();
@@ -102,8 +101,6 @@
             thunderGroupBox3.SuspendLayout();
             thunderGroupBox2.SuspendLayout();
             thunderGroupBox1.SuspendLayout();
-
-
             SuspendLayout();
             // 
             // foxLabel1
@@ -437,11 +434,11 @@
             dPanel_login.Controls.Add(dButton_login);
             dPanel_login.ForeColor = Color.FromArgb(250, 250, 250);
             dPanel_login.LeftSideColor = Color.FromArgb(40, 45, 45);
-            dPanel_login.Location = new Point(12, 46);
+            dPanel_login.Location = new Point(12, 44);
             dPanel_login.Name = "dPanel_login";
             dPanel_login.RightSideColor = Color.FromArgb(40, 45, 45);
             dPanel_login.Side = ReaLTaiizor.Controls.NightPanel.PanelSide.Left;
-            dPanel_login.Size = new Size(597, 494);
+            dPanel_login.Size = new Size(597, 496);
             dPanel_login.TabIndex = 28;
             // 
             // dTxtBox_password
@@ -905,6 +902,7 @@
             Text = "Settings";
             TransparencyKey = Color.Fuchsia;
             FormClosing += SettingForm_FormClosing;
+            Move += SettingForm_Move;
             dungeonForm1.ResumeLayout(false);
             thunderGroupBox8.ResumeLayout(false);
             dPanel_login.ResumeLayout(false);
