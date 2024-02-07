@@ -30,8 +30,6 @@ namespace JD_Proc.Lock
         [DllImport("MSVCRT.dll")]
         internal static extern long atol([MarshalAs(UnmanagedType.LPArray)] char[] sTemp);
 
-
-        int Rockey_open = 0;
         public int Rockey_find_dongle;
         private uint uid = 3365499556; // 여기에 실제 UID를 설정하세요.
 
@@ -64,10 +62,6 @@ namespace JD_Proc.Lock
 
         public int Rockey_opening(uint uid)
         {
-            uint handle = 0;
-
-            uint hid = 2148170306; // 여기에 실제 HID를 설정하세요.
-
             // hid 2148170306
             // Rockey2를 열고 UID 및 HID를 사용하여 장치를 찾습니다.
             int status = RY2_Open(1, uid, out uint ohid);

@@ -41,6 +41,9 @@
             Btn_SelectCam2 = new ReaLTaiizor.Controls.CyberButton();
             Btn_SelectCam1 = new ReaLTaiizor.Controls.CyberButton();
             thunderGroupBox4 = new ReaLTaiizor.Controls.ThunderGroupBox();
+            Btn_JogMoveValue_Check = new ReaLTaiizor.Controls.Button();
+            moonLabel2 = new ReaLTaiizor.Controls.MoonLabel();
+            Tbox_JogMovingValue = new ReaLTaiizor.Controls.ForeverTextBox();
             thunderGroupBox3 = new ReaLTaiizor.Controls.ThunderGroupBox();
             button2 = new ReaLTaiizor.Controls.Button();
             button1 = new ReaLTaiizor.Controls.Button();
@@ -48,12 +51,9 @@
             dBtn_up_L = new ReaLTaiizor.Controls.Button();
             dBtn_dw_L = new ReaLTaiizor.Controls.Button();
             thunderGroupBox2 = new ReaLTaiizor.Controls.ThunderGroupBox();
+            Btn_GridView_Check = new ReaLTaiizor.Controls.Button();
             moonLabel1 = new ReaLTaiizor.Controls.MoonLabel();
             Tbox_GridViewValue = new ReaLTaiizor.Controls.ForeverTextBox();
-            moonLabel2 = new ReaLTaiizor.Controls.MoonLabel();
-            Tbox_JogMovingValue = new ReaLTaiizor.Controls.ForeverTextBox();
-            Btn_GridView_Check = new ReaLTaiizor.Controls.Button();
-            Btn_JogMoveValue_Check = new ReaLTaiizor.Controls.Button();
             dreamForm1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -278,6 +278,57 @@
             thunderGroupBox4.TabIndex = 5;
             thunderGroupBox4.Text = "Jog 이동값 설정";
             // 
+            // Btn_JogMoveValue_Check
+            // 
+            Btn_JogMoveValue_Check.BackColor = Color.Transparent;
+            Btn_JogMoveValue_Check.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_JogMoveValue_Check.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogMoveValue_Check.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_JogMoveValue_Check.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_JogMoveValue_Check.Image = null;
+            Btn_JogMoveValue_Check.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_JogMoveValue_Check.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_JogMoveValue_Check.Location = new Point(115, 42);
+            Btn_JogMoveValue_Check.Name = "Btn_JogMoveValue_Check";
+            Btn_JogMoveValue_Check.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogMoveValue_Check.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_JogMoveValue_Check.Size = new Size(81, 29);
+            Btn_JogMoveValue_Check.TabIndex = 16;
+            Btn_JogMoveValue_Check.Text = "확인";
+            Btn_JogMoveValue_Check.TextAlignment = StringAlignment.Center;
+            Btn_JogMoveValue_Check.Click += Btn_JogMoveValue_Check_Click;
+            // 
+            // moonLabel2
+            // 
+            moonLabel2.AutoSize = true;
+            moonLabel2.BackColor = Color.Transparent;
+            moonLabel2.ForeColor = Color.Gray;
+            moonLabel2.Location = new Point(74, 49);
+            moonLabel2.Margin = new Padding(2, 0, 2, 0);
+            moonLabel2.Name = "moonLabel2";
+            moonLabel2.Size = new Size(25, 15);
+            moonLabel2.TabIndex = 15;
+            moonLabel2.Text = "μm";
+            // 
+            // Tbox_JogMovingValue
+            // 
+            Tbox_JogMovingValue.BackColor = Color.Transparent;
+            Tbox_JogMovingValue.BaseColor = Color.FromArgb(45, 47, 49);
+            Tbox_JogMovingValue.BorderColor = Color.FromArgb(242, 93, 75);
+            Tbox_JogMovingValue.FocusOnHover = false;
+            Tbox_JogMovingValue.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Tbox_JogMovingValue.ForeColor = Color.FromArgb(192, 192, 192);
+            Tbox_JogMovingValue.Location = new Point(18, 42);
+            Tbox_JogMovingValue.Margin = new Padding(2);
+            Tbox_JogMovingValue.MaxLength = 32767;
+            Tbox_JogMovingValue.Multiline = false;
+            Tbox_JogMovingValue.Name = "Tbox_JogMovingValue";
+            Tbox_JogMovingValue.ReadOnly = false;
+            Tbox_JogMovingValue.Size = new Size(56, 29);
+            Tbox_JogMovingValue.TabIndex = 14;
+            Tbox_JogMovingValue.TextAlign = HorizontalAlignment.Left;
+            Tbox_JogMovingValue.UseSystemPasswordChar = false;
+            // 
             // thunderGroupBox3
             // 
             thunderGroupBox3.BackColor = Color.Transparent;
@@ -311,7 +362,7 @@
             button2.Name = "button2";
             button2.PressedBorderColor = Color.FromArgb(165, 37, 37);
             button2.PressedColor = Color.FromArgb(165, 37, 37);
-            button2.Size = new Size(48, 74);
+            button2.Size = new Size(48, 78);
             button2.TabIndex = 10;
             button2.TextAlignment = StringAlignment.Center;
             // 
@@ -325,12 +376,12 @@
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleCenter;
             button1.InactiveColor = Color.FromArgb(32, 34, 37);
-            button1.Location = new Point(0, 98);
+            button1.Location = new Point(0, 104);
             button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.PressedBorderColor = Color.FromArgb(165, 37, 37);
             button1.PressedColor = Color.FromArgb(165, 37, 37);
-            button1.Size = new Size(48, 96);
+            button1.Size = new Size(48, 90);
             button1.TabIndex = 9;
             button1.TextAlignment = StringAlignment.Center;
             // 
@@ -368,7 +419,7 @@
             dBtn_up_L.Name = "dBtn_up_L";
             dBtn_up_L.PressedBorderColor = Color.FromArgb(165, 37, 37);
             dBtn_up_L.PressedColor = Color.FromArgb(165, 37, 37);
-            dBtn_up_L.Size = new Size(47, 74);
+            dBtn_up_L.Size = new Size(47, 78);
             dBtn_up_L.TabIndex = 9;
             dBtn_up_L.TextAlignment = StringAlignment.Center;
             dBtn_up_L.Click += dBtn_up_L_Click_1;
@@ -383,12 +434,12 @@
             dBtn_dw_L.Image = (Image)resources.GetObject("dBtn_dw_L.Image");
             dBtn_dw_L.ImageAlign = ContentAlignment.MiddleCenter;
             dBtn_dw_L.InactiveColor = Color.FromArgb(32, 34, 37);
-            dBtn_dw_L.Location = new Point(2, 98);
+            dBtn_dw_L.Location = new Point(2, 104);
             dBtn_dw_L.Margin = new Padding(2);
             dBtn_dw_L.Name = "dBtn_dw_L";
             dBtn_dw_L.PressedBorderColor = Color.FromArgb(165, 37, 37);
             dBtn_dw_L.PressedColor = Color.FromArgb(165, 37, 37);
-            dBtn_dw_L.Size = new Size(47, 96);
+            dBtn_dw_L.Size = new Size(47, 90);
             dBtn_dw_L.TabIndex = 8;
             dBtn_dw_L.TextAlignment = StringAlignment.Center;
             dBtn_dw_L.Click += dBtn_dw_L_Click_1;
@@ -410,6 +461,26 @@
             thunderGroupBox2.Size = new Size(221, 94);
             thunderGroupBox2.TabIndex = 2;
             thunderGroupBox2.Text = "GridView 폭 설정";
+            // 
+            // Btn_GridView_Check
+            // 
+            Btn_GridView_Check.BackColor = Color.Transparent;
+            Btn_GridView_Check.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_GridView_Check.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_GridView_Check.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_GridView_Check.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_GridView_Check.Image = null;
+            Btn_GridView_Check.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_GridView_Check.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_GridView_Check.Location = new Point(115, 41);
+            Btn_GridView_Check.Name = "Btn_GridView_Check";
+            Btn_GridView_Check.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_GridView_Check.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_GridView_Check.Size = new Size(81, 29);
+            Btn_GridView_Check.TabIndex = 14;
+            Btn_GridView_Check.Text = "확인";
+            Btn_GridView_Check.TextAlignment = StringAlignment.Center;
+            Btn_GridView_Check.Click += Btn_GridView_Check_Click;
             // 
             // moonLabel1
             // 
@@ -441,77 +512,6 @@
             Tbox_GridViewValue.TabIndex = 12;
             Tbox_GridViewValue.TextAlign = HorizontalAlignment.Left;
             Tbox_GridViewValue.UseSystemPasswordChar = false;
-            // 
-            // moonLabel2
-            // 
-            moonLabel2.AutoSize = true;
-            moonLabel2.BackColor = Color.Transparent;
-            moonLabel2.ForeColor = Color.Gray;
-            moonLabel2.Location = new Point(74, 49);
-            moonLabel2.Margin = new Padding(2, 0, 2, 0);
-            moonLabel2.Name = "moonLabel2";
-            moonLabel2.Size = new Size(25, 15);
-            moonLabel2.TabIndex = 15;
-            moonLabel2.Text = "μm";
-            // 
-            // Tbox_JogMovingValue
-            // 
-            Tbox_JogMovingValue.BackColor = Color.Transparent;
-            Tbox_JogMovingValue.BaseColor = Color.FromArgb(45, 47, 49);
-            Tbox_JogMovingValue.BorderColor = Color.FromArgb(242, 93, 75);
-            Tbox_JogMovingValue.FocusOnHover = false;
-            Tbox_JogMovingValue.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            Tbox_JogMovingValue.ForeColor = Color.FromArgb(192, 192, 192);
-            Tbox_JogMovingValue.Location = new Point(18, 42);
-            Tbox_JogMovingValue.Margin = new Padding(2);
-            Tbox_JogMovingValue.MaxLength = 32767;
-            Tbox_JogMovingValue.Multiline = false;
-            Tbox_JogMovingValue.Name = "Tbox_JogMovingValue";
-            Tbox_JogMovingValue.ReadOnly = false;
-            Tbox_JogMovingValue.Size = new Size(56, 29);
-            Tbox_JogMovingValue.TabIndex = 14;
-            Tbox_JogMovingValue.TextAlign = HorizontalAlignment.Left;
-            Tbox_JogMovingValue.UseSystemPasswordChar = false;
-            // 
-            // Btn_GridView_Check
-            // 
-            Btn_GridView_Check.BackColor = Color.Transparent;
-            Btn_GridView_Check.BorderColor = Color.FromArgb(32, 34, 37);
-            Btn_GridView_Check.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            Btn_GridView_Check.EnteredColor = Color.FromArgb(32, 34, 37);
-            Btn_GridView_Check.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_GridView_Check.Image = null;
-            Btn_GridView_Check.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_GridView_Check.InactiveColor = Color.FromArgb(32, 34, 37);
-            Btn_GridView_Check.Location = new Point(115, 41);
-            Btn_GridView_Check.Name = "Btn_GridView_Check";
-            Btn_GridView_Check.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            Btn_GridView_Check.PressedColor = Color.FromArgb(165, 37, 37);
-            Btn_GridView_Check.Size = new Size(81, 29);
-            Btn_GridView_Check.TabIndex = 14;
-            Btn_GridView_Check.Text = "확인";
-            Btn_GridView_Check.TextAlignment = StringAlignment.Center;
-            Btn_GridView_Check.Click += Btn_GridView_Check_Click;
-            // 
-            // Btn_JogMoveValue_Check
-            // 
-            Btn_JogMoveValue_Check.BackColor = Color.Transparent;
-            Btn_JogMoveValue_Check.BorderColor = Color.FromArgb(32, 34, 37);
-            Btn_JogMoveValue_Check.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            Btn_JogMoveValue_Check.EnteredColor = Color.FromArgb(32, 34, 37);
-            Btn_JogMoveValue_Check.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_JogMoveValue_Check.Image = null;
-            Btn_JogMoveValue_Check.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_JogMoveValue_Check.InactiveColor = Color.FromArgb(32, 34, 37);
-            Btn_JogMoveValue_Check.Location = new Point(115, 42);
-            Btn_JogMoveValue_Check.Name = "Btn_JogMoveValue_Check";
-            Btn_JogMoveValue_Check.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            Btn_JogMoveValue_Check.PressedColor = Color.FromArgb(165, 37, 37);
-            Btn_JogMoveValue_Check.Size = new Size(81, 29);
-            Btn_JogMoveValue_Check.TabIndex = 16;
-            Btn_JogMoveValue_Check.Text = "확인";
-            Btn_JogMoveValue_Check.TextAlignment = StringAlignment.Center;
-            Btn_JogMoveValue_Check.Click += Btn_JogMoveValue_Check_Click;
             // 
             // AlignSettingForm
             // 

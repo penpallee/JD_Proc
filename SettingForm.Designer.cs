@@ -302,8 +302,8 @@
             // 
             dungeonForm1.BackColor = Color.FromArgb(40, 45, 45);
             dungeonForm1.BorderColor = Color.FromArgb(38, 38, 38);
-            dungeonForm1.Controls.Add(thunderGroupBox8);
             dungeonForm1.Controls.Add(dPanel_login);
+            dungeonForm1.Controls.Add(thunderGroupBox8);
             dungeonForm1.Controls.Add(thunderGroupBox7);
             dungeonForm1.Controls.Add(thunderGroupBox6);
             dungeonForm1.Controls.Add(thunderGroupBox5);
@@ -434,11 +434,11 @@
             dPanel_login.Controls.Add(dButton_login);
             dPanel_login.ForeColor = Color.FromArgb(250, 250, 250);
             dPanel_login.LeftSideColor = Color.FromArgb(40, 45, 45);
-            dPanel_login.Location = new Point(12, 44);
+            dPanel_login.Location = new Point(12, 50);
             dPanel_login.Name = "dPanel_login";
             dPanel_login.RightSideColor = Color.FromArgb(40, 45, 45);
             dPanel_login.Side = ReaLTaiizor.Controls.NightPanel.PanelSide.Left;
-            dPanel_login.Size = new Size(597, 496);
+            dPanel_login.Size = new Size(589, 488);
             dPanel_login.TabIndex = 28;
             // 
             // dTxtBox_password
@@ -941,9 +941,6 @@
         private Panel dPanel_visionCam1Busy;
         private Panel dPanel_visionCam1Ready;
         private Panel dPanel_visionCam1Auto;
-        private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox4;
-        private Panel panel3;
-        private Panel panel4;
         private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox3;
         private Panel dPanel_plcCam1Cap;
         private Panel dPanel_plcAuto;

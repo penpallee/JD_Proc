@@ -1,5 +1,4 @@
 ﻿using JD_Proc.Model;
-using OpenCvSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

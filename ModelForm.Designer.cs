@@ -914,7 +914,6 @@
         private ReaLTaiizor.Controls.FoxLabel foxLabel7;
         private ReaLTaiizor.Controls.FoxLabel foxLabel12;
         private ReaLTaiizor.Controls.CrownNumeric dNumeric_x1_R;
-        private TableLayoutPanel tableLayoutPanel9;
         private ReaLTaiizor.Controls.FoxLabel foxLabel27;
         private ReaLTaiizor.Controls.FoxLabel foxLabel32;
         private ReaLTaiizor.Controls.CrownNumeric dNumeric_x5_R;
