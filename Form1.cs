@@ -1,3 +1,11 @@
+#nullable disable warnings
+// 아래 JD를 조건부 컴파일 기호로 설정하여 실제 현장에서 사용하는 경우와 
+// 개발하는 경우를 나우어서 사용할 수 있게끔 하였습니다.
+// JD는 프로젝트 빌드속성에서 기본 기호로 추가하여 평소에는 JD는 기호로 인식하고
+// 아래 undef를 해놓으면 JD를 기호에서 해제합니다.
+//#undef JD  
+
+
 using JD_Proc.ICam;
 using JD_Proc.Lock;
 using JD_Proc.Log;
@@ -113,7 +121,13 @@ namespace JD_Proc
         {
             InitializeComponent();
             // USB 동글 Lock, 아래 주석을 해제하면 Dongle USB꽂지 않으면 프로그램 실행 X
-            //rockey = new Rockey2();
+
+
+#if JD
+            rockey = new Rockey2();
+#endif
+
+
             Service.SettingsService service = new Service.SettingsService();
 
             //카메라 연결
@@ -123,16 +137,15 @@ namespace JD_Proc
             if (_MODE == "auto")
             {
                 Connect("generic1.xml", 1);
-                //[Developing]
-                //Connect("generic2.xml", 2);
-                //_MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                //_MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                //_MELSEC.Open();
-                //_MELSEC_HEART.Open();
-                //if (_MELSEC.IsConnected() == true) dRadio_plc.Checked = true;
-                //if (_MELSEC_HEART.IsConnected() == true) Debug.Print("MELSEC_HEART OK");
-                //[End Developing]
-
+#if JD
+                Connect("generic2.xml", 2);
+                _MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                _MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                _MELSEC.Open();
+                _MELSEC_HEART.Open();
+                if (_MELSEC.IsConnected() == true) dRadio_plc.Checked = true;
+                if (_MELSEC_HEART.IsConnected() == true) Debug.Print("MELSEC_HEART OK");
+#endif
                 _MELSEC_JOG = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
                 _MELSEC_JOG.Open();
 
@@ -164,8 +177,9 @@ namespace JD_Proc
             _AutoTimer.Interval = 3000;
             _AutoTimer.Elapsed += new ElapsedEventHandler(AutoTimer);
 
+#if JD
             _HeartbitTimer = new System.Threading.Timer(VISION_Heartbit, null, 1000, 400);
-
+#endif
 
         }
 
@@ -194,6 +208,8 @@ namespace JD_Proc
         #region event(auto) - Timer
         void AutoTimer(object sender, ElapsedEventArgs e)
         {
+#if JD
+
             bool PLC_AUTO = false;
 
             bool PLC_START_L = false;
@@ -209,73 +225,73 @@ namespace JD_Proc
             bool VISION_BUSY_R = false;
             bool VISION_END_R = false;
 
-            //[Developing]
-            //PLC_AUTO = PLC_Check_Status("B101"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
-            ////PLC_AUTO = PLC_Check_Status("M20288"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
-            //if (PLC_AUTO)
-            //{
 
-            //    if (state == "auto") VISION_AUTO = true; //TJ 추가
-            //    else VISION_AUTO = false; //TJ 추가
+            PLC_AUTO = PLC_Check_Status("B101"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
+            //PLC_AUTO = PLC_Check_Status("M20288"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
+            if (PLC_AUTO)
+            {
 
-            //    if (VISION_AUTO)
-            //    {
-            //        VISION_READY_L = true;  // TJ 추가
-            //        // Left camera
-            //        if (VISION_READY_L)
-            //        {
-            //            PLC_START_L = PLC_Check_Status("B110"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
-            //            //PLC_START_L = PLC_Check_Status("M20289"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
-            //            if (PLC_START_L)
-            //            {
-            //                VISION_READY_L = false;
-            //                VISION_END_L = false;
-            //                VISION_BUSY_L = true;
+                if (state == "auto") VISION_AUTO = true; //TJ 추가
+                else VISION_AUTO = false; //TJ 추가
 
-            //                //AutoSnap_L();
-            //                //AutoProcess_L();
+                if (VISION_AUTO)
+                {
+                    VISION_READY_L = true;  // TJ 추가
+                    // Left camera
+                    if (VISION_READY_L)
+                    {
+                        PLC_START_L = PLC_Check_Status("B110"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
+                        //PLC_START_L = PLC_Check_Status("M20289"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
+                        if (PLC_START_L)
+                        {
+                            VISION_READY_L = false;
+                            VISION_END_L = false;
+                            VISION_BUSY_L = true;
 
-            //                lock (lockObject)
-            //                {
-            //                    //[Developing]
-            //                    ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_L);
-            //                    //[end developing]
-            //                }
+                            //AutoSnap_L();
+                            //AutoProcess_L();
 
-            //                VISION_BUSY_L = false;
-            //                VISION_END_L = true;
-            //            }
-            //        }
+                            lock (lockObject)
+                            {
+                                //[Developing]
+                                ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_L);
+                                //[end developing]
+                            }
 
-            //        VISION_READY_R = true;  // TJ 추가
+                            VISION_BUSY_L = false;
+                            VISION_END_L = true;
+                        }
+                    }
 
-            //        // Right camera
-            //        if (VISION_READY_R)
-            //        {
-            //            PLC_START_R = PLC_Check_Status("B111"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
-            //            if (PLC_START_R)
-            //            {
-            //                VISION_READY_R = false;
-            //                VISION_END_R = false;
-            //                VISION_BUSY_R = true;
+                    VISION_READY_R = true;  // TJ 추가
 
-            //                AutoSnap_R();
-            //                AutpProcess_R();
+                    // Right camera
+                    if (VISION_READY_R)
+                    {
+                        PLC_START_R = PLC_Check_Status("B111"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
+                        if (PLC_START_R)
+                        {
+                            VISION_READY_R = false;
+                            VISION_END_R = false;
+                            VISION_BUSY_R = true;
 
-            //                lock (lockObject)
-            //                {
-            //                    //[Developing]
-            //                    ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_R);
-            //                    //[end developing]
-            //                }
+                            AutoSnap_R();
+                            AutpProcess_R();
 
-            //                VISION_BUSY_R = false;
-            //                VISION_END_R = true;
-            //            }
-            //        }
-            //    }
-            //}
-            //[End Developing]
+                            lock (lockObject)
+                            {
+                                //[Developing]
+                                ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_R);
+                                //[end developing]
+                            }
+
+                            VISION_BUSY_R = false;
+                            VISION_END_R = true;
+                        }
+                    }
+                }
+            }
+#endif
 
         }
 
@@ -462,6 +478,7 @@ namespace JD_Proc
 
         }
         #endregion
+
 
         #region event(live / live stop) - click
         private void dBtn_live1_Click(object sender, EventArgs e)
@@ -1910,7 +1927,7 @@ namespace JD_Proc
         #endregion
 
 
-
+        
         #region method - sub pixel 연산
         int GetSubPixel(int value, int nextValue)
         {
@@ -2810,7 +2827,6 @@ namespace JD_Proc
                 // PLC의 heartbit값을 검사하며 정상적이지 않을때 health Check 경고알람
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
-                    //Debug.Print("BEEEEEEEEEEEEEEEEEEEEEEEEP");
                     dLabel_Ng_L.ForeColor = Color.Red;
                     dLabel_Ng_L.Text = "PLC HealthCheck Error. - " + DateTime.Now.ToString("HH:mm:ss");
                 }));

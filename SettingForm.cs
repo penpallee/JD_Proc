@@ -1,4 +1,6 @@
-﻿using JD_Proc.Log;
+﻿
+using JD_Proc.Log;
+using System.Diagnostics;
 using System.Timers;
 using static JD_Proc.Log.LogManager;
 
@@ -47,8 +49,9 @@ namespace JD_Proc
             _alignsettingform.Visible = true;
             _tempgraphform.Visible = true;
 
+
         }
-        #endregion
+#endregion
 
         #region event(PLC Check) Timer
         void PlcCheckTimer(object sender, ElapsedEventArgs e)
