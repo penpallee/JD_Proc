@@ -115,6 +115,8 @@ namespace JD_Proc
         System.Threading.Timer _HeartbitTimer;
 
         object lockObject = new object();
+
+        double[] avg_double = new double[6] { 0, 0, 0, 0, 0, 0 };
         #endregion
 
         #region 생성자
@@ -685,6 +687,8 @@ namespace JD_Proc
 
                 WriteGapAvg("cam1", false);
 
+
+
                 dLabel_Ng_L.ForeColor = Color.Lime;
                 dLabel_Ng_L.Text = "OK - " + DateTime.Now.ToString("HH:mm:ss");
             }
@@ -761,15 +765,119 @@ namespace JD_Proc
         #region event(Measure) - click
         private void dBtn_Measure1_Click(object sender, EventArgs e)
         {
-            dBtn_snap1_Click(sender, e);
-            dBtn_Process1_Click(sender, e);
+            measureFunc1(sender, e);
         }
 
         private void dBtn_Measure2_Click(object sender, EventArgs e)
         {
-            dBtn_snap2_Click(sender, e);
-            dBtn_Process2_Click(sender, e);
+            measureFunc2(sender, e);
         }
+
+
+        public void Delay(int ms)
+        {
+            DateTime dateTimeNow = DateTime.Now;
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, ms);
+            DateTime dateTimeAdd = dateTimeNow.Add(duration);
+            while (dateTimeAdd >= dateTimeNow)
+            {
+                System.Windows.Forms.Application.DoEvents();
+                dateTimeNow = DateTime.Now;
+            }
+            return;
+        }
+
+        // 아래 코드는 measure버튼 눌렀을때 사진을 2번찍은 평균값으로 gap데이터를 출력하는 함수이다.
+        // test용 코드
+
+        //private void dBtn_Measure1_Click(object sender, EventArgs e)
+        //{
+        //    foreach (double value in avg_double)
+        //    {
+        //        Debug.Print(value.ToString());
+        //    }
+
+        //    string reesult = string.Empty;
+        //    avg_double.SetValue(0, 0);
+        //    avg_double.SetValue(0, 1);
+        //    avg_double.SetValue(0, 2);
+        //    avg_double.SetValue(0, 3);
+        //    avg_double.SetValue(0, 4);
+        //    avg_double.SetValue(0, 5);
+
+        //    foreach (double value in avg_double)
+        //    {
+        //        Debug.Print(value.ToString());
+        //    }
+
+        //    measureFunc1(sender, e);
+
+        //    Delay(5000);
+        //    foreach (double value in avg_double)
+        //    {
+        //        Debug.Print(value.ToString());
+        //    }
+
+        //    measureFunc1(sender, e);
+
+        //    foreach (double value in avg_double)
+        //    {
+        //        Debug.Print(value.ToString());
+        //    }
+
+        //    reesult = "GAP 평균 \r\n" + "\r\n" +
+        //   "LEFT_1 : " + Math.Round(avg_double[0] / 2, 2).ToString() + "\r\n" + "\r\n" +
+        //                        "LEFT_2 : " + Math.Round(avg_double[1] / 2, 2).ToString() + "\r\n" + "\r\n" +
+        //                        "LEFT_3 : " + Math.Round(avg_double[2] / 2, 2).ToString() + "\r\n" + "\r\n" +
+        //                        "LEFT_4 : " + Math.Round(avg_double[3] / 2, 2).ToString() + "\r\n" + "\r\n" +
+        //                        "LEFT_5 : " + Math.Round(avg_double[4] / 2, 2).ToString() + "\r\n" + "\r\n" + "\r\n" +
+        //                        "전체평균 : " + Math.Round(avg_double[5] / 2, 2).ToString();
+
+
+        //    //this.BeginInvoke((MethodInvoker)(() =>
+        //    //{
+        //    //    dTxt_cam1.Text = reesult;
+        //    //}));
+
+        //    dTxt_cam1.Text = reesult;
+
+
+
+
+        //}
+
+        //private void dBtn_Measure2_Click(object sender, EventArgs e)
+        //{
+
+        //    avg_double.SetValue(0, 0);
+        //    avg_double.SetValue(1, 0);
+        //    avg_double.SetValue(2, 0);
+        //    avg_double.SetValue(3, 0);
+        //    avg_double.SetValue(4, 0);
+        //    avg_double.SetValue(5, 0);
+
+        //    dBtn_snap2_Click(sender, e);
+        //    dBtn_Process2_Click(sender, e);
+        //    dBtn_snap2_Click(sender, e);
+        //    dBtn_Process2_Click(sender, e);
+
+        //    string reesult = "GAP 평균 \r\n" + "\r\n" +
+        //    "LEFT_1 : " + (Math.Round(avg_double[0] / 2), 2).ToString() + "\r\n" + "\r\n" +
+        //                         "LEFT_2 : " + (Math.Round(avg_double[1] / 2), 2).ToString() + "\r\n" + "\r\n" +
+        //                         "LEFT_3 : " + (Math.Round(avg_double[2] / 2), 2).ToString() + "\r\n" + "\r\n" +
+        //                         "LEFT_4 : " + (Math.Round(avg_double[3] / 2), 2).ToString() + "\r\n" + "\r\n" +
+        //                         "LEFT_5 : " + (Math.Round(avg_double[4] / 2), 2).ToString() + "\r\n" + "\r\n" + "\r\n" +
+        //                         "전체평균 : " + (Math.Round(avg_double[5] / 2), 2);
+
+
+        //    this.BeginInvoke((MethodInvoker)(() =>
+        //    {
+        //        dTxt_cam2.Text = reesult;
+        //    }));
+
+        //    dTxt_cam2.Text = reesult;
+
+        //}
         #endregion
 
         #region event(lmage load) - click
@@ -1928,7 +2036,7 @@ namespace JD_Proc
         #endregion
 
 
-        
+
         #region method - sub pixel 연산
         int GetSubPixel(int value, int nextValue)
         {
@@ -2656,11 +2764,17 @@ namespace JD_Proc
                 SettingsService settingService = new SettingsService();
                 double resolution = double.Parse(settingService.Read("resolution", "y_1"));
 
-                var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+
 
                 double totalAVg = avg1 + avg2 + avg3 + avg4 + avg5;
                 totalAVg = Math.Round(totalAVg / 5, 2);
@@ -2692,11 +2806,16 @@ namespace JD_Proc
                 SettingsService settingService = new SettingsService();
                 double resolution = double.Parse(settingService.Read("resolution", "y_2"));
 
-                var avg1 = Math.Round(_Data_1_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg2 = Math.Round(_Data_2_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg3 = Math.Round(_Data_3_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg4 = Math.Round(_Data_4_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg5 = Math.Round(_Data_5_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg1 = Math.Round(_Data_1_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg2 = Math.Round(_Data_2_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg3 = Math.Round(_Data_3_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg4 = Math.Round(_Data_4_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg5 = Math.Round(_Data_5_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                var avg1 = Math.Round(_Data_1_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                var avg2 = Math.Round(_Data_2_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                var avg3 = Math.Round(_Data_3_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                var avg4 = Math.Round(_Data_4_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                var avg5 = Math.Round(_Data_5_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
 
                 double totalAVg = avg1 + avg2 + avg3 + avg4 + avg5;
                 totalAVg = Math.Round(totalAVg / 5, 2);
@@ -2753,30 +2872,31 @@ namespace JD_Proc
         #region [method - Graph Generate Point]
         public void ParrotGraphGenerateData(bool isVisionBusy, int gapDistance)
         {
-            if (isVisionBusy == true) { 
-            if (parrotLineGraph1.Items.Count < parrotLineGraph1.Items.Capacity)
+            if (isVisionBusy == true)
             {
-                parrotLineGraph1.Items.Add(gapDistance);
-                parrotLineGraph1.Invoke((MethodInvoker)delegate
+                if (parrotLineGraph1.Items.Count < parrotLineGraph1.Items.Capacity)
                 {
+                    parrotLineGraph1.Items.Add(gapDistance);
+                    parrotLineGraph1.Invoke((MethodInvoker)delegate
+                    {
 
-                    parrotLineGraph1.Update();
-                    parrotLineGraph1.Refresh();
-                });
+                        parrotLineGraph1.Update();
+                        parrotLineGraph1.Refresh();
+                    });
 
-            }
+                }
 
-            else
-            {
-                parrotLineGraph1.Items.RemoveAt(0);
-                parrotLineGraph1.Items.Add(gapDistance);
-                parrotLineGraph1.Invoke((MethodInvoker)delegate
+                else
                 {
+                    parrotLineGraph1.Items.RemoveAt(0);
+                    parrotLineGraph1.Items.Add(gapDistance);
+                    parrotLineGraph1.Invoke((MethodInvoker)delegate
+                    {
 
-                    parrotLineGraph1.Update();
-                    parrotLineGraph1.Refresh();
-                });
-            }
+                        parrotLineGraph1.Update();
+                        parrotLineGraph1.Refresh();
+                    });
+                }
             }
             else
             {
@@ -2804,6 +2924,20 @@ namespace JD_Proc
                     });
                 }
             }
+        }
+        #endregion
+
+        #region [method - mesure function]
+        private void measureFunc1(object sender, EventArgs e)
+        {
+            dBtn_snap1_Click(sender, e);
+            dBtn_Process1_Click(sender, e);
+        }
+
+        private void measureFunc2(object sender, EventArgs e)
+        {
+            dBtn_snap2_Click(sender, e);
+            dBtn_Process2_Click(sender, e);
         }
         #endregion
 
@@ -2870,6 +3004,7 @@ namespace JD_Proc
 
         }
         #endregion
+
 
 
     }

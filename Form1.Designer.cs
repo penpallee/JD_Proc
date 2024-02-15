@@ -260,8 +260,7 @@
             tableLayoutPanel_Auto.Controls.Add(pictureBox1_Auto, 0, 0);
             tableLayoutPanel_Auto.Controls.Add(parrotLineGraph1, 0, 1);
             tableLayoutPanel_Auto.Controls.Add(parrotLineGraph2, 1, 1);
-            tableLayoutPanel_Auto.Dock = DockStyle.Fill;
-            tableLayoutPanel_Auto.Location = new Point(0, 0);
+            tableLayoutPanel_Auto.Location = new Point(395, 491);
             tableLayoutPanel_Auto.Name = "tableLayoutPanel_Auto";
             tableLayoutPanel_Auto.RowCount = 2;
             tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
@@ -1207,7 +1206,7 @@
             tableLayoutPanel3.Controls.Add(dBtn_Measure1, 0, 6);
             tableLayoutPanel3.Location = new Point(853, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 7;
+            tableLayoutPanel3.RowCount = 8;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
@@ -1251,7 +1250,7 @@
             dBtn_imageSave1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_imageSave1.HoverForeColor = Color.White;
             dBtn_imageSave1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_imageSave1.Location = new Point(3, 51);
+            dBtn_imageSave1.Location = new Point(3, 48);
             dBtn_imageSave1.MinimumSize = new Size(100, 50);
             dBtn_imageSave1.Name = "dBtn_imageSave1";
             dBtn_imageSave1.NormalBackColor = Color.White;
@@ -1274,7 +1273,7 @@
             dBtn_live1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_live1.HoverForeColor = Color.White;
             dBtn_live1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_live1.Location = new Point(3, 99);
+            dBtn_live1.Location = new Point(3, 93);
             dBtn_live1.MinimumSize = new Size(100, 50);
             dBtn_live1.Name = "dBtn_live1";
             dBtn_live1.NormalBackColor = Color.White;
@@ -1298,7 +1297,7 @@
             dBtn_stop1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_stop1.HoverForeColor = Color.White;
             dBtn_stop1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_stop1.Location = new Point(3, 147);
+            dBtn_stop1.Location = new Point(3, 138);
             dBtn_stop1.MinimumSize = new Size(100, 50);
             dBtn_stop1.Name = "dBtn_stop1";
             dBtn_stop1.NormalBackColor = Color.White;
@@ -1321,7 +1320,7 @@
             dBtn_snap1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_snap1.HoverForeColor = Color.White;
             dBtn_snap1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_snap1.Location = new Point(3, 195);
+            dBtn_snap1.Location = new Point(3, 183);
             dBtn_snap1.MinimumSize = new Size(100, 50);
             dBtn_snap1.Name = "dBtn_snap1";
             dBtn_snap1.NormalBackColor = Color.White;
@@ -1344,7 +1343,7 @@
             dBtn_Process1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_Process1.HoverForeColor = Color.White;
             dBtn_Process1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_Process1.Location = new Point(3, 243);
+            dBtn_Process1.Location = new Point(3, 228);
             dBtn_Process1.MinimumSize = new Size(100, 50);
             dBtn_Process1.Name = "dBtn_Process1";
             dBtn_Process1.NormalBackColor = Color.White;
@@ -1367,7 +1366,7 @@
             dBtn_Measure1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_Measure1.HoverForeColor = Color.White;
             dBtn_Measure1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_Measure1.Location = new Point(3, 291);
+            dBtn_Measure1.Location = new Point(3, 273);
             dBtn_Measure1.MinimumSize = new Size(100, 50);
             dBtn_Measure1.Name = "dBtn_Measure1";
             dBtn_Measure1.NormalBackColor = Color.White;
