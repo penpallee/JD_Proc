@@ -187,7 +187,7 @@
             nightForm1.MinimumSize = new Size(100, 42);
             nightForm1.Name = "nightForm1";
             nightForm1.Padding = new Padding(0, 31, 0, 0);
-            nightForm1.Size = new Size(1920, 1032);
+            nightForm1.Size = new Size(1904, 1032);
             nightForm1.TabIndex = 0;
             nightForm1.Text = "JD Measuring system";
             nightForm1.TextAlignment = ReaLTaiizor.Forms.NightForm.Alignment.Left;
@@ -214,13 +214,13 @@
             // 
             // thunderLabel1
             // 
+            thunderLabel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             thunderLabel1.BackColor = Color.Transparent;
             thunderLabel1.ForeColor = Color.WhiteSmoke;
             thunderLabel1.Location = new Point(1586, 18);
             thunderLabel1.Name = "thunderLabel1";
             thunderLabel1.Size = new Size(327, 16);
             thunderLabel1.TabIndex = 0;
-            thunderLabel1.Text = "Copyriught 2024. DPS Vision Corp. all right Ver 0.1 Beta";
             // 
             // panel3
             // 
@@ -260,7 +260,8 @@
             tableLayoutPanel_Auto.Controls.Add(pictureBox1_Auto, 0, 0);
             tableLayoutPanel_Auto.Controls.Add(parrotLineGraph1, 0, 1);
             tableLayoutPanel_Auto.Controls.Add(parrotLineGraph2, 1, 1);
-            tableLayoutPanel_Auto.Location = new Point(395, 491);
+            tableLayoutPanel_Auto.Dock = DockStyle.Fill;
+            tableLayoutPanel_Auto.Location = new Point(0, 0);
             tableLayoutPanel_Auto.Name = "tableLayoutPanel_Auto";
             tableLayoutPanel_Auto.RowCount = 2;
             tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
@@ -1215,7 +1216,7 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(107, 340);
+            tableLayoutPanel3.Size = new Size(107, 351);
             tableLayoutPanel3.TabIndex = 4;
             // 
             // dBtn_load1
@@ -1250,7 +1251,7 @@
             dBtn_imageSave1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_imageSave1.HoverForeColor = Color.White;
             dBtn_imageSave1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_imageSave1.Location = new Point(3, 48);
+            dBtn_imageSave1.Location = new Point(3, 50);
             dBtn_imageSave1.MinimumSize = new Size(100, 50);
             dBtn_imageSave1.Name = "dBtn_imageSave1";
             dBtn_imageSave1.NormalBackColor = Color.White;
@@ -1273,7 +1274,7 @@
             dBtn_live1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_live1.HoverForeColor = Color.White;
             dBtn_live1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_live1.Location = new Point(3, 93);
+            dBtn_live1.Location = new Point(3, 97);
             dBtn_live1.MinimumSize = new Size(100, 50);
             dBtn_live1.Name = "dBtn_live1";
             dBtn_live1.NormalBackColor = Color.White;
@@ -1297,7 +1298,7 @@
             dBtn_stop1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_stop1.HoverForeColor = Color.White;
             dBtn_stop1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_stop1.Location = new Point(3, 138);
+            dBtn_stop1.Location = new Point(3, 144);
             dBtn_stop1.MinimumSize = new Size(100, 50);
             dBtn_stop1.Name = "dBtn_stop1";
             dBtn_stop1.NormalBackColor = Color.White;
@@ -1320,7 +1321,7 @@
             dBtn_snap1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_snap1.HoverForeColor = Color.White;
             dBtn_snap1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_snap1.Location = new Point(3, 183);
+            dBtn_snap1.Location = new Point(3, 191);
             dBtn_snap1.MinimumSize = new Size(100, 50);
             dBtn_snap1.Name = "dBtn_snap1";
             dBtn_snap1.NormalBackColor = Color.White;
@@ -1343,7 +1344,7 @@
             dBtn_Process1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_Process1.HoverForeColor = Color.White;
             dBtn_Process1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_Process1.Location = new Point(3, 228);
+            dBtn_Process1.Location = new Point(3, 238);
             dBtn_Process1.MinimumSize = new Size(100, 50);
             dBtn_Process1.Name = "dBtn_Process1";
             dBtn_Process1.NormalBackColor = Color.White;
@@ -1366,7 +1367,7 @@
             dBtn_Measure1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_Measure1.HoverForeColor = Color.White;
             dBtn_Measure1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_Measure1.Location = new Point(3, 273);
+            dBtn_Measure1.Location = new Point(3, 285);
             dBtn_Measure1.MinimumSize = new Size(100, 50);
             dBtn_Measure1.Name = "dBtn_Measure1";
             dBtn_Measure1.NormalBackColor = Color.White;
@@ -1633,7 +1634,7 @@
             thunderControlBox1.BackColor = Color.Transparent;
             thunderControlBox1.DefaultLocation = true;
             thunderControlBox1.ForeColor = Color.Olive;
-            thunderControlBox1.Location = new Point(1842, 3);
+            thunderControlBox1.Location = new Point(1826, 3);
             thunderControlBox1.Name = "thunderControlBox1";
             thunderControlBox1.Size = new Size(75, 23);
             thunderControlBox1.TabIndex = 0;
@@ -1643,16 +1644,16 @@
             // 
             AutoScaleMode = AutoScaleMode.Inherit;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1920, 1032);
+            ClientSize = new Size(1904, 1032);
             Controls.Add(nightForm1);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MaximumSize = new Size(1920, 1080);
+            MinimumSize = new Size(960, 540);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             TransparencyKey = Color.Fuchsia;
-            WindowState = FormWindowState.Maximized;
             FormClosing += Form1_FormClosing;
             nightForm1.ResumeLayout(false);
             panel2.ResumeLayout(false);

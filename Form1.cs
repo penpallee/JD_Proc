@@ -115,8 +115,6 @@ namespace JD_Proc
         System.Threading.Timer _HeartbitTimer;
 
         object lockObject = new object();
-
-        double[] avg_double = new double[6] { 0, 0, 0, 0, 0, 0 };
         #endregion
 
         #region 생성자
@@ -139,7 +137,7 @@ namespace JD_Proc
 
             if (_MODE == "auto")
             {
-                Connect("generic1.xml", 1);
+                //Connect("generic1.xml", 1);
 #if JD
                 Connect("generic2.xml", 2);
                 _MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
@@ -771,20 +769,6 @@ namespace JD_Proc
         private void dBtn_Measure2_Click(object sender, EventArgs e)
         {
             measureFunc2(sender, e);
-        }
-
-
-        public void Delay(int ms)
-        {
-            DateTime dateTimeNow = DateTime.Now;
-            TimeSpan duration = new TimeSpan(0, 0, 0, 0, ms);
-            DateTime dateTimeAdd = dateTimeNow.Add(duration);
-            while (dateTimeAdd >= dateTimeNow)
-            {
-                System.Windows.Forms.Application.DoEvents();
-                dateTimeNow = DateTime.Now;
-            }
-            return;
         }
 
         // 아래 코드는 measure버튼 눌렀을때 사진을 2번찍은 평균값으로 gap데이터를 출력하는 함수이다.
@@ -2035,8 +2019,6 @@ namespace JD_Proc
         }
         #endregion
 
-
-
         #region method - sub pixel 연산
         int GetSubPixel(int value, int nextValue)
         {
@@ -2591,11 +2573,11 @@ namespace JD_Proc
                 double gap_4 = Math.Round(_Data_4_L[i].Count * resolution, 0);
                 double gap_5 = Math.Round(_Data_5_L[i].Count * resolution, 0);
 
-                double subGap_1 = (resolution / (double)_Data_1_L[i].SubPixelValue_up) + (resolution / (double)_Data_1_L[i].SubPixelValue_dw);
-                double subGap_2 = (resolution / (double)_Data_2_L[i].SubPixelValue_up) + (resolution / (double)_Data_2_L[i].SubPixelValue_dw);
-                double subGap_3 = (resolution / (double)_Data_3_L[i].SubPixelValue_up) + (resolution / (double)_Data_3_L[i].SubPixelValue_dw);
-                double subGap_4 = (resolution / (double)_Data_4_L[i].SubPixelValue_up) + (resolution / (double)_Data_4_L[i].SubPixelValue_dw);
-                double subGap_5 = (resolution / (double)_Data_5_L[i].SubPixelValue_up) + (resolution / (double)_Data_5_L[i].SubPixelValue_dw);
+                double subGap_1 = (10 - resolution / (double)_Data_1_L[i].SubPixelValue_up) + (10 - resolution / (double)_Data_1_L[i].SubPixelValue_dw);
+                double subGap_2 = (10 - resolution / (double)_Data_2_L[i].SubPixelValue_up) + (10 - resolution / (double)_Data_2_L[i].SubPixelValue_dw);
+                double subGap_3 = (10 - resolution / (double)_Data_3_L[i].SubPixelValue_up) + (10 - resolution / (double)_Data_3_L[i].SubPixelValue_dw);
+                double subGap_4 = (10 - resolution / (double)_Data_4_L[i].SubPixelValue_up) + (10 - resolution / (double)_Data_4_L[i].SubPixelValue_dw);
+                double subGap_5 = (10 - resolution / (double)_Data_5_L[i].SubPixelValue_up) + (10 - resolution / (double)_Data_5_L[i].SubPixelValue_dw);
 
                 roi1.Add((int)gap_1 + (int)subGap_1);
                 roi2.Add((int)gap_2 + (int)subGap_2);
@@ -2764,16 +2746,16 @@ namespace JD_Proc
                 SettingsService settingService = new SettingsService();
                 double resolution = double.Parse(settingService.Read("resolution", "y_1"));
 
-                //var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                //var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                //var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                //var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                //var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
 
 
                 double totalAVg = avg1 + avg2 + avg3 + avg4 + avg5;
@@ -2930,13 +2912,13 @@ namespace JD_Proc
         #region [method - mesure function]
         private void measureFunc1(object sender, EventArgs e)
         {
-            dBtn_snap1_Click(sender, e);
+            //dBtn_snap1_Click(sender, e);
             dBtn_Process1_Click(sender, e);
         }
 
         private void measureFunc2(object sender, EventArgs e)
         {
-            dBtn_snap2_Click(sender, e);
+            //dBtn_snap2_Click(sender, e);
             dBtn_Process2_Click(sender, e);
         }
         #endregion
