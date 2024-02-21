@@ -54,6 +54,8 @@
             Btn_GridView_Check = new ReaLTaiizor.Controls.Button();
             moonLabel1 = new ReaLTaiizor.Controls.MoonLabel();
             Tbox_GridViewValue = new ReaLTaiizor.Controls.ForeverTextBox();
+            nightLabel1 = new ReaLTaiizor.Controls.NightLabel();
+            nightLabel2 = new ReaLTaiizor.Controls.NightLabel();
             dreamForm1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -267,6 +269,8 @@
             thunderGroupBox4.BodyColorB = Color.FromArgb(30, 30, 30);
             thunderGroupBox4.BodyColorC = Color.FromArgb(46, 46, 46);
             thunderGroupBox4.BodyColorD = Color.FromArgb(50, 55, 58);
+            thunderGroupBox4.Controls.Add(nightLabel2);
+            thunderGroupBox4.Controls.Add(nightLabel1);
             thunderGroupBox4.Controls.Add(Btn_JogMoveValue_Check);
             thunderGroupBox4.Controls.Add(moonLabel2);
             thunderGroupBox4.Controls.Add(Tbox_JogMovingValue);
@@ -288,11 +292,11 @@
             Btn_JogMoveValue_Check.Image = null;
             Btn_JogMoveValue_Check.ImageAlign = ContentAlignment.MiddleLeft;
             Btn_JogMoveValue_Check.InactiveColor = Color.FromArgb(32, 34, 37);
-            Btn_JogMoveValue_Check.Location = new Point(115, 42);
+            Btn_JogMoveValue_Check.Location = new Point(119, 59);
             Btn_JogMoveValue_Check.Name = "Btn_JogMoveValue_Check";
             Btn_JogMoveValue_Check.PressedBorderColor = Color.FromArgb(165, 37, 37);
             Btn_JogMoveValue_Check.PressedColor = Color.FromArgb(165, 37, 37);
-            Btn_JogMoveValue_Check.Size = new Size(81, 29);
+            Btn_JogMoveValue_Check.Size = new Size(77, 29);
             Btn_JogMoveValue_Check.TabIndex = 16;
             Btn_JogMoveValue_Check.Text = "확인";
             Btn_JogMoveValue_Check.TextAlignment = StringAlignment.Center;
@@ -303,7 +307,7 @@
             moonLabel2.AutoSize = true;
             moonLabel2.BackColor = Color.Transparent;
             moonLabel2.ForeColor = Color.Gray;
-            moonLabel2.Location = new Point(74, 49);
+            moonLabel2.Location = new Point(77, 70);
             moonLabel2.Margin = new Padding(2, 0, 2, 0);
             moonLabel2.Name = "moonLabel2";
             moonLabel2.Size = new Size(25, 15);
@@ -318,13 +322,13 @@
             Tbox_JogMovingValue.FocusOnHover = false;
             Tbox_JogMovingValue.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             Tbox_JogMovingValue.ForeColor = Color.FromArgb(192, 192, 192);
-            Tbox_JogMovingValue.Location = new Point(18, 42);
+            Tbox_JogMovingValue.Location = new Point(16, 59);
             Tbox_JogMovingValue.Margin = new Padding(2);
             Tbox_JogMovingValue.MaxLength = 32767;
             Tbox_JogMovingValue.Multiline = false;
             Tbox_JogMovingValue.Name = "Tbox_JogMovingValue";
             Tbox_JogMovingValue.ReadOnly = false;
-            Tbox_JogMovingValue.Size = new Size(56, 29);
+            Tbox_JogMovingValue.Size = new Size(57, 29);
             Tbox_JogMovingValue.TabIndex = 14;
             Tbox_JogMovingValue.TextAlign = HorizontalAlignment.Left;
             Tbox_JogMovingValue.UseSystemPasswordChar = false;
@@ -513,6 +517,30 @@
             Tbox_GridViewValue.TextAlign = HorizontalAlignment.Left;
             Tbox_GridViewValue.UseSystemPasswordChar = false;
             // 
+            // nightLabel1
+            // 
+            nightLabel1.AutoSize = true;
+            nightLabel1.BackColor = Color.Transparent;
+            nightLabel1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            nightLabel1.ForeColor = Color.FromArgb(114, 118, 127);
+            nightLabel1.Location = new Point(18, 33);
+            nightLabel1.Name = "nightLabel1";
+            nightLabel1.Size = new Size(82, 15);
+            nightLabel1.TabIndex = 17;
+            nightLabel1.Text = "Jog 현재위치 :";
+            // 
+            // nightLabel2
+            // 
+            nightLabel2.AutoSize = true;
+            nightLabel2.BackColor = Color.Transparent;
+            nightLabel2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            nightLabel2.ForeColor = Color.FromArgb(114, 118, 127);
+            nightLabel2.Location = new Point(108, 33);
+            nightLabel2.Name = "nightLabel2";
+            nightLabel2.Size = new Size(35, 15);
+            nightLabel2.TabIndex = 18;
+            nightLabel2.Text = "Value";
+            // 
             // AlignSettingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -565,5 +593,7 @@
         private ReaLTaiizor.Controls.MoonLabel moonLabel2;
         private ReaLTaiizor.Controls.ForeverTextBox Tbox_JogMovingValue;
         private ReaLTaiizor.Controls.Button Btn_GridView_Check;
+        private ReaLTaiizor.Controls.NightLabel nightLabel2;
+        private ReaLTaiizor.Controls.NightLabel nightLabel1;
     }
 }

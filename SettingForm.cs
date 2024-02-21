@@ -2,6 +2,7 @@
 using JD_Proc.Log;
 using System.Diagnostics;
 using System.Timers;
+using System.Windows.Forms.VisualStyles;
 using static JD_Proc.Log.LogManager;
 
 namespace JD_Proc
@@ -13,13 +14,13 @@ namespace JD_Proc
         Form1 _form1;
         AlignSettingForm _alignsettingform;
         TempGraphForm _tempgraphform;
+
         #endregion
 
         #region 생성자
         public SettingForm(Form1 form1, AlignSettingForm alignSettingForm, TempGraphForm tempgraphform)
         {
             InitializeComponent();
-
             _form1 = form1;
             _alignsettingform = alignSettingForm;
             _tempgraphform = tempgraphform;
@@ -51,7 +52,7 @@ namespace JD_Proc
 
 
         }
-#endregion
+        #endregion
 
         #region event(PLC Check) Timer
         void PlcCheckTimer(object sender, ElapsedEventArgs e)
@@ -445,6 +446,8 @@ namespace JD_Proc
             _tempgraphform.Location = new Point(this.Location.X, this.Location.Y + this.Height);
             _alignsettingform.Location = new Point(this.Location.X + this.Width, this.Location.Y);
         }
+
+
     }
 }
 

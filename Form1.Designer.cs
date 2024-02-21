@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -59,20 +63,34 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            CheckBox_ROI_L1 = new ReaLTaiizor.Controls.MetroCheckBox();
             nightForm1 = new ReaLTaiizor.Forms.NightForm();
             panel6 = new Panel();
             panel2 = new Panel();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             panel3 = new Panel();
             tableLayoutPanel_Auto = new TableLayoutPanel();
-            pictureBox2_Auto = new PictureBox();
-            pictureBox1_Auto = new PictureBox();
             parrotLineGraph1 = new ReaLTaiizor.Controls.ParrotLineGraph();
             parrotLineGraph2 = new ReaLTaiizor.Controls.ParrotLineGraph();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            pictureBox1_Auto = new PictureBox();
+            dataGridView1 = new DataGridView();
+            tableLayoutPanel6 = new TableLayoutPanel();
+            pictureBox2_Auto = new PictureBox();
+            dataGridView2 = new DataGridView();
+            CheckBox_ROI_L5 = new ReaLTaiizor.Controls.MetroCheckBox();
+            CheckBox_ROI_L4 = new ReaLTaiizor.Controls.MetroCheckBox();
+            CheckBox_ROI_L3 = new ReaLTaiizor.Controls.MetroCheckBox();
+            CheckBox_ROI_L2 = new ReaLTaiizor.Controls.MetroCheckBox();
             dLabel_Ng_L = new ReaLTaiizor.Controls.NightLabel();
             DBtn_jogDown_L = new ReaLTaiizor.Controls.Button();
             DBtn_jogUp_L = new ReaLTaiizor.Controls.Button();
             panel4 = new Panel();
+            CheckBox_ROI_R5 = new ReaLTaiizor.Controls.MetroCheckBox();
+            CheckBox_ROI_R4 = new ReaLTaiizor.Controls.MetroCheckBox();
+            CheckBox_ROI_R3 = new ReaLTaiizor.Controls.MetroCheckBox();
+            CheckBox_ROI_R2 = new ReaLTaiizor.Controls.MetroCheckBox();
+            CheckBox_ROI_R1 = new ReaLTaiizor.Controls.MetroCheckBox();
             dLabel_Ng_R = new ReaLTaiizor.Controls.NightLabel();
             DBtn_jogDown_R = new ReaLTaiizor.Controls.Button();
             DBtn_jogUp_R = new ReaLTaiizor.Controls.Button();
@@ -139,8 +157,12 @@
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             tableLayoutPanel_Auto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2_Auto).BeginInit();
+            tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1_Auto).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2_Auto).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dChart_R_5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dChart_R_4).BeginInit();
@@ -170,6 +192,29 @@
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
+            // 
+            // CheckBox_ROI_L1
+            // 
+            CheckBox_ROI_L1.BackColor = Color.Transparent;
+            CheckBox_ROI_L1.BackgroundColor = Color.White;
+            CheckBox_ROI_L1.BorderColor = Color.FromArgb(155, 155, 155);
+            CheckBox_ROI_L1.Checked = true;
+            CheckBox_ROI_L1.CheckSignColor = Color.FromArgb(65, 177, 225);
+            CheckBox_ROI_L1.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            CheckBox_ROI_L1.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            CheckBox_ROI_L1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            CheckBox_ROI_L1.IsDerivedStyle = true;
+            CheckBox_ROI_L1.Location = new Point(161, 67);
+            CheckBox_ROI_L1.Name = "CheckBox_ROI_L1";
+            CheckBox_ROI_L1.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            CheckBox_ROI_L1.Size = new Size(17, 16);
+            CheckBox_ROI_L1.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            CheckBox_ROI_L1.StyleManager = null;
+            CheckBox_ROI_L1.TabIndex = 36;
+            CheckBox_ROI_L1.Text = "metroCheckBox1";
+            CheckBox_ROI_L1.ThemeAuthor = "Taiizor";
+            CheckBox_ROI_L1.ThemeName = "MetroLight";
+            CheckBox_ROI_L1.CheckedChanged += CheckBox_ROI_L1_CheckedChanged;
             // 
             // nightForm1
             // 
@@ -226,6 +271,11 @@
             // 
             panel3.BackColor = Color.FromArgb(2, 2, 2);
             panel3.Controls.Add(tableLayoutPanel_Auto);
+            panel3.Controls.Add(CheckBox_ROI_L5);
+            panel3.Controls.Add(CheckBox_ROI_L4);
+            panel3.Controls.Add(CheckBox_ROI_L3);
+            panel3.Controls.Add(CheckBox_ROI_L2);
+            panel3.Controls.Add(CheckBox_ROI_L1);
             panel3.Controls.Add(dLabel_Ng_L);
             panel3.Controls.Add(DBtn_jogDown_L);
             panel3.Controls.Add(DBtn_jogUp_L);
@@ -256,12 +306,11 @@
             tableLayoutPanel_Auto.ColumnCount = 2;
             tableLayoutPanel_Auto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_Auto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_Auto.Controls.Add(pictureBox2_Auto, 1, 0);
-            tableLayoutPanel_Auto.Controls.Add(pictureBox1_Auto, 0, 0);
             tableLayoutPanel_Auto.Controls.Add(parrotLineGraph1, 0, 1);
             tableLayoutPanel_Auto.Controls.Add(parrotLineGraph2, 1, 1);
-            tableLayoutPanel_Auto.Dock = DockStyle.Fill;
-            tableLayoutPanel_Auto.Location = new Point(0, 0);
+            tableLayoutPanel_Auto.Controls.Add(tableLayoutPanel5, 0, 0);
+            tableLayoutPanel_Auto.Controls.Add(tableLayoutPanel6, 1, 0);
+            tableLayoutPanel_Auto.Location = new Point(0, 3);
             tableLayoutPanel_Auto.Name = "tableLayoutPanel_Auto";
             tableLayoutPanel_Auto.RowCount = 2;
             tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
@@ -270,26 +319,6 @@
             tableLayoutPanel_Auto.Size = new Size(1920, 940);
             tableLayoutPanel_Auto.TabIndex = 35;
             tableLayoutPanel_Auto.Visible = false;
-            // 
-            // pictureBox2_Auto
-            // 
-            pictureBox2_Auto.Dock = DockStyle.Fill;
-            pictureBox2_Auto.Location = new Point(963, 3);
-            pictureBox2_Auto.Name = "pictureBox2_Auto";
-            pictureBox2_Auto.Size = new Size(954, 558);
-            pictureBox2_Auto.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2_Auto.TabIndex = 1;
-            pictureBox2_Auto.TabStop = false;
-            // 
-            // pictureBox1_Auto
-            // 
-            pictureBox1_Auto.Dock = DockStyle.Fill;
-            pictureBox1_Auto.Location = new Point(3, 3);
-            pictureBox1_Auto.Name = "pictureBox1_Auto";
-            pictureBox1_Auto.Size = new Size(954, 558);
-            pictureBox1_Auto.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1_Auto.TabIndex = 0;
-            pictureBox1_Auto.TabStop = false;
             // 
             // parrotLineGraph1
             // 
@@ -349,6 +378,206 @@
             parrotLineGraph2.TitleAlignment = StringAlignment.Near;
             parrotLineGraph2.VerticalLineColor = Color.DimGray;
             // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 2;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel5.Controls.Add(pictureBox1_Auto, 0, 0);
+            tableLayoutPanel5.Controls.Add(dataGridView1, 1, 0);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(3, 3);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.Size = new Size(954, 558);
+            tableLayoutPanel5.TabIndex = 4;
+            // 
+            // pictureBox1_Auto
+            // 
+            pictureBox1_Auto.Dock = DockStyle.Fill;
+            pictureBox1_Auto.Location = new Point(3, 3);
+            pictureBox1_Auto.Name = "pictureBox1_Auto";
+            pictureBox1_Auto.Size = new Size(804, 552);
+            pictureBox1_Auto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1_Auto.TabIndex = 1;
+            pictureBox1_Auto.TabStop = false;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = Color.DarkGray;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Gray;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Black;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightGray;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = Color.Gray;
+            dataGridView1.Location = new Point(813, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(138, 552);
+            dataGridView1.TabIndex = 2;
+            // 
+            // tableLayoutPanel6
+            // 
+            tableLayoutPanel6.ColumnCount = 2;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel6.Controls.Add(pictureBox2_Auto, 0, 0);
+            tableLayoutPanel6.Controls.Add(dataGridView2, 1, 0);
+            tableLayoutPanel6.Dock = DockStyle.Fill;
+            tableLayoutPanel6.Location = new Point(963, 3);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 1;
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel6.Size = new Size(954, 558);
+            tableLayoutPanel6.TabIndex = 5;
+            // 
+            // pictureBox2_Auto
+            // 
+            pictureBox2_Auto.Dock = DockStyle.Fill;
+            pictureBox2_Auto.Location = new Point(3, 3);
+            pictureBox2_Auto.Name = "pictureBox2_Auto";
+            pictureBox2_Auto.Size = new Size(804, 552);
+            pictureBox2_Auto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2_Auto.TabIndex = 2;
+            pictureBox2_Auto.TabStop = false;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.BackgroundColor = Color.DarkGray;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.Gray;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.Black;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.LightGray;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridView2.Dock = DockStyle.Fill;
+            dataGridView2.EnableHeadersVisualStyles = false;
+            dataGridView2.GridColor = Color.Gray;
+            dataGridView2.Location = new Point(813, 3);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.Size = new Size(138, 552);
+            dataGridView2.TabIndex = 3;
+            // 
+            // CheckBox_ROI_L5
+            // 
+            CheckBox_ROI_L5.BackColor = Color.Transparent;
+            CheckBox_ROI_L5.BackgroundColor = Color.White;
+            CheckBox_ROI_L5.BorderColor = Color.FromArgb(155, 155, 155);
+            CheckBox_ROI_L5.Checked = true;
+            CheckBox_ROI_L5.CheckSignColor = Color.FromArgb(65, 177, 225);
+            CheckBox_ROI_L5.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            CheckBox_ROI_L5.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            CheckBox_ROI_L5.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            CheckBox_ROI_L5.IsDerivedStyle = true;
+            CheckBox_ROI_L5.Location = new Point(161, 237);
+            CheckBox_ROI_L5.Name = "CheckBox_ROI_L5";
+            CheckBox_ROI_L5.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            CheckBox_ROI_L5.Size = new Size(17, 16);
+            CheckBox_ROI_L5.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            CheckBox_ROI_L5.StyleManager = null;
+            CheckBox_ROI_L5.TabIndex = 37;
+            CheckBox_ROI_L5.Text = "metroCheckBox2";
+            CheckBox_ROI_L5.ThemeAuthor = "Taiizor";
+            CheckBox_ROI_L5.ThemeName = "MetroLight";
+            CheckBox_ROI_L5.CheckedChanged += CheckBox_ROI_L5_CheckedChanged;
+            // 
+            // CheckBox_ROI_L4
+            // 
+            CheckBox_ROI_L4.BackColor = Color.Transparent;
+            CheckBox_ROI_L4.BackgroundColor = Color.White;
+            CheckBox_ROI_L4.BorderColor = Color.FromArgb(155, 155, 155);
+            CheckBox_ROI_L4.Checked = true;
+            CheckBox_ROI_L4.CheckSignColor = Color.FromArgb(65, 177, 225);
+            CheckBox_ROI_L4.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            CheckBox_ROI_L4.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            CheckBox_ROI_L4.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            CheckBox_ROI_L4.IsDerivedStyle = true;
+            CheckBox_ROI_L4.Location = new Point(161, 193);
+            CheckBox_ROI_L4.Name = "CheckBox_ROI_L4";
+            CheckBox_ROI_L4.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            CheckBox_ROI_L4.Size = new Size(17, 16);
+            CheckBox_ROI_L4.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            CheckBox_ROI_L4.StyleManager = null;
+            CheckBox_ROI_L4.TabIndex = 37;
+            CheckBox_ROI_L4.Text = "metroCheckBox2";
+            CheckBox_ROI_L4.ThemeAuthor = "Taiizor";
+            CheckBox_ROI_L4.ThemeName = "MetroLight";
+            CheckBox_ROI_L4.CheckedChanged += CheckBox_ROI_L4_CheckedChanged;
+            // 
+            // CheckBox_ROI_L3
+            // 
+            CheckBox_ROI_L3.BackColor = Color.Transparent;
+            CheckBox_ROI_L3.BackgroundColor = Color.White;
+            CheckBox_ROI_L3.BorderColor = Color.FromArgb(155, 155, 155);
+            CheckBox_ROI_L3.Checked = true;
+            CheckBox_ROI_L3.CheckSignColor = Color.FromArgb(65, 177, 225);
+            CheckBox_ROI_L3.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            CheckBox_ROI_L3.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            CheckBox_ROI_L3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            CheckBox_ROI_L3.IsDerivedStyle = true;
+            CheckBox_ROI_L3.Location = new Point(161, 152);
+            CheckBox_ROI_L3.Name = "CheckBox_ROI_L3";
+            CheckBox_ROI_L3.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            CheckBox_ROI_L3.Size = new Size(17, 16);
+            CheckBox_ROI_L3.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            CheckBox_ROI_L3.StyleManager = null;
+            CheckBox_ROI_L3.TabIndex = 37;
+            CheckBox_ROI_L3.Text = "metroCheckBox2";
+            CheckBox_ROI_L3.ThemeAuthor = "Taiizor";
+            CheckBox_ROI_L3.ThemeName = "MetroLight";
+            CheckBox_ROI_L3.CheckedChanged += CheckBox_ROI_L3_CheckedChanged;
+            // 
+            // CheckBox_ROI_L2
+            // 
+            CheckBox_ROI_L2.BackColor = Color.Transparent;
+            CheckBox_ROI_L2.BackgroundColor = Color.White;
+            CheckBox_ROI_L2.BorderColor = Color.FromArgb(155, 155, 155);
+            CheckBox_ROI_L2.Checked = true;
+            CheckBox_ROI_L2.CheckSignColor = Color.FromArgb(65, 177, 225);
+            CheckBox_ROI_L2.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            CheckBox_ROI_L2.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            CheckBox_ROI_L2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            CheckBox_ROI_L2.IsDerivedStyle = true;
+            CheckBox_ROI_L2.Location = new Point(161, 109);
+            CheckBox_ROI_L2.Name = "CheckBox_ROI_L2";
+            CheckBox_ROI_L2.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            CheckBox_ROI_L2.Size = new Size(17, 16);
+            CheckBox_ROI_L2.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            CheckBox_ROI_L2.StyleManager = null;
+            CheckBox_ROI_L2.TabIndex = 37;
+            CheckBox_ROI_L2.Text = "metroCheckBox2";
+            CheckBox_ROI_L2.ThemeAuthor = "Taiizor";
+            CheckBox_ROI_L2.ThemeName = "MetroLight";
+            CheckBox_ROI_L2.CheckedChanged += CheckBox_ROI_L2_CheckedChanged;
+            // 
             // dLabel_Ng_L
             // 
             dLabel_Ng_L.AutoSize = true;
@@ -404,6 +633,11 @@
             // panel4
             // 
             panel4.BackColor = Color.Black;
+            panel4.Controls.Add(CheckBox_ROI_R5);
+            panel4.Controls.Add(CheckBox_ROI_R4);
+            panel4.Controls.Add(CheckBox_ROI_R3);
+            panel4.Controls.Add(CheckBox_ROI_R2);
+            panel4.Controls.Add(CheckBox_ROI_R1);
             panel4.Controls.Add(dLabel_Ng_R);
             panel4.Controls.Add(DBtn_jogDown_R);
             panel4.Controls.Add(DBtn_jogUp_R);
@@ -428,6 +662,121 @@
             panel4.Size = new Size(960, 950);
             panel4.TabIndex = 9;
             panel4.Paint += panel4_Paint;
+            // 
+            // CheckBox_ROI_R5
+            // 
+            CheckBox_ROI_R5.BackColor = Color.Transparent;
+            CheckBox_ROI_R5.BackgroundColor = Color.White;
+            CheckBox_ROI_R5.BorderColor = Color.FromArgb(155, 155, 155);
+            CheckBox_ROI_R5.Checked = true;
+            CheckBox_ROI_R5.CheckSignColor = Color.FromArgb(65, 177, 225);
+            CheckBox_ROI_R5.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            CheckBox_ROI_R5.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            CheckBox_ROI_R5.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            CheckBox_ROI_R5.IsDerivedStyle = true;
+            CheckBox_ROI_R5.Location = new Point(153, 236);
+            CheckBox_ROI_R5.Name = "CheckBox_ROI_R5";
+            CheckBox_ROI_R5.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            CheckBox_ROI_R5.Size = new Size(17, 16);
+            CheckBox_ROI_R5.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            CheckBox_ROI_R5.StyleManager = null;
+            CheckBox_ROI_R5.TabIndex = 39;
+            CheckBox_ROI_R5.Text = "metroCheckBox2";
+            CheckBox_ROI_R5.ThemeAuthor = "Taiizor";
+            CheckBox_ROI_R5.ThemeName = "MetroLight";
+            CheckBox_ROI_R5.CheckedChanged += CheckBox_ROI_R5_CheckedChanged;
+            // 
+            // CheckBox_ROI_R4
+            // 
+            CheckBox_ROI_R4.BackColor = Color.Transparent;
+            CheckBox_ROI_R4.BackgroundColor = Color.White;
+            CheckBox_ROI_R4.BorderColor = Color.FromArgb(155, 155, 155);
+            CheckBox_ROI_R4.Checked = true;
+            CheckBox_ROI_R4.CheckSignColor = Color.FromArgb(65, 177, 225);
+            CheckBox_ROI_R4.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            CheckBox_ROI_R4.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            CheckBox_ROI_R4.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            CheckBox_ROI_R4.IsDerivedStyle = true;
+            CheckBox_ROI_R4.Location = new Point(153, 192);
+            CheckBox_ROI_R4.Name = "CheckBox_ROI_R4";
+            CheckBox_ROI_R4.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            CheckBox_ROI_R4.Size = new Size(17, 16);
+            CheckBox_ROI_R4.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            CheckBox_ROI_R4.StyleManager = null;
+            CheckBox_ROI_R4.TabIndex = 40;
+            CheckBox_ROI_R4.Text = "metroCheckBox2";
+            CheckBox_ROI_R4.ThemeAuthor = "Taiizor";
+            CheckBox_ROI_R4.ThemeName = "MetroLight";
+            CheckBox_ROI_R4.CheckedChanged += CheckBox_ROI_R4_CheckedChanged;
+            // 
+            // CheckBox_ROI_R3
+            // 
+            CheckBox_ROI_R3.BackColor = Color.Transparent;
+            CheckBox_ROI_R3.BackgroundColor = Color.White;
+            CheckBox_ROI_R3.BorderColor = Color.FromArgb(155, 155, 155);
+            CheckBox_ROI_R3.Checked = true;
+            CheckBox_ROI_R3.CheckSignColor = Color.FromArgb(65, 177, 225);
+            CheckBox_ROI_R3.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            CheckBox_ROI_R3.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            CheckBox_ROI_R3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            CheckBox_ROI_R3.IsDerivedStyle = true;
+            CheckBox_ROI_R3.Location = new Point(153, 151);
+            CheckBox_ROI_R3.Name = "CheckBox_ROI_R3";
+            CheckBox_ROI_R3.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            CheckBox_ROI_R3.Size = new Size(17, 16);
+            CheckBox_ROI_R3.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            CheckBox_ROI_R3.StyleManager = null;
+            CheckBox_ROI_R3.TabIndex = 41;
+            CheckBox_ROI_R3.Text = "metroCheckBox2";
+            CheckBox_ROI_R3.ThemeAuthor = "Taiizor";
+            CheckBox_ROI_R3.ThemeName = "MetroLight";
+            CheckBox_ROI_R3.CheckedChanged += CheckBox_ROI_R3_CheckedChanged;
+            // 
+            // CheckBox_ROI_R2
+            // 
+            CheckBox_ROI_R2.BackColor = Color.Transparent;
+            CheckBox_ROI_R2.BackgroundColor = Color.White;
+            CheckBox_ROI_R2.BorderColor = Color.FromArgb(155, 155, 155);
+            CheckBox_ROI_R2.Checked = true;
+            CheckBox_ROI_R2.CheckSignColor = Color.FromArgb(65, 177, 225);
+            CheckBox_ROI_R2.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            CheckBox_ROI_R2.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            CheckBox_ROI_R2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            CheckBox_ROI_R2.IsDerivedStyle = true;
+            CheckBox_ROI_R2.Location = new Point(153, 108);
+            CheckBox_ROI_R2.Name = "CheckBox_ROI_R2";
+            CheckBox_ROI_R2.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            CheckBox_ROI_R2.Size = new Size(17, 16);
+            CheckBox_ROI_R2.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            CheckBox_ROI_R2.StyleManager = null;
+            CheckBox_ROI_R2.TabIndex = 42;
+            CheckBox_ROI_R2.Text = "metroCheckBox2";
+            CheckBox_ROI_R2.ThemeAuthor = "Taiizor";
+            CheckBox_ROI_R2.ThemeName = "MetroLight";
+            CheckBox_ROI_R2.CheckedChanged += CheckBox_ROI_R2_CheckedChanged;
+            // 
+            // CheckBox_ROI_R1
+            // 
+            CheckBox_ROI_R1.BackColor = Color.Transparent;
+            CheckBox_ROI_R1.BackgroundColor = Color.White;
+            CheckBox_ROI_R1.BorderColor = Color.FromArgb(155, 155, 155);
+            CheckBox_ROI_R1.Checked = true;
+            CheckBox_ROI_R1.CheckSignColor = Color.FromArgb(65, 177, 225);
+            CheckBox_ROI_R1.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            CheckBox_ROI_R1.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            CheckBox_ROI_R1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            CheckBox_ROI_R1.IsDerivedStyle = true;
+            CheckBox_ROI_R1.Location = new Point(153, 66);
+            CheckBox_ROI_R1.Name = "CheckBox_ROI_R1";
+            CheckBox_ROI_R1.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            CheckBox_ROI_R1.Size = new Size(17, 16);
+            CheckBox_ROI_R1.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            CheckBox_ROI_R1.StyleManager = null;
+            CheckBox_ROI_R1.TabIndex = 38;
+            CheckBox_ROI_R1.Text = "metroCheckBox1";
+            CheckBox_ROI_R1.ThemeAuthor = "Taiizor";
+            CheckBox_ROI_R1.ThemeName = "MetroLight";
+            CheckBox_ROI_R1.CheckedChanged += CheckBox_ROI_R1_CheckedChanged;
             // 
             // dLabel_Ng_R
             // 
@@ -1660,8 +2009,12 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             tableLayoutPanel_Auto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2_Auto).EndInit();
+            tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1_Auto).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tableLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2_Auto).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dChart_R_5).EndInit();
@@ -1767,11 +2120,25 @@
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel1;
         private Panel panel6;
         private TableLayoutPanel tableLayoutPanel_Auto;
-        private PictureBox pictureBox2_Auto;
-        private PictureBox pictureBox1_Auto;
         private ReaLTaiizor.Controls.ParrotLineGraph parrotLineGraph1;
         private ReaLTaiizor.Controls.ParrotLineGraph parrotLineGraph2;
         private ReaLTaiizor.Controls.NightButton dBtn_Measure2;
         private ReaLTaiizor.Controls.NightButton dBtn_Measure1;
+        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L5;
+        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L4;
+        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L3;
+        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L2;
+        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L1;
+        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_R5;
+        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_R4;
+        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_R3;
+        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_R2;
+        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_R1;
+        private TableLayoutPanel tableLayoutPanel5;
+        private PictureBox pictureBox1_Auto;
+        private TableLayoutPanel tableLayoutPanel6;
+        private PictureBox pictureBox2_Auto;
+        private DataGridView dataGridView1;
+        private DataGridView dataGridView2;
     }
 }

@@ -11,8 +11,11 @@ using JD_Proc.ICam;
 using JD_Proc.Lock;
 using JD_Proc.Log;
 using JD_Proc.Service;
+using System.Data;
 using System.Diagnostics;
+using System.Runtime.Intrinsics.X86;
 using System.Timers;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static JD_Proc.Log.LogManager;
 
@@ -96,6 +99,9 @@ namespace JD_Proc
         System.Windows.Forms.Button _RIGHT_ROI_BTN_4;
         System.Windows.Forms.Button _RIGHT_ROI_BTN_5;
 
+        DataTable dataTable_L = new DataTable();
+        DataTable dataTable_R = new DataTable();
+
         Rockey2 rockey;
 
         string state = "manual";
@@ -115,6 +121,10 @@ namespace JD_Proc
         System.Threading.Timer _HeartbitTimer;
 
         object lockObject = new object();
+
+        bool[] isCheckboxROI_L = new bool[5];
+        bool[] isCheckboxROI_R = new bool[5];
+
         #endregion
 
         #region 생성자
@@ -131,9 +141,21 @@ namespace JD_Proc
 
             Service.SettingsService service = new Service.SettingsService();
 
+
             //카메라 연결
             _MODE = service.Read("MODE", "MODE");
 
+            isCheckboxROI_L[0] = CheckBox_ROI_L1.Checked;
+            isCheckboxROI_L[1] = CheckBox_ROI_L2.Checked;
+            isCheckboxROI_L[2] = CheckBox_ROI_L3.Checked;
+            isCheckboxROI_L[3] = CheckBox_ROI_L4.Checked;
+            isCheckboxROI_L[4] = CheckBox_ROI_L5.Checked;
+
+            isCheckboxROI_R[0] = CheckBox_ROI_L1.Checked;
+            isCheckboxROI_R[1] = CheckBox_ROI_L2.Checked;
+            isCheckboxROI_R[2] = CheckBox_ROI_L3.Checked;
+            isCheckboxROI_R[3] = CheckBox_ROI_L4.Checked;
+            isCheckboxROI_R[4] = CheckBox_ROI_L5.Checked;
 
             if (_MODE == "auto")
             {
@@ -175,7 +197,7 @@ namespace JD_Proc
 
             InitChartDesign();
 
-            _AutoTimer.Interval = 3000;
+            _AutoTimer.Interval = 500;
             _AutoTimer.Elapsed += new ElapsedEventHandler(AutoTimer);
 
 #if JD
@@ -209,6 +231,22 @@ namespace JD_Proc
         #region event(auto) - Timer
         void AutoTimer(object sender, ElapsedEventArgs e)
         {
+#if !JD
+            this.BeginInvoke((MethodInvoker)(() => {
+                if (dataTable_L.Rows.Count > 20)
+                {
+                    dataTable_L.Rows.RemoveAt(0);
+                    dataTable_R.Rows.RemoveAt(0);
+                }
+                double avgValue = new Random().NextDouble() * 100;
+                dataTable_L.Rows.Add(avgValue);
+                dataTable_R.Rows.Add(avgValue);
+
+                dataGridView1.Refresh();
+                dataGridView2.Refresh();
+            }));
+#endif
+
 #if JD
 
             bool PLC_AUTO = false;
@@ -324,6 +362,10 @@ namespace JD_Proc
                 dLable_tmp1.Text = Math.Round(mean, 1).ToString();
 
             }));
+            _TempGraphform.BeginInvoke((MethodInvoker)(() =>
+            {
+                parrotLineGraph1.Text = "1";
+            }));
         }
 
         void AutoSnap_R()
@@ -390,8 +432,15 @@ namespace JD_Proc
 
                 gapDistAvg_L = (int)(WriteGapAvg("cam1", true));
 
+                
+
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
+                    if (dataTable_L.Rows.Count > 20)
+                    {
+                        dataTable_L.Rows.RemoveAt(0);
+                    }
+                    dataTable_L.Rows.Add(gapDistAvg_L);   // Automode에서 data gridview에 gapdata를 뿌려주는 코드
                     dLabel_Ng_L.ForeColor = Color.Lime;
                     dLabel_Ng_L.Text = "OK - " + DateTime.Now.ToString("HH:mm:ss");
                 }));
@@ -451,8 +500,16 @@ namespace JD_Proc
                 DrawChart_R(true);
 
                 gapDistAvg_R = (int)(WriteGapAvg("cam2", true));
+
+
+
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
+                    if (dataTable_R.Rows.Count > 20)
+                    {
+                        dataTable_R.Rows.RemoveAt(0);
+                    }
+                    dataTable_R.Rows.Add(gapDistAvg_R);   // Automode에서 data gridview에 gapdata를 뿌려주는 코드
                     dLabel_Ng_R.ForeColor = Color.Lime;
                     dLabel_Ng_R.Text = "OK - " + DateTime.Now.ToString("HH:mm:ss");
                 }));
@@ -592,6 +649,12 @@ namespace JD_Proc
                 dBtn_settings.Enabled = false;
                 tableLayoutPanel_Auto.Visible = true;
 
+                dataTable_L.Columns.Add("Average", typeof(double));
+                dataGridView1.DataSource = dataTable_L;
+
+                dataTable_R.Columns.Add("Average", typeof(double));
+                dataGridView2.DataSource = dataTable_R;
+
                 _AutoTimer.Start();
             }
             else if (state == "auto")
@@ -616,6 +679,13 @@ namespace JD_Proc
                 dBtn_Process2.Enabled = true;
                 dBtn_settings.Enabled = true;
                 tableLayoutPanel_Auto.Visible = false;
+
+                dataTable_L.Columns.Clear();
+                dataTable_R.Columns.Clear();
+                dataTable_L.Rows.Clear();
+                dataTable_R.Rows.Clear();
+                dataGridView1.DataSource = null;
+                dataGridView2.DataSource = null;
 
                 _AutoTimer.Stop();
             }
@@ -1197,6 +1267,67 @@ namespace JD_Proc
 
             //rockey.Rockey_Closing();
 
+        }
+        #endregion
+
+        #region [event - checkboxchagned]
+        private void CheckBox_ROI_L1_CheckedChanged(object sender)
+        {
+            if (CheckBox_ROI_L1.Checked) isCheckboxROI_L[0] = true;
+            else isCheckboxROI_L[0] = false;
+        }
+
+        private void CheckBox_ROI_L2_CheckedChanged(object sender)
+        {
+            if (CheckBox_ROI_L2.Checked) isCheckboxROI_L[1] = true;
+            else isCheckboxROI_L[1] = false;
+        }
+
+        private void CheckBox_ROI_L3_CheckedChanged(object sender)
+        {
+            if (CheckBox_ROI_L3.Checked) isCheckboxROI_L[2] = true;
+            else isCheckboxROI_L[2] = false;
+        }
+
+        private void CheckBox_ROI_L4_CheckedChanged(object sender)
+        {
+            if (CheckBox_ROI_L4.Checked) isCheckboxROI_L[3] = true;
+            else isCheckboxROI_L[3] = false;
+        }
+
+        private void CheckBox_ROI_L5_CheckedChanged(object sender)
+        {
+            if (CheckBox_ROI_L5.Checked) isCheckboxROI_L[4] = true;
+            else isCheckboxROI_L[4] = false;
+        }
+        private void CheckBox_ROI_R1_CheckedChanged(object sender)
+        {
+            if (CheckBox_ROI_R1.Checked) isCheckboxROI_R[0] = true;
+            else isCheckboxROI_R[0] = false;
+        }
+
+        private void CheckBox_ROI_R2_CheckedChanged(object sender)
+        {
+            if (CheckBox_ROI_R2.Checked) isCheckboxROI_R[1] = true;
+            else isCheckboxROI_R[1] = false;
+        }
+
+        private void CheckBox_ROI_R3_CheckedChanged(object sender)
+        {
+            if (CheckBox_ROI_R3.Checked) isCheckboxROI_R[2] = true;
+            else isCheckboxROI_R[2] = false;
+        }
+
+        private void CheckBox_ROI_R4_CheckedChanged(object sender)
+        {
+            if (CheckBox_ROI_R4.Checked) isCheckboxROI_R[3] = true;
+            else isCheckboxROI_R[3] = false;
+        }
+
+        private void CheckBox_ROI_R5_CheckedChanged(object sender)
+        {
+            if (CheckBox_ROI_R5.Checked) isCheckboxROI_R[4] = true;
+            else isCheckboxROI_R[4] = false;
         }
         #endregion
 
@@ -2573,11 +2704,11 @@ namespace JD_Proc
                 double gap_4 = Math.Round(_Data_4_L[i].Count * resolution, 0);
                 double gap_5 = Math.Round(_Data_5_L[i].Count * resolution, 0);
 
-                double subGap_1 = (10 - resolution / (double)_Data_1_L[i].SubPixelValue_up) + (10 - resolution / (double)_Data_1_L[i].SubPixelValue_dw);
-                double subGap_2 = (10 - resolution / (double)_Data_2_L[i].SubPixelValue_up) + (10 - resolution / (double)_Data_2_L[i].SubPixelValue_dw);
-                double subGap_3 = (10 - resolution / (double)_Data_3_L[i].SubPixelValue_up) + (10 - resolution / (double)_Data_3_L[i].SubPixelValue_dw);
-                double subGap_4 = (10 - resolution / (double)_Data_4_L[i].SubPixelValue_up) + (10 - resolution / (double)_Data_4_L[i].SubPixelValue_dw);
-                double subGap_5 = (10 - resolution / (double)_Data_5_L[i].SubPixelValue_up) + (10 - resolution / (double)_Data_5_L[i].SubPixelValue_dw);
+                double subGap_1 = (resolution / (10 - (double)_Data_1_L[i].SubPixelValue_up)) + (resolution / (10 - (double)_Data_1_L[i].SubPixelValue_dw));
+                double subGap_2 = (resolution / (10 - (double)_Data_2_L[i].SubPixelValue_up)) + (resolution / (10 - (double)_Data_2_L[i].SubPixelValue_dw));
+                double subGap_3 = (resolution / (10 - (double)_Data_3_L[i].SubPixelValue_up)) + (resolution / (10 - (double)_Data_3_L[i].SubPixelValue_dw));
+                double subGap_4 = (resolution / (10 - (double)_Data_4_L[i].SubPixelValue_up)) + (resolution / (10 - (double)_Data_4_L[i].SubPixelValue_dw));
+                double subGap_5 = (resolution / (10 - (double)_Data_5_L[i].SubPixelValue_up)) + (resolution / (10 - (double)_Data_5_L[i].SubPixelValue_dw));
 
                 roi1.Add((int)gap_1 + (int)subGap_1);
                 roi2.Add((int)gap_2 + (int)subGap_2);
@@ -2678,11 +2809,11 @@ namespace JD_Proc
                 double gap_4 = Math.Round(_Data_4_R[i].Count * resolution, 0);
                 double gap_5 = Math.Round(_Data_5_R[i].Count * resolution, 0);
 
-                double subGap_1 = (resolution / (double)_Data_1_R[i].SubPixelValue_up) + (resolution / (double)_Data_1_R[i].SubPixelValue_dw);
-                double subGap_2 = (resolution / (double)_Data_2_R[i].SubPixelValue_up) + (resolution / (double)_Data_2_R[i].SubPixelValue_dw);
-                double subGap_3 = (resolution / (double)_Data_3_R[i].SubPixelValue_up) + (resolution / (double)_Data_3_R[i].SubPixelValue_dw);
-                double subGap_4 = (resolution / (double)_Data_4_R[i].SubPixelValue_up) + (resolution / (double)_Data_4_R[i].SubPixelValue_dw);
-                double subGap_5 = (resolution / (double)_Data_5_R[i].SubPixelValue_up) + (resolution / (double)_Data_5_R[i].SubPixelValue_dw);
+                double subGap_1 = (resolution / (10 - (double)_Data_1_R[i].SubPixelValue_up)) + (resolution / (10 - (double)_Data_1_R[i].SubPixelValue_dw));
+                double subGap_2 = (resolution / (10 - (double)_Data_2_R[i].SubPixelValue_up)) + (resolution / (10 - (double)_Data_2_R[i].SubPixelValue_dw));
+                double subGap_3 = (resolution / (10 - (double)_Data_3_R[i].SubPixelValue_up)) + (resolution / (10 - (double)_Data_3_R[i].SubPixelValue_dw));
+                double subGap_4 = (resolution / (10 - (double)_Data_4_R[i].SubPixelValue_up)) + (resolution / (10 - (double)_Data_4_R[i].SubPixelValue_dw));
+                double subGap_5 = (resolution / (10 - (double)_Data_5_R[i].SubPixelValue_up)) + (resolution / (10 - (double)_Data_5_R[i].SubPixelValue_dw));
 
                 roi1.Add((int)gap_1 + (int)subGap_1);
                 roi2.Add((int)gap_2 + (int)subGap_2);
@@ -2745,28 +2876,36 @@ namespace JD_Proc
             {
                 SettingsService settingService = new SettingsService();
                 double resolution = double.Parse(settingService.Read("resolution", "y_1"));
+                List<double> avg = new List<double>() { 0, 0, 0, 0, 0 };
 
-                var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                //var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                //var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                //var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                //var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                //var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+                //var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
+
+                avg[0] = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                avg[1] = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                avg[2] = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                avg[3] = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                avg[4] = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
 
 
-                double totalAVg = avg1 + avg2 + avg3 + avg4 + avg5;
-                totalAVg = Math.Round(totalAVg / 5, 2);
+                //double totalAVg = avg1 + avg2 + avg3 + avg4 + avg5;
+                double totalAVg = isIncludeROI(isCheckboxROI_L[0], avg[0]) +
+                    isIncludeROI(isCheckboxROI_L[1], avg[1]) +
+                    isIncludeROI(isCheckboxROI_L[2], avg[2]) +
+                    isIncludeROI(isCheckboxROI_L[3], avg[3]) +
+                    isIncludeROI(isCheckboxROI_L[4], avg[4]);
+
+                totalAVg = Math.Round(totalAVg / getNumberIncludeROIAverage(isCheckboxROI_L), 2);
 
                 string reesult = "GAP 평균 \r\n" + "\r\n" +
-                                 "LEFT_1 : " + avg1.ToString() + "\r\n" + "\r\n" +
-                                 "LEFT_2 : " + avg2.ToString() + "\r\n" + "\r\n" +
-                                 "LEFT_3 : " + avg3.ToString() + "\r\n" + "\r\n" +
-                                 "LEFT_4 : " + avg4.ToString() + "\r\n" + "\r\n" +
-                                 "LEFT_5 : " + avg5.ToString() + "\r\n" + "\r\n" + "\r\n" +
+                                 "LEFT_1 : " + avg[0].ToString() + "\r\n" + "\r\n" +
+                                 "LEFT_2 : " + avg[1].ToString() + "\r\n" + "\r\n" +
+                                 "LEFT_3 : " + avg[2].ToString() + "\r\n" + "\r\n" +
+                                 "LEFT_4 : " + avg[3].ToString() + "\r\n" + "\r\n" +
+                                 "LEFT_5 : " + avg[4].ToString() + "\r\n" + "\r\n" + "\r\n" +
                                  "전체평균 : " + totalAVg;
 
                 if (isThread == true)
@@ -2787,27 +2926,33 @@ namespace JD_Proc
             {
                 SettingsService settingService = new SettingsService();
                 double resolution = double.Parse(settingService.Read("resolution", "y_2"));
+                List<double> avg = new List<double>() { 0, 0, 0, 0, 0 };
 
                 //var avg1 = Math.Round(_Data_1_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
                 //var avg2 = Math.Round(_Data_2_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
                 //var avg3 = Math.Round(_Data_3_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
                 //var avg4 = Math.Round(_Data_4_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
                 //var avg5 = Math.Round(_Data_5_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                var avg1 = Math.Round(_Data_1_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                var avg2 = Math.Round(_Data_2_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                var avg3 = Math.Round(_Data_3_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                var avg4 = Math.Round(_Data_4_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
-                var avg5 = Math.Round(_Data_5_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                avg[0] = Math.Round(_Data_1_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                avg[1] = Math.Round(_Data_2_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                avg[2] = Math.Round(_Data_3_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                avg[3] = Math.Round(_Data_4_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
+                avg[4] = Math.Round(_Data_5_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
 
-                double totalAVg = avg1 + avg2 + avg3 + avg4 + avg5;
-                totalAVg = Math.Round(totalAVg / 5, 2);
+                double totalAVg = isIncludeROI(isCheckboxROI_R[0], avg[0]) +
+                    isIncludeROI(isCheckboxROI_R[1], avg[1]) +
+                    isIncludeROI(isCheckboxROI_R[2], avg[2]) +
+                    isIncludeROI(isCheckboxROI_R[3], avg[3]) +
+                    isIncludeROI(isCheckboxROI_R[4], avg[4]);
+
+                totalAVg = Math.Round(totalAVg / getNumberIncludeROIAverage(isCheckboxROI_R), 2);
 
                 string reesult = "GAP 평균 \r\n" + "\r\n" +
-                                 "RIGHT_1 : " + avg1.ToString() + "\r\n" + "\r\n" +
-                                 "RIGHT_2 : " + avg2.ToString() + "\r\n" + "\r\n" +
-                                 "RIGHT_3 : " + avg3.ToString() + "\r\n" + "\r\n" +
-                                 "RIGHT_4 : " + avg4.ToString() + "\r\n" + "\r\n" +
-                                 "RIGHT_5 : " + avg5.ToString() + "\r\n" + "\r\n" + "\r\n" +
+                                 "LEFT_1 : " + avg[0].ToString() + "\r\n" + "\r\n" +
+                                 "LEFT_2 : " + avg[1].ToString() + "\r\n" + "\r\n" +
+                                 "LEFT_3 : " + avg[2].ToString() + "\r\n" + "\r\n" +
+                                 "LEFT_4 : " + avg[3].ToString() + "\r\n" + "\r\n" +
+                                 "LEFT_5 : " + avg[4].ToString() + "\r\n" + "\r\n" + "\r\n" +
                                  "전체평균 : " + totalAVg;
 
                 if (isThread == true)
@@ -2923,6 +3068,26 @@ namespace JD_Proc
         }
         #endregion
 
+        #region [method - check each roi isinclude]
+        public double isIncludeROI(bool isCheckboxROI, double value)
+        {
+
+            if (isCheckboxROI == true)
+            {
+                return value;
+            }
+            else return 0;
+        }
+        #endregion
+
+        #region [method - count include roi]
+        public int getNumberIncludeROIAverage(bool[] isCheckboxROI)
+        {
+            Debug.Print(isCheckboxROI.Count(t => t).ToString());
+            return isCheckboxROI.Count(t => t);
+        }
+        #endregion
+
         #region [PLC, VISION Heartbit]
         public void PLC_HealthCheck()
         {
@@ -2986,8 +3151,5 @@ namespace JD_Proc
 
         }
         #endregion
-
-
-
     }
 }
