@@ -1,4 +1,6 @@
-﻿namespace JD_Proc
+﻿using System.Windows.Forms.DataVisualization.Charting;
+
+namespace JD_Proc
 {
     partial class Form1
     {
@@ -33,36 +35,47 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            ChartArea chartArea1 = new ChartArea();
+            Legend legend1 = new Legend();
+            Series series1 = new Series();
+            DataPoint dataPoint1 = new DataPoint(0D, 23D);
+            DataPoint dataPoint2 = new DataPoint(1D, 28D);
+            DataPoint dataPoint3 = new DataPoint(2D, 25D);
+            DataPoint dataPoint4 = new DataPoint(3D, 22D);
+            DataPoint dataPoint5 = new DataPoint(4D, 20D);
+            ChartArea chartArea2 = new ChartArea();
+            Legend legend2 = new Legend();
+            Series series2 = new Series();
+            ChartArea chartArea3 = new ChartArea();
+            Legend legend3 = new Legend();
+            Series series3 = new Series();
+            ChartArea chartArea4 = new ChartArea();
+            Legend legend4 = new Legend();
+            Series series4 = new Series();
+            ChartArea chartArea5 = new ChartArea();
+            Legend legend5 = new Legend();
+            Series series5 = new Series();
+            ChartArea chartArea6 = new ChartArea();
+            Legend legend6 = new Legend();
+            Series series6 = new Series();
+            ChartArea chartArea7 = new ChartArea();
+            Legend legend7 = new Legend();
+            Series series7 = new Series();
+            ChartArea chartArea8 = new ChartArea();
+            Legend legend8 = new Legend();
+            Series series8 = new Series();
+            ChartArea chartArea9 = new ChartArea();
+            Legend legend9 = new Legend();
+            Series series9 = new Series();
+            ChartArea chartArea10 = new ChartArea();
+            Legend legend10 = new Legend();
+            Series series10 = new Series();
+            ChartArea chartArea11 = new ChartArea();
+            Legend legend11 = new Legend();
+            Series series11 = new Series();
+            ChartArea chartArea12 = new ChartArea();
+            Legend legend12 = new Legend();
+            Series series12 = new Series();
             CheckBox_ROI_L1 = new ReaLTaiizor.Controls.MetroCheckBox();
             nightForm1 = new ReaLTaiizor.Forms.NightForm();
             panel6 = new Panel();
@@ -70,14 +83,14 @@
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             panel3 = new Panel();
             tableLayoutPanel_Auto = new TableLayoutPanel();
-            parrotLineGraph1 = new ReaLTaiizor.Controls.ParrotLineGraph();
-            parrotLineGraph2 = new ReaLTaiizor.Controls.ParrotLineGraph();
             tableLayoutPanel5 = new TableLayoutPanel();
             pictureBox1_Auto = new PictureBox();
             dataGridView1 = new DataGridView();
             tableLayoutPanel6 = new TableLayoutPanel();
             pictureBox2_Auto = new PictureBox();
             dataGridView2 = new DataGridView();
+            Chart_Auto_L = new Chart();
+            Chart_Auto_R = new Chart();
             CheckBox_ROI_L5 = new ReaLTaiizor.Controls.MetroCheckBox();
             CheckBox_ROI_L4 = new ReaLTaiizor.Controls.MetroCheckBox();
             CheckBox_ROI_L3 = new ReaLTaiizor.Controls.MetroCheckBox();
@@ -94,11 +107,11 @@
             dLabel_Ng_R = new ReaLTaiizor.Controls.NightLabel();
             DBtn_jogDown_R = new ReaLTaiizor.Controls.Button();
             DBtn_jogUp_R = new ReaLTaiizor.Controls.Button();
-            dChart_R_5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            dChart_R_4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            dChart_R_3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            dChart_R_2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            dChart_R_1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            dChart_R_5 = new Chart();
+            dChart_R_4 = new Chart();
+            dChart_R_3 = new Chart();
+            dChart_R_2 = new Chart();
+            dChart_R_1 = new Chart();
             dPic_roi_5_R = new ReaLTaiizor.Controls.HopePictureBox();
             dPic_roi_4_R = new ReaLTaiizor.Controls.HopePictureBox();
             dPic_roi_3_R = new ReaLTaiizor.Controls.HopePictureBox();
@@ -117,11 +130,11 @@
             dBtn_snap2 = new ReaLTaiizor.Controls.NightButton();
             dBtn_Process2 = new ReaLTaiizor.Controls.NightButton();
             dBtn_Measure2 = new ReaLTaiizor.Controls.NightButton();
-            dChart_L_5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            dChart_L_4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            dChart_L_3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            dChart_L_2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            dChart_L_1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            dChart_L_5 = new Chart();
+            dChart_L_4 = new Chart();
+            dChart_L_3 = new Chart();
+            dChart_L_2 = new Chart();
+            dChart_L_1 = new Chart();
             dPic_roi_5_L = new ReaLTaiizor.Controls.HopePictureBox();
             dPic_roi_4_L = new ReaLTaiizor.Controls.HopePictureBox();
             dPic_roi_3_L = new ReaLTaiizor.Controls.HopePictureBox();
@@ -163,6 +176,8 @@
             tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2_Auto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Chart_Auto_L).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Chart_Auto_R).BeginInit();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dChart_R_5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dChart_R_4).BeginInit();
@@ -306,10 +321,10 @@
             tableLayoutPanel_Auto.ColumnCount = 2;
             tableLayoutPanel_Auto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_Auto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_Auto.Controls.Add(parrotLineGraph1, 0, 1);
-            tableLayoutPanel_Auto.Controls.Add(parrotLineGraph2, 1, 1);
             tableLayoutPanel_Auto.Controls.Add(tableLayoutPanel5, 0, 0);
             tableLayoutPanel_Auto.Controls.Add(tableLayoutPanel6, 1, 0);
+            tableLayoutPanel_Auto.Controls.Add(Chart_Auto_L, 0, 1);
+            tableLayoutPanel_Auto.Controls.Add(Chart_Auto_R, 1, 1);
             tableLayoutPanel_Auto.Location = new Point(0, 3);
             tableLayoutPanel_Auto.Name = "tableLayoutPanel_Auto";
             tableLayoutPanel_Auto.RowCount = 2;
@@ -319,64 +334,6 @@
             tableLayoutPanel_Auto.Size = new Size(1920, 940);
             tableLayoutPanel_Auto.TabIndex = 35;
             tableLayoutPanel_Auto.Visible = false;
-            // 
-            // parrotLineGraph1
-            // 
-            parrotLineGraph1.BackGroundColor = Color.Black;
-            parrotLineGraph1.BelowLineColor = Color.FromArgb(24, 202, 142);
-            parrotLineGraph1.BorderColor = Color.White;
-            parrotLineGraph1.Dock = DockStyle.Fill;
-            parrotLineGraph1.GraphStyle = ReaLTaiizor.Controls.ParrotLineGraph.Style.Curved;
-            parrotLineGraph1.GraphTitle = "L_Cam_Gap_Distance";
-            parrotLineGraph1.GraphTitleColor = Color.Gold;
-            parrotLineGraph1.Items = (List<int>)resources.GetObject("parrotLineGraph1.Items");
-            parrotLineGraph1.LineColor = Color.Red;
-            parrotLineGraph1.Location = new Point(10, 574);
-            parrotLineGraph1.Margin = new Padding(10);
-            parrotLineGraph1.Name = "parrotLineGraph1";
-            parrotLineGraph1.Padding = new Padding(3);
-            parrotLineGraph1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            parrotLineGraph1.PointSize = 12;
-            parrotLineGraph1.ShowBorder = true;
-            parrotLineGraph1.ShowPoints = true;
-            parrotLineGraph1.ShowTitle = true;
-            parrotLineGraph1.ShowVerticalLines = false;
-            parrotLineGraph1.Size = new Size(940, 356);
-            parrotLineGraph1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            parrotLineGraph1.TabIndex = 2;
-            parrotLineGraph1.Text = "parrotLineGraph1";
-            parrotLineGraph1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            parrotLineGraph1.TitleAlignment = StringAlignment.Near;
-            parrotLineGraph1.VerticalLineColor = Color.DimGray;
-            // 
-            // parrotLineGraph2
-            // 
-            parrotLineGraph2.BackGroundColor = Color.Black;
-            parrotLineGraph2.BelowLineColor = Color.Yellow;
-            parrotLineGraph2.BorderColor = Color.White;
-            parrotLineGraph2.Dock = DockStyle.Fill;
-            parrotLineGraph2.GraphStyle = ReaLTaiizor.Controls.ParrotLineGraph.Style.Curved;
-            parrotLineGraph2.GraphTitle = "R_Cam_Gap_Distance";
-            parrotLineGraph2.GraphTitleColor = Color.Gold;
-            parrotLineGraph2.Items = (List<int>)resources.GetObject("parrotLineGraph2.Items");
-            parrotLineGraph2.LineColor = Color.Red;
-            parrotLineGraph2.Location = new Point(970, 574);
-            parrotLineGraph2.Margin = new Padding(10);
-            parrotLineGraph2.Name = "parrotLineGraph2";
-            parrotLineGraph2.Padding = new Padding(3);
-            parrotLineGraph2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            parrotLineGraph2.PointSize = 12;
-            parrotLineGraph2.ShowBorder = true;
-            parrotLineGraph2.ShowPoints = true;
-            parrotLineGraph2.ShowTitle = true;
-            parrotLineGraph2.ShowVerticalLines = false;
-            parrotLineGraph2.Size = new Size(940, 356);
-            parrotLineGraph2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            parrotLineGraph2.TabIndex = 3;
-            parrotLineGraph2.Text = "parrotLineGraph2";
-            parrotLineGraph2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            parrotLineGraph2.TitleAlignment = StringAlignment.Near;
-            parrotLineGraph2.VerticalLineColor = Color.DimGray;
             // 
             // tableLayoutPanel5
             // 
@@ -485,6 +442,88 @@
             dataGridView2.RowTemplate.Height = 25;
             dataGridView2.Size = new Size(138, 552);
             dataGridView2.TabIndex = 3;
+            // 
+            // Chart_Auto_L
+            // 
+            Chart_Auto_L.BackColor = Color.FromArgb(0, 0, 20);
+            Chart_Auto_L.BackSecondaryColor = SystemColors.Desktop;
+            Chart_Auto_L.BorderlineDashStyle = ChartDashStyle.Solid;
+            chartArea1.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea1.AxisX.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea1.AxisY.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.BackColor = Color.FromArgb(0, 0, 20);
+            chartArea1.Name = "ChartArea1";
+            Chart_Auto_L.ChartAreas.Add(chartArea1);
+            Chart_Auto_L.Dock = DockStyle.Fill;
+            legend1.BackColor = Color.Transparent;
+            legend1.ForeColor = Color.White;
+            legend1.Name = "Legend1";
+            Chart_Auto_L.Legends.Add(legend1);
+            Chart_Auto_L.Location = new Point(3, 567);
+            Chart_Auto_L.Name = "Chart_Auto_L";
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = SeriesChartType.Line;
+            series1.Color = Color.Lime;
+            series1.IsValueShownAsLabel = true;
+            series1.LabelForeColor = Color.White;
+            series1.Legend = "Legend1";
+            series1.MarkerColor = Color.Lime;
+            series1.MarkerSize = 10;
+            series1.MarkerStyle = MarkerStyle.Circle;
+            series1.Name = "Gap(um)";
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            series1.Points.Add(dataPoint3);
+            series1.Points.Add(dataPoint4);
+            series1.Points.Add(dataPoint5);
+            Chart_Auto_L.Series.Add(series1);
+            Chart_Auto_L.Size = new Size(954, 370);
+            Chart_Auto_L.TabIndex = 6;
+            Chart_Auto_L.Text = "L_Camera_Gap";
+            // 
+            // Chart_Auto_R
+            // 
+            Chart_Auto_R.BackColor = Color.FromArgb(0, 0, 20);
+            Chart_Auto_R.BackSecondaryColor = SystemColors.Desktop;
+            Chart_Auto_R.BorderlineDashStyle = ChartDashStyle.Solid;
+            chartArea2.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea2.AxisX.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea2.AxisY.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea2.AxisY.MajorGrid.Enabled = false;
+            chartArea2.BackColor = Color.FromArgb(0, 0, 20);
+            chartArea2.Name = "ChartArea2";
+            Chart_Auto_R.ChartAreas.Add(chartArea2);
+            Chart_Auto_R.Dock = DockStyle.Fill;
+            legend2.Name = "Legend1";
+            Chart_Auto_R.Legends.Add(legend2);
+            Chart_Auto_R.Location = new Point(963, 567);
+            Chart_Auto_R.Name = "Chart_Auto_R";
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea2";
+            series2.ChartType = SeriesChartType.Line;
+            series2.Color = Color.Lime;
+            series2.IsValueShownAsLabel = true;
+            series2.LabelForeColor = Color.White;
+            series2.Legend = "Legend1";
+            series2.MarkerColor = Color.Lime;
+            series2.MarkerSize = 10;
+            series2.MarkerStyle = MarkerStyle.Circle;
+            series2.Name = "Gap(um)";
+            series2.Points.Add(dataPoint1);
+            series2.Points.Add(dataPoint2);
+            series2.Points.Add(dataPoint3);
+            series2.Points.Add(dataPoint4);
+            series2.Points.Add(dataPoint5);
+            Chart_Auto_R.Series.Add(series2);
+            Chart_Auto_R.Size = new Size(954, 370);
+            Chart_Auto_R.TabIndex = 7;
+            Chart_Auto_R.Text = "R_Camera_Gap";
             // 
             // CheckBox_ROI_L5
             // 
@@ -833,18 +872,18 @@
             // dChart_R_5
             // 
             dChart_R_5.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea1.Name = "ChartArea1";
-            dChart_R_5.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            dChart_R_5.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            dChart_R_5.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            dChart_R_5.Legends.Add(legend3);
             dChart_R_5.Location = new Point(308, 844);
             dChart_R_5.Name = "dChart_R_5";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.LabelForeColor = Color.IndianRed;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            dChart_R_5.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = SeriesChartType.Line;
+            series3.LabelForeColor = Color.IndianRed;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            dChart_R_5.Series.Add(series3);
             dChart_R_5.Size = new Size(640, 80);
             dChart_R_5.TabIndex = 36;
             dChart_R_5.Text = "chart5";
@@ -852,18 +891,18 @@
             // dChart_R_4
             // 
             dChart_R_4.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea2.Name = "ChartArea1";
-            dChart_R_4.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            dChart_R_4.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            dChart_R_4.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            dChart_R_4.Legends.Add(legend4);
             dChart_R_4.Location = new Point(308, 757);
             dChart_R_4.Name = "dChart_R_4";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.LabelForeColor = Color.IndianRed;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            dChart_R_4.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = SeriesChartType.Line;
+            series4.LabelForeColor = Color.IndianRed;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            dChart_R_4.Series.Add(series4);
             dChart_R_4.Size = new Size(640, 80);
             dChart_R_4.TabIndex = 35;
             dChart_R_4.Text = "chart4";
@@ -871,18 +910,18 @@
             // dChart_R_3
             // 
             dChart_R_3.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea3.Name = "ChartArea1";
-            dChart_R_3.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            dChart_R_3.Legends.Add(legend3);
+            chartArea5.Name = "ChartArea1";
+            dChart_R_3.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            dChart_R_3.Legends.Add(legend5);
             dChart_R_3.Location = new Point(308, 671);
             dChart_R_3.Name = "dChart_R_3";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.LabelForeColor = Color.IndianRed;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            dChart_R_3.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = SeriesChartType.Line;
+            series5.LabelForeColor = Color.IndianRed;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            dChart_R_3.Series.Add(series5);
             dChart_R_3.Size = new Size(640, 80);
             dChart_R_3.TabIndex = 34;
             dChart_R_3.Text = "chart3";
@@ -890,18 +929,18 @@
             // dChart_R_2
             // 
             dChart_R_2.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea4.Name = "ChartArea1";
-            dChart_R_2.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            dChart_R_2.Legends.Add(legend4);
+            chartArea6.Name = "ChartArea1";
+            dChart_R_2.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            dChart_R_2.Legends.Add(legend6);
             dChart_R_2.Location = new Point(308, 585);
             dChart_R_2.Name = "dChart_R_2";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.LabelForeColor = Color.IndianRed;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            dChart_R_2.Series.Add(series4);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = SeriesChartType.Line;
+            series6.LabelForeColor = Color.IndianRed;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            dChart_R_2.Series.Add(series6);
             dChart_R_2.Size = new Size(640, 80);
             dChart_R_2.TabIndex = 33;
             dChart_R_2.Text = "chart2";
@@ -909,18 +948,18 @@
             // dChart_R_1
             // 
             dChart_R_1.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea5.Name = "ChartArea1";
-            dChart_R_1.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            dChart_R_1.Legends.Add(legend5);
+            chartArea7.Name = "ChartArea1";
+            dChart_R_1.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            dChart_R_1.Legends.Add(legend7);
             dChart_R_1.Location = new Point(308, 499);
             dChart_R_1.Name = "dChart_R_1";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.LabelForeColor = Color.IndianRed;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            dChart_R_1.Series.Add(series5);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = SeriesChartType.Line;
+            series7.LabelForeColor = Color.IndianRed;
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            dChart_R_1.Series.Add(series7);
             dChart_R_1.Size = new Size(640, 80);
             dChart_R_1.TabIndex = 32;
             dChart_R_1.Text = "chart1";
@@ -1285,17 +1324,17 @@
             // dChart_L_5
             // 
             dChart_L_5.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea6.Name = "ChartArea1";
-            dChart_L_5.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            dChart_L_5.Legends.Add(legend6);
+            chartArea8.Name = "ChartArea1";
+            dChart_L_5.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            dChart_L_5.Legends.Add(legend8);
             dChart_L_5.Location = new Point(308, 844);
             dChart_L_5.Name = "dChart_L_5";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            dChart_L_5.Series.Add(series6);
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = SeriesChartType.Line;
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            dChart_L_5.Series.Add(series8);
             dChart_L_5.Size = new Size(640, 80);
             dChart_L_5.TabIndex = 31;
             dChart_L_5.Text = "chart5";
@@ -1303,17 +1342,17 @@
             // dChart_L_4
             // 
             dChart_L_4.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea7.Name = "ChartArea1";
-            dChart_L_4.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            dChart_L_4.Legends.Add(legend7);
+            chartArea9.Name = "ChartArea1";
+            dChart_L_4.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            dChart_L_4.Legends.Add(legend9);
             dChart_L_4.Location = new Point(308, 757);
             dChart_L_4.Name = "dChart_L_4";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            dChart_L_4.Series.Add(series7);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = SeriesChartType.Line;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            dChart_L_4.Series.Add(series9);
             dChart_L_4.Size = new Size(640, 80);
             dChart_L_4.TabIndex = 30;
             dChart_L_4.Text = "chart4";
@@ -1321,17 +1360,17 @@
             // dChart_L_3
             // 
             dChart_L_3.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea8.Name = "ChartArea1";
-            dChart_L_3.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            dChart_L_3.Legends.Add(legend8);
+            chartArea10.Name = "ChartArea1";
+            dChart_L_3.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            dChart_L_3.Legends.Add(legend10);
             dChart_L_3.Location = new Point(308, 671);
             dChart_L_3.Name = "dChart_L_3";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            dChart_L_3.Series.Add(series8);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = SeriesChartType.Line;
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            dChart_L_3.Series.Add(series10);
             dChart_L_3.Size = new Size(640, 80);
             dChart_L_3.TabIndex = 29;
             dChart_L_3.Text = "chart3";
@@ -1339,17 +1378,17 @@
             // dChart_L_2
             // 
             dChart_L_2.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea9.Name = "ChartArea1";
-            dChart_L_2.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            dChart_L_2.Legends.Add(legend9);
+            chartArea11.Name = "ChartArea1";
+            dChart_L_2.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            dChart_L_2.Legends.Add(legend11);
             dChart_L_2.Location = new Point(308, 585);
             dChart_L_2.Name = "dChart_L_2";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            dChart_L_2.Series.Add(series9);
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = SeriesChartType.Line;
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            dChart_L_2.Series.Add(series11);
             dChart_L_2.Size = new Size(640, 80);
             dChart_L_2.TabIndex = 28;
             dChart_L_2.Text = "chart2";
@@ -1357,18 +1396,18 @@
             // dChart_L_1
             // 
             dChart_L_1.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea10.Name = "ChartArea1";
-            dChart_L_1.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            dChart_L_1.Legends.Add(legend10);
+            chartArea12.Name = "ChartArea1";
+            dChart_L_1.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            dChart_L_1.Legends.Add(legend12);
             dChart_L_1.Location = new Point(308, 499);
             dChart_L_1.Name = "dChart_L_1";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series10.LabelForeColor = Color.IndianRed;
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            dChart_L_1.Series.Add(series10);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = SeriesChartType.Line;
+            series12.LabelForeColor = Color.IndianRed;
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            dChart_L_1.Series.Add(series12);
             dChart_L_1.Size = new Size(640, 80);
             dChart_L_1.TabIndex = 27;
             dChart_L_1.Text = "chart1";
@@ -2015,6 +2054,8 @@
             tableLayoutPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2_Auto).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Chart_Auto_L).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Chart_Auto_R).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dChart_R_5).EndInit();
@@ -2120,8 +2161,6 @@
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel1;
         private Panel panel6;
         private TableLayoutPanel tableLayoutPanel_Auto;
-        private ReaLTaiizor.Controls.ParrotLineGraph parrotLineGraph1;
-        private ReaLTaiizor.Controls.ParrotLineGraph parrotLineGraph2;
         private ReaLTaiizor.Controls.NightButton dBtn_Measure2;
         private ReaLTaiizor.Controls.NightButton dBtn_Measure1;
         private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L5;
@@ -2140,5 +2179,7 @@
         private PictureBox pictureBox2_Auto;
         private DataGridView dataGridView1;
         private DataGridView dataGridView2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Chart_Auto_L;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Chart_Auto_R;
     }
 }

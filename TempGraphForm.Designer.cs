@@ -1,4 +1,6 @@
-﻿namespace JD_Proc
+﻿using System.Windows.Forms.DataVisualization.Charting;
+
+namespace JD_Proc
 {
     partial class TempGraphForm
     {
@@ -28,84 +30,114 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TempGraphForm));
-            dungeonForm1 = new ReaLTaiizor.Forms.DungeonForm();
-            parrotLineGraph1 = new ReaLTaiizor.Controls.ParrotLineGraph();
-            dungeonForm1.SuspendLayout();
+            ChartArea chartArea1 = new ChartArea();
+            Legend legend1 = new Legend();
+            Series series1 = new Series();
+            DataPoint dataPoint1 = new DataPoint(0D, 23D);
+            DataPoint dataPoint2 = new DataPoint(1D, 28D);
+            DataPoint dataPoint3 = new DataPoint(2D, 25D);
+            DataPoint dataPoint4 = new DataPoint(3D, 22D);
+            DataPoint dataPoint5 = new DataPoint(4D, 20D);
+            tableLayoutPanel1 = new TableLayoutPanel();
+            TempGraph = new Chart();
+            bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
+            tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)TempGraph).BeginInit();
             SuspendLayout();
             // 
-            // dungeonForm1
+            // tableLayoutPanel1
             // 
-            dungeonForm1.BackColor = Color.FromArgb(244, 241, 243);
-            dungeonForm1.BorderColor = Color.FromArgb(38, 38, 38);
-            dungeonForm1.Controls.Add(parrotLineGraph1);
-            dungeonForm1.Dock = DockStyle.Fill;
-            dungeonForm1.FillEdgeColorA = Color.FromArgb(69, 68, 63);
-            dungeonForm1.FillEdgeColorB = Color.FromArgb(69, 68, 63);
-            dungeonForm1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dungeonForm1.FooterEdgeColor = Color.FromArgb(69, 68, 63);
-            dungeonForm1.ForeColor = Color.FromArgb(223, 219, 210);
-            dungeonForm1.HeaderEdgeColorA = Color.FromArgb(87, 85, 77);
-            dungeonForm1.HeaderEdgeColorB = Color.FromArgb(69, 68, 63);
-            dungeonForm1.Location = new Point(0, 0);
-            dungeonForm1.Margin = new Padding(2);
-            dungeonForm1.Name = "dungeonForm1";
-            dungeonForm1.Padding = new Padding(16, 42, 16, 12);
-            dungeonForm1.RoundCorners = true;
-            dungeonForm1.Sizable = true;
-            dungeonForm1.Size = new Size(1066, 219);
-            dungeonForm1.SmartBounds = true;
-            dungeonForm1.StartPosition = FormStartPosition.WindowsDefaultLocation;
-            dungeonForm1.TabIndex = 0;
-            dungeonForm1.Text = "Gap Temperature Graph";
-            dungeonForm1.TitleColor = Color.FromArgb(223, 219, 210);
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(TempGraph, 0, 1);
+            tableLayoutPanel1.Controls.Add(bigLabel1, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
+            tableLayoutPanel1.Size = new Size(1068, 365);
+            tableLayoutPanel1.TabIndex = 0;
             // 
-            // parrotLineGraph1
+            // TempGraph
             // 
-            parrotLineGraph1.BackGroundColor = Color.Black;
-            parrotLineGraph1.BelowLineColor = Color.AliceBlue;
-            parrotLineGraph1.BorderColor = Color.White;
-            parrotLineGraph1.GraphStyle = ReaLTaiizor.Controls.ParrotLineGraph.Style.Curved;
-            parrotLineGraph1.GraphTitle = "Parrot Line Graph";
-            parrotLineGraph1.GraphTitleColor = Color.Gray;
-            parrotLineGraph1.Items = (List<int>)resources.GetObject("parrotLineGraph1.Items");
-            parrotLineGraph1.LineColor = Color.Lime;
-            parrotLineGraph1.Location = new Point(0, 34);
-            parrotLineGraph1.Margin = new Padding(2);
-            parrotLineGraph1.Name = "parrotLineGraph1";
-            parrotLineGraph1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            parrotLineGraph1.PointSize = 0;
-            parrotLineGraph1.ShowBorder = false;
-            parrotLineGraph1.ShowPoints = true;
-            parrotLineGraph1.ShowTitle = false;
-            parrotLineGraph1.ShowVerticalLines = true;
-            parrotLineGraph1.Size = new Size(1066, 184);
-            parrotLineGraph1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            parrotLineGraph1.TabIndex = 0;
-            parrotLineGraph1.Text = "parrotLineGraph1";
-            parrotLineGraph1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            parrotLineGraph1.TitleAlignment = StringAlignment.Center;
-            parrotLineGraph1.VerticalLineColor = Color.DimGray;
+            TempGraph.BackColor = Color.FromArgb(0, 0, 20);
+            TempGraph.BackSecondaryColor = SystemColors.Desktop;
+            TempGraph.BorderlineColor = Color.Transparent;
+            chartArea1.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea1.AxisX.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea1.AxisY.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.BackColor = Color.FromArgb(0, 0, 20);
+            chartArea1.Name = "ChartArea1";
+            TempGraph.ChartAreas.Add(chartArea1);
+            TempGraph.Dock = DockStyle.Fill;
+            legend1.BackColor = Color.Transparent;
+            legend1.ForeColor = Color.White;
+            legend1.Name = "Legend1";
+            TempGraph.Legends.Add(legend1);
+            TempGraph.Location = new Point(3, 57);
+            TempGraph.Name = "TempGraph";
+            TempGraph.Palette = ChartColorPalette.None;
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = SeriesChartType.Line;
+            series1.Color = Color.Lime;
+            series1.IsValueShownAsLabel = true;
+            series1.LabelForeColor = Color.White;
+            series1.Legend = "Legend1";
+            series1.MarkerColor = Color.Lime;
+            series1.MarkerSize = 10;
+            series1.MarkerStyle = MarkerStyle.Circle;
+            series1.Name = "Temperature Graph";
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            series1.Points.Add(dataPoint3);
+            series1.Points.Add(dataPoint4);
+            series1.Points.Add(dataPoint5);
+            TempGraph.Series.Add(series1);
+            TempGraph.Size = new Size(1062, 305);
+            TempGraph.TabIndex = 0;
+            TempGraph.Text = "Highest Temperature";
+            // 
+            // bigLabel1
+            // 
+            bigLabel1.Anchor = AnchorStyles.None;
+            bigLabel1.AutoSize = true;
+            bigLabel1.BackColor = Color.Transparent;
+            bigLabel1.Font = new Font("Segoe UI", 24.75F, FontStyle.Bold, GraphicsUnit.Point);
+            bigLabel1.ForeColor = Color.FromArgb(80, 80, 80);
+            bigLabel1.Location = new Point(384, 4);
+            bigLabel1.Name = "bigLabel1";
+            bigLabel1.Size = new Size(300, 45);
+            bigLabel1.TabIndex = 1;
+            bigLabel1.Text = "Temerature Graph";
             // 
             // TempGraphForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1066, 219);
-            Controls.Add(dungeonForm1);
+            ClientSize = new Size(1068, 365);
+            Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             MinimumSize = new Size(203, 49);
             Name = "TempGraphForm";
             Text = "Gap Temperature Graph";
             TransparencyKey = Color.Fuchsia;
-            dungeonForm1.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)TempGraph).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ReaLTaiizor.Forms.DungeonForm dungeonForm1;
-        private ReaLTaiizor.Controls.ParrotLineGraph parrotLineGraph1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart TempGraph;
+        private ReaLTaiizor.Controls.BigLabel bigLabel1;
     }
 }

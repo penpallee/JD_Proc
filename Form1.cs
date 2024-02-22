@@ -362,10 +362,6 @@ namespace JD_Proc
                 dLable_tmp1.Text = Math.Round(mean, 1).ToString();
 
             }));
-            _TempGraphform.BeginInvoke((MethodInvoker)(() =>
-            {
-                parrotLineGraph1.Text = "1";
-            }));
         }
 
         void AutoSnap_R()
@@ -2996,63 +2992,63 @@ namespace JD_Proc
         }
         #endregion
 
-        #region [method - Graph Generate Point]
-        public void ParrotGraphGenerateData(bool isVisionBusy, int gapDistance)
-        {
-            if (isVisionBusy == true)
-            {
-                if (parrotLineGraph1.Items.Count < parrotLineGraph1.Items.Capacity)
-                {
-                    parrotLineGraph1.Items.Add(gapDistance);
-                    parrotLineGraph1.Invoke((MethodInvoker)delegate
-                    {
+        //#region [method - Graph Generate Point]
+        //public void ParrotGraphGenerateData(bool isVisionBusy, int gapDistance)
+        //{
+        //    if (isVisionBusy == true)
+        //    {
+        //        if (parrotLineGraph1.Items.Count < parrotLineGraph1.Items.Capacity)
+        //        {
+        //            parrotLineGraph1.Items.Add(gapDistance);
+        //            parrotLineGraph1.Invoke((MethodInvoker)delegate
+        //            {
 
-                        parrotLineGraph1.Update();
-                        parrotLineGraph1.Refresh();
-                    });
+        //                parrotLineGraph1.Update();
+        //                parrotLineGraph1.Refresh();
+        //            });
 
-                }
+        //        }
 
-                else
-                {
-                    parrotLineGraph1.Items.RemoveAt(0);
-                    parrotLineGraph1.Items.Add(gapDistance);
-                    parrotLineGraph1.Invoke((MethodInvoker)delegate
-                    {
+        //        else
+        //        {
+        //            parrotLineGraph1.Items.RemoveAt(0);
+        //            parrotLineGraph1.Items.Add(gapDistance);
+        //            parrotLineGraph1.Invoke((MethodInvoker)delegate
+        //            {
 
-                        parrotLineGraph1.Update();
-                        parrotLineGraph1.Refresh();
-                    });
-                }
-            }
-            else
-            {
-                if (parrotLineGraph2.Items.Count < parrotLineGraph2.Items.Capacity)
-                {
-                    parrotLineGraph2.Items.Add(gapDistance);
-                    parrotLineGraph2.Invoke((MethodInvoker)delegate
-                    {
+        //                parrotLineGraph1.Update();
+        //                parrotLineGraph1.Refresh();
+        //            });
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (parrotLineGraph2.Items.Count < parrotLineGraph2.Items.Capacity)
+        //        {
+        //            parrotLineGraph2.Items.Add(gapDistance);
+        //            parrotLineGraph2.Invoke((MethodInvoker)delegate
+        //            {
 
-                        parrotLineGraph2.Update();
-                        parrotLineGraph2.Refresh();
-                    });
+        //                parrotLineGraph2.Update();
+        //                parrotLineGraph2.Refresh();
+        //            });
 
-                }
+        //        }
 
-                else
-                {
-                    parrotLineGraph2.Items.RemoveAt(0);
-                    parrotLineGraph2.Items.Add(gapDistance);
-                    parrotLineGraph2.Invoke((MethodInvoker)delegate
-                    {
+        //        else
+        //        {
+        //            parrotLineGraph2.Items.RemoveAt(0);
+        //            parrotLineGraph2.Items.Add(gapDistance);
+        //            parrotLineGraph2.Invoke((MethodInvoker)delegate
+        //            {
 
-                        parrotLineGraph2.Update();
-                        parrotLineGraph2.Refresh();
-                    });
-                }
-            }
-        }
-        #endregion
+        //                parrotLineGraph2.Update();
+        //                parrotLineGraph2.Refresh();
+        //            });
+        //        }
+        //    }
+        //}
+        //#endregion
 
         #region [method - mesure function]
         private void measureFunc1(object sender, EventArgs e)
