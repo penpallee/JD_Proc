@@ -66,8 +66,6 @@
             thunderGroupBox8 = new ReaLTaiizor.Controls.ThunderGroupBox();
             cyberCheckBox2 = new ReaLTaiizor.Controls.CyberCheckBox();
             cyberCheckBox1 = new ReaLTaiizor.Controls.CyberCheckBox();
-            thunderGroupBox7 = new ReaLTaiizor.Controls.ThunderGroupBox();
-            dCheckBox_jog = new ReaLTaiizor.Controls.CyberCheckBox();
             thunderGroupBox6 = new ReaLTaiizor.Controls.ThunderGroupBox();
             dPanel_visionCam2End = new Panel();
             dPanel_visionCam2Busy = new Panel();
@@ -116,7 +114,6 @@
             tableLayoutPanel1.SuspendLayout();
             dPanel_login.SuspendLayout();
             thunderGroupBox8.SuspendLayout();
-            thunderGroupBox7.SuspendLayout();
             thunderGroupBox6.SuspendLayout();
             thunderGroupBox5.SuspendLayout();
             thunderGroupBox3.SuspendLayout();
@@ -327,7 +324,6 @@
             dungeonForm1.Controls.Add(thunderGroupBox4);
             dungeonForm1.Controls.Add(dPanel_login);
             dungeonForm1.Controls.Add(thunderGroupBox8);
-            dungeonForm1.Controls.Add(thunderGroupBox7);
             dungeonForm1.Controls.Add(thunderGroupBox6);
             dungeonForm1.Controls.Add(thunderGroupBox5);
             dungeonForm1.Controls.Add(thunderGroupBox3);
@@ -1018,62 +1014,6 @@
             cyberCheckBox1.Timer_RGB = 300;
             cyberCheckBox1.CheckedChanged += cyberCheckBox1_CheckedChanged;
             // 
-            // thunderGroupBox7
-            // 
-            thunderGroupBox7.BackColor = Color.Transparent;
-            thunderGroupBox7.BodyColorA = Color.FromArgb(26, 26, 26);
-            thunderGroupBox7.BodyColorB = Color.FromArgb(30, 30, 30);
-            thunderGroupBox7.BodyColorC = Color.FromArgb(46, 46, 46);
-            thunderGroupBox7.BodyColorD = Color.FromArgb(50, 55, 58);
-            thunderGroupBox7.Controls.Add(dCheckBox_jog);
-            thunderGroupBox7.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox7.Location = new Point(23, 464);
-            thunderGroupBox7.Name = "thunderGroupBox7";
-            thunderGroupBox7.Size = new Size(272, 67);
-            thunderGroupBox7.TabIndex = 24;
-            thunderGroupBox7.Text = "JOG 활성화";
-            // 
-            // dCheckBox_jog
-            // 
-            dCheckBox_jog.BackColor = Color.Transparent;
-            dCheckBox_jog.Background = true;
-            dCheckBox_jog.Background_WidthPen = 2F;
-            dCheckBox_jog.BackgroundPen = true;
-            dCheckBox_jog.Checked = false;
-            dCheckBox_jog.ColorBackground = Color.FromArgb(37, 52, 68);
-            dCheckBox_jog.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            dCheckBox_jog.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            dCheckBox_jog.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            dCheckBox_jog.ColorChecked = Color.FromArgb(29, 200, 238);
-            dCheckBox_jog.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            dCheckBox_jog.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            dCheckBox_jog.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            dCheckBox_jog.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            dCheckBox_jog.Effect_1_Transparency = 25;
-            dCheckBox_jog.Effect_2 = true;
-            dCheckBox_jog.Effect_2_ColorBackground = Color.White;
-            dCheckBox_jog.Effect_2_Transparency = 15;
-            dCheckBox_jog.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dCheckBox_jog.ForeColor = Color.FromArgb(245, 245, 245);
-            dCheckBox_jog.LinearGradient_Background = false;
-            dCheckBox_jog.LinearGradientPen = false;
-            dCheckBox_jog.Location = new Point(3, 22);
-            dCheckBox_jog.Name = "dCheckBox_jog";
-            dCheckBox_jog.RGB = false;
-            dCheckBox_jog.Rounding = true;
-            dCheckBox_jog.RoundingInt = 100;
-            dCheckBox_jog.Size = new Size(170, 45);
-            dCheckBox_jog.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dCheckBox_jog.TabIndex = 1;
-            dCheckBox_jog.Tag = "Cyber";
-            dCheckBox_jog.TextButton = "조그 활성화";
-            dCheckBox_jog.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
-            dCheckBox_jog.Timer_Effect_1 = 1;
-            dCheckBox_jog.Timer_RGB = 300;
-            dCheckBox_jog.CheckedChanged += dCheckBox_jog_CheckedChanged;
-            dCheckBox_jog.Load += dCheckBox_jog_Load;
-            dCheckBox_jog.VisibleChanged += dCheckBox_jog_VisibleChanged;
-            // 
             // thunderGroupBox6
             // 
             thunderGroupBox6.BackColor = Color.Transparent;
@@ -1452,7 +1392,6 @@
             tableLayoutPanel1.PerformLayout();
             dPanel_login.ResumeLayout(false);
             thunderGroupBox8.ResumeLayout(false);
-            thunderGroupBox7.ResumeLayout(false);
             thunderGroupBox6.ResumeLayout(false);
             thunderGroupBox5.ResumeLayout(false);
             thunderGroupBox3.ResumeLayout(false);
@@ -1493,8 +1432,6 @@
         private Panel dPanel_plcCam1Cap;
         private Panel dPanel_plcAuto;
         private Panel dPanel_plcCam2Cap;
-        private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox7;
-        private ReaLTaiizor.Controls.CyberCheckBox dCheckBox_jog;
         private ReaLTaiizor.Controls.NightPanel dPanel_login;
         private ReaLTaiizor.Controls.CyberTextBox dTxtBox_password;
         private ReaLTaiizor.Controls.CyberButton dButton_login;

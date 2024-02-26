@@ -1,22 +1,26 @@
-﻿using JD_Proc.Service;
+﻿using JD_Proc.Component;
+using JD_Proc.Service;
 using System.Diagnostics;
 
 namespace JD_Proc
 {
     public partial class AlignSettingForm : Form
     {
+        #region [Var]
         Service.SettingsService service = new Service.SettingsService();
 
         //dTbox_x1.Text = service.Read("resolution", "x_1");
-        //    dTbox_y1.Text = service.Read("resolution", "y_1");
+        //dTbox_y1.Text = service.Read("resolution", "y_1");
         Form1 _form1;
         PictureBox _picbox1;
         PictureBox _picbox2;
 
+        private Point startPoint;
         int GridViewGap = 6;
         int res;
-        
+        #endregion
 
+        #region [생성자]
         public AlignSettingForm(Form1 form1, PictureBox picbox1, PictureBox picbox2)
         {
             InitializeComponent();
@@ -26,10 +30,13 @@ namespace JD_Proc
             _picbox1 = picbox1;
             _picbox2 = picbox2;
         }
+        #endregion
 
         #region event(Foam_Load)
         private void AlignSettingForm_Load(object sender, EventArgs e)
         {
+            transparentPanel1.BackColor = Color.Transparent;
+            transparentPanel1.ForeColor = Color.Transparent;
             Draw_Gridview_L();
             pictureBox1.Image = _picbox1.Image;
             Tbox_GridViewValue.Text = (GridViewGap * res).ToString();
@@ -39,16 +46,13 @@ namespace JD_Proc
         #region method - Grid view
         public void Draw_Gridview_L()
         {
+            transparentPanel1.Location = new Point(dPan_grid_L_1.Parent.Location.X - 7, dPan_grid_L_1.Parent.Location.Y);
             dPan_grid_L_1.Location = new Point(dPan_grid_L_1.Parent.Location.X - 7, dPan_grid_L_1.Parent.Location.Y);
             dPan_grid_L_2.Location = new Point(dPan_grid_L_1.Parent.Location.X - 7, dPan_grid_L_1.Parent.Location.Y + GridViewGap * 1);
             dPan_grid_L_3.Location = new Point(dPan_grid_L_1.Parent.Location.X - 7, dPan_grid_L_1.Parent.Location.Y + GridViewGap * 2);
             dPan_grid_L_4.Location = new Point(dPan_grid_L_1.Parent.Location.X - 7, dPan_grid_L_1.Parent.Location.Y + GridViewGap * 3);
             dPan_grid_L_5.Location = new Point(dPan_grid_L_1.Parent.Location.X - 7, dPan_grid_L_1.Parent.Location.Y + GridViewGap * 4);
-            dPan_grid_L_1.Visible = true;
-            dPan_grid_L_2.Visible = true;
-            dPan_grid_L_3.Visible = true;
-            dPan_grid_L_4.Visible = true;
-            dPan_grid_L_5.Visible = true;
+
         }
         #endregion
 
@@ -108,15 +112,84 @@ namespace JD_Proc
         #region event(GridViewCheckButton) - Click
         private void Btn_GridView_Check_Click(object sender, EventArgs e)
         {
-            
+
             GridViewGap = (int.Parse(Tbox_GridViewValue.Text) / res);
             Draw_Gridview_L();
         }
         #endregion
 
-        private void Btn_JogMoveValue_Check_Click(object sender, EventArgs e)
+        #region [event - Transparentpanel event]
+        private void transparentPanel1_MouseMove(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                transparentPanel1.Top += e.Y - startPoint.Y;
+                dPan_grid_L_1.Top += e.Y - startPoint.Y;
+                dPan_grid_L_2.Top += e.Y - startPoint.Y;
+                dPan_grid_L_3.Top += e.Y - startPoint.Y;
+                dPan_grid_L_4.Top += e.Y - startPoint.Y;
+                dPan_grid_L_5.Top += e.Y - startPoint.Y;
+            }
         }
+
+        private void transparentPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                startPoint = e.Location;
+                transparentPanel1.BringToFront();
+            }
+        }
+
+        private void transparentPanel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            transparentPanel1.SendToBack();
+            transparentPanel1.BringToFront();
+        }
+        #endregion
+
+        #region [event - Select Jog Axis Button]
+        private void Btn_Jog_L_Y_Click(object sender, EventArgs e)
+        {
+            _form1.selectJogAxis_L_Y();
+        }
+
+        private void Btn_Jog_L_Z_Click(object sender, EventArgs e)
+        {
+            _form1.selectJogAxis_L_Z();
+        }
+
+        private void Btn_Jog_R_Y_Click(object sender, EventArgs e)
+        {
+            _form1.selectJogAxis_R_Y();
+        }
+
+        private void Btn_Jog_R_Z_Click(object sender, EventArgs e)
+        {
+            _form1.selectJogAxis_R_Z();
+        }
+        #endregion
+
+        #region [event - MouseClick Jog Button]
+        private void Btn_JogOriginal_MouseDown(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonOriginalClickDown();
+        }
+
+        private void Btn_JogOriginal_MouseUp(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonOriginalClickUp();
+        }
+
+        private void Btn_JogReverse_MouseDown(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonReverseClickDown();
+        }
+
+        private void Btn_JogReverse_MouseUp(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonReverseClickUp();
+        }
+        #endregion
     }
 }

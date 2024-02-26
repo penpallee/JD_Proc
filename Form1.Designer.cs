@@ -96,8 +96,6 @@ namespace JD_Proc
             CheckBox_ROI_L3 = new ReaLTaiizor.Controls.MetroCheckBox();
             CheckBox_ROI_L2 = new ReaLTaiizor.Controls.MetroCheckBox();
             dLabel_Ng_L = new ReaLTaiizor.Controls.NightLabel();
-            DBtn_jogDown_L = new ReaLTaiizor.Controls.Button();
-            DBtn_jogUp_L = new ReaLTaiizor.Controls.Button();
             panel4 = new Panel();
             CheckBox_ROI_R5 = new ReaLTaiizor.Controls.MetroCheckBox();
             CheckBox_ROI_R4 = new ReaLTaiizor.Controls.MetroCheckBox();
@@ -105,8 +103,6 @@ namespace JD_Proc
             CheckBox_ROI_R2 = new ReaLTaiizor.Controls.MetroCheckBox();
             CheckBox_ROI_R1 = new ReaLTaiizor.Controls.MetroCheckBox();
             dLabel_Ng_R = new ReaLTaiizor.Controls.NightLabel();
-            DBtn_jogDown_R = new ReaLTaiizor.Controls.Button();
-            DBtn_jogUp_R = new ReaLTaiizor.Controls.Button();
             dChart_R_5 = new Chart();
             dChart_R_4 = new Chart();
             dChart_R_3 = new Chart();
@@ -292,8 +288,6 @@ namespace JD_Proc
             panel3.Controls.Add(CheckBox_ROI_L2);
             panel3.Controls.Add(CheckBox_ROI_L1);
             panel3.Controls.Add(dLabel_Ng_L);
-            panel3.Controls.Add(DBtn_jogDown_L);
-            panel3.Controls.Add(DBtn_jogUp_L);
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(dChart_L_5);
             panel3.Controls.Add(dChart_L_4);
@@ -325,7 +319,7 @@ namespace JD_Proc
             tableLayoutPanel_Auto.Controls.Add(tableLayoutPanel6, 1, 0);
             tableLayoutPanel_Auto.Controls.Add(Chart_Auto_L, 0, 1);
             tableLayoutPanel_Auto.Controls.Add(Chart_Auto_R, 1, 1);
-            tableLayoutPanel_Auto.Location = new Point(0, 3);
+            tableLayoutPanel_Auto.Location = new Point(0, 4);
             tableLayoutPanel_Auto.Name = "tableLayoutPanel_Auto";
             tableLayoutPanel_Auto.RowCount = 2;
             tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
@@ -500,6 +494,8 @@ namespace JD_Proc
             chartArea2.Name = "ChartArea2";
             Chart_Auto_R.ChartAreas.Add(chartArea2);
             Chart_Auto_R.Dock = DockStyle.Fill;
+            legend2.BackColor = Color.Transparent;
+            legend2.ForeColor = Color.White;
             legend2.Name = "Legend1";
             Chart_Auto_R.Legends.Add(legend2);
             Chart_Auto_R.Location = new Point(963, 567);
@@ -629,46 +625,6 @@ namespace JD_Proc
             dLabel_Ng_L.TabIndex = 34;
             dLabel_Ng_L.Text = "작업상태";
             // 
-            // DBtn_jogDown_L
-            // 
-            DBtn_jogDown_L.BackColor = Color.Transparent;
-            DBtn_jogDown_L.BorderColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogDown_L.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogDown_L.EnteredColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogDown_L.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            DBtn_jogDown_L.Image = (Image)resources.GetObject("DBtn_jogDown_L.Image");
-            DBtn_jogDown_L.ImageAlign = ContentAlignment.MiddleLeft;
-            DBtn_jogDown_L.InactiveColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogDown_L.Location = new Point(132, 415);
-            DBtn_jogDown_L.Name = "DBtn_jogDown_L";
-            DBtn_jogDown_L.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogDown_L.PressedColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogDown_L.Size = new Size(53, 47);
-            DBtn_jogDown_L.TabIndex = 33;
-            DBtn_jogDown_L.TextAlignment = StringAlignment.Center;
-            DBtn_jogDown_L.Visible = false;
-            DBtn_jogDown_L.Click += DBtn_jogDown_L_Click;
-            // 
-            // DBtn_jogUp_L
-            // 
-            DBtn_jogUp_L.BackColor = Color.Transparent;
-            DBtn_jogUp_L.BorderColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogUp_L.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogUp_L.EnteredColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogUp_L.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            DBtn_jogUp_L.Image = (Image)resources.GetObject("DBtn_jogUp_L.Image");
-            DBtn_jogUp_L.ImageAlign = ContentAlignment.MiddleLeft;
-            DBtn_jogUp_L.InactiveColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogUp_L.Location = new Point(132, 362);
-            DBtn_jogUp_L.Name = "DBtn_jogUp_L";
-            DBtn_jogUp_L.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogUp_L.PressedColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogUp_L.Size = new Size(53, 47);
-            DBtn_jogUp_L.TabIndex = 32;
-            DBtn_jogUp_L.TextAlignment = StringAlignment.Center;
-            DBtn_jogUp_L.Visible = false;
-            DBtn_jogUp_L.Click += DBtn_jogUp_L_Click;
-            // 
             // panel4
             // 
             panel4.BackColor = Color.Black;
@@ -678,8 +634,6 @@ namespace JD_Proc
             panel4.Controls.Add(CheckBox_ROI_R2);
             panel4.Controls.Add(CheckBox_ROI_R1);
             panel4.Controls.Add(dLabel_Ng_R);
-            panel4.Controls.Add(DBtn_jogDown_R);
-            panel4.Controls.Add(DBtn_jogUp_R);
             panel4.Controls.Add(dChart_R_5);
             panel4.Controls.Add(dChart_R_4);
             panel4.Controls.Add(dChart_R_3);
@@ -828,46 +782,6 @@ namespace JD_Proc
             dLabel_Ng_R.Size = new Size(97, 30);
             dLabel_Ng_R.TabIndex = 35;
             dLabel_Ng_R.Text = "작업상태";
-            // 
-            // DBtn_jogDown_R
-            // 
-            DBtn_jogDown_R.BackColor = Color.Transparent;
-            DBtn_jogDown_R.BorderColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogDown_R.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogDown_R.EnteredColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogDown_R.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            DBtn_jogDown_R.Image = (Image)resources.GetObject("DBtn_jogDown_R.Image");
-            DBtn_jogDown_R.ImageAlign = ContentAlignment.MiddleLeft;
-            DBtn_jogDown_R.InactiveColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogDown_R.Location = new Point(132, 415);
-            DBtn_jogDown_R.Name = "DBtn_jogDown_R";
-            DBtn_jogDown_R.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogDown_R.PressedColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogDown_R.Size = new Size(53, 47);
-            DBtn_jogDown_R.TabIndex = 35;
-            DBtn_jogDown_R.TextAlignment = StringAlignment.Center;
-            DBtn_jogDown_R.Visible = false;
-            DBtn_jogDown_R.Click += DBtn_jogDown_R_Click;
-            // 
-            // DBtn_jogUp_R
-            // 
-            DBtn_jogUp_R.BackColor = Color.Transparent;
-            DBtn_jogUp_R.BorderColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogUp_R.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogUp_R.EnteredColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogUp_R.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            DBtn_jogUp_R.Image = (Image)resources.GetObject("DBtn_jogUp_R.Image");
-            DBtn_jogUp_R.ImageAlign = ContentAlignment.MiddleLeft;
-            DBtn_jogUp_R.InactiveColor = Color.FromArgb(32, 34, 37);
-            DBtn_jogUp_R.Location = new Point(132, 362);
-            DBtn_jogUp_R.Name = "DBtn_jogUp_R";
-            DBtn_jogUp_R.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogUp_R.PressedColor = Color.FromArgb(165, 37, 37);
-            DBtn_jogUp_R.Size = new Size(53, 47);
-            DBtn_jogUp_R.TabIndex = 34;
-            DBtn_jogUp_R.TextAlignment = StringAlignment.Center;
-            DBtn_jogUp_R.Visible = false;
-            DBtn_jogUp_R.Click += DBtn_jogUp_R_Click;
             // 
             // dChart_R_5
             // 
@@ -2150,10 +2064,6 @@ namespace JD_Proc
         private System.Windows.Forms.DataVisualization.Charting.Chart dChart_R_3;
         private System.Windows.Forms.DataVisualization.Charting.Chart dChart_R_2;
         private System.Windows.Forms.DataVisualization.Charting.Chart dChart_R_1;
-        private ReaLTaiizor.Controls.Button DBtn_jogUp_L;
-        private ReaLTaiizor.Controls.Button DBtn_jogDown_L;
-        private ReaLTaiizor.Controls.Button DBtn_jogDown_R;
-        private ReaLTaiizor.Controls.Button DBtn_jogUp_R;
         private ReaLTaiizor.Controls.DungeonComboBox dComboBox_scale1;
         private ReaLTaiizor.Controls.NightLabel dLabel_Ng_L;
         private ReaLTaiizor.Controls.NightLabel dLabel_Ng_R;

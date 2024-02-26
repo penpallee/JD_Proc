@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlignSettingForm));
             dreamForm1 = new ReaLTaiizor.Forms.DreamForm();
             panel1 = new Panel();
+            transparentPanel1 = new Component.TransparentPanel();
             dPan_grid_L_1 = new Panel();
             dPan_grid_L_2 = new Panel();
             dPan_grid_L_4 = new Panel();
@@ -41,12 +42,13 @@
             Btn_SelectCam2 = new ReaLTaiizor.Controls.CyberButton();
             Btn_SelectCam1 = new ReaLTaiizor.Controls.CyberButton();
             thunderGroupBox4 = new ReaLTaiizor.Controls.ThunderGroupBox();
-            Btn_JogMoveValue_Check = new ReaLTaiizor.Controls.Button();
-            moonLabel2 = new ReaLTaiizor.Controls.MoonLabel();
-            Tbox_JogMovingValue = new ReaLTaiizor.Controls.ForeverTextBox();
+            Btn_Jog_R_Z = new ReaLTaiizor.Controls.Button();
+            Btn_Jog_L_Z = new ReaLTaiizor.Controls.Button();
+            Btn_Jog_R_Y = new ReaLTaiizor.Controls.Button();
+            Btn_Jog_L_Y = new ReaLTaiizor.Controls.Button();
             thunderGroupBox3 = new ReaLTaiizor.Controls.ThunderGroupBox();
-            button2 = new ReaLTaiizor.Controls.Button();
-            button1 = new ReaLTaiizor.Controls.Button();
+            Btn_JogOriginal = new ReaLTaiizor.Controls.Button();
+            Btn_JogReverse = new ReaLTaiizor.Controls.Button();
             thunderGroupBox1 = new ReaLTaiizor.Controls.ThunderGroupBox();
             dBtn_up_L = new ReaLTaiizor.Controls.Button();
             dBtn_dw_L = new ReaLTaiizor.Controls.Button();
@@ -54,8 +56,6 @@
             Btn_GridView_Check = new ReaLTaiizor.Controls.Button();
             moonLabel1 = new ReaLTaiizor.Controls.MoonLabel();
             Tbox_GridViewValue = new ReaLTaiizor.Controls.ForeverTextBox();
-            nightLabel1 = new ReaLTaiizor.Controls.NightLabel();
-            nightLabel2 = new ReaLTaiizor.Controls.NightLabel();
             dreamForm1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -98,6 +98,7 @@
             // 
             panel1.AutoScroll = true;
             panel1.BackColor = Color.Black;
+            panel1.Controls.Add(transparentPanel1);
             panel1.Controls.Add(dPan_grid_L_1);
             panel1.Controls.Add(dPan_grid_L_2);
             panel1.Controls.Add(dPan_grid_L_4);
@@ -108,6 +109,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(434, 317);
             panel1.TabIndex = 7;
+            // 
+            // transparentPanel1
+            // 
+            transparentPanel1.BackColor = Color.Transparent;
+            transparentPanel1.ForeColor = Color.Transparent;
+            transparentPanel1.Location = new Point(74, 275);
+            transparentPanel1.Name = "transparentPanel1";
+            transparentPanel1.Size = new Size(640, 40);
+            transparentPanel1.TabIndex = 22;
+            transparentPanel1.MouseDown += transparentPanel1_MouseDown;
+            transparentPanel1.MouseMove += transparentPanel1_MouseMove;
+            transparentPanel1.MouseUp += transparentPanel1_MouseUp;
             // 
             // dPan_grid_L_1
             // 
@@ -269,69 +282,97 @@
             thunderGroupBox4.BodyColorB = Color.FromArgb(30, 30, 30);
             thunderGroupBox4.BodyColorC = Color.FromArgb(46, 46, 46);
             thunderGroupBox4.BodyColorD = Color.FromArgb(50, 55, 58);
-            thunderGroupBox4.Controls.Add(nightLabel2);
-            thunderGroupBox4.Controls.Add(nightLabel1);
-            thunderGroupBox4.Controls.Add(Btn_JogMoveValue_Check);
-            thunderGroupBox4.Controls.Add(moonLabel2);
-            thunderGroupBox4.Controls.Add(Tbox_JogMovingValue);
+            thunderGroupBox4.Controls.Add(Btn_Jog_R_Z);
+            thunderGroupBox4.Controls.Add(Btn_Jog_L_Z);
+            thunderGroupBox4.Controls.Add(Btn_Jog_R_Y);
+            thunderGroupBox4.Controls.Add(Btn_Jog_L_Y);
             thunderGroupBox4.ForeColor = Color.WhiteSmoke;
             thunderGroupBox4.Location = new Point(9, 442);
             thunderGroupBox4.Margin = new Padding(2);
             thunderGroupBox4.Name = "thunderGroupBox4";
             thunderGroupBox4.Size = new Size(221, 98);
             thunderGroupBox4.TabIndex = 5;
-            thunderGroupBox4.Text = "Jog 이동값 설정";
+            thunderGroupBox4.Text = "Jog 축 선택";
             // 
-            // Btn_JogMoveValue_Check
+            // Btn_Jog_R_Z
             // 
-            Btn_JogMoveValue_Check.BackColor = Color.Transparent;
-            Btn_JogMoveValue_Check.BorderColor = Color.FromArgb(32, 34, 37);
-            Btn_JogMoveValue_Check.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            Btn_JogMoveValue_Check.EnteredColor = Color.FromArgb(32, 34, 37);
-            Btn_JogMoveValue_Check.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_JogMoveValue_Check.Image = null;
-            Btn_JogMoveValue_Check.ImageAlign = ContentAlignment.MiddleLeft;
-            Btn_JogMoveValue_Check.InactiveColor = Color.FromArgb(32, 34, 37);
-            Btn_JogMoveValue_Check.Location = new Point(119, 59);
-            Btn_JogMoveValue_Check.Name = "Btn_JogMoveValue_Check";
-            Btn_JogMoveValue_Check.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            Btn_JogMoveValue_Check.PressedColor = Color.FromArgb(165, 37, 37);
-            Btn_JogMoveValue_Check.Size = new Size(77, 29);
-            Btn_JogMoveValue_Check.TabIndex = 16;
-            Btn_JogMoveValue_Check.Text = "확인";
-            Btn_JogMoveValue_Check.TextAlignment = StringAlignment.Center;
-            Btn_JogMoveValue_Check.Click += Btn_JogMoveValue_Check_Click;
+            Btn_Jog_R_Z.BackColor = Color.Transparent;
+            Btn_Jog_R_Z.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Z.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Z.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Z.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_Jog_R_Z.Image = null;
+            Btn_Jog_R_Z.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Jog_R_Z.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Z.Location = new Point(115, 62);
+            Btn_Jog_R_Z.Name = "Btn_Jog_R_Z";
+            Btn_Jog_R_Z.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Z.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Z.Size = new Size(90, 25);
+            Btn_Jog_R_Z.TabIndex = 0;
+            Btn_Jog_R_Z.Text = "Right_Z";
+            Btn_Jog_R_Z.TextAlignment = StringAlignment.Center;
+            Btn_Jog_R_Z.Click += Btn_Jog_R_Z_Click;
             // 
-            // moonLabel2
+            // Btn_Jog_L_Z
             // 
-            moonLabel2.AutoSize = true;
-            moonLabel2.BackColor = Color.Transparent;
-            moonLabel2.ForeColor = Color.Gray;
-            moonLabel2.Location = new Point(77, 70);
-            moonLabel2.Margin = new Padding(2, 0, 2, 0);
-            moonLabel2.Name = "moonLabel2";
-            moonLabel2.Size = new Size(25, 15);
-            moonLabel2.TabIndex = 15;
-            moonLabel2.Text = "μm";
+            Btn_Jog_L_Z.BackColor = Color.Transparent;
+            Btn_Jog_L_Z.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Z.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Z.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Z.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_Jog_L_Z.Image = null;
+            Btn_Jog_L_Z.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Jog_L_Z.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Z.Location = new Point(18, 62);
+            Btn_Jog_L_Z.Name = "Btn_Jog_L_Z";
+            Btn_Jog_L_Z.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Z.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Z.Size = new Size(90, 25);
+            Btn_Jog_L_Z.TabIndex = 0;
+            Btn_Jog_L_Z.Text = "Left_Z";
+            Btn_Jog_L_Z.TextAlignment = StringAlignment.Center;
+            Btn_Jog_L_Z.Click += Btn_Jog_L_Z_Click;
             // 
-            // Tbox_JogMovingValue
+            // Btn_Jog_R_Y
             // 
-            Tbox_JogMovingValue.BackColor = Color.Transparent;
-            Tbox_JogMovingValue.BaseColor = Color.FromArgb(45, 47, 49);
-            Tbox_JogMovingValue.BorderColor = Color.FromArgb(242, 93, 75);
-            Tbox_JogMovingValue.FocusOnHover = false;
-            Tbox_JogMovingValue.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            Tbox_JogMovingValue.ForeColor = Color.FromArgb(192, 192, 192);
-            Tbox_JogMovingValue.Location = new Point(16, 59);
-            Tbox_JogMovingValue.Margin = new Padding(2);
-            Tbox_JogMovingValue.MaxLength = 32767;
-            Tbox_JogMovingValue.Multiline = false;
-            Tbox_JogMovingValue.Name = "Tbox_JogMovingValue";
-            Tbox_JogMovingValue.ReadOnly = false;
-            Tbox_JogMovingValue.Size = new Size(57, 29);
-            Tbox_JogMovingValue.TabIndex = 14;
-            Tbox_JogMovingValue.TextAlign = HorizontalAlignment.Left;
-            Tbox_JogMovingValue.UseSystemPasswordChar = false;
+            Btn_Jog_R_Y.BackColor = Color.Transparent;
+            Btn_Jog_R_Y.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Y.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Y.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Y.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_Jog_R_Y.Image = null;
+            Btn_Jog_R_Y.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Jog_R_Y.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Y.Location = new Point(115, 33);
+            Btn_Jog_R_Y.Name = "Btn_Jog_R_Y";
+            Btn_Jog_R_Y.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Y.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Y.Size = new Size(90, 25);
+            Btn_Jog_R_Y.TabIndex = 0;
+            Btn_Jog_R_Y.Text = "Right_Y";
+            Btn_Jog_R_Y.TextAlignment = StringAlignment.Center;
+            Btn_Jog_R_Y.Click += Btn_Jog_R_Y_Click;
+            // 
+            // Btn_Jog_L_Y
+            // 
+            Btn_Jog_L_Y.BackColor = Color.Transparent;
+            Btn_Jog_L_Y.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Y.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Y.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Y.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_Jog_L_Y.Image = null;
+            Btn_Jog_L_Y.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Jog_L_Y.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Y.Location = new Point(18, 33);
+            Btn_Jog_L_Y.Name = "Btn_Jog_L_Y";
+            Btn_Jog_L_Y.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Y.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Y.Size = new Size(90, 25);
+            Btn_Jog_L_Y.TabIndex = 0;
+            Btn_Jog_L_Y.Text = "Left_Y";
+            Btn_Jog_L_Y.TextAlignment = StringAlignment.Center;
+            Btn_Jog_L_Y.Click += Btn_Jog_L_Y_Click;
             // 
             // thunderGroupBox3
             // 
@@ -340,8 +381,8 @@
             thunderGroupBox3.BodyColorB = Color.FromArgb(30, 30, 30);
             thunderGroupBox3.BodyColorC = Color.FromArgb(46, 46, 46);
             thunderGroupBox3.BodyColorD = Color.FromArgb(50, 55, 58);
-            thunderGroupBox3.Controls.Add(button2);
-            thunderGroupBox3.Controls.Add(button1);
+            thunderGroupBox3.Controls.Add(Btn_JogOriginal);
+            thunderGroupBox3.Controls.Add(Btn_JogReverse);
             thunderGroupBox3.Font = new Font("맑은 고딕", 6F, FontStyle.Regular, GraphicsUnit.Point);
             thunderGroupBox3.ForeColor = Color.WhiteSmoke;
             thunderGroupBox3.Location = new Point(291, 344);
@@ -351,43 +392,47 @@
             thunderGroupBox3.TabIndex = 4;
             thunderGroupBox3.Text = "Jog                     1";
             // 
-            // button2
+            // Btn_JogOriginal
             // 
-            button2.BackColor = Color.Transparent;
-            button2.BorderColor = Color.FromArgb(32, 34, 37);
-            button2.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            button2.EnteredColor = Color.FromArgb(32, 34, 37);
-            button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleCenter;
-            button2.InactiveColor = Color.FromArgb(32, 34, 37);
-            button2.Location = new Point(1, 26);
-            button2.Margin = new Padding(2);
-            button2.Name = "button2";
-            button2.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button2.PressedColor = Color.FromArgb(165, 37, 37);
-            button2.Size = new Size(48, 78);
-            button2.TabIndex = 10;
-            button2.TextAlignment = StringAlignment.Center;
+            Btn_JogOriginal.BackColor = Color.Transparent;
+            Btn_JogOriginal.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_JogOriginal.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogOriginal.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_JogOriginal.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_JogOriginal.Image = (Image)resources.GetObject("Btn_JogOriginal.Image");
+            Btn_JogOriginal.ImageAlign = ContentAlignment.MiddleCenter;
+            Btn_JogOriginal.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_JogOriginal.Location = new Point(1, 26);
+            Btn_JogOriginal.Margin = new Padding(2);
+            Btn_JogOriginal.Name = "Btn_JogOriginal";
+            Btn_JogOriginal.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogOriginal.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_JogOriginal.Size = new Size(48, 78);
+            Btn_JogOriginal.TabIndex = 10;
+            Btn_JogOriginal.TextAlignment = StringAlignment.Center;
+            Btn_JogOriginal.MouseDown += Btn_JogOriginal_MouseDown;
+            Btn_JogOriginal.MouseUp += Btn_JogOriginal_MouseUp;
             // 
-            // button1
+            // Btn_JogReverse
             // 
-            button1.BackColor = Color.Transparent;
-            button1.BorderColor = Color.FromArgb(32, 34, 37);
-            button1.EnteredBorderColor = Color.FromArgb(165, 37, 37);
-            button1.EnteredColor = Color.FromArgb(32, 34, 37);
-            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleCenter;
-            button1.InactiveColor = Color.FromArgb(32, 34, 37);
-            button1.Location = new Point(0, 104);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button1.PressedColor = Color.FromArgb(165, 37, 37);
-            button1.Size = new Size(48, 90);
-            button1.TabIndex = 9;
-            button1.TextAlignment = StringAlignment.Center;
+            Btn_JogReverse.BackColor = Color.Transparent;
+            Btn_JogReverse.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_JogReverse.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogReverse.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_JogReverse.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_JogReverse.Image = (Image)resources.GetObject("Btn_JogReverse.Image");
+            Btn_JogReverse.ImageAlign = ContentAlignment.MiddleCenter;
+            Btn_JogReverse.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_JogReverse.Location = new Point(0, 104);
+            Btn_JogReverse.Margin = new Padding(2);
+            Btn_JogReverse.Name = "Btn_JogReverse";
+            Btn_JogReverse.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogReverse.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_JogReverse.Size = new Size(48, 90);
+            Btn_JogReverse.TabIndex = 9;
+            Btn_JogReverse.TextAlignment = StringAlignment.Center;
+            Btn_JogReverse.MouseDown += Btn_JogReverse_MouseDown;
+            Btn_JogReverse.MouseUp += Btn_JogReverse_MouseUp;
             // 
             // thunderGroupBox1
             // 
@@ -517,30 +562,6 @@
             Tbox_GridViewValue.TextAlign = HorizontalAlignment.Left;
             Tbox_GridViewValue.UseSystemPasswordChar = false;
             // 
-            // nightLabel1
-            // 
-            nightLabel1.AutoSize = true;
-            nightLabel1.BackColor = Color.Transparent;
-            nightLabel1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            nightLabel1.ForeColor = Color.FromArgb(114, 118, 127);
-            nightLabel1.Location = new Point(18, 33);
-            nightLabel1.Name = "nightLabel1";
-            nightLabel1.Size = new Size(82, 15);
-            nightLabel1.TabIndex = 17;
-            nightLabel1.Text = "Jog 현재위치 :";
-            // 
-            // nightLabel2
-            // 
-            nightLabel2.AutoSize = true;
-            nightLabel2.BackColor = Color.Transparent;
-            nightLabel2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            nightLabel2.ForeColor = Color.FromArgb(114, 118, 127);
-            nightLabel2.Location = new Point(108, 33);
-            nightLabel2.Name = "nightLabel2";
-            nightLabel2.Size = new Size(35, 15);
-            nightLabel2.TabIndex = 18;
-            nightLabel2.Text = "Value";
-            // 
             // AlignSettingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -558,7 +579,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             thunderGroupBox5.ResumeLayout(false);
             thunderGroupBox4.ResumeLayout(false);
-            thunderGroupBox4.PerformLayout();
             thunderGroupBox3.ResumeLayout(false);
             thunderGroupBox1.ResumeLayout(false);
             thunderGroupBox2.ResumeLayout(false);
@@ -575,8 +595,8 @@
         private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox3;
         private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox1;
         private ReaLTaiizor.Controls.Button dBtn_dw_L;
-        private ReaLTaiizor.Controls.Button button1;
-        private ReaLTaiizor.Controls.Button button2;
+        private ReaLTaiizor.Controls.Button Btn_JogReverse;
+        private ReaLTaiizor.Controls.Button Btn_JogOriginal;
         private ReaLTaiizor.Controls.Button dBtn_up_L;
         private ReaLTaiizor.Controls.MoonLabel moonLabel1;
         private ReaLTaiizor.Controls.ForeverTextBox Tbox_GridViewValue;
@@ -589,11 +609,11 @@
         private Panel dPan_grid_L_4;
         private Panel dPan_grid_L_5;
         private Panel dPan_grid_L_3;
-        private ReaLTaiizor.Controls.Button Btn_JogMoveValue_Check;
-        private ReaLTaiizor.Controls.MoonLabel moonLabel2;
-        private ReaLTaiizor.Controls.ForeverTextBox Tbox_JogMovingValue;
         private ReaLTaiizor.Controls.Button Btn_GridView_Check;
-        private ReaLTaiizor.Controls.NightLabel nightLabel2;
-        private ReaLTaiizor.Controls.NightLabel nightLabel1;
+        private Component.TransparentPanel transparentPanel1;
+        private ReaLTaiizor.Controls.Button Btn_Jog_R_Z;
+        private ReaLTaiizor.Controls.Button Btn_Jog_L_Z;
+        private ReaLTaiizor.Controls.Button Btn_Jog_R_Y;
+        private ReaLTaiizor.Controls.Button Btn_Jog_L_Y;
     }
 }

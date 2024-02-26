@@ -13,6 +13,7 @@ using JD_Proc.Log;
 using JD_Proc.Service;
 using System.Data;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
 using System.Timers;
 using System.Windows.Forms;
@@ -1352,26 +1353,6 @@ namespace JD_Proc
         {
             SetModel(path);
             _Model_path = path;
-        }
-        #endregion
-
-        #region method - 셋팅 창에서 조그 활성화를 했을때
-        public void JogVisibleChanged(bool show)
-        {
-            if (show == true)
-            {
-                DBtn_jogUp_L.Visible = true;
-                DBtn_jogDown_L.Visible = true;
-                DBtn_jogUp_R.Visible = true;
-                DBtn_jogDown_R.Visible = true;
-            }
-            else
-            {
-                DBtn_jogUp_L.Visible = false;
-                DBtn_jogDown_L.Visible = false;
-                DBtn_jogUp_R.Visible = false;
-                DBtn_jogDown_R.Visible = false;
-            }
         }
         #endregion
 
@@ -3081,6 +3062,84 @@ namespace JD_Proc
         {
             Debug.Print(isCheckboxROI.Count(t => t).ToString());
             return isCheckboxROI.Count(t => t);
+        }
+        #endregion
+
+        #region [method - Select Jog Axis]
+        public void selectJogAxis_L_Y()
+        {
+            //D31051~4 = 해당 축 넘버
+            //M30175 = 정회전
+            //M30176 = 역회전
+
+            // D31051 - L_Y축
+            _MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("1"));
+
+            // 나머지 축값 0으로
+            _MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
+            _MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
+            _MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
+        }
+        public void selectJogAxis_L_Z()
+        {
+            //D31051~4 = 해당 축 넘버
+            //M30175 = 정회전
+            //M30176 = 역회전
+
+            // D31052 - L_Z축
+            _MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("1"));
+
+            // 나머지 축값 0으로
+            _MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
+            _MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
+            _MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
+        }
+        public void selectJogAxis_R_Y()
+        {
+            //D31051~4 = 해당 축 넘버
+            //M30175 = 정회전
+            //M30176 = 역회전
+
+            // D31053 - R_Y축
+            _MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("1"));
+
+            // 나머지 축값 0으로
+            _MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
+            _MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
+            _MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
+        }
+        public void selectJogAxis_R_Z()
+        {
+            //D31051~4 = 해당 축 넘버
+            //M30175 = 정회전
+            //M30176 = 역회전
+
+            // D31054 - L_Y축
+            _MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("1"));
+
+            // 나머지 축값 0으로
+            _MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
+            _MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
+            _MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
+        }
+        #endregion
+
+        #region [method - JogButtonMouseEvent]
+        public void jogButtonOriginalClickDown()
+        {
+            _MELSEC_JOG.actUtlType64.SetDevice("M30175", short.Parse("1"));
+        }
+        public void jogButtonOriginalClickUp()
+        {
+            _MELSEC_JOG.actUtlType64.SetDevice("M30175", short.Parse("0"));
+        }
+        public void jogButtonReverseClickDown()
+        {
+            _MELSEC_JOG.actUtlType64.SetDevice("M30176", short.Parse("1"));
+        }
+        public void jogButtonReverseClickUp()
+        {
+            _MELSEC_JOG.actUtlType64.SetDevice("M30176", short.Parse("0"));
         }
         #endregion
 

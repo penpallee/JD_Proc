@@ -417,13 +417,6 @@ namespace JD_Proc
         }
         #endregion
 
-        #region event(jog) - checked changed
-        private void dCheckBox_jog_CheckedChanged()
-        {
-            _form1.JogVisibleChanged(dCheckBox_jog.Checked);
-        }
-        #endregion
-
         #region event(Additional Window) - On/Off
         private void cyberCheckBox1_CheckedChanged()
         {
