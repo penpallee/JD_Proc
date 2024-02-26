@@ -160,7 +160,7 @@ namespace JD_Proc
 
             if (_MODE == "auto")
             {
-                //Connect("generic1.xml", 1);
+                Connect("generic1.xml", 1);
 #if JD
                 Connect("generic2.xml", 2);
                 _MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
@@ -170,8 +170,8 @@ namespace JD_Proc
                 if (_MELSEC.IsConnected() == true) dRadio_plc.Checked = true;
                 if (_MELSEC_HEART.IsConnected() == true) Debug.Print("MELSEC_HEART OK");
 #endif
-                _MELSEC_JOG = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                _MELSEC_JOG.Open();
+                //_MELSEC_JOG = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                //_MELSEC_JOG.Open();
 
                 dRadio_cam1.Checked = true;
                 dRadio_cam2.Checked = true;

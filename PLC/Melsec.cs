@@ -66,8 +66,8 @@ namespace JD_Proc.PLC
         #region 생성자
         public Melsec(int actLogicalStationNumber)
         {
-            actUtlType64 = new ActUtlType64Lib.ActUtlType64();
-            actUtlType64.ActLogicalStationNumber = actLogicalStationNumber;
+            //actUtlType64 = new ActUtlType64Lib.ActUtlType64();
+            //actUtlType64.ActLogicalStationNumber = actLogicalStationNumber;
         }
         #endregion
 
