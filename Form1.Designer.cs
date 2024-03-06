@@ -76,12 +76,65 @@ namespace JD_Proc
             ChartArea chartArea12 = new ChartArea();
             Legend legend12 = new Legend();
             Series series12 = new Series();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            ChartArea chartArea13 = new ChartArea();
+            Legend legend13 = new Legend();
+            Series series13 = new Series();
+            DataPoint dataPoint6 = new DataPoint(0D, 23D);
+            DataPoint dataPoint7 = new DataPoint(1D, 28D);
+            DataPoint dataPoint8 = new DataPoint(2D, 25D);
+            DataPoint dataPoint9 = new DataPoint(3D, 22D);
+            DataPoint dataPoint10 = new DataPoint(4D, 20D);
+            ChartArea chartArea14 = new ChartArea();
+            Legend legend14 = new Legend();
+            Series series14 = new Series();
+            ChartArea chartArea15 = new ChartArea();
+            Legend legend15 = new Legend();
+            Series series15 = new Series();
+            ChartArea chartArea16 = new ChartArea();
+            Legend legend16 = new Legend();
+            Series series16 = new Series();
+            ChartArea chartArea17 = new ChartArea();
+            Legend legend17 = new Legend();
+            Series series17 = new Series();
+            ChartArea chartArea18 = new ChartArea();
+            Legend legend18 = new Legend();
+            Series series18 = new Series();
+            ChartArea chartArea19 = new ChartArea();
+            Legend legend19 = new Legend();
+            Series series19 = new Series();
+            ChartArea chartArea20 = new ChartArea();
+            Legend legend20 = new Legend();
+            Series series20 = new Series();
+            ChartArea chartArea21 = new ChartArea();
+            Legend legend21 = new Legend();
+            Series series21 = new Series();
+            ChartArea chartArea22 = new ChartArea();
+            Legend legend22 = new Legend();
+            Series series22 = new Series();
+            ChartArea chartArea23 = new ChartArea();
+            Legend legend23 = new Legend();
+            Series series23 = new Series();
+            ChartArea chartArea24 = new ChartArea();
+            Legend legend24 = new Legend();
+            Series series24 = new Series();
             CheckBox_ROI_L1 = new ReaLTaiizor.Controls.MetroCheckBox();
             nightForm1 = new ReaLTaiizor.Forms.NightForm();
             panel6 = new Panel();
             panel2 = new Panel();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             panel3 = new Panel();
+            Panel_CameraCenterLine_L = new ReaLTaiizor.Controls.Panel();
+            Panel_BrighestLine_L = new ReaLTaiizor.Controls.Panel();
+            dBtn_BrightestLine_L = new ReaLTaiizor.Controls.NightButton();
+            dBtn_CameraLine_L = new ReaLTaiizor.Controls.NightButton();
+            Label_SV_Value = new Label();
+            Label_PV_Value = new Label();
+            Label_SV = new Label();
+            Label_PV = new Label();
             tableLayoutPanel_Auto = new TableLayoutPanel();
             tableLayoutPanel5 = new TableLayoutPanel();
             pictureBox1_Auto = new PictureBox();
@@ -97,9 +150,13 @@ namespace JD_Proc
             CheckBox_ROI_L2 = new ReaLTaiizor.Controls.MetroCheckBox();
             dLabel_Ng_L = new ReaLTaiizor.Controls.NightLabel();
             panel4 = new Panel();
+            Panel_CameraCenterLine_R = new ReaLTaiizor.Controls.Panel();
+            Panel_BrighestLine_R = new ReaLTaiizor.Controls.Panel();
             CheckBox_ROI_R5 = new ReaLTaiizor.Controls.MetroCheckBox();
             CheckBox_ROI_R4 = new ReaLTaiizor.Controls.MetroCheckBox();
+            dBtn_BrightestLine_R = new ReaLTaiizor.Controls.NightButton();
             CheckBox_ROI_R3 = new ReaLTaiizor.Controls.MetroCheckBox();
+            dBtn_CameraLine_R = new ReaLTaiizor.Controls.NightButton();
             CheckBox_ROI_R2 = new ReaLTaiizor.Controls.MetroCheckBox();
             CheckBox_ROI_R1 = new ReaLTaiizor.Controls.MetroCheckBox();
             dLabel_Ng_R = new ReaLTaiizor.Controls.NightLabel();
@@ -162,6 +219,78 @@ namespace JD_Proc
             dRadio_cam1 = new ReaLTaiizor.Controls.CyberRadioButton();
             skyLabel1 = new ReaLTaiizor.Controls.SkyLabel();
             thunderControlBox1 = new ReaLTaiizor.Controls.ThunderControlBox();
+            panel7 = new Panel();
+            nightButton1 = new ReaLTaiizor.Controls.NightButton();
+            nightButton2 = new ReaLTaiizor.Controls.NightButton();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            tableLayoutPanel7 = new TableLayoutPanel();
+            tableLayoutPanel8 = new TableLayoutPanel();
+            pictureBox3 = new PictureBox();
+            dataGridView3 = new DataGridView();
+            tableLayoutPanel9 = new TableLayoutPanel();
+            pictureBox4 = new PictureBox();
+            dataGridView4 = new DataGridView();
+            chart1 = new Chart();
+            chart2 = new Chart();
+            metroCheckBox1 = new ReaLTaiizor.Controls.MetroCheckBox();
+            metroCheckBox2 = new ReaLTaiizor.Controls.MetroCheckBox();
+            metroCheckBox3 = new ReaLTaiizor.Controls.MetroCheckBox();
+            metroCheckBox4 = new ReaLTaiizor.Controls.MetroCheckBox();
+            metroCheckBox5 = new ReaLTaiizor.Controls.MetroCheckBox();
+            nightLabel1 = new ReaLTaiizor.Controls.NightLabel();
+            panel9 = new Panel();
+            metroCheckBox6 = new ReaLTaiizor.Controls.MetroCheckBox();
+            metroCheckBox7 = new ReaLTaiizor.Controls.MetroCheckBox();
+            nightButton3 = new ReaLTaiizor.Controls.NightButton();
+            metroCheckBox8 = new ReaLTaiizor.Controls.MetroCheckBox();
+            nightButton4 = new ReaLTaiizor.Controls.NightButton();
+            metroCheckBox9 = new ReaLTaiizor.Controls.MetroCheckBox();
+            metroCheckBox10 = new ReaLTaiizor.Controls.MetroCheckBox();
+            nightLabel2 = new ReaLTaiizor.Controls.NightLabel();
+            chart3 = new Chart();
+            chart4 = new Chart();
+            chart5 = new Chart();
+            chart6 = new Chart();
+            chart7 = new Chart();
+            hopePictureBox1 = new ReaLTaiizor.Controls.HopePictureBox();
+            hopePictureBox2 = new ReaLTaiizor.Controls.HopePictureBox();
+            hopePictureBox3 = new ReaLTaiizor.Controls.HopePictureBox();
+            hopePictureBox4 = new ReaLTaiizor.Controls.HopePictureBox();
+            hopePictureBox5 = new ReaLTaiizor.Controls.HopePictureBox();
+            nightLabel3 = new ReaLTaiizor.Controls.NightLabel();
+            dungeonComboBox1 = new ReaLTaiizor.Controls.DungeonComboBox();
+            dungeonComboBox2 = new ReaLTaiizor.Controls.DungeonComboBox();
+            pictureBox5 = new PictureBox();
+            nightTextBox1 = new ReaLTaiizor.Controls.NightTextBox();
+            tableLayoutPanel10 = new TableLayoutPanel();
+            nightButton5 = new ReaLTaiizor.Controls.NightButton();
+            nightButton6 = new ReaLTaiizor.Controls.NightButton();
+            nightButton7 = new ReaLTaiizor.Controls.NightButton();
+            nightButton8 = new ReaLTaiizor.Controls.NightButton();
+            nightButton9 = new ReaLTaiizor.Controls.NightButton();
+            nightButton10 = new ReaLTaiizor.Controls.NightButton();
+            nightButton11 = new ReaLTaiizor.Controls.NightButton();
+            chart8 = new Chart();
+            chart9 = new Chart();
+            chart10 = new Chart();
+            chart11 = new Chart();
+            chart12 = new Chart();
+            hopePictureBox6 = new ReaLTaiizor.Controls.HopePictureBox();
+            hopePictureBox7 = new ReaLTaiizor.Controls.HopePictureBox();
+            hopePictureBox8 = new ReaLTaiizor.Controls.HopePictureBox();
+            hopePictureBox9 = new ReaLTaiizor.Controls.HopePictureBox();
+            hopePictureBox10 = new ReaLTaiizor.Controls.HopePictureBox();
+            dungeonComboBox3 = new ReaLTaiizor.Controls.DungeonComboBox();
+            nightLabel4 = new ReaLTaiizor.Controls.NightLabel();
+            dungeonComboBox4 = new ReaLTaiizor.Controls.DungeonComboBox();
+            nightTextBox2 = new ReaLTaiizor.Controls.NightTextBox();
+            pictureBox6 = new PictureBox();
+            tableLayoutPanel11 = new TableLayoutPanel();
+            nightButton12 = new ReaLTaiizor.Controls.NightButton();
+            nightButton13 = new ReaLTaiizor.Controls.NightButton();
             nightForm1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -202,6 +331,41 @@ namespace JD_Proc
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            panel7.SuspendLayout();
+            tableLayoutPanel7.SuspendLayout();
+            tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            tableLayoutPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart2).BeginInit();
+            panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            tableLayoutPanel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart9).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart11).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart12).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox9).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            tableLayoutPanel11.SuspendLayout();
             SuspendLayout();
             // 
             // CheckBox_ROI_L1
@@ -281,6 +445,14 @@ namespace JD_Proc
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(2, 2, 2);
+            panel3.Controls.Add(Panel_CameraCenterLine_L);
+            panel3.Controls.Add(Panel_BrighestLine_L);
+            panel3.Controls.Add(dBtn_BrightestLine_L);
+            panel3.Controls.Add(dBtn_CameraLine_L);
+            panel3.Controls.Add(Label_SV_Value);
+            panel3.Controls.Add(Label_PV_Value);
+            panel3.Controls.Add(Label_SV);
+            panel3.Controls.Add(Label_PV);
             panel3.Controls.Add(tableLayoutPanel_Auto);
             panel3.Controls.Add(CheckBox_ROI_L5);
             panel3.Controls.Add(CheckBox_ROI_L4);
@@ -310,6 +482,122 @@ namespace JD_Proc
             panel3.Size = new Size(1920, 940);
             panel3.TabIndex = 8;
             // 
+            // Panel_CameraCenterLine_L
+            // 
+            Panel_CameraCenterLine_L.BackColor = Color.Silver;
+            Panel_CameraCenterLine_L.EdgeColor = Color.FromArgb(32, 41, 50);
+            Panel_CameraCenterLine_L.Location = new Point(311, 319);
+            Panel_CameraCenterLine_L.Name = "Panel_CameraCenterLine_L";
+            Panel_CameraCenterLine_L.Padding = new Padding(5);
+            Panel_CameraCenterLine_L.Size = new Size(640, 3);
+            Panel_CameraCenterLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Panel_CameraCenterLine_L.TabIndex = 44;
+            Panel_CameraCenterLine_L.Text = "panel5";
+            Panel_CameraCenterLine_L.Visible = false;
+            // 
+            // Panel_BrighestLine_L
+            // 
+            Panel_BrighestLine_L.BackColor = Color.Yellow;
+            Panel_BrighestLine_L.EdgeColor = Color.FromArgb(32, 41, 50);
+            Panel_BrighestLine_L.Location = new Point(311, 286);
+            Panel_BrighestLine_L.Name = "Panel_BrighestLine_L";
+            Panel_BrighestLine_L.Padding = new Padding(5);
+            Panel_BrighestLine_L.Size = new Size(640, 3);
+            Panel_BrighestLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Panel_BrighestLine_L.TabIndex = 43;
+            Panel_BrighestLine_L.Text = "panel5";
+            Panel_BrighestLine_L.Visible = false;
+            // 
+            // dBtn_BrightestLine_L
+            // 
+            dBtn_BrightestLine_L.BackColor = Color.Transparent;
+            dBtn_BrightestLine_L.DialogResult = DialogResult.None;
+            dBtn_BrightestLine_L.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_BrightestLine_L.ForeColor = Color.Silver;
+            dBtn_BrightestLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_BrightestLine_L.HoverForeColor = Color.White;
+            dBtn_BrightestLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_BrightestLine_L.Location = new Point(856, 423);
+            dBtn_BrightestLine_L.MinimumSize = new Size(100, 50);
+            dBtn_BrightestLine_L.Name = "dBtn_BrightestLine_L";
+            dBtn_BrightestLine_L.NormalBackColor = Color.White;
+            dBtn_BrightestLine_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_BrightestLine_L.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_BrightestLine_L.PressedForeColor = Color.White;
+            dBtn_BrightestLine_L.Radius = 20;
+            dBtn_BrightestLine_L.Size = new Size(100, 50);
+            dBtn_BrightestLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_BrightestLine_L.TabIndex = 42;
+            dBtn_BrightestLine_L.Text = "BrighestLine";
+            dBtn_BrightestLine_L.Click += dBtn_BrightestLine_L_Click;
+            // 
+            // dBtn_CameraLine_L
+            // 
+            dBtn_CameraLine_L.BackColor = Color.Transparent;
+            dBtn_CameraLine_L.DialogResult = DialogResult.None;
+            dBtn_CameraLine_L.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_CameraLine_L.ForeColor = Color.Silver;
+            dBtn_CameraLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_CameraLine_L.HoverForeColor = Color.White;
+            dBtn_CameraLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_CameraLine_L.Location = new Point(856, 367);
+            dBtn_CameraLine_L.MinimumSize = new Size(100, 50);
+            dBtn_CameraLine_L.Name = "dBtn_CameraLine_L";
+            dBtn_CameraLine_L.NormalBackColor = Color.White;
+            dBtn_CameraLine_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_CameraLine_L.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_CameraLine_L.PressedForeColor = Color.White;
+            dBtn_CameraLine_L.Radius = 20;
+            dBtn_CameraLine_L.Size = new Size(100, 50);
+            dBtn_CameraLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_CameraLine_L.TabIndex = 41;
+            dBtn_CameraLine_L.Text = "CenterLine";
+            dBtn_CameraLine_L.Click += dBtn_CameraLine_L_Click;
+            // 
+            // Label_SV_Value
+            // 
+            Label_SV_Value.AutoSize = true;
+            Label_SV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_SV_Value.ForeColor = SystemColors.ControlLightLight;
+            Label_SV_Value.Location = new Point(134, 455);
+            Label_SV_Value.Name = "Label_SV_Value";
+            Label_SV_Value.Size = new Size(19, 21);
+            Label_SV_Value.TabIndex = 40;
+            Label_SV_Value.Text = "0";
+            // 
+            // Label_PV_Value
+            // 
+            Label_PV_Value.AutoSize = true;
+            Label_PV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_PV_Value.ForeColor = SystemColors.ControlLightLight;
+            Label_PV_Value.Location = new Point(54, 455);
+            Label_PV_Value.Name = "Label_PV_Value";
+            Label_PV_Value.Size = new Size(19, 21);
+            Label_PV_Value.TabIndex = 40;
+            Label_PV_Value.Text = "0";
+            // 
+            // Label_SV
+            // 
+            Label_SV.AutoSize = true;
+            Label_SV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_SV.ForeColor = SystemColors.ControlDark;
+            Label_SV.Location = new Point(94, 452);
+            Label_SV.Name = "Label_SV";
+            Label_SV.Size = new Size(48, 25);
+            Label_SV.TabIndex = 39;
+            Label_SV.Text = "SV : ";
+            // 
+            // Label_PV
+            // 
+            Label_PV.AutoSize = true;
+            Label_PV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_PV.ForeColor = SystemColors.ControlDark;
+            Label_PV.Location = new Point(12, 453);
+            Label_PV.Name = "Label_PV";
+            Label_PV.Size = new Size(49, 25);
+            Label_PV.TabIndex = 38;
+            Label_PV.Text = "PV : ";
+            // 
             // tableLayoutPanel_Auto
             // 
             tableLayoutPanel_Auto.ColumnCount = 2;
@@ -319,7 +607,7 @@ namespace JD_Proc
             tableLayoutPanel_Auto.Controls.Add(tableLayoutPanel6, 1, 0);
             tableLayoutPanel_Auto.Controls.Add(Chart_Auto_L, 0, 1);
             tableLayoutPanel_Auto.Controls.Add(Chart_Auto_R, 1, 1);
-            tableLayoutPanel_Auto.Location = new Point(0, 4);
+            tableLayoutPanel_Auto.Location = new Point(200, 499);
             tableLayoutPanel_Auto.Name = "tableLayoutPanel_Auto";
             tableLayoutPanel_Auto.RowCount = 2;
             tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
@@ -628,9 +916,13 @@ namespace JD_Proc
             // panel4
             // 
             panel4.BackColor = Color.Black;
+            panel4.Controls.Add(Panel_CameraCenterLine_R);
+            panel4.Controls.Add(Panel_BrighestLine_R);
             panel4.Controls.Add(CheckBox_ROI_R5);
             panel4.Controls.Add(CheckBox_ROI_R4);
+            panel4.Controls.Add(dBtn_BrightestLine_R);
             panel4.Controls.Add(CheckBox_ROI_R3);
+            panel4.Controls.Add(dBtn_CameraLine_R);
             panel4.Controls.Add(CheckBox_ROI_R2);
             panel4.Controls.Add(CheckBox_ROI_R1);
             panel4.Controls.Add(dLabel_Ng_R);
@@ -654,7 +946,32 @@ namespace JD_Proc
             panel4.Name = "panel4";
             panel4.Size = new Size(960, 950);
             panel4.TabIndex = 9;
-            panel4.Paint += panel4_Paint;
+            // 
+            // Panel_CameraCenterLine_R
+            // 
+            Panel_CameraCenterLine_R.BackColor = Color.Silver;
+            Panel_CameraCenterLine_R.EdgeColor = Color.FromArgb(32, 41, 50);
+            Panel_CameraCenterLine_R.Location = new Point(344, 285);
+            Panel_CameraCenterLine_R.Name = "Panel_CameraCenterLine_R";
+            Panel_CameraCenterLine_R.Padding = new Padding(5);
+            Panel_CameraCenterLine_R.Size = new Size(640, 3);
+            Panel_CameraCenterLine_R.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Panel_CameraCenterLine_R.TabIndex = 44;
+            Panel_CameraCenterLine_R.Text = "panel8";
+            Panel_CameraCenterLine_R.Visible = false;
+            // 
+            // Panel_BrighestLine_R
+            // 
+            Panel_BrighestLine_R.BackColor = Color.Yellow;
+            Panel_BrighestLine_R.EdgeColor = Color.FromArgb(32, 41, 50);
+            Panel_BrighestLine_R.Location = new Point(344, 235);
+            Panel_BrighestLine_R.Name = "Panel_BrighestLine_R";
+            Panel_BrighestLine_R.Padding = new Padding(5);
+            Panel_BrighestLine_R.Size = new Size(640, 3);
+            Panel_BrighestLine_R.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Panel_BrighestLine_R.TabIndex = 43;
+            Panel_BrighestLine_R.Text = "panel5";
+            Panel_BrighestLine_R.Visible = false;
             // 
             // CheckBox_ROI_R5
             // 
@@ -702,6 +1019,29 @@ namespace JD_Proc
             CheckBox_ROI_R4.ThemeName = "MetroLight";
             CheckBox_ROI_R4.CheckedChanged += CheckBox_ROI_R4_CheckedChanged;
             // 
+            // dBtn_BrightestLine_R
+            // 
+            dBtn_BrightestLine_R.BackColor = Color.Transparent;
+            dBtn_BrightestLine_R.DialogResult = DialogResult.None;
+            dBtn_BrightestLine_R.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_BrightestLine_R.ForeColor = Color.Silver;
+            dBtn_BrightestLine_R.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_BrightestLine_R.HoverForeColor = Color.White;
+            dBtn_BrightestLine_R.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_BrightestLine_R.Location = new Point(851, 423);
+            dBtn_BrightestLine_R.MinimumSize = new Size(100, 50);
+            dBtn_BrightestLine_R.Name = "dBtn_BrightestLine_R";
+            dBtn_BrightestLine_R.NormalBackColor = Color.White;
+            dBtn_BrightestLine_R.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_BrightestLine_R.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_BrightestLine_R.PressedForeColor = Color.White;
+            dBtn_BrightestLine_R.Radius = 20;
+            dBtn_BrightestLine_R.Size = new Size(100, 50);
+            dBtn_BrightestLine_R.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_BrightestLine_R.TabIndex = 42;
+            dBtn_BrightestLine_R.Text = "BrighestLine";
+            dBtn_BrightestLine_R.Click += dBtn_BrightestLine_R_Click;
+            // 
             // CheckBox_ROI_R3
             // 
             CheckBox_ROI_R3.BackColor = Color.Transparent;
@@ -724,6 +1064,29 @@ namespace JD_Proc
             CheckBox_ROI_R3.ThemeAuthor = "Taiizor";
             CheckBox_ROI_R3.ThemeName = "MetroLight";
             CheckBox_ROI_R3.CheckedChanged += CheckBox_ROI_R3_CheckedChanged;
+            // 
+            // dBtn_CameraLine_R
+            // 
+            dBtn_CameraLine_R.BackColor = Color.Transparent;
+            dBtn_CameraLine_R.DialogResult = DialogResult.None;
+            dBtn_CameraLine_R.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_CameraLine_R.ForeColor = Color.Silver;
+            dBtn_CameraLine_R.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_CameraLine_R.HoverForeColor = Color.White;
+            dBtn_CameraLine_R.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_CameraLine_R.Location = new Point(851, 367);
+            dBtn_CameraLine_R.MinimumSize = new Size(100, 50);
+            dBtn_CameraLine_R.Name = "dBtn_CameraLine_R";
+            dBtn_CameraLine_R.NormalBackColor = Color.White;
+            dBtn_CameraLine_R.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_CameraLine_R.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_CameraLine_R.PressedForeColor = Color.White;
+            dBtn_CameraLine_R.Radius = 20;
+            dBtn_CameraLine_R.Size = new Size(100, 50);
+            dBtn_CameraLine_R.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_CameraLine_R.TabIndex = 41;
+            dBtn_CameraLine_R.Text = "CenterLine";
+            dBtn_CameraLine_R.Click += dBtn_CameraLine_R_Click;
             // 
             // CheckBox_ROI_R2
             // 
@@ -949,7 +1312,7 @@ namespace JD_Proc
             dLable_tmp2.BackColor = Color.Transparent;
             dLable_tmp2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             dLable_tmp2.ForeColor = Color.FromArgb(114, 118, 127);
-            dLable_tmp2.Location = new Point(12, 456);
+            dLable_tmp2.Location = new Point(130, 367);
             dLable_tmp2.Name = "dLable_tmp2";
             dLable_tmp2.Size = new Size(25, 30);
             dLable_tmp2.TabIndex = 20;
@@ -1077,7 +1440,7 @@ namespace JD_Proc
             dBtn_load2.BackColor = Color.Transparent;
             dBtn_load2.DialogResult = DialogResult.None;
             dBtn_load2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_load2.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_load2.ForeColor = Color.Silver;
             dBtn_load2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_load2.HoverForeColor = Color.White;
             dBtn_load2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1100,7 +1463,7 @@ namespace JD_Proc
             dBtn_imageSave2.BackColor = Color.Transparent;
             dBtn_imageSave2.DialogResult = DialogResult.None;
             dBtn_imageSave2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_imageSave2.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_imageSave2.ForeColor = Color.Silver;
             dBtn_imageSave2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_imageSave2.HoverForeColor = Color.White;
             dBtn_imageSave2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1123,7 +1486,7 @@ namespace JD_Proc
             dBtn_live2.BackColor = Color.Transparent;
             dBtn_live2.DialogResult = DialogResult.None;
             dBtn_live2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_live2.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_live2.ForeColor = Color.Silver;
             dBtn_live2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_live2.HoverForeColor = Color.White;
             dBtn_live2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1147,7 +1510,7 @@ namespace JD_Proc
             dBtn_stop2.DialogResult = DialogResult.None;
             dBtn_stop2.Enabled = false;
             dBtn_stop2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_stop2.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_stop2.ForeColor = Color.Silver;
             dBtn_stop2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_stop2.HoverForeColor = Color.White;
             dBtn_stop2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1170,7 +1533,7 @@ namespace JD_Proc
             dBtn_snap2.BackColor = Color.Transparent;
             dBtn_snap2.DialogResult = DialogResult.None;
             dBtn_snap2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_snap2.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_snap2.ForeColor = Color.Silver;
             dBtn_snap2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_snap2.HoverForeColor = Color.White;
             dBtn_snap2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1193,7 +1556,7 @@ namespace JD_Proc
             dBtn_Process2.BackColor = Color.Transparent;
             dBtn_Process2.DialogResult = DialogResult.None;
             dBtn_Process2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_Process2.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_Process2.ForeColor = Color.Silver;
             dBtn_Process2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_Process2.HoverForeColor = Color.White;
             dBtn_Process2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1216,7 +1579,7 @@ namespace JD_Proc
             dBtn_Measure2.BackColor = Color.Transparent;
             dBtn_Measure2.DialogResult = DialogResult.None;
             dBtn_Measure2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_Measure2.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_Measure2.ForeColor = Color.Silver;
             dBtn_Measure2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_Measure2.HoverForeColor = Color.White;
             dBtn_Measure2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1426,7 +1789,7 @@ namespace JD_Proc
             dLable_tmp1.BackColor = Color.Transparent;
             dLable_tmp1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             dLable_tmp1.ForeColor = Color.FromArgb(114, 118, 127);
-            dLable_tmp1.Location = new Point(12, 456);
+            dLable_tmp1.Location = new Point(132, 368);
             dLable_tmp1.Name = "dLable_tmp1";
             dLable_tmp1.Size = new Size(25, 30);
             dLable_tmp1.TabIndex = 13;
@@ -1526,7 +1889,7 @@ namespace JD_Proc
             dBtn_load1.BackColor = Color.Transparent;
             dBtn_load1.DialogResult = DialogResult.None;
             dBtn_load1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_load1.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_load1.ForeColor = Color.Silver;
             dBtn_load1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_load1.HoverForeColor = Color.White;
             dBtn_load1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1549,7 +1912,7 @@ namespace JD_Proc
             dBtn_imageSave1.BackColor = Color.Transparent;
             dBtn_imageSave1.DialogResult = DialogResult.None;
             dBtn_imageSave1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_imageSave1.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_imageSave1.ForeColor = Color.Silver;
             dBtn_imageSave1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_imageSave1.HoverForeColor = Color.White;
             dBtn_imageSave1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1572,7 +1935,7 @@ namespace JD_Proc
             dBtn_live1.BackColor = Color.Transparent;
             dBtn_live1.DialogResult = DialogResult.None;
             dBtn_live1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_live1.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_live1.ForeColor = Color.Silver;
             dBtn_live1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_live1.HoverForeColor = Color.White;
             dBtn_live1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1596,7 +1959,7 @@ namespace JD_Proc
             dBtn_stop1.DialogResult = DialogResult.None;
             dBtn_stop1.Enabled = false;
             dBtn_stop1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_stop1.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_stop1.ForeColor = Color.Silver;
             dBtn_stop1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_stop1.HoverForeColor = Color.White;
             dBtn_stop1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1619,7 +1982,7 @@ namespace JD_Proc
             dBtn_snap1.BackColor = Color.Transparent;
             dBtn_snap1.DialogResult = DialogResult.None;
             dBtn_snap1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_snap1.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_snap1.ForeColor = Color.Silver;
             dBtn_snap1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_snap1.HoverForeColor = Color.White;
             dBtn_snap1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1642,7 +2005,7 @@ namespace JD_Proc
             dBtn_Process1.BackColor = Color.Transparent;
             dBtn_Process1.DialogResult = DialogResult.None;
             dBtn_Process1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_Process1.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_Process1.ForeColor = Color.Silver;
             dBtn_Process1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_Process1.HoverForeColor = Color.White;
             dBtn_Process1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1665,7 +2028,7 @@ namespace JD_Proc
             dBtn_Measure1.BackColor = Color.Transparent;
             dBtn_Measure1.DialogResult = DialogResult.None;
             dBtn_Measure1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_Measure1.ForeColor = Color.FromArgb(192, 0, 0);
+            dBtn_Measure1.ForeColor = Color.Silver;
             dBtn_Measure1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_Measure1.HoverForeColor = Color.White;
             dBtn_Measure1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -1942,6 +2305,1419 @@ namespace JD_Proc
             thunderControlBox1.TabIndex = 0;
             thunderControlBox1.Text = "thunderControlBox1";
             // 
+            // panel7
+            // 
+            panel7.BackColor = Color.FromArgb(2, 2, 2);
+            panel7.Controls.Add(nightButton1);
+            panel7.Controls.Add(nightButton2);
+            panel7.Controls.Add(label1);
+            panel7.Controls.Add(label2);
+            panel7.Controls.Add(label3);
+            panel7.Controls.Add(label4);
+            panel7.Controls.Add(tableLayoutPanel7);
+            panel7.Controls.Add(metroCheckBox1);
+            panel7.Controls.Add(metroCheckBox2);
+            panel7.Controls.Add(metroCheckBox3);
+            panel7.Controls.Add(metroCheckBox4);
+            panel7.Controls.Add(metroCheckBox5);
+            panel7.Controls.Add(nightLabel1);
+            panel7.Controls.Add(panel9);
+            panel7.Controls.Add(chart8);
+            panel7.Controls.Add(chart9);
+            panel7.Controls.Add(chart10);
+            panel7.Controls.Add(chart11);
+            panel7.Controls.Add(chart12);
+            panel7.Controls.Add(hopePictureBox6);
+            panel7.Controls.Add(hopePictureBox7);
+            panel7.Controls.Add(hopePictureBox8);
+            panel7.Controls.Add(hopePictureBox9);
+            panel7.Controls.Add(hopePictureBox10);
+            panel7.Controls.Add(dungeonComboBox3);
+            panel7.Controls.Add(nightLabel4);
+            panel7.Controls.Add(dungeonComboBox4);
+            panel7.Controls.Add(nightTextBox2);
+            panel7.Controls.Add(pictureBox6);
+            panel7.Location = new Point(0, 0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(200, 100);
+            panel7.TabIndex = 0;
+            // 
+            // nightButton1
+            // 
+            nightButton1.BackColor = Color.Transparent;
+            nightButton1.DialogResult = DialogResult.None;
+            nightButton1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton1.ForeColor = Color.Silver;
+            nightButton1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton1.HoverForeColor = Color.White;
+            nightButton1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton1.Location = new Point(856, 423);
+            nightButton1.MinimumSize = new Size(100, 50);
+            nightButton1.Name = "nightButton1";
+            nightButton1.NormalBackColor = Color.White;
+            nightButton1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton1.PressedForeColor = Color.White;
+            nightButton1.Radius = 20;
+            nightButton1.Size = new Size(100, 50);
+            nightButton1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton1.TabIndex = 42;
+            nightButton1.Text = "BrighestLine";
+            // 
+            // nightButton2
+            // 
+            nightButton2.BackColor = Color.Transparent;
+            nightButton2.DialogResult = DialogResult.None;
+            nightButton2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton2.ForeColor = Color.Silver;
+            nightButton2.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton2.HoverForeColor = Color.White;
+            nightButton2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton2.Location = new Point(856, 367);
+            nightButton2.MinimumSize = new Size(100, 50);
+            nightButton2.Name = "nightButton2";
+            nightButton2.NormalBackColor = Color.White;
+            nightButton2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton2.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton2.PressedForeColor = Color.White;
+            nightButton2.Radius = 20;
+            nightButton2.Size = new Size(100, 50);
+            nightButton2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton2.TabIndex = 41;
+            nightButton2.Text = "CenterLine";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(134, 455);
+            label1.Name = "label1";
+            label1.Size = new Size(19, 21);
+            label1.TabIndex = 40;
+            label1.Text = "0";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ControlLightLight;
+            label2.Location = new Point(54, 455);
+            label2.Name = "label2";
+            label2.Size = new Size(19, 21);
+            label2.TabIndex = 40;
+            label2.Text = "0";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ControlDark;
+            label3.Location = new Point(94, 452);
+            label3.Name = "label3";
+            label3.Size = new Size(48, 25);
+            label3.TabIndex = 39;
+            label3.Text = "SV : ";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ControlDark;
+            label4.Location = new Point(12, 453);
+            label4.Name = "label4";
+            label4.Size = new Size(49, 25);
+            label4.TabIndex = 38;
+            label4.Text = "PV : ";
+            // 
+            // tableLayoutPanel7
+            // 
+            tableLayoutPanel7.ColumnCount = 2;
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel7.Controls.Add(tableLayoutPanel8, 0, 0);
+            tableLayoutPanel7.Controls.Add(tableLayoutPanel9, 1, 0);
+            tableLayoutPanel7.Controls.Add(chart1, 0, 1);
+            tableLayoutPanel7.Controls.Add(chart2, 1, 1);
+            tableLayoutPanel7.Location = new Point(200, 499);
+            tableLayoutPanel7.Name = "tableLayoutPanel7";
+            tableLayoutPanel7.RowCount = 2;
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel7.Size = new Size(1920, 940);
+            tableLayoutPanel7.TabIndex = 35;
+            tableLayoutPanel7.Visible = false;
+            // 
+            // tableLayoutPanel8
+            // 
+            tableLayoutPanel8.ColumnCount = 2;
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85F));
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel8.Controls.Add(pictureBox3, 0, 0);
+            tableLayoutPanel8.Controls.Add(dataGridView3, 1, 0);
+            tableLayoutPanel8.Dock = DockStyle.Fill;
+            tableLayoutPanel8.Location = new Point(3, 3);
+            tableLayoutPanel8.Name = "tableLayoutPanel8";
+            tableLayoutPanel8.RowCount = 1;
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel8.Size = new Size(954, 558);
+            tableLayoutPanel8.TabIndex = 4;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Dock = DockStyle.Fill;
+            pictureBox3.Location = new Point(3, 3);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(804, 552);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 1;
+            pictureBox3.TabStop = false;
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.BackgroundColor = Color.DarkGray;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Gray;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.Black;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.LightGray;
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridView3.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridView3.Dock = DockStyle.Fill;
+            dataGridView3.EnableHeadersVisualStyles = false;
+            dataGridView3.GridColor = Color.Gray;
+            dataGridView3.Location = new Point(813, 3);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.RowTemplate.Height = 25;
+            dataGridView3.Size = new Size(138, 552);
+            dataGridView3.TabIndex = 2;
+            // 
+            // tableLayoutPanel9
+            // 
+            tableLayoutPanel9.ColumnCount = 2;
+            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85F));
+            tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel9.Controls.Add(pictureBox4, 0, 0);
+            tableLayoutPanel9.Controls.Add(dataGridView4, 1, 0);
+            tableLayoutPanel9.Dock = DockStyle.Fill;
+            tableLayoutPanel9.Location = new Point(963, 3);
+            tableLayoutPanel9.Name = "tableLayoutPanel9";
+            tableLayoutPanel9.RowCount = 1;
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel9.Size = new Size(954, 558);
+            tableLayoutPanel9.TabIndex = 5;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Dock = DockStyle.Fill;
+            pictureBox4.Location = new Point(3, 3);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(804, 552);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 2;
+            pictureBox4.TabStop = false;
+            // 
+            // dataGridView4
+            // 
+            dataGridView4.BackgroundColor = Color.DarkGray;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.Gray;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.Black;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = Color.LightGray;
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dataGridView4.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridView4.Dock = DockStyle.Fill;
+            dataGridView4.EnableHeadersVisualStyles = false;
+            dataGridView4.GridColor = Color.Gray;
+            dataGridView4.Location = new Point(813, 3);
+            dataGridView4.Name = "dataGridView4";
+            dataGridView4.RowTemplate.Height = 25;
+            dataGridView4.Size = new Size(138, 552);
+            dataGridView4.TabIndex = 3;
+            // 
+            // chart1
+            // 
+            chart1.BackColor = Color.FromArgb(0, 0, 20);
+            chart1.BackSecondaryColor = SystemColors.Desktop;
+            chart1.BorderlineDashStyle = ChartDashStyle.Solid;
+            chartArea13.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea13.AxisX.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea13.AxisX.MajorGrid.Enabled = false;
+            chartArea13.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea13.AxisY.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea13.AxisY.MajorGrid.Enabled = false;
+            chartArea13.BackColor = Color.FromArgb(0, 0, 20);
+            chartArea13.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea13);
+            chart1.Dock = DockStyle.Fill;
+            legend13.BackColor = Color.Transparent;
+            legend13.ForeColor = Color.White;
+            legend13.Name = "Legend1";
+            chart1.Legends.Add(legend13);
+            chart1.Location = new Point(3, 567);
+            chart1.Name = "chart1";
+            series13.BorderWidth = 3;
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = SeriesChartType.Line;
+            series13.Color = Color.Lime;
+            series13.IsValueShownAsLabel = true;
+            series13.LabelForeColor = Color.White;
+            series13.Legend = "Legend1";
+            series13.MarkerColor = Color.Lime;
+            series13.MarkerSize = 10;
+            series13.MarkerStyle = MarkerStyle.Circle;
+            series13.Name = "Gap(um)";
+            series13.Points.Add(dataPoint6);
+            series13.Points.Add(dataPoint7);
+            series13.Points.Add(dataPoint8);
+            series13.Points.Add(dataPoint9);
+            series13.Points.Add(dataPoint10);
+            chart1.Series.Add(series13);
+            chart1.Size = new Size(954, 370);
+            chart1.TabIndex = 6;
+            chart1.Text = "L_Camera_Gap";
+            // 
+            // chart2
+            // 
+            chart2.BackColor = Color.FromArgb(0, 0, 20);
+            chart2.BackSecondaryColor = SystemColors.Desktop;
+            chart2.BorderlineDashStyle = ChartDashStyle.Solid;
+            chartArea14.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea14.AxisX.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea14.AxisX.MajorGrid.Enabled = false;
+            chartArea14.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea14.AxisY.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea14.AxisY.MajorGrid.Enabled = false;
+            chartArea14.BackColor = Color.FromArgb(0, 0, 20);
+            chartArea14.Name = "ChartArea2";
+            chart2.ChartAreas.Add(chartArea14);
+            chart2.Dock = DockStyle.Fill;
+            legend14.BackColor = Color.Transparent;
+            legend14.ForeColor = Color.White;
+            legend14.Name = "Legend1";
+            chart2.Legends.Add(legend14);
+            chart2.Location = new Point(963, 567);
+            chart2.Name = "chart2";
+            series14.BorderWidth = 3;
+            series14.ChartArea = "ChartArea2";
+            series14.ChartType = SeriesChartType.Line;
+            series14.Color = Color.Lime;
+            series14.IsValueShownAsLabel = true;
+            series14.LabelForeColor = Color.White;
+            series14.Legend = "Legend1";
+            series14.MarkerColor = Color.Lime;
+            series14.MarkerSize = 10;
+            series14.MarkerStyle = MarkerStyle.Circle;
+            series14.Name = "Gap(um)";
+            series14.Points.Add(dataPoint6);
+            series14.Points.Add(dataPoint7);
+            series14.Points.Add(dataPoint8);
+            series14.Points.Add(dataPoint9);
+            series14.Points.Add(dataPoint10);
+            chart2.Series.Add(series14);
+            chart2.Size = new Size(954, 370);
+            chart2.TabIndex = 7;
+            chart2.Text = "R_Camera_Gap";
+            // 
+            // metroCheckBox1
+            // 
+            metroCheckBox1.BackColor = Color.Transparent;
+            metroCheckBox1.BackgroundColor = Color.White;
+            metroCheckBox1.BorderColor = Color.FromArgb(155, 155, 155);
+            metroCheckBox1.Checked = true;
+            metroCheckBox1.CheckSignColor = Color.FromArgb(65, 177, 225);
+            metroCheckBox1.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            metroCheckBox1.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            metroCheckBox1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            metroCheckBox1.IsDerivedStyle = true;
+            metroCheckBox1.Location = new Point(161, 237);
+            metroCheckBox1.Name = "metroCheckBox1";
+            metroCheckBox1.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            metroCheckBox1.Size = new Size(17, 16);
+            metroCheckBox1.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            metroCheckBox1.StyleManager = null;
+            metroCheckBox1.TabIndex = 37;
+            metroCheckBox1.Text = "metroCheckBox2";
+            metroCheckBox1.ThemeAuthor = "Taiizor";
+            metroCheckBox1.ThemeName = "MetroLight";
+            // 
+            // metroCheckBox2
+            // 
+            metroCheckBox2.BackColor = Color.Transparent;
+            metroCheckBox2.BackgroundColor = Color.White;
+            metroCheckBox2.BorderColor = Color.FromArgb(155, 155, 155);
+            metroCheckBox2.Checked = true;
+            metroCheckBox2.CheckSignColor = Color.FromArgb(65, 177, 225);
+            metroCheckBox2.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            metroCheckBox2.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            metroCheckBox2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            metroCheckBox2.IsDerivedStyle = true;
+            metroCheckBox2.Location = new Point(161, 193);
+            metroCheckBox2.Name = "metroCheckBox2";
+            metroCheckBox2.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            metroCheckBox2.Size = new Size(17, 16);
+            metroCheckBox2.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            metroCheckBox2.StyleManager = null;
+            metroCheckBox2.TabIndex = 37;
+            metroCheckBox2.Text = "metroCheckBox2";
+            metroCheckBox2.ThemeAuthor = "Taiizor";
+            metroCheckBox2.ThemeName = "MetroLight";
+            // 
+            // metroCheckBox3
+            // 
+            metroCheckBox3.BackColor = Color.Transparent;
+            metroCheckBox3.BackgroundColor = Color.White;
+            metroCheckBox3.BorderColor = Color.FromArgb(155, 155, 155);
+            metroCheckBox3.Checked = true;
+            metroCheckBox3.CheckSignColor = Color.FromArgb(65, 177, 225);
+            metroCheckBox3.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            metroCheckBox3.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            metroCheckBox3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            metroCheckBox3.IsDerivedStyle = true;
+            metroCheckBox3.Location = new Point(161, 152);
+            metroCheckBox3.Name = "metroCheckBox3";
+            metroCheckBox3.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            metroCheckBox3.Size = new Size(17, 16);
+            metroCheckBox3.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            metroCheckBox3.StyleManager = null;
+            metroCheckBox3.TabIndex = 37;
+            metroCheckBox3.Text = "metroCheckBox2";
+            metroCheckBox3.ThemeAuthor = "Taiizor";
+            metroCheckBox3.ThemeName = "MetroLight";
+            // 
+            // metroCheckBox4
+            // 
+            metroCheckBox4.BackColor = Color.Transparent;
+            metroCheckBox4.BackgroundColor = Color.White;
+            metroCheckBox4.BorderColor = Color.FromArgb(155, 155, 155);
+            metroCheckBox4.Checked = true;
+            metroCheckBox4.CheckSignColor = Color.FromArgb(65, 177, 225);
+            metroCheckBox4.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            metroCheckBox4.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            metroCheckBox4.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            metroCheckBox4.IsDerivedStyle = true;
+            metroCheckBox4.Location = new Point(161, 109);
+            metroCheckBox4.Name = "metroCheckBox4";
+            metroCheckBox4.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            metroCheckBox4.Size = new Size(17, 16);
+            metroCheckBox4.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            metroCheckBox4.StyleManager = null;
+            metroCheckBox4.TabIndex = 37;
+            metroCheckBox4.Text = "metroCheckBox2";
+            metroCheckBox4.ThemeAuthor = "Taiizor";
+            metroCheckBox4.ThemeName = "MetroLight";
+            // 
+            // metroCheckBox5
+            // 
+            metroCheckBox5.BackColor = Color.Transparent;
+            metroCheckBox5.BackgroundColor = Color.White;
+            metroCheckBox5.BorderColor = Color.FromArgb(155, 155, 155);
+            metroCheckBox5.Checked = true;
+            metroCheckBox5.CheckSignColor = Color.FromArgb(65, 177, 225);
+            metroCheckBox5.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            metroCheckBox5.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            metroCheckBox5.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            metroCheckBox5.IsDerivedStyle = true;
+            metroCheckBox5.Location = new Point(161, 67);
+            metroCheckBox5.Name = "metroCheckBox5";
+            metroCheckBox5.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            metroCheckBox5.Size = new Size(17, 16);
+            metroCheckBox5.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            metroCheckBox5.StyleManager = null;
+            metroCheckBox5.TabIndex = 36;
+            metroCheckBox5.Text = "metroCheckBox1";
+            metroCheckBox5.ThemeAuthor = "Taiizor";
+            metroCheckBox5.ThemeName = "MetroLight";
+            // 
+            // nightLabel1
+            // 
+            nightLabel1.AutoSize = true;
+            nightLabel1.BackColor = Color.Transparent;
+            nightLabel1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            nightLabel1.ForeColor = Color.FromArgb(114, 118, 127);
+            nightLabel1.Location = new Point(201, 453);
+            nightLabel1.Name = "nightLabel1";
+            nightLabel1.Size = new Size(97, 30);
+            nightLabel1.TabIndex = 34;
+            nightLabel1.Text = "작업상태";
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.Black;
+            panel9.Controls.Add(metroCheckBox6);
+            panel9.Controls.Add(metroCheckBox7);
+            panel9.Controls.Add(nightButton3);
+            panel9.Controls.Add(metroCheckBox8);
+            panel9.Controls.Add(nightButton4);
+            panel9.Controls.Add(metroCheckBox9);
+            panel9.Controls.Add(metroCheckBox10);
+            panel9.Controls.Add(nightLabel2);
+            panel9.Controls.Add(chart3);
+            panel9.Controls.Add(chart4);
+            panel9.Controls.Add(chart5);
+            panel9.Controls.Add(chart6);
+            panel9.Controls.Add(chart7);
+            panel9.Controls.Add(hopePictureBox1);
+            panel9.Controls.Add(hopePictureBox2);
+            panel9.Controls.Add(hopePictureBox3);
+            panel9.Controls.Add(hopePictureBox4);
+            panel9.Controls.Add(hopePictureBox5);
+            panel9.Controls.Add(nightLabel3);
+            panel9.Controls.Add(dungeonComboBox1);
+            panel9.Controls.Add(dungeonComboBox2);
+            panel9.Controls.Add(pictureBox5);
+            panel9.Controls.Add(nightTextBox1);
+            panel9.Controls.Add(tableLayoutPanel10);
+            panel9.Location = new Point(962, 1);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(960, 950);
+            panel9.TabIndex = 9;
+            // 
+            // metroCheckBox6
+            // 
+            metroCheckBox6.BackColor = Color.Transparent;
+            metroCheckBox6.BackgroundColor = Color.White;
+            metroCheckBox6.BorderColor = Color.FromArgb(155, 155, 155);
+            metroCheckBox6.Checked = true;
+            metroCheckBox6.CheckSignColor = Color.FromArgb(65, 177, 225);
+            metroCheckBox6.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            metroCheckBox6.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            metroCheckBox6.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            metroCheckBox6.IsDerivedStyle = true;
+            metroCheckBox6.Location = new Point(153, 236);
+            metroCheckBox6.Name = "metroCheckBox6";
+            metroCheckBox6.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            metroCheckBox6.Size = new Size(17, 16);
+            metroCheckBox6.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            metroCheckBox6.StyleManager = null;
+            metroCheckBox6.TabIndex = 39;
+            metroCheckBox6.Text = "metroCheckBox2";
+            metroCheckBox6.ThemeAuthor = "Taiizor";
+            metroCheckBox6.ThemeName = "MetroLight";
+            // 
+            // metroCheckBox7
+            // 
+            metroCheckBox7.BackColor = Color.Transparent;
+            metroCheckBox7.BackgroundColor = Color.White;
+            metroCheckBox7.BorderColor = Color.FromArgb(155, 155, 155);
+            metroCheckBox7.Checked = true;
+            metroCheckBox7.CheckSignColor = Color.FromArgb(65, 177, 225);
+            metroCheckBox7.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            metroCheckBox7.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            metroCheckBox7.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            metroCheckBox7.IsDerivedStyle = true;
+            metroCheckBox7.Location = new Point(153, 192);
+            metroCheckBox7.Name = "metroCheckBox7";
+            metroCheckBox7.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            metroCheckBox7.Size = new Size(17, 16);
+            metroCheckBox7.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            metroCheckBox7.StyleManager = null;
+            metroCheckBox7.TabIndex = 40;
+            metroCheckBox7.Text = "metroCheckBox2";
+            metroCheckBox7.ThemeAuthor = "Taiizor";
+            metroCheckBox7.ThemeName = "MetroLight";
+            // 
+            // nightButton3
+            // 
+            nightButton3.BackColor = Color.Transparent;
+            nightButton3.DialogResult = DialogResult.None;
+            nightButton3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton3.ForeColor = Color.Silver;
+            nightButton3.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton3.HoverForeColor = Color.White;
+            nightButton3.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton3.Location = new Point(851, 423);
+            nightButton3.MinimumSize = new Size(100, 50);
+            nightButton3.Name = "nightButton3";
+            nightButton3.NormalBackColor = Color.White;
+            nightButton3.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton3.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton3.PressedForeColor = Color.White;
+            nightButton3.Radius = 20;
+            nightButton3.Size = new Size(100, 50);
+            nightButton3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton3.TabIndex = 42;
+            nightButton3.Text = "BrighestLine";
+            // 
+            // metroCheckBox8
+            // 
+            metroCheckBox8.BackColor = Color.Transparent;
+            metroCheckBox8.BackgroundColor = Color.White;
+            metroCheckBox8.BorderColor = Color.FromArgb(155, 155, 155);
+            metroCheckBox8.Checked = true;
+            metroCheckBox8.CheckSignColor = Color.FromArgb(65, 177, 225);
+            metroCheckBox8.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            metroCheckBox8.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            metroCheckBox8.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            metroCheckBox8.IsDerivedStyle = true;
+            metroCheckBox8.Location = new Point(153, 151);
+            metroCheckBox8.Name = "metroCheckBox8";
+            metroCheckBox8.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            metroCheckBox8.Size = new Size(17, 16);
+            metroCheckBox8.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            metroCheckBox8.StyleManager = null;
+            metroCheckBox8.TabIndex = 41;
+            metroCheckBox8.Text = "metroCheckBox2";
+            metroCheckBox8.ThemeAuthor = "Taiizor";
+            metroCheckBox8.ThemeName = "MetroLight";
+            // 
+            // nightButton4
+            // 
+            nightButton4.BackColor = Color.Transparent;
+            nightButton4.DialogResult = DialogResult.None;
+            nightButton4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton4.ForeColor = Color.Silver;
+            nightButton4.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton4.HoverForeColor = Color.White;
+            nightButton4.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton4.Location = new Point(851, 367);
+            nightButton4.MinimumSize = new Size(100, 50);
+            nightButton4.Name = "nightButton4";
+            nightButton4.NormalBackColor = Color.White;
+            nightButton4.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton4.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton4.PressedForeColor = Color.White;
+            nightButton4.Radius = 20;
+            nightButton4.Size = new Size(100, 50);
+            nightButton4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton4.TabIndex = 41;
+            nightButton4.Text = "CenterLine";
+            // 
+            // metroCheckBox9
+            // 
+            metroCheckBox9.BackColor = Color.Transparent;
+            metroCheckBox9.BackgroundColor = Color.White;
+            metroCheckBox9.BorderColor = Color.FromArgb(155, 155, 155);
+            metroCheckBox9.Checked = true;
+            metroCheckBox9.CheckSignColor = Color.FromArgb(65, 177, 225);
+            metroCheckBox9.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            metroCheckBox9.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            metroCheckBox9.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            metroCheckBox9.IsDerivedStyle = true;
+            metroCheckBox9.Location = new Point(153, 108);
+            metroCheckBox9.Name = "metroCheckBox9";
+            metroCheckBox9.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            metroCheckBox9.Size = new Size(17, 16);
+            metroCheckBox9.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            metroCheckBox9.StyleManager = null;
+            metroCheckBox9.TabIndex = 42;
+            metroCheckBox9.Text = "metroCheckBox2";
+            metroCheckBox9.ThemeAuthor = "Taiizor";
+            metroCheckBox9.ThemeName = "MetroLight";
+            // 
+            // metroCheckBox10
+            // 
+            metroCheckBox10.BackColor = Color.Transparent;
+            metroCheckBox10.BackgroundColor = Color.White;
+            metroCheckBox10.BorderColor = Color.FromArgb(155, 155, 155);
+            metroCheckBox10.Checked = true;
+            metroCheckBox10.CheckSignColor = Color.FromArgb(65, 177, 225);
+            metroCheckBox10.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
+            metroCheckBox10.DisabledBorderColor = Color.FromArgb(205, 205, 205);
+            metroCheckBox10.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            metroCheckBox10.IsDerivedStyle = true;
+            metroCheckBox10.Location = new Point(153, 66);
+            metroCheckBox10.Name = "metroCheckBox10";
+            metroCheckBox10.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
+            metroCheckBox10.Size = new Size(17, 16);
+            metroCheckBox10.Style = ReaLTaiizor.Enum.Metro.Style.Light;
+            metroCheckBox10.StyleManager = null;
+            metroCheckBox10.TabIndex = 38;
+            metroCheckBox10.Text = "metroCheckBox1";
+            metroCheckBox10.ThemeAuthor = "Taiizor";
+            metroCheckBox10.ThemeName = "MetroLight";
+            // 
+            // nightLabel2
+            // 
+            nightLabel2.AutoSize = true;
+            nightLabel2.BackColor = Color.Transparent;
+            nightLabel2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            nightLabel2.ForeColor = Color.FromArgb(114, 118, 127);
+            nightLabel2.Location = new Point(196, 453);
+            nightLabel2.Name = "nightLabel2";
+            nightLabel2.Size = new Size(97, 30);
+            nightLabel2.TabIndex = 35;
+            nightLabel2.Text = "작업상태";
+            // 
+            // chart3
+            // 
+            chart3.BackColor = Color.FromArgb(45, 45, 45);
+            chartArea15.Name = "ChartArea1";
+            chart3.ChartAreas.Add(chartArea15);
+            legend15.Name = "Legend1";
+            chart3.Legends.Add(legend15);
+            chart3.Location = new Point(308, 844);
+            chart3.Name = "chart3";
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = SeriesChartType.Line;
+            series15.LabelForeColor = Color.IndianRed;
+            series15.Legend = "Legend1";
+            series15.Name = "Series1";
+            chart3.Series.Add(series15);
+            chart3.Size = new Size(640, 80);
+            chart3.TabIndex = 36;
+            chart3.Text = "chart5";
+            // 
+            // chart4
+            // 
+            chart4.BackColor = Color.FromArgb(45, 45, 45);
+            chartArea16.Name = "ChartArea1";
+            chart4.ChartAreas.Add(chartArea16);
+            legend16.Name = "Legend1";
+            chart4.Legends.Add(legend16);
+            chart4.Location = new Point(308, 757);
+            chart4.Name = "chart4";
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = SeriesChartType.Line;
+            series16.LabelForeColor = Color.IndianRed;
+            series16.Legend = "Legend1";
+            series16.Name = "Series1";
+            chart4.Series.Add(series16);
+            chart4.Size = new Size(640, 80);
+            chart4.TabIndex = 35;
+            chart4.Text = "chart4";
+            // 
+            // chart5
+            // 
+            chart5.BackColor = Color.FromArgb(45, 45, 45);
+            chartArea17.Name = "ChartArea1";
+            chart5.ChartAreas.Add(chartArea17);
+            legend17.Name = "Legend1";
+            chart5.Legends.Add(legend17);
+            chart5.Location = new Point(308, 671);
+            chart5.Name = "chart5";
+            series17.ChartArea = "ChartArea1";
+            series17.ChartType = SeriesChartType.Line;
+            series17.LabelForeColor = Color.IndianRed;
+            series17.Legend = "Legend1";
+            series17.Name = "Series1";
+            chart5.Series.Add(series17);
+            chart5.Size = new Size(640, 80);
+            chart5.TabIndex = 34;
+            chart5.Text = "chart3";
+            // 
+            // chart6
+            // 
+            chart6.BackColor = Color.FromArgb(45, 45, 45);
+            chartArea18.Name = "ChartArea1";
+            chart6.ChartAreas.Add(chartArea18);
+            legend18.Name = "Legend1";
+            chart6.Legends.Add(legend18);
+            chart6.Location = new Point(308, 585);
+            chart6.Name = "chart6";
+            series18.ChartArea = "ChartArea1";
+            series18.ChartType = SeriesChartType.Line;
+            series18.LabelForeColor = Color.IndianRed;
+            series18.Legend = "Legend1";
+            series18.Name = "Series1";
+            chart6.Series.Add(series18);
+            chart6.Size = new Size(640, 80);
+            chart6.TabIndex = 33;
+            chart6.Text = "chart2";
+            // 
+            // chart7
+            // 
+            chart7.BackColor = Color.FromArgb(45, 45, 45);
+            chartArea19.Name = "ChartArea1";
+            chart7.ChartAreas.Add(chartArea19);
+            legend19.Name = "Legend1";
+            chart7.Legends.Add(legend19);
+            chart7.Location = new Point(308, 499);
+            chart7.Name = "chart7";
+            series19.ChartArea = "ChartArea1";
+            series19.ChartType = SeriesChartType.Line;
+            series19.LabelForeColor = Color.IndianRed;
+            series19.Legend = "Legend1";
+            series19.Name = "Series1";
+            chart7.Series.Add(series19);
+            chart7.Size = new Size(640, 80);
+            chart7.TabIndex = 32;
+            chart7.Text = "chart1";
+            // 
+            // hopePictureBox1
+            // 
+            hopePictureBox1.BackColor = Color.White;
+            hopePictureBox1.Location = new Point(12, 843);
+            hopePictureBox1.Name = "hopePictureBox1";
+            hopePictureBox1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox1.Size = new Size(290, 80);
+            hopePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            hopePictureBox1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox1.TabIndex = 31;
+            hopePictureBox1.TabStop = false;
+            hopePictureBox1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // hopePictureBox2
+            // 
+            hopePictureBox2.BackColor = Color.White;
+            hopePictureBox2.Location = new Point(12, 757);
+            hopePictureBox2.Name = "hopePictureBox2";
+            hopePictureBox2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox2.Size = new Size(290, 80);
+            hopePictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            hopePictureBox2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox2.TabIndex = 30;
+            hopePictureBox2.TabStop = false;
+            hopePictureBox2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // hopePictureBox3
+            // 
+            hopePictureBox3.BackColor = Color.White;
+            hopePictureBox3.Location = new Point(12, 671);
+            hopePictureBox3.Name = "hopePictureBox3";
+            hopePictureBox3.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox3.Size = new Size(290, 80);
+            hopePictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            hopePictureBox3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox3.TabIndex = 29;
+            hopePictureBox3.TabStop = false;
+            hopePictureBox3.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // hopePictureBox4
+            // 
+            hopePictureBox4.BackColor = Color.White;
+            hopePictureBox4.Location = new Point(12, 585);
+            hopePictureBox4.Name = "hopePictureBox4";
+            hopePictureBox4.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox4.Size = new Size(290, 80);
+            hopePictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            hopePictureBox4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox4.TabIndex = 28;
+            hopePictureBox4.TabStop = false;
+            hopePictureBox4.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // hopePictureBox5
+            // 
+            hopePictureBox5.BackColor = Color.White;
+            hopePictureBox5.Location = new Point(12, 499);
+            hopePictureBox5.Name = "hopePictureBox5";
+            hopePictureBox5.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox5.Size = new Size(290, 80);
+            hopePictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
+            hopePictureBox5.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox5.TabIndex = 27;
+            hopePictureBox5.TabStop = false;
+            hopePictureBox5.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // nightLabel3
+            // 
+            nightLabel3.AutoSize = true;
+            nightLabel3.BackColor = Color.Transparent;
+            nightLabel3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            nightLabel3.ForeColor = Color.FromArgb(114, 118, 127);
+            nightLabel3.Location = new Point(130, 367);
+            nightLabel3.Name = "nightLabel3";
+            nightLabel3.Size = new Size(25, 30);
+            nightLabel3.TabIndex = 20;
+            nightLabel3.Text = "0";
+            // 
+            // dungeonComboBox1
+            // 
+            dungeonComboBox1.BackColor = Color.FromArgb(246, 246, 246);
+            dungeonComboBox1.ColorA = Color.FromArgb(246, 132, 85);
+            dungeonComboBox1.ColorB = Color.FromArgb(231, 108, 57);
+            dungeonComboBox1.ColorC = Color.FromArgb(242, 241, 240);
+            dungeonComboBox1.ColorD = Color.FromArgb(253, 252, 252);
+            dungeonComboBox1.ColorE = Color.FromArgb(239, 237, 236);
+            dungeonComboBox1.ColorF = Color.FromArgb(180, 180, 180);
+            dungeonComboBox1.ColorG = Color.FromArgb(119, 119, 118);
+            dungeonComboBox1.ColorH = Color.FromArgb(224, 222, 220);
+            dungeonComboBox1.ColorI = Color.FromArgb(250, 249, 249);
+            dungeonComboBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            dungeonComboBox1.DropDownHeight = 100;
+            dungeonComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            dungeonComboBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dungeonComboBox1.ForeColor = Color.FromArgb(76, 76, 97);
+            dungeonComboBox1.FormattingEnabled = true;
+            dungeonComboBox1.HoverSelectionColor = Color.Empty;
+            dungeonComboBox1.IntegralHeight = false;
+            dungeonComboBox1.ItemHeight = 20;
+            dungeonComboBox1.Items.AddRange(new object[] { "Manual", "MinMax", "Sigma1", "Sigma3" });
+            dungeonComboBox1.Location = new Point(12, 367);
+            dungeonComboBox1.Name = "dungeonComboBox1";
+            dungeonComboBox1.Size = new Size(102, 26);
+            dungeonComboBox1.StartIndex = 3;
+            dungeonComboBox1.TabIndex = 19;
+            // 
+            // dungeonComboBox2
+            // 
+            dungeonComboBox2.BackColor = Color.FromArgb(246, 246, 246);
+            dungeonComboBox2.ColorA = Color.FromArgb(246, 132, 85);
+            dungeonComboBox2.ColorB = Color.FromArgb(231, 108, 57);
+            dungeonComboBox2.ColorC = Color.FromArgb(242, 241, 240);
+            dungeonComboBox2.ColorD = Color.FromArgb(253, 252, 252);
+            dungeonComboBox2.ColorE = Color.FromArgb(239, 237, 236);
+            dungeonComboBox2.ColorF = Color.FromArgb(180, 180, 180);
+            dungeonComboBox2.ColorG = Color.FromArgb(119, 119, 118);
+            dungeonComboBox2.ColorH = Color.FromArgb(224, 222, 220);
+            dungeonComboBox2.ColorI = Color.FromArgb(250, 249, 249);
+            dungeonComboBox2.DrawMode = DrawMode.OwnerDrawFixed;
+            dungeonComboBox2.DropDownHeight = 100;
+            dungeonComboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            dungeonComboBox2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dungeonComboBox2.ForeColor = Color.FromArgb(76, 76, 97);
+            dungeonComboBox2.FormattingEnabled = true;
+            dungeonComboBox2.HoverSelectionColor = Color.Empty;
+            dungeonComboBox2.IntegralHeight = false;
+            dungeonComboBox2.ItemHeight = 20;
+            dungeonComboBox2.Items.AddRange(new object[] { "AlarmBlue", "AlarmBlueHi", "GrayBW", "GrayWB", "AlarmGreen", "Iron", "IronHi", "Medical", "Rainbow", "RainbowHi", "AlarmRed" });
+            dungeonComboBox2.Location = new Point(12, 410);
+            dungeonComboBox2.Name = "dungeonComboBox2";
+            dungeonComboBox2.Size = new Size(102, 26);
+            dungeonComboBox2.StartIndex = 1;
+            dungeonComboBox2.TabIndex = 13;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Image = Properties.Resources._250_l_1;
+            pictureBox5.Location = new Point(195, 4);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(640, 480);
+            pictureBox5.TabIndex = 11;
+            pictureBox5.TabStop = false;
+            // 
+            // nightTextBox1
+            // 
+            nightTextBox1.ActiveBorderColor = Color.FromArgb(242, 93, 89);
+            nightTextBox1.BackColor = Color.FromArgb(43, 48, 67);
+            nightTextBox1.BaseBackColor = Color.FromArgb(43, 48, 67);
+            nightTextBox1.ColorBordersOnEnter = true;
+            nightTextBox1.DisableBorderColor = Color.FromArgb(60, 63, 80);
+            nightTextBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            nightTextBox1.ForeColor = Color.FromArgb(127, 131, 140);
+            nightTextBox1.Image = null;
+            nightTextBox1.Location = new Point(7, 8);
+            nightTextBox1.MaxLength = 32767;
+            nightTextBox1.Multiline = true;
+            nightTextBox1.Name = "nightTextBox1";
+            nightTextBox1.ReadOnly = false;
+            nightTextBox1.ShortcutsEnabled = true;
+            nightTextBox1.ShowBottomBorder = true;
+            nightTextBox1.ShowTopBorder = true;
+            nightTextBox1.Size = new Size(173, 345);
+            nightTextBox1.TabIndex = 10;
+            nightTextBox1.Text = " 작업 결과 ..";
+            nightTextBox1.TextAlignment = HorizontalAlignment.Left;
+            nightTextBox1.UseSystemPasswordChar = false;
+            nightTextBox1.Watermark = "";
+            nightTextBox1.WatermarkColor = Color.FromArgb(116, 120, 129);
+            // 
+            // tableLayoutPanel10
+            // 
+            tableLayoutPanel10.ColumnCount = 1;
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel10.Controls.Add(nightButton5, 0, 0);
+            tableLayoutPanel10.Controls.Add(nightButton6, 0, 1);
+            tableLayoutPanel10.Controls.Add(nightButton7, 0, 2);
+            tableLayoutPanel10.Controls.Add(nightButton8, 0, 3);
+            tableLayoutPanel10.Controls.Add(nightButton9, 0, 4);
+            tableLayoutPanel10.Controls.Add(nightButton10, 0, 5);
+            tableLayoutPanel10.Controls.Add(nightButton11, 0, 6);
+            tableLayoutPanel10.Location = new Point(848, 3);
+            tableLayoutPanel10.Name = "tableLayoutPanel10";
+            tableLayoutPanel10.RowCount = 7;
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel10.Size = new Size(108, 340);
+            tableLayoutPanel10.TabIndex = 6;
+            // 
+            // nightButton5
+            // 
+            nightButton5.BackColor = Color.Transparent;
+            nightButton5.DialogResult = DialogResult.None;
+            nightButton5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton5.ForeColor = Color.Silver;
+            nightButton5.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton5.HoverForeColor = Color.White;
+            nightButton5.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton5.Location = new Point(3, 3);
+            nightButton5.MinimumSize = new Size(100, 50);
+            nightButton5.Name = "nightButton5";
+            nightButton5.NormalBackColor = Color.White;
+            nightButton5.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton5.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton5.PressedForeColor = Color.White;
+            nightButton5.Radius = 20;
+            nightButton5.Size = new Size(100, 50);
+            nightButton5.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton5.TabIndex = 0;
+            nightButton5.Text = "load";
+            // 
+            // nightButton6
+            // 
+            nightButton6.BackColor = Color.Transparent;
+            nightButton6.DialogResult = DialogResult.None;
+            nightButton6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton6.ForeColor = Color.Silver;
+            nightButton6.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton6.HoverForeColor = Color.White;
+            nightButton6.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton6.Location = new Point(3, 51);
+            nightButton6.MinimumSize = new Size(100, 50);
+            nightButton6.Name = "nightButton6";
+            nightButton6.NormalBackColor = Color.White;
+            nightButton6.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton6.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton6.PressedForeColor = Color.White;
+            nightButton6.Radius = 20;
+            nightButton6.Size = new Size(100, 50);
+            nightButton6.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton6.TabIndex = 1;
+            nightButton6.Text = "save";
+            // 
+            // nightButton7
+            // 
+            nightButton7.BackColor = Color.Transparent;
+            nightButton7.DialogResult = DialogResult.None;
+            nightButton7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton7.ForeColor = Color.Silver;
+            nightButton7.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton7.HoverForeColor = Color.White;
+            nightButton7.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton7.Location = new Point(3, 99);
+            nightButton7.MinimumSize = new Size(100, 50);
+            nightButton7.Name = "nightButton7";
+            nightButton7.NormalBackColor = Color.White;
+            nightButton7.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton7.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton7.PressedForeColor = Color.White;
+            nightButton7.Radius = 20;
+            nightButton7.Size = new Size(100, 50);
+            nightButton7.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton7.TabIndex = 2;
+            nightButton7.Text = "live";
+            // 
+            // nightButton8
+            // 
+            nightButton8.BackColor = Color.Transparent;
+            nightButton8.DialogResult = DialogResult.None;
+            nightButton8.Enabled = false;
+            nightButton8.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton8.ForeColor = Color.Silver;
+            nightButton8.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton8.HoverForeColor = Color.White;
+            nightButton8.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton8.Location = new Point(3, 147);
+            nightButton8.MinimumSize = new Size(100, 50);
+            nightButton8.Name = "nightButton8";
+            nightButton8.NormalBackColor = Color.White;
+            nightButton8.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton8.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton8.PressedForeColor = Color.White;
+            nightButton8.Radius = 20;
+            nightButton8.Size = new Size(100, 50);
+            nightButton8.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton8.TabIndex = 6;
+            nightButton8.Text = "live stop";
+            // 
+            // nightButton9
+            // 
+            nightButton9.BackColor = Color.Transparent;
+            nightButton9.DialogResult = DialogResult.None;
+            nightButton9.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton9.ForeColor = Color.Silver;
+            nightButton9.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton9.HoverForeColor = Color.White;
+            nightButton9.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton9.Location = new Point(3, 195);
+            nightButton9.MinimumSize = new Size(100, 50);
+            nightButton9.Name = "nightButton9";
+            nightButton9.NormalBackColor = Color.White;
+            nightButton9.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton9.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton9.PressedForeColor = Color.White;
+            nightButton9.Radius = 20;
+            nightButton9.Size = new Size(100, 50);
+            nightButton9.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton9.TabIndex = 3;
+            nightButton9.Text = "snap";
+            // 
+            // nightButton10
+            // 
+            nightButton10.BackColor = Color.Transparent;
+            nightButton10.DialogResult = DialogResult.None;
+            nightButton10.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton10.ForeColor = Color.Silver;
+            nightButton10.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton10.HoverForeColor = Color.White;
+            nightButton10.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton10.Location = new Point(3, 243);
+            nightButton10.MinimumSize = new Size(100, 50);
+            nightButton10.Name = "nightButton10";
+            nightButton10.NormalBackColor = Color.White;
+            nightButton10.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton10.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton10.PressedForeColor = Color.White;
+            nightButton10.Radius = 20;
+            nightButton10.Size = new Size(100, 50);
+            nightButton10.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton10.TabIndex = 4;
+            nightButton10.Text = "Process";
+            // 
+            // nightButton11
+            // 
+            nightButton11.BackColor = Color.Transparent;
+            nightButton11.DialogResult = DialogResult.None;
+            nightButton11.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton11.ForeColor = Color.Silver;
+            nightButton11.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton11.HoverForeColor = Color.White;
+            nightButton11.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton11.Location = new Point(3, 291);
+            nightButton11.MinimumSize = new Size(100, 50);
+            nightButton11.Name = "nightButton11";
+            nightButton11.NormalBackColor = Color.White;
+            nightButton11.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton11.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton11.PressedForeColor = Color.White;
+            nightButton11.Radius = 20;
+            nightButton11.RightToLeft = RightToLeft.No;
+            nightButton11.Size = new Size(100, 50);
+            nightButton11.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton11.TabIndex = 37;
+            nightButton11.Text = "Measure";
+            // 
+            // chart8
+            // 
+            chart8.BackColor = Color.FromArgb(45, 45, 45);
+            chartArea20.Name = "ChartArea1";
+            chart8.ChartAreas.Add(chartArea20);
+            legend20.Name = "Legend1";
+            chart8.Legends.Add(legend20);
+            chart8.Location = new Point(308, 844);
+            chart8.Name = "chart8";
+            series20.ChartArea = "ChartArea1";
+            series20.ChartType = SeriesChartType.Line;
+            series20.Legend = "Legend1";
+            series20.Name = "Series1";
+            chart8.Series.Add(series20);
+            chart8.Size = new Size(640, 80);
+            chart8.TabIndex = 31;
+            chart8.Text = "chart5";
+            // 
+            // chart9
+            // 
+            chart9.BackColor = Color.FromArgb(45, 45, 45);
+            chartArea21.Name = "ChartArea1";
+            chart9.ChartAreas.Add(chartArea21);
+            legend21.Name = "Legend1";
+            chart9.Legends.Add(legend21);
+            chart9.Location = new Point(308, 757);
+            chart9.Name = "chart9";
+            series21.ChartArea = "ChartArea1";
+            series21.ChartType = SeriesChartType.Line;
+            series21.Legend = "Legend1";
+            series21.Name = "Series1";
+            chart9.Series.Add(series21);
+            chart9.Size = new Size(640, 80);
+            chart9.TabIndex = 30;
+            chart9.Text = "chart4";
+            // 
+            // chart10
+            // 
+            chart10.BackColor = Color.FromArgb(45, 45, 45);
+            chartArea22.Name = "ChartArea1";
+            chart10.ChartAreas.Add(chartArea22);
+            legend22.Name = "Legend1";
+            chart10.Legends.Add(legend22);
+            chart10.Location = new Point(308, 671);
+            chart10.Name = "chart10";
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = SeriesChartType.Line;
+            series22.Legend = "Legend1";
+            series22.Name = "Series1";
+            chart10.Series.Add(series22);
+            chart10.Size = new Size(640, 80);
+            chart10.TabIndex = 29;
+            chart10.Text = "chart3";
+            // 
+            // chart11
+            // 
+            chart11.BackColor = Color.FromArgb(45, 45, 45);
+            chartArea23.Name = "ChartArea1";
+            chart11.ChartAreas.Add(chartArea23);
+            legend23.Name = "Legend1";
+            chart11.Legends.Add(legend23);
+            chart11.Location = new Point(308, 585);
+            chart11.Name = "chart11";
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = SeriesChartType.Line;
+            series23.Legend = "Legend1";
+            series23.Name = "Series1";
+            chart11.Series.Add(series23);
+            chart11.Size = new Size(640, 80);
+            chart11.TabIndex = 28;
+            chart11.Text = "chart2";
+            // 
+            // chart12
+            // 
+            chart12.BackColor = Color.FromArgb(45, 45, 45);
+            chartArea24.Name = "ChartArea1";
+            chart12.ChartAreas.Add(chartArea24);
+            legend24.Name = "Legend1";
+            chart12.Legends.Add(legend24);
+            chart12.Location = new Point(308, 499);
+            chart12.Name = "chart12";
+            series24.ChartArea = "ChartArea1";
+            series24.ChartType = SeriesChartType.Line;
+            series24.LabelForeColor = Color.IndianRed;
+            series24.Legend = "Legend1";
+            series24.Name = "Series1";
+            chart12.Series.Add(series24);
+            chart12.Size = new Size(640, 80);
+            chart12.TabIndex = 27;
+            chart12.Text = "chart1";
+            // 
+            // hopePictureBox6
+            // 
+            hopePictureBox6.BackColor = Color.White;
+            hopePictureBox6.Location = new Point(12, 843);
+            hopePictureBox6.Name = "hopePictureBox6";
+            hopePictureBox6.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox6.Size = new Size(290, 80);
+            hopePictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
+            hopePictureBox6.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox6.TabIndex = 26;
+            hopePictureBox6.TabStop = false;
+            hopePictureBox6.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // hopePictureBox7
+            // 
+            hopePictureBox7.BackColor = Color.White;
+            hopePictureBox7.Location = new Point(12, 757);
+            hopePictureBox7.Name = "hopePictureBox7";
+            hopePictureBox7.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox7.Size = new Size(290, 80);
+            hopePictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
+            hopePictureBox7.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox7.TabIndex = 25;
+            hopePictureBox7.TabStop = false;
+            hopePictureBox7.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // hopePictureBox8
+            // 
+            hopePictureBox8.BackColor = Color.White;
+            hopePictureBox8.Location = new Point(12, 671);
+            hopePictureBox8.Name = "hopePictureBox8";
+            hopePictureBox8.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox8.Size = new Size(290, 80);
+            hopePictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
+            hopePictureBox8.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox8.TabIndex = 24;
+            hopePictureBox8.TabStop = false;
+            hopePictureBox8.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // hopePictureBox9
+            // 
+            hopePictureBox9.BackColor = Color.White;
+            hopePictureBox9.Location = new Point(12, 585);
+            hopePictureBox9.Name = "hopePictureBox9";
+            hopePictureBox9.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox9.Size = new Size(290, 80);
+            hopePictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
+            hopePictureBox9.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox9.TabIndex = 23;
+            hopePictureBox9.TabStop = false;
+            hopePictureBox9.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // hopePictureBox10
+            // 
+            hopePictureBox10.BackColor = Color.White;
+            hopePictureBox10.Location = new Point(12, 499);
+            hopePictureBox10.Name = "hopePictureBox10";
+            hopePictureBox10.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            hopePictureBox10.Size = new Size(290, 80);
+            hopePictureBox10.SizeMode = PictureBoxSizeMode.StretchImage;
+            hopePictureBox10.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hopePictureBox10.TabIndex = 22;
+            hopePictureBox10.TabStop = false;
+            hopePictureBox10.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // dungeonComboBox3
+            // 
+            dungeonComboBox3.BackColor = Color.FromArgb(246, 246, 246);
+            dungeonComboBox3.ColorA = Color.FromArgb(246, 132, 85);
+            dungeonComboBox3.ColorB = Color.FromArgb(231, 108, 57);
+            dungeonComboBox3.ColorC = Color.FromArgb(242, 241, 240);
+            dungeonComboBox3.ColorD = Color.FromArgb(253, 252, 252);
+            dungeonComboBox3.ColorE = Color.FromArgb(239, 237, 236);
+            dungeonComboBox3.ColorF = Color.FromArgb(180, 180, 180);
+            dungeonComboBox3.ColorG = Color.FromArgb(119, 119, 118);
+            dungeonComboBox3.ColorH = Color.FromArgb(224, 222, 220);
+            dungeonComboBox3.ColorI = Color.FromArgb(250, 249, 249);
+            dungeonComboBox3.DrawMode = DrawMode.OwnerDrawFixed;
+            dungeonComboBox3.DropDownHeight = 100;
+            dungeonComboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
+            dungeonComboBox3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dungeonComboBox3.ForeColor = Color.FromArgb(76, 76, 97);
+            dungeonComboBox3.FormattingEnabled = true;
+            dungeonComboBox3.HoverSelectionColor = Color.Empty;
+            dungeonComboBox3.IntegralHeight = false;
+            dungeonComboBox3.ItemHeight = 20;
+            dungeonComboBox3.Items.AddRange(new object[] { "Manual", "MinMax", "Sigma1", "Sigma3" });
+            dungeonComboBox3.Location = new Point(12, 367);
+            dungeonComboBox3.Name = "dungeonComboBox3";
+            dungeonComboBox3.Size = new Size(102, 26);
+            dungeonComboBox3.StartIndex = 3;
+            dungeonComboBox3.TabIndex = 18;
+            // 
+            // nightLabel4
+            // 
+            nightLabel4.AutoSize = true;
+            nightLabel4.BackColor = Color.Transparent;
+            nightLabel4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            nightLabel4.ForeColor = Color.FromArgb(114, 118, 127);
+            nightLabel4.Location = new Point(132, 368);
+            nightLabel4.Name = "nightLabel4";
+            nightLabel4.Size = new Size(25, 30);
+            nightLabel4.TabIndex = 13;
+            nightLabel4.Text = "0";
+            // 
+            // dungeonComboBox4
+            // 
+            dungeonComboBox4.BackColor = Color.FromArgb(246, 246, 246);
+            dungeonComboBox4.ColorA = Color.FromArgb(246, 132, 85);
+            dungeonComboBox4.ColorB = Color.FromArgb(231, 108, 57);
+            dungeonComboBox4.ColorC = Color.FromArgb(242, 241, 240);
+            dungeonComboBox4.ColorD = Color.FromArgb(253, 252, 252);
+            dungeonComboBox4.ColorE = Color.FromArgb(239, 237, 236);
+            dungeonComboBox4.ColorF = Color.FromArgb(180, 180, 180);
+            dungeonComboBox4.ColorG = Color.FromArgb(119, 119, 118);
+            dungeonComboBox4.ColorH = Color.FromArgb(224, 222, 220);
+            dungeonComboBox4.ColorI = Color.FromArgb(250, 249, 249);
+            dungeonComboBox4.DrawMode = DrawMode.OwnerDrawFixed;
+            dungeonComboBox4.DropDownHeight = 100;
+            dungeonComboBox4.DropDownStyle = ComboBoxStyle.DropDownList;
+            dungeonComboBox4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dungeonComboBox4.ForeColor = Color.FromArgb(76, 76, 97);
+            dungeonComboBox4.FormattingEnabled = true;
+            dungeonComboBox4.HoverSelectionColor = Color.Empty;
+            dungeonComboBox4.IntegralHeight = false;
+            dungeonComboBox4.ItemHeight = 20;
+            dungeonComboBox4.Items.AddRange(new object[] { "AlarmBlue", "AlarmBlueHi", "GrayBW", "GrayWB", "AlarmGreen", "Iron", "IronHi", "Medical", "Rainbow", "RainbowHi", "AlarmRed" });
+            dungeonComboBox4.Location = new Point(12, 410);
+            dungeonComboBox4.Name = "dungeonComboBox4";
+            dungeonComboBox4.Size = new Size(102, 26);
+            dungeonComboBox4.StartIndex = 1;
+            dungeonComboBox4.TabIndex = 12;
+            // 
+            // nightTextBox2
+            // 
+            nightTextBox2.ActiveBorderColor = Color.FromArgb(242, 93, 89);
+            nightTextBox2.BackColor = Color.FromArgb(43, 48, 67);
+            nightTextBox2.BaseBackColor = Color.FromArgb(43, 48, 67);
+            nightTextBox2.ColorBordersOnEnter = true;
+            nightTextBox2.DisableBorderColor = Color.FromArgb(60, 63, 80);
+            nightTextBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            nightTextBox2.ForeColor = Color.FromArgb(127, 131, 140);
+            nightTextBox2.Image = null;
+            nightTextBox2.Location = new Point(12, 8);
+            nightTextBox2.MaxLength = 32767;
+            nightTextBox2.Multiline = true;
+            nightTextBox2.Name = "nightTextBox2";
+            nightTextBox2.ReadOnly = false;
+            nightTextBox2.ShortcutsEnabled = true;
+            nightTextBox2.ShowBottomBorder = true;
+            nightTextBox2.ShowTopBorder = true;
+            nightTextBox2.Size = new Size(173, 345);
+            nightTextBox2.TabIndex = 9;
+            nightTextBox2.Text = " 작업 결과 ..";
+            nightTextBox2.TextAlignment = HorizontalAlignment.Left;
+            nightTextBox2.UseSystemPasswordChar = false;
+            nightTextBox2.Watermark = "";
+            nightTextBox2.WatermarkColor = Color.FromArgb(116, 120, 129);
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = Properties.Resources._250_l_1;
+            pictureBox6.Location = new Point(200, 4);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(640, 480);
+            pictureBox6.TabIndex = 10;
+            pictureBox6.TabStop = false;
+            // 
+            // tableLayoutPanel11
+            // 
+            tableLayoutPanel11.ColumnCount = 1;
+            tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel11.Controls.Add(nightButton12, 0, 0);
+            tableLayoutPanel11.Location = new Point(0, 0);
+            tableLayoutPanel11.Name = "tableLayoutPanel11";
+            tableLayoutPanel11.RowCount = 2;
+            tableLayoutPanel11.Size = new Size(200, 100);
+            tableLayoutPanel11.TabIndex = 0;
+            // 
+            // nightButton12
+            // 
+            nightButton12.BackColor = Color.Transparent;
+            nightButton12.DialogResult = DialogResult.None;
+            nightButton12.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton12.ForeColor = Color.Silver;
+            nightButton12.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton12.HoverForeColor = Color.White;
+            nightButton12.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton12.Location = new Point(3, 3);
+            nightButton12.MinimumSize = new Size(100, 50);
+            nightButton12.Name = "nightButton12";
+            nightButton12.NormalBackColor = Color.White;
+            nightButton12.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton12.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton12.PressedForeColor = Color.White;
+            nightButton12.Radius = 20;
+            nightButton12.Size = new Size(100, 50);
+            nightButton12.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton12.TabIndex = 0;
+            nightButton12.Text = "load";
+            // 
+            // nightButton13
+            // 
+            nightButton13.BackColor = Color.Transparent;
+            nightButton13.DialogResult = DialogResult.None;
+            nightButton13.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nightButton13.ForeColor = Color.Silver;
+            nightButton13.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            nightButton13.HoverForeColor = Color.White;
+            nightButton13.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            nightButton13.Location = new Point(3, 59);
+            nightButton13.MinimumSize = new Size(100, 50);
+            nightButton13.Name = "nightButton13";
+            nightButton13.NormalBackColor = Color.White;
+            nightButton13.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            nightButton13.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            nightButton13.PressedForeColor = Color.White;
+            nightButton13.Radius = 20;
+            nightButton13.Size = new Size(100, 50);
+            nightButton13.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            nightButton13.TabIndex = 1;
+            nightButton13.Text = "save";
+            // 
             // Form1
             // 
             AutoScaleMode = AutoScaleMode.Inherit;
@@ -2000,6 +3776,43 @@ namespace JD_Proc
             panel1.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            tableLayoutPanel7.ResumeLayout(false);
+            tableLayoutPanel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            tableLayoutPanel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart2).EndInit();
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)chart3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            tableLayoutPanel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chart8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart9).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart11).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart12).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox9).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hopePictureBox10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            tableLayoutPanel11.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -2091,5 +3904,89 @@ namespace JD_Proc
         private DataGridView dataGridView2;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart_Auto_L;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart_Auto_R;
+        private Label Label_PV;
+        private Label Label_PV_Value;
+        private Label Label_SV;
+        private Label Label_SV_Value;
+        private ReaLTaiizor.Controls.NightButton dBtn_BrightestLine_L;
+        private ReaLTaiizor.Controls.NightButton dBtn_CameraLine_L;
+        private ReaLTaiizor.Controls.Panel Panel_BrighestLine_L;
+        private ReaLTaiizor.Controls.Panel Panel_CameraCenterLine_L;
+        private ReaLTaiizor.Controls.NightButton dBtn_BrightestLine_R;
+        private ReaLTaiizor.Controls.NightButton dBtn_CameraLine_R;
+        private Panel panel7;
+        private ReaLTaiizor.Controls.NightButton nightButton1;
+        private ReaLTaiizor.Controls.NightButton nightButton2;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private TableLayoutPanel tableLayoutPanel7;
+        private TableLayoutPanel tableLayoutPanel8;
+        private PictureBox pictureBox3;
+        private DataGridView dataGridView3;
+        private TableLayoutPanel tableLayoutPanel9;
+        private PictureBox pictureBox4;
+        private DataGridView dataGridView4;
+        private Chart chart1;
+        private Chart chart2;
+        private ReaLTaiizor.Controls.MetroCheckBox metroCheckBox1;
+        private ReaLTaiizor.Controls.MetroCheckBox metroCheckBox2;
+        private ReaLTaiizor.Controls.MetroCheckBox metroCheckBox3;
+        private ReaLTaiizor.Controls.MetroCheckBox metroCheckBox4;
+        private ReaLTaiizor.Controls.MetroCheckBox metroCheckBox5;
+        private ReaLTaiizor.Controls.NightLabel nightLabel1;
+        private Panel panel9;
+        private ReaLTaiizor.Controls.MetroCheckBox metroCheckBox6;
+        private ReaLTaiizor.Controls.MetroCheckBox metroCheckBox7;
+        private ReaLTaiizor.Controls.NightButton nightButton3;
+        private ReaLTaiizor.Controls.MetroCheckBox metroCheckBox8;
+        private ReaLTaiizor.Controls.NightButton nightButton4;
+        private ReaLTaiizor.Controls.MetroCheckBox metroCheckBox9;
+        private ReaLTaiizor.Controls.MetroCheckBox metroCheckBox10;
+        private ReaLTaiizor.Controls.NightLabel nightLabel2;
+        private Chart chart3;
+        private Chart chart4;
+        private Chart chart5;
+        private Chart chart6;
+        private Chart chart7;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox1;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox2;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox3;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox4;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox5;
+        private ReaLTaiizor.Controls.NightLabel nightLabel3;
+        private ReaLTaiizor.Controls.DungeonComboBox dungeonComboBox1;
+        private ReaLTaiizor.Controls.DungeonComboBox dungeonComboBox2;
+        private PictureBox pictureBox5;
+        private ReaLTaiizor.Controls.NightTextBox nightTextBox1;
+        private TableLayoutPanel tableLayoutPanel10;
+        private ReaLTaiizor.Controls.NightButton nightButton5;
+        private ReaLTaiizor.Controls.NightButton nightButton6;
+        private ReaLTaiizor.Controls.NightButton nightButton7;
+        private ReaLTaiizor.Controls.NightButton nightButton8;
+        private ReaLTaiizor.Controls.NightButton nightButton9;
+        private ReaLTaiizor.Controls.NightButton nightButton10;
+        private ReaLTaiizor.Controls.NightButton nightButton11;
+        private Chart chart8;
+        private Chart chart9;
+        private Chart chart10;
+        private Chart chart11;
+        private Chart chart12;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox6;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox7;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox8;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox9;
+        private ReaLTaiizor.Controls.HopePictureBox hopePictureBox10;
+        private ReaLTaiizor.Controls.DungeonComboBox dungeonComboBox3;
+        private ReaLTaiizor.Controls.NightLabel nightLabel4;
+        private ReaLTaiizor.Controls.DungeonComboBox dungeonComboBox4;
+        private ReaLTaiizor.Controls.NightTextBox nightTextBox2;
+        private PictureBox pictureBox6;
+        private TableLayoutPanel tableLayoutPanel11;
+        private ReaLTaiizor.Controls.NightButton nightButton12;
+        private ReaLTaiizor.Controls.NightButton nightButton13;
+        private ReaLTaiizor.Controls.Panel Panel_CameraCenterLine_R;
+        private ReaLTaiizor.Controls.Panel Panel_BrighestLine_R;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using JD_Proc.Component;
+using JD_Proc.PLC;
 using JD_Proc.Service;
 using System.Diagnostics;
 
@@ -24,22 +25,24 @@ namespace JD_Proc
         public AlignSettingForm(Form1 form1, PictureBox picbox1, PictureBox picbox2)
         {
             InitializeComponent();
-            res = int.Parse(service.Read("resolution", "y_1"));
-
             _form1 = form1;
             _picbox1 = picbox1;
             _picbox2 = picbox2;
+
+
         }
         #endregion
 
         #region event(Foam_Load)
         private void AlignSettingForm_Load(object sender, EventArgs e)
         {
+            res = int.Parse(service.Read("resolution", "y_1"));
             transparentPanel1.BackColor = Color.Transparent;
             transparentPanel1.ForeColor = Color.Transparent;
             Draw_Gridview_L();
             pictureBox1.Image = _picbox1.Image;
             Tbox_GridViewValue.Text = (GridViewGap * res).ToString();
+
         }
         #endregion
 

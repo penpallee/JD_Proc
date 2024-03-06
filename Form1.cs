@@ -13,10 +13,7 @@ using JD_Proc.Log;
 using JD_Proc.Service;
 using System.Data;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics.X86;
 using System.Timers;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static JD_Proc.Log.LogManager;
 
@@ -30,6 +27,7 @@ namespace JD_Proc
         SettingForm _settingForm;
         AlignSettingForm _AlignSettingform;
         TempGraphForm _TempGraphform;
+        AutoSimulation _AutoSimulation;
 
         public ThermalPaletteImage _images;
 
@@ -55,8 +53,11 @@ namespace JD_Proc
         Bitmap grayBmap_L;
         Bitmap grayBmap_R;
 
+        int brighestDrawLine_L = 0;
+        int brighestDrawLine_R = 0;
+
         public static PLC.Melsec _MELSEC;
-        public static PLC.Melsec _MELSEC_JOG;
+        public static PLC.Melsec MELSEC_JOG;
         public static PLC.Melsec _MELSEC_HEART;
 
         double[,] _tempData_L = new double[640, 480];
@@ -126,6 +127,8 @@ namespace JD_Proc
         bool[] isCheckboxROI_L = new bool[5];
         bool[] isCheckboxROI_R = new bool[5];
 
+        bool bSimulationMode = false;
+
         #endregion
 
         #region 생성자
@@ -133,15 +136,16 @@ namespace JD_Proc
         {
             InitializeComponent();
             // USB 동글 Lock, 아래 주석을 해제하면 Dongle USB꽂지 않으면 프로그램 실행 X
-
-
-#if JD
-            rockey = new Rockey2();
-#endif
-
-
             Service.SettingsService service = new Service.SettingsService();
 
+            // settings.ini file을 읽어 simulation section의 debug값이 0이면 bSimulationMode 를 True로 하여
+            // 프로그램이 debug모드로 돌아가게끔 하고 
+            // false이면 프로그램이 현장에서 돌아가게끔 세팅한다.
+            if (service.Read("SIMULATION", "DEBUG") == "1") bSimulationMode = true;
+            else bSimulationMode = false;
+
+            // Debug mode일때는 License검사를 하지 않도록 한다.
+            if (!bSimulationMode) rockey = new Rockey2();
 
             //카메라 연결
             _MODE = service.Read("MODE", "MODE");
@@ -158,29 +162,57 @@ namespace JD_Proc
             isCheckboxROI_R[3] = CheckBox_ROI_L4.Checked;
             isCheckboxROI_R[4] = CheckBox_ROI_L5.Checked;
 
-            if (_MODE == "auto")
+            if (!bSimulationMode)
             {
-                Connect("generic1.xml", 1);
-#if JD
-                Connect("generic2.xml", 2);
-                _MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                _MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                _MELSEC.Open();
-                _MELSEC_HEART.Open();
-                if (_MELSEC.IsConnected() == true) dRadio_plc.Checked = true;
-                if (_MELSEC_HEART.IsConnected() == true) Debug.Print("MELSEC_HEART OK");
-#endif
-                //_MELSEC_JOG = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                //_MELSEC_JOG.Open();
+                if (_MODE == "auto")
+                {
+                    try
+                    {
+                        Connect("generic1.xml", 1);
+                    }
+                    catch (Exception exception)
+                    {
+                        ExceptionLog.FileSave("Exception", exception.TargetSite.ReflectedType.FullName, exception.TargetSite.Name, exception.StackTrace.ToString().Trim(), exception.Message.Trim());
+                        MessageBox.Show("1번 카메라 연결 에러, generic1.xml serial 번호확인 및 카메라 프로그램 구동중인지 확인 부탁드립니다.", "Camera Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //System.Environment.Exit(0);
 
+                    }
+
+                    try
+                    {
+                        Connect("generic2.xml", 2);
+                    }
+                    catch (Exception exception)
+                    {
+                        ExceptionLog.FileSave("Exception", exception.TargetSite.ReflectedType.FullName, exception.TargetSite.Name, exception.StackTrace.ToString().Trim(), exception.Message.Trim());
+                        MessageBox.Show("2번 카메라 연결 에러, generic2.xml serial 번호확인 및 카메라 프로그램 구동중인지 확인 부탁드립니다.", "Camera Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
+                    try
+                    {
+                        _MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                        _MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                        _MELSEC.Open();
+                        _MELSEC_HEART.Open();
+                        if (_MELSEC.IsConnected() == true) dRadio_plc.Checked = true;
+                        if (_MELSEC_HEART.IsConnected() == true) Debug.Print("MELSEC_HEART OK");
+                        MELSEC_JOG = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                        MELSEC_JOG.Open();
+                    }
+                    catch (Exception exception)
+                    {
+                        ExceptionLog.FileSave("Exception", exception.TargetSite.ReflectedType.FullName, exception.TargetSite.Name, exception.StackTrace.ToString().Trim(), exception.Message.Trim());
+                        MessageBox.Show("PLC 연결을 확인해 주세요.", "PLC Communication Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
                 dRadio_cam1.Checked = true;
                 dRadio_cam2.Checked = true;
-
             }
             else if (_MODE == "manual")
             {
                 dBtn_auto.Enabled = false;
-
                 dBtn_live1.Enabled = false;
                 dBtn_live2.Enabled = false;
 
@@ -191,22 +223,23 @@ namespace JD_Proc
                 dBtn_snap2.Enabled = false;
             }
 
-            MakeROI();
 
+            MakeROI();
             _Model_path = service.Read("model", "path");
             SetModel(_Model_path);
-
             InitChartDesign();
 
             _AutoTimer.Interval = 500;
             _AutoTimer.Elapsed += new ElapsedEventHandler(AutoTimer);
 
-#if JD
-            _HeartbitTimer = new System.Threading.Timer(VISION_Heartbit, null, 1000, 400);
-#endif
+
+            if (!bSimulationMode)
+                _HeartbitTimer = new System.Threading.Timer(VISION_Heartbit, null, 1000, 400);
+
 
         }
 
+        //현재 참조 없음
         void timer_Tick(object sender, EventArgs e)
         {
             if (_imageGrabberThread_1 != null && _imageGrabberThread_1.IsAlive)
@@ -232,8 +265,9 @@ namespace JD_Proc
         #region event(auto) - Timer
         void AutoTimer(object sender, ElapsedEventArgs e)
         {
-#if !JD
-            this.BeginInvoke((MethodInvoker)(() => {
+
+            this.BeginInvoke((MethodInvoker)(() =>
+            {
                 if (dataTable_L.Rows.Count > 20)
                 {
                     dataTable_L.Rows.RemoveAt(0);
@@ -246,9 +280,7 @@ namespace JD_Proc
                 dataGridView1.Refresh();
                 dataGridView2.Refresh();
             }));
-#endif
 
-#if JD
 
             bool PLC_AUTO = false;
 
@@ -294,7 +326,7 @@ namespace JD_Proc
                             lock (lockObject)
                             {
                                 //[Developing]
-                                ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_L);
+                                //ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_L);
                                 //[end developing]
                             }
 
@@ -321,7 +353,7 @@ namespace JD_Proc
                             lock (lockObject)
                             {
                                 //[Developing]
-                                ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_R);
+                                //ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_R);
                                 //[end developing]
                             }
 
@@ -331,7 +363,6 @@ namespace JD_Proc
                     }
                 }
             }
-#endif
 
         }
 
@@ -429,7 +460,7 @@ namespace JD_Proc
 
                 gapDistAvg_L = (int)(WriteGapAvg("cam1", true));
 
-                
+
 
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
@@ -652,7 +683,13 @@ namespace JD_Proc
                 dataTable_R.Columns.Add("Average", typeof(double));
                 dataGridView2.DataSource = dataTable_R;
 
-                _AutoTimer.Start();
+                if (bSimulationMode)
+                {
+                    _AutoSimulation = new AutoSimulation();
+                    _AutoSimulation.Show();
+                }
+                if (!bSimulationMode) _AutoTimer.Start();
+
             }
             else if (state == "auto")
             {
@@ -684,7 +721,7 @@ namespace JD_Proc
                 dataGridView1.DataSource = null;
                 dataGridView2.DataSource = null;
 
-                _AutoTimer.Stop();
+                if (!bSimulationMode) _AutoTimer.Stop();
             }
         }
         #endregion
@@ -1184,23 +1221,23 @@ namespace JD_Proc
         #region event(jog) - click
         private void DBtn_jogUp_L_Click(object sender, EventArgs e)
         {
-            // _MELSEC_JOG 객체를 이용한다. 
-            _MELSEC_JOG.actUtlType64.SetDevice("B16", short.Parse("1"));
+            // MELSEC_JOG 객체를 이용한다. 
+            MELSEC_JOG.actUtlType64.SetDevice("B16", short.Parse("1"));
         }
 
         private void DBtn_jogDown_L_Click(object sender, EventArgs e)
         {
-            _MELSEC_JOG.actUtlType64.SetDevice("B17", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("B17", short.Parse("1"));
         }
 
         private void DBtn_jogUp_R_Click(object sender, EventArgs e)
         {
-            _MELSEC_JOG.actUtlType64.SetDevice("B18", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("B18", short.Parse("1"));
         }
 
         private void DBtn_jogDown_R_Click(object sender, EventArgs e)
         {
-            _MELSEC_JOG.actUtlType64.SetDevice("B19", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("B19", short.Parse("1"));
         }
         #endregion
 
@@ -1325,6 +1362,28 @@ namespace JD_Proc
         {
             if (CheckBox_ROI_R5.Checked) isCheckboxROI_R[4] = true;
             else isCheckboxROI_R[4] = false;
+        }
+        #endregion
+
+        #region [event - SupprotLineDraw]
+        private void dBtn_CameraLine_L_Click(object sender, EventArgs e)
+        {
+            cameraCenterLineDraw_L();
+        }
+
+        private void dBtn_BrightestLine_L_Click(object sender, EventArgs e)
+        {
+            brightestLineDraw_L();
+        }
+
+        private void dBtn_CameraLine_R_Click(object sender, EventArgs e)
+        {
+            cameraCenterLineDraw_R();
+        }
+
+        private void dBtn_BrightestLine_R_Click(object sender, EventArgs e)
+        {
+            brightestLineDraw_R();
         }
         #endregion
 
@@ -1722,7 +1781,7 @@ namespace JD_Proc
 
             //blob의 중심점, blob영역의 평균을 구한다
             List<Model.ProcessData> procDataList = new List<Model.ProcessData>();
-            double blob_avg = GetBlobCenter_GetBlobAvg(ref procDataList, roiX, roiWidth, blob.Y, blob.Height, threshold, mode, cam);
+            double blob_avg = GetBlobCenter_GetBlobAvg(ref procDataList, roiX, roiWidth, blob.Y, blob.Height, threshold, mode, cam, roi);
 
             //위아래로 스캔하면서 gap영역을 찾는다
             ScanUp(ref procDataList, roiY, blob_avg, roi_avg, mode, cam, roi);
@@ -1762,6 +1821,7 @@ namespace JD_Proc
                         grayBmap_L.SetPixel(xx, yy, newC);
                     }
                 }
+                
             }
             else if (cam == "cam2")
             {
@@ -1894,10 +1954,9 @@ namespace JD_Proc
             return roi_avg;
         }
 
-        double GetBlobCenter_GetBlobAvg(ref List<Model.ProcessData> procDataList, int roiX, int roiWidth, int bolb_Y, int bolb_Height, int threshold, string mode, string cam)
+        double GetBlobCenter_GetBlobAvg(ref List<Model.ProcessData> procDataList, int roiX, int roiWidth, int bolb_Y, int bolb_Height, int threshold, string mode, string cam, int roi)
         {
             double blob_avg = 0;
-
             //Blob의 중심점을 구한다
             //roi 가로 스캔
             for (int xx = 0; xx < roiWidth; xx++)
@@ -1920,10 +1979,27 @@ namespace JD_Proc
                     int pixelValue = 0;
 
                     if (cam == "CAM1")
+                    { 
                         pixelValue = grayBmap_L.GetPixel(x, y).R;
+                        if (roi == 3)
+                        {
+                            if (x == originBmap_L.Width/2)
+                            {
+                                if (pixelValue > grayBmap_L.GetPixel(x, brighestDrawLine_L).R) brighestDrawLine_L = y;
+                            }
+                        }
+                    }
                     else if (cam == "CAM2")
+                    { 
                         pixelValue = grayBmap_R.GetPixel(x, y).R;
-
+                        if (roi == 3)
+                        {
+                            if (x == originBmap_R.Width / 2)
+                            {
+                                if (pixelValue > grayBmap_R.GetPixel(x, brighestDrawLine_R).R) brighestDrawLine_R = y;
+                            }
+                        }
+                    }
                     if (isCount_flag == false)
                     {
                         if (pixelValue > threshold)
@@ -3073,12 +3149,12 @@ namespace JD_Proc
             //M30176 = 역회전
 
             // D31051 - L_Y축
-            _MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("1"));
 
             // 나머지 축값 0으로
-            _MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
-            _MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
-            _MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
         }
         public void selectJogAxis_L_Z()
         {
@@ -3087,12 +3163,12 @@ namespace JD_Proc
             //M30176 = 역회전
 
             // D31052 - L_Z축
-            _MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("1"));
 
             // 나머지 축값 0으로
-            _MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
-            _MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
-            _MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
         }
         public void selectJogAxis_R_Y()
         {
@@ -3101,12 +3177,12 @@ namespace JD_Proc
             //M30176 = 역회전
 
             // D31053 - R_Y축
-            _MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("1"));
 
             // 나머지 축값 0으로
-            _MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
-            _MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
-            _MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
         }
         public void selectJogAxis_R_Z()
         {
@@ -3115,31 +3191,61 @@ namespace JD_Proc
             //M30176 = 역회전
 
             // D31054 - L_Y축
-            _MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("1"));
 
             // 나머지 축값 0으로
-            _MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
-            _MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
-            _MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
         }
         #endregion
 
         #region [method - JogButtonMouseEvent]
         public void jogButtonOriginalClickDown()
         {
-            _MELSEC_JOG.actUtlType64.SetDevice("M30175", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("M30175", short.Parse("1"));
         }
         public void jogButtonOriginalClickUp()
         {
-            _MELSEC_JOG.actUtlType64.SetDevice("M30175", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("M30175", short.Parse("0"));
         }
         public void jogButtonReverseClickDown()
         {
-            _MELSEC_JOG.actUtlType64.SetDevice("M30176", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("M30176", short.Parse("1"));
         }
         public void jogButtonReverseClickUp()
         {
-            _MELSEC_JOG.actUtlType64.SetDevice("M30176", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("M30176", short.Parse("0"));
+        }
+        #endregion
+
+        #region [method - cameraCenterLineDraw]
+        public void cameraCenterLineDraw_L()
+        {
+            if (Panel_CameraCenterLine_L.Visible == true) Panel_CameraCenterLine_L.Visible = false;
+            else Panel_CameraCenterLine_L.Visible = true;
+            Panel_CameraCenterLine_L.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y + pictureBox1.Height / 2 - 1);
+        }
+        public void cameraCenterLineDraw_R()
+        {
+            if (Panel_CameraCenterLine_R.Visible == true) Panel_CameraCenterLine_R.Visible = false;
+            else Panel_CameraCenterLine_R.Visible = true;
+            Panel_CameraCenterLine_R.Location = new Point(pictureBox2.Location.X, pictureBox2.Location.Y + pictureBox2.Height / 2 - 1);
+        }
+        #endregion
+
+        #region [method - brightestLineDraw]
+        public void brightestLineDraw_L()
+        {
+            if (Panel_BrighestLine_L.Visible == true) Panel_BrighestLine_L.Visible = false;
+            else Panel_BrighestLine_L.Visible = true;
+            Panel_BrighestLine_L.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y + brighestDrawLine_L - 1);
+        }
+        public void brightestLineDraw_R()
+        {
+            if (Panel_BrighestLine_R.Visible == true) Panel_BrighestLine_R.Visible = false;
+            else Panel_BrighestLine_R.Visible = true;
+            Panel_BrighestLine_R.Location = new Point(pictureBox2.Location.X, pictureBox2.Location.Y + brighestDrawLine_R - 1);
         }
         #endregion
 
@@ -3198,13 +3304,9 @@ namespace JD_Proc
                 log.WriteLine("VISION HEARTBIT PLC에 Writing Error");
             }
         }
+
         #endregion
 
-        #region 잡동사니
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-        #endregion
     }
 }
