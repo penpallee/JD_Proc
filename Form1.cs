@@ -7,12 +7,18 @@
 #undef JD  
 
 
+using JD_Proc.DocImageConvert;
 using JD_Proc.ICam;
+using JD_Proc.ImageFilter;
 using JD_Proc.Lock;
 using JD_Proc.Log;
 using JD_Proc.Service;
+using JD_Proc.TempController;
+using System;
 using System.Data;
+using System.Data.Common;
 using System.Diagnostics;
+using System.Drawing.Imaging;
 using System.Timers;
 using System.Windows.Forms.DataVisualization.Charting;
 using static JD_Proc.Log.LogManager;
@@ -29,10 +35,14 @@ namespace JD_Proc
         TempGraphForm _TempGraphform;
         AutoSimulation _AutoSimulation;
 
+        SerialCommunication TempController;
+
         public ThermalPaletteImage _images;
 
         IrDirectInterface _irDirectInterface_1;
         IrDirectInterface _irDirectInterface_2;
+
+        SerialCommunication _SerialCommunication;
 
         Thread _imageGrabberThread_1;
         Thread _imageGrabberThread_2;
@@ -62,7 +72,12 @@ namespace JD_Proc
 
         double[,] _tempData_L = new double[640, 480];
         double[,] _tempData_R = new double[640, 480];
+        List<List<double>> TempVariation_L = new List<List<double>>();
+        List<List<double>> TempVariation_R = new List<List<double>>();
+        List<List<double>> TempDDList = new List<List<double>>();
 
+        int[,] GaussianArray = new int[640, 480];
+        List<List<int>> GaussianBmp = new List<List<int>>();
 
 
         List<Model.ProcessData> _Data_1_L = new List<Model.ProcessData>();
@@ -121,6 +136,7 @@ namespace JD_Proc
 
         System.Timers.Timer _AutoTimer = new System.Timers.Timer();
         System.Threading.Timer _HeartbitTimer;
+        System.Threading.Timer _TempControllerTimer;
 
         object lockObject = new object();
 
@@ -128,44 +144,62 @@ namespace JD_Proc
         bool[] isCheckboxROI_R = new bool[5];
 
         bool bSimulationMode = false;
+        bool bIsPLC = false;
 
+        Image bmpforscv = null;
+        GaussianBlur Gblur = null;
+
+        Service.SettingsService service;
         #endregion
 
         #region 생성자
         public Form1()
         {
             InitializeComponent();
-            // USB 동글 Lock, 아래 주석을 해제하면 Dongle USB꽂지 않으면 프로그램 실행 X
-            Service.SettingsService service = new Service.SettingsService();
+
+            service = new Service.SettingsService();
 
             // settings.ini file을 읽어 simulation section의 debug값이 0이면 bSimulationMode 를 True로 하여
             // 프로그램이 debug모드로 돌아가게끔 하고 
             // false이면 프로그램이 현장에서 돌아가게끔 세팅한다.
             if (service.Read("SIMULATION", "DEBUG") == "1") bSimulationMode = true;
             else bSimulationMode = false;
+            if (service.Read("SIMULATION", "PLC") == "1") bIsPLC = true;
+            else bIsPLC = false;
+
+            TempController = new SerialCommunication();
 
             // Debug mode일때는 License검사를 하지 않도록 한다.
-            if (!bSimulationMode) rockey = new Rockey2();
+            // USB 동글 Lock, 아래 주석을 해제하면 Dongle USB꽂지 않으면 프로그램 실행 X
+            //if (!bSimulationMode) rockey = new Rockey2();
 
             //카메라 연결
-            _MODE = service.Read("MODE", "MODE");
+            //_MODE = service.Read("MODE", "MODE");
 
-            isCheckboxROI_L[0] = CheckBox_ROI_L1.Checked;
-            isCheckboxROI_L[1] = CheckBox_ROI_L2.Checked;
-            isCheckboxROI_L[2] = CheckBox_ROI_L3.Checked;
-            isCheckboxROI_L[3] = CheckBox_ROI_L4.Checked;
-            isCheckboxROI_L[4] = CheckBox_ROI_L5.Checked;
 
-            isCheckboxROI_R[0] = CheckBox_ROI_L1.Checked;
-            isCheckboxROI_R[1] = CheckBox_ROI_L2.Checked;
-            isCheckboxROI_R[2] = CheckBox_ROI_L3.Checked;
-            isCheckboxROI_R[3] = CheckBox_ROI_L4.Checked;
-            isCheckboxROI_R[4] = CheckBox_ROI_L5.Checked;
 
             if (!bSimulationMode)
             {
-                if (_MODE == "auto")
+                if (true)
                 {
+                    try
+                    {
+                        if (TempController.Comport_Open(service.Read("TempController", "Comport")) == true)
+                        {
+                            Lbl_TempController.Text = "Temp_OK";
+                            Lbl_TempController.BackColor = Color.Aquamarine;
+
+                        }
+                        else
+                        {
+                            Lbl_TempController.BackColor = Color.Red;
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        ExceptionLog.FileSave("Exception", exception.TargetSite.ReflectedType.FullName, exception.TargetSite.Name, exception.StackTrace.ToString().Trim(), exception.Message.Trim());
+                        MessageBox.Show("Temperature Controller Error, Please Check Temperature Controller has connection Correctly", "Temperature Controller Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     try
                     {
                         Connect("generic1.xml", 1);
@@ -175,6 +209,15 @@ namespace JD_Proc
                         ExceptionLog.FileSave("Exception", exception.TargetSite.ReflectedType.FullName, exception.TargetSite.Name, exception.StackTrace.ToString().Trim(), exception.Message.Trim());
                         MessageBox.Show("1번 카메라 연결 에러, generic1.xml serial 번호확인 및 카메라 프로그램 구동중인지 확인 부탁드립니다.", "Camera Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         //System.Environment.Exit(0);
+
+                        dBtn_auto.Enabled = false;
+                        dBtn_auto.BackColor = Color.Gray;
+                        dBtn_live1.Enabled = false;
+                        dBtn_Measure1.Enabled = false;
+                        dBtn_imageSave1.Enabled = false;
+                        dBtn_snap1.Enabled = false;
+                        dBtn_stop1.Enabled = false;
+
 
                     }
 
@@ -186,25 +229,33 @@ namespace JD_Proc
                     {
                         ExceptionLog.FileSave("Exception", exception.TargetSite.ReflectedType.FullName, exception.TargetSite.Name, exception.StackTrace.ToString().Trim(), exception.Message.Trim());
                         MessageBox.Show("2번 카메라 연결 에러, generic2.xml serial 번호확인 및 카메라 프로그램 구동중인지 확인 부탁드립니다.", "Camera Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                        dBtn_stop2.Enabled = false;
+                        dBtn_snap2.Enabled = false;
+                        dBtn_Measure2.Enabled = false;
+                        dBtn_live2.Enabled = false;
+                        dBtn_imageSave2.Enabled = false;
                     }
 
-                    try
+                    if (bIsPLC)
                     {
-                        _MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                        _MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                        _MELSEC.Open();
-                        _MELSEC_HEART.Open();
-                        if (_MELSEC.IsConnected() == true) dRadio_plc.Checked = true;
-                        if (_MELSEC_HEART.IsConnected() == true) Debug.Print("MELSEC_HEART OK");
-                        MELSEC_JOG = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
-                        MELSEC_JOG.Open();
-                    }
-                    catch (Exception exception)
-                    {
-                        ExceptionLog.FileSave("Exception", exception.TargetSite.ReflectedType.FullName, exception.TargetSite.Name, exception.StackTrace.ToString().Trim(), exception.Message.Trim());
-                        MessageBox.Show("PLC 연결을 확인해 주세요.", "PLC Communication Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            _MELSEC_HEART = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                            _MELSEC = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                            _MELSEC.Open();
+                            _MELSEC_HEART.Open();
+                            if (_MELSEC.IsConnected() == true) dRadio_plc.Checked = true;
+                            if (_MELSEC_HEART.IsConnected() == true) Debug.Print("MELSEC_HEART OK");
+                            MELSEC_JOG = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+                            MELSEC_JOG.Open();
+                            if (MELSEC_JOG.IsConnected() == false) MessageBox.Show("PLC가 연결되어 있지 않습니다. PLC관련 기능사용에 제한이 생깁니다.", "PLC Alarm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception exception)
+                        {
+                            ExceptionLog.FileSave("Exception", exception.TargetSite.ReflectedType.FullName, exception.TargetSite.Name, exception.StackTrace.ToString().Trim(), exception.Message.Trim());
+                            MessageBox.Show("PLC 연결을 확인해 주세요.", "PLC Communication Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                        }
                     }
                 }
                 dRadio_cam1.Checked = true;
@@ -229,12 +280,14 @@ namespace JD_Proc
             SetModel(_Model_path);
             InitChartDesign();
 
-            _AutoTimer.Interval = 500;
-            _AutoTimer.Elapsed += new ElapsedEventHandler(AutoTimer);
-
-
-            if (!bSimulationMode)
+            if (bIsPLC)
+            {
+                _AutoTimer.Interval = 500;
+                _AutoTimer.Elapsed += new ElapsedEventHandler(AutoTimer);
                 _HeartbitTimer = new System.Threading.Timer(VISION_Heartbit, null, 1000, 400);
+            }
+
+            _TempControllerTimer = new System.Threading.Timer(TempController_TimerCheck, null, 1000, 400);
 
 
         }
@@ -761,12 +814,16 @@ namespace JD_Proc
 
             // gray image로 변환
             ToGray("cam1");
+            grayBmap_L.Save(@"C:\JD\Images\MidOutput\GrayScaled.bmp", ImageFormat.Bmp);
 
             //blob 처리
             int threshold = 100;
             Service.BlobService blobService = new Service.BlobService();
             List<Model.Blob> blobs = blobService.FindBlobs(grayBmap_L, threshold);
             List<Model.Blob> okBlobs = GetOkBlob(blobs, "cam1");
+
+            Debug.Print($@"X: {okBlobs[0].X.ToString()}, Y: {okBlobs[0].Y.ToString()}, Width: {okBlobs[0].Width.ToString()}, Height: {okBlobs[0].Height.ToString()}");
+
 
             if (okBlobs.Count == 1)
             {
@@ -789,7 +846,7 @@ namespace JD_Proc
 
                 WriteGapAvg("cam1", false);
 
-
+                TempDDList.Clear();
 
                 dLabel_Ng_L.ForeColor = Color.Lime;
                 dLabel_Ng_L.Text = "OK - " + DateTime.Now.ToString("HH:mm:ss");
@@ -845,6 +902,8 @@ namespace JD_Proc
 
                 WriteGapAvg("cam2", false);
 
+                TempDDList.Clear();
+
                 dLabel_Ng_R.ForeColor = Color.Lime;
                 dLabel_Ng_R.Text = "OK - " + DateTime.Now.ToString("HH:mm:ss");
             }
@@ -874,103 +933,13 @@ namespace JD_Proc
         {
             measureFunc2(sender, e);
         }
-
-        // 아래 코드는 measure버튼 눌렀을때 사진을 2번찍은 평균값으로 gap데이터를 출력하는 함수이다.
-        // test용 코드
-
-        //private void dBtn_Measure1_Click(object sender, EventArgs e)
-        //{
-        //    foreach (double value in avg_double)
-        //    {
-        //        Debug.Print(value.ToString());
-        //    }
-
-        //    string reesult = string.Empty;
-        //    avg_double.SetValue(0, 0);
-        //    avg_double.SetValue(0, 1);
-        //    avg_double.SetValue(0, 2);
-        //    avg_double.SetValue(0, 3);
-        //    avg_double.SetValue(0, 4);
-        //    avg_double.SetValue(0, 5);
-
-        //    foreach (double value in avg_double)
-        //    {
-        //        Debug.Print(value.ToString());
-        //    }
-
-        //    measureFunc1(sender, e);
-
-        //    Delay(5000);
-        //    foreach (double value in avg_double)
-        //    {
-        //        Debug.Print(value.ToString());
-        //    }
-
-        //    measureFunc1(sender, e);
-
-        //    foreach (double value in avg_double)
-        //    {
-        //        Debug.Print(value.ToString());
-        //    }
-
-        //    reesult = "GAP 평균 \r\n" + "\r\n" +
-        //   "LEFT_1 : " + Math.Round(avg_double[0] / 2, 2).ToString() + "\r\n" + "\r\n" +
-        //                        "LEFT_2 : " + Math.Round(avg_double[1] / 2, 2).ToString() + "\r\n" + "\r\n" +
-        //                        "LEFT_3 : " + Math.Round(avg_double[2] / 2, 2).ToString() + "\r\n" + "\r\n" +
-        //                        "LEFT_4 : " + Math.Round(avg_double[3] / 2, 2).ToString() + "\r\n" + "\r\n" +
-        //                        "LEFT_5 : " + Math.Round(avg_double[4] / 2, 2).ToString() + "\r\n" + "\r\n" + "\r\n" +
-        //                        "전체평균 : " + Math.Round(avg_double[5] / 2, 2).ToString();
-
-
-        //    //this.BeginInvoke((MethodInvoker)(() =>
-        //    //{
-        //    //    dTxt_cam1.Text = reesult;
-        //    //}));
-
-        //    dTxt_cam1.Text = reesult;
-
-
-
-
-        //}
-
-        //private void dBtn_Measure2_Click(object sender, EventArgs e)
-        //{
-
-        //    avg_double.SetValue(0, 0);
-        //    avg_double.SetValue(1, 0);
-        //    avg_double.SetValue(2, 0);
-        //    avg_double.SetValue(3, 0);
-        //    avg_double.SetValue(4, 0);
-        //    avg_double.SetValue(5, 0);
-
-        //    dBtn_snap2_Click(sender, e);
-        //    dBtn_Process2_Click(sender, e);
-        //    dBtn_snap2_Click(sender, e);
-        //    dBtn_Process2_Click(sender, e);
-
-        //    string reesult = "GAP 평균 \r\n" + "\r\n" +
-        //    "LEFT_1 : " + (Math.Round(avg_double[0] / 2), 2).ToString() + "\r\n" + "\r\n" +
-        //                         "LEFT_2 : " + (Math.Round(avg_double[1] / 2), 2).ToString() + "\r\n" + "\r\n" +
-        //                         "LEFT_3 : " + (Math.Round(avg_double[2] / 2), 2).ToString() + "\r\n" + "\r\n" +
-        //                         "LEFT_4 : " + (Math.Round(avg_double[3] / 2), 2).ToString() + "\r\n" + "\r\n" +
-        //                         "LEFT_5 : " + (Math.Round(avg_double[4] / 2), 2).ToString() + "\r\n" + "\r\n" + "\r\n" +
-        //                         "전체평균 : " + (Math.Round(avg_double[5] / 2), 2);
-
-
-        //    this.BeginInvoke((MethodInvoker)(() =>
-        //    {
-        //        dTxt_cam2.Text = reesult;
-        //    }));
-
-        //    dTxt_cam2.Text = reesult;
-
-        //}
         #endregion
 
         #region event(lmage load) - click
         private void dBtn_load1_Click(object sender, EventArgs e)
         {
+
+
             string image_file = string.Empty;
 
             OpenFileDialog dialog = new OpenFileDialog();
@@ -984,33 +953,75 @@ namespace JD_Proc
                 //csv파일 읽기
                 string csvFile = image_file.Replace(".bmp", ".csv");
 
+                //var GaussedDDList = DataConvertFormat.ConvertCSVToDLList(csvFile.Replace(".csv", "GProcessed.csv"), 640, 480);
+                //var A_GaussedDDList = new List<List<Double>>();
+                TempDDList = new List<List<Double>>();
+
                 if (File.Exists(csvFile))
                 {
                     pictureBox1.Image = Bitmap.FromFile(image_file);
                     pictureBox1_Auto.Image = pictureBox1.Image;
 
-                    StreamReader sr = new StreamReader(csvFile);
+                    SnaptoGaussianImagewithCSV(pictureBox1.Image);
+                    CalculateGaussianfileterToOriginalTempCSV(csvFile);
 
-                    int row = 0;
-
-                    while (!sr.EndOfStream)
+                    try
                     {
-                        string line = sr.ReadLine();
+                        StreamReader sr = new StreamReader(csvFile);
+                        //StreamReader srGaussian = new StreamReader(@"C:\JD\Images\GaussianBlur\GaussianBlur.csv");
 
-                        string[] data = line.Split(',');
+                        int row = 0;
 
-                        for (int x = 0; x < 640; x++)
+
+                        while (!sr.EndOfStream)
                         {
-                            _tempData_L[x, row] = double.Parse(data[x]);//(double.Parse(data[x]) * 10.0d) + 1000;
+                            string line = sr.ReadLine();
+                            string[] data = line.Split(',');
+
+
+
+                            for (int x = 0; x < 640; x++)
+                            {
+                                _tempData_L[x, row] = double.Parse(data[x]);//(double.Parse(data[x]) * 10.0d) + 1000;
+                                //GaussianArray[x, row] = int.Parse(GaussianData[x]);//(double.Parse(data[x]) * 10.0d) + 1000;
+                            }
+
+
+                            row = row + 1;
                         }
 
-                        row = row + 1;
+                        for (int column = 0; column < 640; column++)
+                        {
+
+                            TempVariation_L.Add(new List<double>());
+                            GaussianBmp.Add(new List<int>());
+                            TempDDList.Add(new List<double>());
+
+                            for (int r = 0; r < 479; r++)
+                            {
+                                TempVariation_L[column].Add((_tempData_L[column, r] > 40) || (_tempData_L[column, r + 1] > 40) ? 0 : Math.Round(_tempData_L[column, r] - _tempData_L[column, r + 1], 2));
+                                GaussianBmp[column].Add(GaussianArray[column, r]);
+
+                                TempDDList[column].Add(_tempData_L[column, r]);
+                            }
+                        }
+
+                        brighestDrawLine_L = 0;
+                        Panel_BrighestLine_L.Visible = false;
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Debug.Print(ex.Message);
+                        MessageBox.Show("이미지와 연결된 csv파일이 사용중입니다.", "CSV Read Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
                     MessageBox.Show("csv 파일이 존재 하지 않습니다");
                 }
+
+
             }
         }
 
@@ -1033,22 +1044,34 @@ namespace JD_Proc
                 {
                     pictureBox2.Image = Bitmap.FromFile(image_file);
                     pictureBox2_Auto.Image = pictureBox2.Image;
-                    StreamReader sr = new StreamReader(csvFile);
 
-                    int row = 0;
 
-                    while (!sr.EndOfStream)
+                    try
                     {
-                        string line = sr.ReadLine();
+                        StreamReader sr = new StreamReader(csvFile);
 
-                        string[] data = line.Split(',');
+                        int row = 0;
 
-                        for (int x = 0; x < 640; x++)
+                        while (!sr.EndOfStream)
                         {
-                            _tempData_R[x, row] = double.Parse(data[x]);  //(double.Parse(data[x]) * 10.0d) + 1000;
-                        }
+                            string line = sr.ReadLine();
 
-                        row = row + 1;
+                            string[] data = line.Split(',');
+
+                            for (int x = 0; x < 640; x++)
+                            {
+                                _tempData_R[x, row] = double.Parse(data[x]);  //(double.Parse(data[x]) * 10.0d) + 1000;
+                            }
+
+                            row = row + 1;
+                        }
+                        brighestDrawLine_R = 0;
+
+                        Panel_BrighestLine_R.Visible = false;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("이미지와 연결된 csv파일이 사용중입니다.", "CSV Read Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -1147,52 +1170,6 @@ namespace JD_Proc
             //settingForm._timer.Stop();
         }
         #endregion
-
-        //#region event(화살표) - click 
-        //private void dBtn_up_L_Click(object sender, EventArgs e)
-        //{
-        //    int y = dPan_grid_L_1.Top - 1;
-
-        //    dPan_grid_L_1.Top = y;
-        //    dPan_grid_L_2.Top = dPan_grid_L_1.Bottom + _Model.Grid_pixel_L + panelBorder;
-        //    dPan_grid_L_3.Top = dPan_grid_L_2.Bottom + _Model.Grid_pixel_L + panelBorder;
-        //    dPan_grid_L_4.Top = dPan_grid_L_3.Bottom + _Model.Grid_pixel_L + panelBorder;
-        //    dPan_grid_L_5.Top = dPan_grid_L_4.Bottom + _Model.Grid_pixel_L + panelBorder;
-        //}
-
-        //private void dBtn_up_R_Click(object sender, EventArgs e)
-        //{
-        //    int y = dPan_grid_R_1.Top - 1;
-
-        //    dPan_grid_R_1.Top = y;
-        //    dPan_grid_R_2.Top = dPan_grid_R_1.Bottom + _Model.Grid_pixel_R + panelBorder;
-        //    dPan_grid_R_3.Top = dPan_grid_R_2.Bottom + _Model.Grid_pixel_R + panelBorder;
-        //    dPan_grid_R_4.Top = dPan_grid_R_3.Bottom + _Model.Grid_pixel_R + panelBorder;
-        //    dPan_grid_R_5.Top = dPan_grid_R_4.Bottom + _Model.Grid_pixel_R + panelBorder;
-        //}
-
-        //private void dBtn_dw_L_Click(object sender, EventArgs e)
-        //{
-        //    int y = dPan_grid_L_1.Top + 1;
-
-        //    dPan_grid_L_1.Top = y;
-        //    dPan_grid_L_2.Top = dPan_grid_L_1.Bottom + _Model.Grid_pixel_L + panelBorder;
-        //    dPan_grid_L_3.Top = dPan_grid_L_2.Bottom + _Model.Grid_pixel_L + panelBorder;
-        //    dPan_grid_L_4.Top = dPan_grid_L_3.Bottom + _Model.Grid_pixel_L + panelBorder;
-        //    dPan_grid_L_5.Top = dPan_grid_L_4.Bottom + _Model.Grid_pixel_L + panelBorder;
-        //}
-
-        //private void dBtn_dw_R_Click(object sender, EventArgs e)
-        //{
-        //    int y = dPan_grid_R_1.Top + 1;
-
-        //    dPan_grid_R_1.Top = y;
-        //    dPan_grid_R_2.Top = dPan_grid_R_1.Bottom + _Model.Grid_pixel_R + panelBorder;
-        //    dPan_grid_R_3.Top = dPan_grid_R_2.Bottom + _Model.Grid_pixel_R + panelBorder;
-        //    dPan_grid_R_4.Top = dPan_grid_R_3.Bottom + _Model.Grid_pixel_R + panelBorder;
-        //    dPan_grid_R_5.Top = dPan_grid_R_4.Bottom + _Model.Grid_pixel_R + panelBorder;
-        //}
-        //#endregion
 
         #region event(save) - click 
         private void dBtn_save_L_Click(object sender, EventArgs e)
@@ -1304,67 +1281,6 @@ namespace JD_Proc
         }
         #endregion
 
-        #region [event - checkboxchagned]
-        private void CheckBox_ROI_L1_CheckedChanged(object sender)
-        {
-            if (CheckBox_ROI_L1.Checked) isCheckboxROI_L[0] = true;
-            else isCheckboxROI_L[0] = false;
-        }
-
-        private void CheckBox_ROI_L2_CheckedChanged(object sender)
-        {
-            if (CheckBox_ROI_L2.Checked) isCheckboxROI_L[1] = true;
-            else isCheckboxROI_L[1] = false;
-        }
-
-        private void CheckBox_ROI_L3_CheckedChanged(object sender)
-        {
-            if (CheckBox_ROI_L3.Checked) isCheckboxROI_L[2] = true;
-            else isCheckboxROI_L[2] = false;
-        }
-
-        private void CheckBox_ROI_L4_CheckedChanged(object sender)
-        {
-            if (CheckBox_ROI_L4.Checked) isCheckboxROI_L[3] = true;
-            else isCheckboxROI_L[3] = false;
-        }
-
-        private void CheckBox_ROI_L5_CheckedChanged(object sender)
-        {
-            if (CheckBox_ROI_L5.Checked) isCheckboxROI_L[4] = true;
-            else isCheckboxROI_L[4] = false;
-        }
-        private void CheckBox_ROI_R1_CheckedChanged(object sender)
-        {
-            if (CheckBox_ROI_R1.Checked) isCheckboxROI_R[0] = true;
-            else isCheckboxROI_R[0] = false;
-        }
-
-        private void CheckBox_ROI_R2_CheckedChanged(object sender)
-        {
-            if (CheckBox_ROI_R2.Checked) isCheckboxROI_R[1] = true;
-            else isCheckboxROI_R[1] = false;
-        }
-
-        private void CheckBox_ROI_R3_CheckedChanged(object sender)
-        {
-            if (CheckBox_ROI_R3.Checked) isCheckboxROI_R[2] = true;
-            else isCheckboxROI_R[2] = false;
-        }
-
-        private void CheckBox_ROI_R4_CheckedChanged(object sender)
-        {
-            if (CheckBox_ROI_R4.Checked) isCheckboxROI_R[3] = true;
-            else isCheckboxROI_R[3] = false;
-        }
-
-        private void CheckBox_ROI_R5_CheckedChanged(object sender)
-        {
-            if (CheckBox_ROI_R5.Checked) isCheckboxROI_R[4] = true;
-            else isCheckboxROI_R[4] = false;
-        }
-        #endregion
-
         #region [event - SupprotLineDraw]
         private void dBtn_CameraLine_L_Click(object sender, EventArgs e)
         {
@@ -1373,7 +1289,8 @@ namespace JD_Proc
 
         private void dBtn_BrightestLine_L_Click(object sender, EventArgs e)
         {
-            brightestLineDraw_L();
+            if (brighestDrawLine_L != 0) brightestLineDraw_L();
+            else MessageBox.Show("Process first", "Process Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void dBtn_CameraLine_R_Click(object sender, EventArgs e)
@@ -1383,7 +1300,24 @@ namespace JD_Proc
 
         private void dBtn_BrightestLine_R_Click(object sender, EventArgs e)
         {
-            brightestLineDraw_R();
+            if (brighestDrawLine_R != 0) brightestLineDraw_R();
+            else MessageBox.Show("Process first", "Process Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        #endregion
+
+        #region [event - BottomLineSetting]
+        private void Btn_BottomLineSetting_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TempDDList.Count != 0) BottomLineSetting();
+                else MessageBox.Show("Error, Empty Data set, Please Load & Process First", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         #endregion
 
@@ -1394,6 +1328,7 @@ namespace JD_Proc
             {
                 _irDirectInterface_1 = new IrDirectInterface();
                 _irDirectInterface_1.Connect(configPath);
+
 
                 _irDirectInterface_1.SetPaletteManualTemperatureRange(20, 30);
             }
@@ -1437,6 +1372,13 @@ namespace JD_Proc
                         _tempData_L[column, row] = ((double)value - 1000.0) / 10.0;
                     }
                 }
+                for (int column = 0; column < columns; column++)
+                {
+                    for (int row = 0; row < rows - 1; row++)
+                    {
+
+                    }
+                }
 
                 //Calculates mean value: meanSum / pixelCount
                 mean /= rows * columns;
@@ -1448,6 +1390,7 @@ namespace JD_Proc
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
                     pictureBox1.Image = _images.PaletteImage;
+                    //pictureBox1.Image = grayBmap_L;
                     pictureBox1_Auto.Image = _images.PaletteImage;
                     //_AlignSettingform.BeginInvoke((MethodInvoker)(() =>
                     //{
@@ -1477,6 +1420,13 @@ namespace JD_Proc
                         ushort value = images.ThermalImage[row, column];
                         mean += value;
                         _tempData_R[column, row] = ((double)value - 1000.0) / 10.0;
+                    }
+                }
+                for (int column = 0; column < columns; column++)
+                {
+                    for (int row = 0; row < rows - 1; row++)
+                    {
+                        TempVariation_R[column][row] = _tempData_R[column, row] - _tempData_R[column, row + 1];
                     }
                 }
 
@@ -1532,6 +1482,8 @@ namespace JD_Proc
                 dLable_tmp1.Text = Math.Round(mean, 1).ToString();
 
             }));
+
+            SnaptoGaussianImagewithCSV(pictureBox1.Image);
         }
         private void SnapMethod_2()
         {
@@ -1770,8 +1722,6 @@ namespace JD_Proc
         #region method - Porcess
         void Porcess(string cam, int roi, Model.Blob blob, int threshold, string mode)
         {
-            //pictureBox2.Image = grayBmap;
-
             //roi 정보를 읽어온다(x, y, widht, height)
             (int roiX, int roiY, int roiWidth, int roiHeight) = GetRoiInfo(cam, roi);
 
@@ -1821,7 +1771,7 @@ namespace JD_Proc
                         grayBmap_L.SetPixel(xx, yy, newC);
                     }
                 }
-                
+
             }
             else if (cam == "cam2")
             {
@@ -1979,18 +1929,18 @@ namespace JD_Proc
                     int pixelValue = 0;
 
                     if (cam == "CAM1")
-                    { 
+                    {
                         pixelValue = grayBmap_L.GetPixel(x, y).R;
                         if (roi == 3)
                         {
-                            if (x == originBmap_L.Width/2)
+                            if (x == originBmap_L.Width / 2)
                             {
                                 if (pixelValue > grayBmap_L.GetPixel(x, brighestDrawLine_L).R) brighestDrawLine_L = y;
                             }
                         }
                     }
                     else if (cam == "CAM2")
-                    { 
+                    {
                         pixelValue = grayBmap_R.GetPixel(x, y).R;
                         if (roi == 3)
                         {
@@ -2081,6 +2031,7 @@ namespace JD_Proc
 
                             double per = blob_avg - ((blob_avg - roi_avg) * 0.3);
 
+
                             if (nextPixelValue < per)
                             {
                                 procDataList[i].StartY = y2;
@@ -2159,7 +2110,10 @@ namespace JD_Proc
                                 nowPixelValue = grayBmap_R.GetPixel(x, y1).R;
                             }
 
-                            double per = blob_avg - ((blob_avg - roi_avg) * 0.3); //blob_avg - (blob_avg * 0.2);
+                            //double per = blob_avg - ((blob_avg - roi_avg) * 0.1);
+                            double per = blob_avg - ((blob_avg - roi_avg) * 0.3);
+                            //blob_avg - (blob_avg * 0.2);
+                            //double per = blob_avg * 1.2;
 
                             if (nextPixelValue < per)
                             {
@@ -2186,6 +2140,7 @@ namespace JD_Proc
                             }
 
                             double per = blob_avg - ((blob_avg - roi_avg) * 0.8);
+                            //double per = blob_avg * 0.6;
 
                             if (nextTemperValue < per)
                             {
@@ -2931,12 +2886,6 @@ namespace JD_Proc
                 double resolution = double.Parse(settingService.Read("resolution", "y_1"));
                 List<double> avg = new List<double>() { 0, 0, 0, 0, 0 };
 
-                //var avg1 = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg2 = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg3 = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg4 = Math.Round(_Data_4_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg5 = Math.Round(_Data_5_L.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-
                 avg[0] = Math.Round(_Data_1_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
                 avg[1] = Math.Round(_Data_2_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
                 avg[2] = Math.Round(_Data_3_L.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
@@ -2953,13 +2902,29 @@ namespace JD_Proc
 
                 totalAVg = Math.Round(totalAVg / getNumberIncludeROIAverage(isCheckboxROI_L), 2);
 
-                string reesult = "GAP 평균 \r\n" + "\r\n" +
-                                 "LEFT_1 : " + avg[0].ToString() + "\r\n" + "\r\n" +
-                                 "LEFT_2 : " + avg[1].ToString() + "\r\n" + "\r\n" +
-                                 "LEFT_3 : " + avg[2].ToString() + "\r\n" + "\r\n" +
-                                 "LEFT_4 : " + avg[3].ToString() + "\r\n" + "\r\n" +
-                                 "LEFT_5 : " + avg[4].ToString() + "\r\n" + "\r\n" + "\r\n" +
-                                 "전체평균 : " + totalAVg;
+                //double gappixelcount = 0;
+                //for (int i=280; i<360; i++)
+                //{
+                //    gappixelcount +=
+                //    TempVariation_L[i].IndexOf(TempVariation_L[i].Max(x => x)) - TempVariation_L[i].IndexOf(TempVariation_L[i].Min(x => x));
+                //}
+                //gappixelcount = Math.Round(gappixelcount / 80, 2);
+
+                CalculateGap();
+
+                string reesult =
+                                 //"GAP 평균 \r\n" + "\r\n" +
+                                 //             "LEFT_1 : " + avg[0].ToString() + "\r\n" + "\r\n" +
+                                 //             "LEFT_2 : " + avg[1].ToString() + "\r\n" + "\r\n" +
+                                 //             "LEFT_3 : " + avg[2].ToString() + "\r\n" + "\r\n" +
+                                 //             "LEFT_4 : " + avg[3].ToString() + "\r\n" + "\r\n" +
+                                 //             "LEFT_5 : " + avg[4].ToString() + "\r\n" + "\r\n" + "\r\n" +
+                                 "Gap Distance : " + Math.Round(CalculateGap() * resolution, 2);
+                //"전체평균 : " + Math.Round((gappixelcount) * resolution,2);
+                //"전체평균 : " + totalAVg;
+
+
+                //TempVariation_L.Clear();
 
                 if (isThread == true)
                 {
@@ -2981,11 +2946,6 @@ namespace JD_Proc
                 double resolution = double.Parse(settingService.Read("resolution", "y_2"));
                 List<double> avg = new List<double>() { 0, 0, 0, 0, 0 };
 
-                //var avg1 = Math.Round(_Data_1_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg2 = Math.Round(_Data_2_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg3 = Math.Round(_Data_3_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg4 = Math.Round(_Data_4_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
-                //var avg5 = Math.Round(_Data_5_R.Average(item => item.Count * resolution + (resolution / item.SubPixelValue_up) + (resolution / item.SubPixelValue_dw)), 2);
                 avg[0] = Math.Round(_Data_1_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
                 avg[1] = Math.Round(_Data_2_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
                 avg[2] = Math.Round(_Data_3_R.Average(item => item.Count * resolution + (resolution / (10 - item.SubPixelValue_up)) + (resolution / (10 - item.SubPixelValue_dw))), 2);
@@ -3049,74 +3009,20 @@ namespace JD_Proc
         }
         #endregion
 
-        //#region [method - Graph Generate Point]
-        //public void ParrotGraphGenerateData(bool isVisionBusy, int gapDistance)
-        //{
-        //    if (isVisionBusy == true)
-        //    {
-        //        if (parrotLineGraph1.Items.Count < parrotLineGraph1.Items.Capacity)
-        //        {
-        //            parrotLineGraph1.Items.Add(gapDistance);
-        //            parrotLineGraph1.Invoke((MethodInvoker)delegate
-        //            {
-
-        //                parrotLineGraph1.Update();
-        //                parrotLineGraph1.Refresh();
-        //            });
-
-        //        }
-
-        //        else
-        //        {
-        //            parrotLineGraph1.Items.RemoveAt(0);
-        //            parrotLineGraph1.Items.Add(gapDistance);
-        //            parrotLineGraph1.Invoke((MethodInvoker)delegate
-        //            {
-
-        //                parrotLineGraph1.Update();
-        //                parrotLineGraph1.Refresh();
-        //            });
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (parrotLineGraph2.Items.Count < parrotLineGraph2.Items.Capacity)
-        //        {
-        //            parrotLineGraph2.Items.Add(gapDistance);
-        //            parrotLineGraph2.Invoke((MethodInvoker)delegate
-        //            {
-
-        //                parrotLineGraph2.Update();
-        //                parrotLineGraph2.Refresh();
-        //            });
-
-        //        }
-
-        //        else
-        //        {
-        //            parrotLineGraph2.Items.RemoveAt(0);
-        //            parrotLineGraph2.Items.Add(gapDistance);
-        //            parrotLineGraph2.Invoke((MethodInvoker)delegate
-        //            {
-
-        //                parrotLineGraph2.Update();
-        //                parrotLineGraph2.Refresh();
-        //            });
-        //        }
-        //    }
-        //}
-        //#endregion
-
         #region [method - mesure function]
         private void measureFunc1(object sender, EventArgs e)
         {
-            //dBtn_snap1_Click(sender, e);
+            brighestDrawLine_L = 0;
+            Panel_BrighestLine_L.Visible = false;
+            dBtn_snap1_Click(sender, e);
             dBtn_Process1_Click(sender, e);
         }
 
         private void measureFunc2(object sender, EventArgs e)
         {
-            //dBtn_snap2_Click(sender, e);
+            brighestDrawLine_R = 0;
+            Panel_BrighestLine_R.Visible = false;
+            dBtn_snap2_Click(sender, e);
             dBtn_Process2_Click(sender, e);
         }
         #endregion
@@ -3149,73 +3055,98 @@ namespace JD_Proc
             //M30176 = 역회전
 
             // D31051 - L_Y축
-            MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("B20", short.Parse("1"));
 
             // 나머지 축값 0으로
-            MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
-            MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
-            MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B21", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B22", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B23", short.Parse("0"));
         }
         public void selectJogAxis_L_Z()
         {
-            //D31051~4 = 해당 축 넘버
-            //M30175 = 정회전
-            //M30176 = 역회전
 
-            // D31052 - L_Z축
-            MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("B21", short.Parse("1"));
 
             // 나머지 축값 0으로
-            MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
-            MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
-            MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B20", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B22", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B23", short.Parse("0"));
         }
         public void selectJogAxis_R_Y()
         {
-            //D31051~4 = 해당 축 넘버
-            //M30175 = 정회전
-            //M30176 = 역회전
 
-            // D31053 - R_Y축
-            MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("B22", short.Parse("1"));
 
             // 나머지 축값 0으로
-            MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
-            MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
-            MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B21", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B20", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B23", short.Parse("0"));
         }
         public void selectJogAxis_R_Z()
         {
-            //D31051~4 = 해당 축 넘버
-            //M30175 = 정회전
-            //M30176 = 역회전
 
-            // D31054 - L_Y축
-            MELSEC_JOG.actUtlType64.SetDevice("D31054", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("B23", short.Parse("1"));
 
             // 나머지 축값 0으로
-            MELSEC_JOG.actUtlType64.SetDevice("D31052", short.Parse("0"));
-            MELSEC_JOG.actUtlType64.SetDevice("D31053", short.Parse("0"));
-            MELSEC_JOG.actUtlType64.SetDevice("D31051", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B21", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B22", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B20", short.Parse("0"));
+        }
+        #endregion
+
+        #region [method - JogAxisMoveToInputPosition]
+        public void selectedJogMoveToInputPosition()
+        {
+            //W10, W12에 적절한 데이터가 있는지 확인후 없으면 SET해주고 MOVE할수 있게 한다.
+            MELSEC_JOG.actUtlType64.SetDevice("B2C", short.Parse("1"));
+        }
+        #endregion
+
+        #region [method - PLCMotorSetVelocityValue]
+        public void PLCMotorSetVelocityValue()
+        {
+            //W10~W11 - Motor_ Command Velocity value [0.01mm/s단위] -> 10[mm/s] = 1000
+            //MELSEC_JOG.actUtlType64.WriteDeviceBlock("W10", );
+        }
+        #endregion
+
+        #region [method - PLCMotorSetPositionValue]
+        public void PLCMotorSetPositionValue()
+        {
+            //W12~W13 - Motor_ Command position value [0.0001mm단위] (Absolute 위치) -> 10[mm/s] = 100000
+            //MELSEC_JOG.actUtlType64.WriteDeviceBlock("W12", );
+        }
+        #endregion
+
+        #region [method - JogAutoMoveforSavedValue]
+        public void PLCJogAutoMoveToSavedValue()
+        {
+            int vel = int.Parse(service.Read("PLC_JOG_OFFSET", "VELOCITY"));
+            int pos = int.Parse(service.Read("PLC_JOG_OFFSET", "POSITION "));
+
+            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W10", 2, ref vel);
+            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W12", 2, ref pos);
+
+            MELSEC_JOG.actUtlType64.SetDevice("B2C", short.Parse("1"));
         }
         #endregion
 
         #region [method - JogButtonMouseEvent]
         public void jogButtonOriginalClickDown()
         {
-            MELSEC_JOG.actUtlType64.SetDevice("M30175", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("B2A", short.Parse("1"));
         }
         public void jogButtonOriginalClickUp()
         {
-            MELSEC_JOG.actUtlType64.SetDevice("M30175", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B2A", short.Parse("0"));
         }
         public void jogButtonReverseClickDown()
         {
-            MELSEC_JOG.actUtlType64.SetDevice("M30176", short.Parse("1"));
+            MELSEC_JOG.actUtlType64.SetDevice("B2B", short.Parse("1"));
         }
         public void jogButtonReverseClickUp()
         {
-            MELSEC_JOG.actUtlType64.SetDevice("M30176", short.Parse("0"));
+            MELSEC_JOG.actUtlType64.SetDevice("B2B", short.Parse("0"));
         }
         #endregion
 
@@ -3307,6 +3238,199 @@ namespace JD_Proc
 
         #endregion
 
+        #region [method - CalculateGap]
+        private double CalculateGap()
+        {
 
+            double avg_high_pixel = 0;
+            int low_std = 236;
+            int gap_pixel = 0;
+            double subpixel = 0;
+
+            for (int r = 248; r < 400; r++)
+            {
+
+                if (TempDDList[320][r] > avg_high_pixel)
+                {
+                    avg_high_pixel = TempDDList[320][r];
+                }
+
+            }
+
+            var UpperStd = TempDDList[320].FindIndex(x => x > avg_high_pixel);
+            gap_pixel = low_std - UpperStd;
+            Debug.Print("오른쪽 가장 높은값(index) : " + avg_high_pixel + "(" + TempDDList[320].FindLastIndex(x => x == avg_high_pixel).ToString() + "), " + "Left First Edge point : " + UpperStd.ToString());
+
+
+            subpixel = (TempDDList[320][UpperStd] - avg_high_pixel) / (TempDDList[320][UpperStd] - TempDDList[320][UpperStd - 1]);
+            Debug.Print("픽셀 수: " + gap_pixel.ToString() + ", Gap : " + (Math.Round((double)gap_pixel + subpixel, 2).ToString()));
+
+            return low_std - Math.Round(GetXLinearEquation(UpperStd, TempDDList[320][UpperStd], UpperStd - 1, TempDDList[320][UpperStd - 1], avg_high_pixel), 2);
+            //return (Math.Round((double)gap_pixel + subpixel, 2));
+        }
+        #endregion
+
+        #region [method - LinearEquation]
+        private double GetXLinearEquation(double x1, double y1, double x2, double y2, double y3)
+        {
+            double a = ((y1 - y2) / (x1 - x2));
+            double b = (x1 * y2 - x2 * y1) / (x1 - x2);
+
+
+            return Math.Round((y3 - b) / a, 2);
+        }
+        #endregion
+
+        #region [method - BottomLineSetting]
+        private void BottomLineSetting()
+        {
+            double pVariation = 0;
+            int c_PixelIndex = 0;
+            for (int i = 0; i < 479; i++)
+            {
+                if (Math.Abs(TempDDList[320][i] - TempDDList[320][i + 1]) > pVariation)
+                {
+                    c_PixelIndex = i;
+                    pVariation = Math.Abs(TempDDList[320][i] - TempDDList[320][i + 1]);
+                }
+            }
+
+            if (c_PixelIndex == int.Parse(service.Read("STANDARD", "BtmIdx"))) MessageBox.Show("OK, BottomLine Setting OK", "Setting OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Fail, BottomLine Setting Fail, Please Retry Setting", "Setting Fail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        #endregion
+
+        #region [method - GaussianBlurJPROCAlgorithm]
+        private double GaussianBlurJPROCAlgorithm()
+        {
+            StreamReader srGaussian = new StreamReader(@"C:\JD\Images\GaussianBlur\GaussianBlur.csv");
+
+            int row = 0;
+
+
+            while (!srGaussian.EndOfStream)
+            {
+                string lineGaussian = srGaussian.ReadLine();
+                string[] GaussianData = lineGaussian.Split(',');
+
+                for (int x = 0; x < 640; x++) GaussianArray[x, row] = int.Parse(GaussianData[x]);//(double.Parse(data[x]) * 10.0d) + 1000;
+
+                row = row + 1;
+            }
+
+            double total = 0, utotal = 0, dtotal = 0;
+
+            for (int column = 0; column < 640; column++)
+            {
+                GaussianBmp.Add(new List<int>());
+
+                for (int r = 0; r < 479; r++)
+                {
+                    GaussianBmp[column].Add(GaussianArray[column, r]);
+                }
+
+                var sUp = GaussianBmp[column].IndexOf(GaussianBmp[column].Max());
+                var sDown = GaussianBmp[column].LastIndexOf(GaussianBmp[column].Max());
+                var iUp = 0;
+                var iDown = 0;
+
+
+                for (int i = sUp; i > 0; i--)
+                {
+                    var std = GaussianBmp[column][i] - GaussianBmp[column][i - 1];
+                    if (std == 0)
+                    {
+                        iUp = i;
+
+                        Debug.Print(iUp.ToString());
+                        break;
+                    }
+                }
+                for (int i = sDown; i > 0; i++)
+                {
+                    var std = GaussianBmp[column][i] - GaussianBmp[column][i + 1];
+                    if (std == 0)
+                    {
+                        iDown = i;
+                        Debug.Print(iDown.ToString());
+                        break;
+                    }
+                }
+
+                total += iDown - iUp;
+                utotal += iUp;
+                dtotal += iDown;
+
+
+            }
+
+
+            Debug.Print((utotal / 640).ToString());
+            Debug.Print((dtotal / 640).ToString());
+            Debug.Print((total / 640).ToString());
+
+            return (double)(total / 640);
+        }
+
+
+        #endregion
+
+        #region [method - SnaptoGaussianImagewithCSV]
+        private void SnaptoGaussianImagewithCSV(Image beforeGaussian)
+        {
+            bmpforscv = beforeGaussian;
+            Gblur = new GaussianBlur(bmpforscv as Bitmap);
+            var result = Gblur.Process(3);
+            result.Save(@"C:\JD\Images\GaussianBlur\GaussianBlur.bmp", ImageFormat.Bmp);
+            Gblur.ConvertBmpToCsv(@"C:\JD\Images\GaussianBlur\GaussianBlur.bmp", @"C:\JD\Images\GaussianBlur\GaussianBlur.csv");
+
+        }
+        #endregion
+
+        #region [method - WhenImageLoadCalculateGaussianfileterToOriginalTempCSV]
+        private void CalculateGaussianfileterToOriginalTempCSV(string TempCSV)
+        {
+            var CSVDirPath = Path.GetDirectoryName(TempCSV);
+            var CSVFilePath = Path.GetFileNameWithoutExtension(TempCSV);
+            var CSVExtensionPath = Path.GetExtension(TempCSV);
+
+            var GussedCSVpath = Path.Combine(CSVDirPath, $"{CSVFilePath}GProcessed{CSVExtensionPath}");
+
+            var DoubleDList = DataConvertFormat.ConvertCSVToDLList(TempCSV, 640, 480);
+            GaussianBlur.ApplyGaussianBlurForCSV(DoubleDList, 480, 640, GussedCSVpath);
+        }
+        #endregion
+
+        #region [method - TempController_TimerCheck]
+        private void TempController_TimerCheck(object? state)
+        {
+            if (TempController.IsOpened() == true)
+            {
+                this.BeginInvoke((MethodInvoker)(() =>
+                {
+                    Lbl_TempController.Text = "Temp_OK";
+                    Lbl_TempController.BackColor = Color.Aquamarine;
+                    Label_PV_Value.Text = TempController.GetCurrentTemperature(TempController);
+                    Label_SV_Value.Text = TempController.GetCurrentTargetTemperature(TempController);
+                }));
+
+            }
+            else
+            {
+                this.BeginInvoke((MethodInvoker)(() =>
+                {
+                    Lbl_TempController.BackColor = Color.Red;
+                }));
+
+            }
+        }
+        #endregion
+
+
+        private void Btn_SetSV_Click(object sender, EventArgs e)
+        {
+            TempController.SetTargetTemperature(TempController, int.Parse(TextBox_InputSV.textBox.Text));
+            TextBox_InputSV.textBox.Clear();
+        }
     }
 }

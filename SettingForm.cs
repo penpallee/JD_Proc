@@ -14,6 +14,7 @@ namespace JD_Proc
         Form1 _form1;
         AlignSettingForm _alignsettingform;
         TempGraphForm _tempgraphform;
+        Service.SettingsService service;
 
         #endregion
 
@@ -24,6 +25,7 @@ namespace JD_Proc
             _form1 = form1;
             _alignsettingform = alignSettingForm;
             _tempgraphform = tempgraphform;
+            service = new Service.SettingsService();
 
             GetResolution_1();
             GetResolution_2();
@@ -440,6 +442,88 @@ namespace JD_Proc
             _alignsettingform.Location = new Point(this.Location.X + this.Width, this.Location.Y);
         }
 
+        private void SettingForm_Load(object sender, EventArgs e)
+        {
+            if (Form1.MELSEC_JOG == null || Form1.MELSEC_JOG.IsConnected() == false)
+            {
+                Btn_Jog_L_Y.Enabled = false;
+                Btn_Jog_L_Z.Enabled = false;
+                Btn_Jog_R_Y.Enabled = false;
+                Btn_Jog_R_Z.Enabled = false;
+                Btn_JogOriginal.Enabled = false;
+                Btn_JogReverse.Enabled = false;
+            }
+        }
+
+        private void Btn_SetJogVelocity_Click(object sender, EventArgs e)
+        {
+            _form1.PLCMotorSetVelocityValue();
+        }
+
+        private void Btn_SetJogPosition_Click(object sender, EventArgs e)
+        {
+            _form1.PLCMotorSetPositionValue();
+        }
+
+        private void Btn_MoveToPosition_Click(object sender, EventArgs e)
+        {
+            _form1.selectedJogMoveToInputPosition();
+        }
+
+        private void Btn_JogValueSave_Click(object sender, EventArgs e)
+        {
+            service.Write("PLC_JOG_OFFSET", "VELOCITY", TxtBox_JogVelocity.Text);
+            service.Write("PLC_JOG_OFFSET", "POSITION", TxtBox_JogPosition.Text);
+        }
+
+        private void Btn_AutoMoveToSavePosition_Click(object sender, EventArgs e)
+        {
+            _form1.PLCJogAutoMoveToSavedValue();
+        }
+
+        #region [event - MouseClick Jog Button]
+        private void Btn_JogOriginal_MouseDown(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonOriginalClickDown();
+        }
+
+        private void Btn_JogOriginal_MouseUp(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonOriginalClickUp();
+        }
+
+        private void Btn_JogReverse_MouseDown(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonReverseClickDown();
+        }
+
+        private void Btn_JogReverse_MouseUp(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonReverseClickUp();
+        }
+        #endregion
+
+        #region [event - Select Jog Axis Button]
+        private void Btn_Jog_L_Y_Click(object sender, EventArgs e)
+        {
+            _form1.selectJogAxis_L_Y();
+        }
+
+        private void Btn_Jog_L_Z_Click(object sender, EventArgs e)
+        {
+            _form1.selectJogAxis_L_Z();
+        }
+
+        private void Btn_Jog_R_Y_Click(object sender, EventArgs e)
+        {
+            _form1.selectJogAxis_R_Y();
+        }
+
+        private void Btn_Jog_R_Z_Click(object sender, EventArgs e)
+        {
+            _form1.selectJogAxis_R_Z();
+        }
+        #endregion
 
     }
 }

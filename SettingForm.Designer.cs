@@ -43,23 +43,26 @@
             ReaLTaiizor.Controls.FoxLabel foxLabel15;
             ReaLTaiizor.Controls.FoxLabel foxLabel16;
             ReaLTaiizor.Controls.FoxLabel foxLabel7;
+            ReaLTaiizor.Controls.FoxLabel Label_JogVelocity;
+            ReaLTaiizor.Controls.FoxLabel Label_JogPosition;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingForm));
             dungeonForm1 = new ReaLTaiizor.Forms.DungeonForm();
+            Btn_JogValueSave = new ReaLTaiizor.Controls.DreamButton();
+            Btn_AutoMoveToSavePosition = new ReaLTaiizor.Controls.DreamButton();
+            Btn_MoveToPosition = new ReaLTaiizor.Controls.DreamButton();
+            thunderGroupBox9 = new ReaLTaiizor.Controls.ThunderGroupBox();
+            Btn_SetJogPosition = new ReaLTaiizor.Controls.DreamButton();
+            Btn_SetJogVelocity = new ReaLTaiizor.Controls.DreamButton();
+            TxtBox_JogPosition = new ReaLTaiizor.Controls.CrownTextBox();
+            TxtBox_JogVelocity = new ReaLTaiizor.Controls.CrownTextBox();
+            thunderGroupBox7 = new ReaLTaiizor.Controls.ThunderGroupBox();
+            Btn_JogOriginal = new ReaLTaiizor.Controls.Button();
+            Btn_JogReverse = new ReaLTaiizor.Controls.Button();
             thunderGroupBox4 = new ReaLTaiizor.Controls.ThunderGroupBox();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            label1 = new Label();
-            label2 = new Label();
-            CheckBox_ROI_L1 = new ReaLTaiizor.Controls.CyberCheckBox();
-            CheckBox_ROI_L2 = new ReaLTaiizor.Controls.CyberCheckBox();
-            CheckBox_ROI_L3 = new ReaLTaiizor.Controls.CyberCheckBox();
-            CheckBox_ROI_L4 = new ReaLTaiizor.Controls.CyberCheckBox();
-            CheckBox_ROI_L5 = new ReaLTaiizor.Controls.CyberCheckBox();
-            CheckBox_ROI_R2 = new ReaLTaiizor.Controls.CyberCheckBox();
-            CheckBox_ROI_R3 = new ReaLTaiizor.Controls.CyberCheckBox();
-            CheckBox_ROI_R1 = new ReaLTaiizor.Controls.CyberCheckBox();
-            CheckBox_ROI_R4 = new ReaLTaiizor.Controls.CyberCheckBox();
-            CheckBox_ROI_R5 = new ReaLTaiizor.Controls.CyberCheckBox();
-            nightLabel2 = new ReaLTaiizor.Controls.NightLabel();
-            nightLabel1 = new ReaLTaiizor.Controls.NightLabel();
+            Btn_Jog_R_Z = new ReaLTaiizor.Controls.Button();
+            Btn_Jog_L_Z = new ReaLTaiizor.Controls.Button();
+            Btn_Jog_R_Y = new ReaLTaiizor.Controls.Button();
+            Btn_Jog_L_Y = new ReaLTaiizor.Controls.Button();
             dPanel_login = new ReaLTaiizor.Controls.NightPanel();
             dTxtBox_password = new ReaLTaiizor.Controls.CyberTextBox();
             dButton_login = new ReaLTaiizor.Controls.CyberButton();
@@ -109,9 +112,12 @@
             foxLabel15 = new ReaLTaiizor.Controls.FoxLabel();
             foxLabel16 = new ReaLTaiizor.Controls.FoxLabel();
             foxLabel7 = new ReaLTaiizor.Controls.FoxLabel();
+            Label_JogVelocity = new ReaLTaiizor.Controls.FoxLabel();
+            Label_JogPosition = new ReaLTaiizor.Controls.FoxLabel();
             dungeonForm1.SuspendLayout();
+            thunderGroupBox9.SuspendLayout();
+            thunderGroupBox7.SuspendLayout();
             thunderGroupBox4.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
             dPanel_login.SuspendLayout();
             thunderGroupBox8.SuspendLayout();
             thunderGroupBox6.SuspendLayout();
@@ -317,10 +323,41 @@
             foxLabel7.TabIndex = 6;
             foxLabel7.Text = "C2 CapStart";
             // 
+            // Label_JogVelocity
+            // 
+            Label_JogVelocity.AllowDrop = true;
+            Label_JogVelocity.BackColor = Color.FromArgb(46, 46, 46);
+            Label_JogVelocity.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_JogVelocity.ForeColor = Color.FromArgb(29, 200, 238);
+            Label_JogVelocity.Location = new Point(6, 32);
+            Label_JogVelocity.Margin = new Padding(3, 10, 3, 3);
+            Label_JogVelocity.Name = "Label_JogVelocity";
+            Label_JogVelocity.Size = new Size(94, 27);
+            Label_JogVelocity.TabIndex = 24;
+            Label_JogVelocity.Text = "Jog 속도값 :";
+            // 
+            // Label_JogPosition
+            // 
+            Label_JogPosition.AllowDrop = true;
+            Label_JogPosition.BackColor = Color.FromArgb(46, 46, 46);
+            Label_JogPosition.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Label_JogPosition.ForeColor = Color.FromArgb(29, 200, 238);
+            Label_JogPosition.Location = new Point(7, 63);
+            Label_JogPosition.Margin = new Padding(3, 10, 3, 3);
+            Label_JogPosition.Name = "Label_JogPosition";
+            Label_JogPosition.Size = new Size(93, 27);
+            Label_JogPosition.TabIndex = 26;
+            Label_JogPosition.Text = "Jog 위치값 :";
+            // 
             // dungeonForm1
             // 
             dungeonForm1.BackColor = Color.FromArgb(40, 45, 45);
             dungeonForm1.BorderColor = Color.FromArgb(38, 38, 38);
+            dungeonForm1.Controls.Add(Btn_JogValueSave);
+            dungeonForm1.Controls.Add(Btn_AutoMoveToSavePosition);
+            dungeonForm1.Controls.Add(Btn_MoveToPosition);
+            dungeonForm1.Controls.Add(thunderGroupBox9);
+            dungeonForm1.Controls.Add(thunderGroupBox7);
             dungeonForm1.Controls.Add(thunderGroupBox4);
             dungeonForm1.Controls.Add(dPanel_login);
             dungeonForm1.Controls.Add(thunderGroupBox8);
@@ -351,6 +388,186 @@
             dungeonForm1.TitleColor = Color.FromArgb(223, 219, 210);
             dungeonForm1.Click += dungeonForm1_Click;
             // 
+            // Btn_JogValueSave
+            // 
+            Btn_JogValueSave.ColorA = Color.FromArgb(31, 31, 31);
+            Btn_JogValueSave.ColorB = Color.FromArgb(41, 41, 41);
+            Btn_JogValueSave.ColorC = Color.FromArgb(51, 51, 51);
+            Btn_JogValueSave.ColorD = Color.FromArgb(0, 0, 0, 0);
+            Btn_JogValueSave.ColorE = Color.FromArgb(25, 255, 255, 255);
+            Btn_JogValueSave.ForeColor = Color.FromArgb(40, 218, 255);
+            Btn_JogValueSave.Location = new Point(440, 440);
+            Btn_JogValueSave.Name = "Btn_JogValueSave";
+            Btn_JogValueSave.Size = new Size(42, 27);
+            Btn_JogValueSave.TabIndex = 33;
+            Btn_JogValueSave.Text = "SAVE";
+            Btn_JogValueSave.UseVisualStyleBackColor = true;
+            Btn_JogValueSave.Click += Btn_JogValueSave_Click;
+            // 
+            // Btn_AutoMoveToSavePosition
+            // 
+            Btn_AutoMoveToSavePosition.ColorA = Color.FromArgb(31, 31, 31);
+            Btn_AutoMoveToSavePosition.ColorB = Color.FromArgb(41, 41, 41);
+            Btn_AutoMoveToSavePosition.ColorC = Color.FromArgb(51, 51, 51);
+            Btn_AutoMoveToSavePosition.ColorD = Color.FromArgb(0, 0, 0, 0);
+            Btn_AutoMoveToSavePosition.ColorE = Color.FromArgb(25, 255, 255, 255);
+            Btn_AutoMoveToSavePosition.ForeColor = Color.FromArgb(40, 218, 255);
+            Btn_AutoMoveToSavePosition.Location = new Point(488, 440);
+            Btn_AutoMoveToSavePosition.Name = "Btn_AutoMoveToSavePosition";
+            Btn_AutoMoveToSavePosition.Size = new Size(49, 27);
+            Btn_AutoMoveToSavePosition.TabIndex = 32;
+            Btn_AutoMoveToSavePosition.Text = "AUTO";
+            Btn_AutoMoveToSavePosition.UseVisualStyleBackColor = true;
+            Btn_AutoMoveToSavePosition.Click += Btn_AutoMoveToSavePosition_Click;
+            // 
+            // Btn_MoveToPosition
+            // 
+            Btn_MoveToPosition.ColorA = Color.FromArgb(31, 31, 31);
+            Btn_MoveToPosition.ColorB = Color.FromArgb(41, 41, 41);
+            Btn_MoveToPosition.ColorC = Color.FromArgb(51, 51, 51);
+            Btn_MoveToPosition.ColorD = Color.FromArgb(0, 0, 0, 0);
+            Btn_MoveToPosition.ColorE = Color.FromArgb(25, 255, 255, 255);
+            Btn_MoveToPosition.ForeColor = Color.FromArgb(40, 218, 255);
+            Btn_MoveToPosition.Location = new Point(320, 440);
+            Btn_MoveToPosition.Name = "Btn_MoveToPosition";
+            Btn_MoveToPosition.Size = new Size(114, 27);
+            Btn_MoveToPosition.TabIndex = 32;
+            Btn_MoveToPosition.Text = "Move To Position";
+            Btn_MoveToPosition.UseVisualStyleBackColor = true;
+            Btn_MoveToPosition.Click += Btn_MoveToPosition_Click;
+            // 
+            // thunderGroupBox9
+            // 
+            thunderGroupBox9.BackColor = Color.Transparent;
+            thunderGroupBox9.BodyColorA = Color.FromArgb(26, 26, 26);
+            thunderGroupBox9.BodyColorB = Color.FromArgb(30, 30, 30);
+            thunderGroupBox9.BodyColorC = Color.FromArgb(46, 46, 46);
+            thunderGroupBox9.BodyColorD = Color.FromArgb(50, 55, 58);
+            thunderGroupBox9.Controls.Add(Btn_SetJogPosition);
+            thunderGroupBox9.Controls.Add(Btn_SetJogVelocity);
+            thunderGroupBox9.Controls.Add(TxtBox_JogPosition);
+            thunderGroupBox9.Controls.Add(Label_JogPosition);
+            thunderGroupBox9.Controls.Add(TxtBox_JogVelocity);
+            thunderGroupBox9.Controls.Add(Label_JogVelocity);
+            thunderGroupBox9.ForeColor = Color.WhiteSmoke;
+            thunderGroupBox9.Location = new Point(320, 336);
+            thunderGroupBox9.Name = "thunderGroupBox9";
+            thunderGroupBox9.Size = new Size(217, 100);
+            thunderGroupBox9.TabIndex = 31;
+            thunderGroupBox9.Text = "thunderGroupBox9";
+            // 
+            // Btn_SetJogPosition
+            // 
+            Btn_SetJogPosition.ColorA = Color.FromArgb(31, 31, 31);
+            Btn_SetJogPosition.ColorB = Color.FromArgb(41, 41, 41);
+            Btn_SetJogPosition.ColorC = Color.FromArgb(51, 51, 51);
+            Btn_SetJogPosition.ColorD = Color.FromArgb(0, 0, 0, 0);
+            Btn_SetJogPosition.ColorE = Color.FromArgb(25, 255, 255, 255);
+            Btn_SetJogPosition.ForeColor = Color.FromArgb(40, 218, 255);
+            Btn_SetJogPosition.Location = new Point(167, 64);
+            Btn_SetJogPosition.Name = "Btn_SetJogPosition";
+            Btn_SetJogPosition.Size = new Size(35, 27);
+            Btn_SetJogPosition.TabIndex = 29;
+            Btn_SetJogPosition.Text = "SET";
+            Btn_SetJogPosition.UseVisualStyleBackColor = true;
+            Btn_SetJogPosition.Click += Btn_SetJogPosition_Click;
+            // 
+            // Btn_SetJogVelocity
+            // 
+            Btn_SetJogVelocity.ColorA = Color.FromArgb(31, 31, 31);
+            Btn_SetJogVelocity.ColorB = Color.FromArgb(41, 41, 41);
+            Btn_SetJogVelocity.ColorC = Color.FromArgb(51, 51, 51);
+            Btn_SetJogVelocity.ColorD = Color.FromArgb(0, 0, 0, 0);
+            Btn_SetJogVelocity.ColorE = Color.FromArgb(25, 255, 255, 255);
+            Btn_SetJogVelocity.ForeColor = Color.FromArgb(40, 218, 255);
+            Btn_SetJogVelocity.Location = new Point(168, 33);
+            Btn_SetJogVelocity.Name = "Btn_SetJogVelocity";
+            Btn_SetJogVelocity.Size = new Size(35, 27);
+            Btn_SetJogVelocity.TabIndex = 28;
+            Btn_SetJogVelocity.Text = "SET";
+            Btn_SetJogVelocity.UseVisualStyleBackColor = true;
+            Btn_SetJogVelocity.Click += Btn_SetJogVelocity_Click;
+            // 
+            // TxtBox_JogPosition
+            // 
+            TxtBox_JogPosition.BackColor = Color.FromArgb(69, 73, 74);
+            TxtBox_JogPosition.BorderStyle = BorderStyle.FixedSingle;
+            TxtBox_JogPosition.ForeColor = Color.FromArgb(220, 220, 220);
+            TxtBox_JogPosition.Location = new Point(107, 64);
+            TxtBox_JogPosition.Name = "TxtBox_JogPosition";
+            TxtBox_JogPosition.Size = new Size(52, 23);
+            TxtBox_JogPosition.TabIndex = 27;
+            TxtBox_JogPosition.Text = "0";
+            // 
+            // TxtBox_JogVelocity
+            // 
+            TxtBox_JogVelocity.BackColor = Color.FromArgb(69, 73, 74);
+            TxtBox_JogVelocity.BorderStyle = BorderStyle.FixedSingle;
+            TxtBox_JogVelocity.ForeColor = Color.FromArgb(220, 220, 220);
+            TxtBox_JogVelocity.Location = new Point(106, 33);
+            TxtBox_JogVelocity.Name = "TxtBox_JogVelocity";
+            TxtBox_JogVelocity.Size = new Size(53, 23);
+            TxtBox_JogVelocity.TabIndex = 25;
+            TxtBox_JogVelocity.Text = "0";
+            // 
+            // thunderGroupBox7
+            // 
+            thunderGroupBox7.BackColor = Color.Transparent;
+            thunderGroupBox7.BodyColorA = Color.FromArgb(26, 26, 26);
+            thunderGroupBox7.BodyColorB = Color.FromArgb(30, 30, 30);
+            thunderGroupBox7.BodyColorC = Color.FromArgb(46, 46, 46);
+            thunderGroupBox7.BodyColorD = Color.FromArgb(50, 55, 58);
+            thunderGroupBox7.Controls.Add(Btn_JogOriginal);
+            thunderGroupBox7.Controls.Add(Btn_JogReverse);
+            thunderGroupBox7.Font = new Font("맑은 고딕", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            thunderGroupBox7.ForeColor = Color.WhiteSmoke;
+            thunderGroupBox7.Location = new Point(542, 335);
+            thunderGroupBox7.Margin = new Padding(2);
+            thunderGroupBox7.Name = "thunderGroupBox7";
+            thunderGroupBox7.Size = new Size(50, 133);
+            thunderGroupBox7.TabIndex = 30;
+            thunderGroupBox7.Text = "Jog                     1";
+            // 
+            // Btn_JogOriginal
+            // 
+            Btn_JogOriginal.BackColor = Color.Transparent;
+            Btn_JogOriginal.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_JogOriginal.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogOriginal.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_JogOriginal.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_JogOriginal.Image = (Image)resources.GetObject("Btn_JogOriginal.Image");
+            Btn_JogOriginal.ImageAlign = ContentAlignment.MiddleCenter;
+            Btn_JogOriginal.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_JogOriginal.Location = new Point(3, 26);
+            Btn_JogOriginal.Margin = new Padding(2);
+            Btn_JogOriginal.Name = "Btn_JogOriginal";
+            Btn_JogOriginal.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogOriginal.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_JogOriginal.Size = new Size(44, 49);
+            Btn_JogOriginal.TabIndex = 10;
+            Btn_JogOriginal.TextAlignment = StringAlignment.Center;
+            //Btn_JogOriginal.Click += Btn_JogOriginal_Click;
+            // 
+            // Btn_JogReverse
+            // 
+            Btn_JogReverse.BackColor = Color.Transparent;
+            Btn_JogReverse.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_JogReverse.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogReverse.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_JogReverse.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_JogReverse.Image = (Image)resources.GetObject("Btn_JogReverse.Image");
+            Btn_JogReverse.ImageAlign = ContentAlignment.MiddleCenter;
+            Btn_JogReverse.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_JogReverse.Location = new Point(2, 66);
+            Btn_JogReverse.Margin = new Padding(2);
+            Btn_JogReverse.Name = "Btn_JogReverse";
+            Btn_JogReverse.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_JogReverse.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_JogReverse.Size = new Size(45, 62);
+            Btn_JogReverse.TabIndex = 9;
+            Btn_JogReverse.TextAlignment = StringAlignment.Center;
+            //Btn_JogReverse.Click += Btn_JogReverse_Click;
+            // 
             // thunderGroupBox4
             // 
             thunderGroupBox4.BackColor = Color.Transparent;
@@ -358,479 +575,97 @@
             thunderGroupBox4.BodyColorB = Color.FromArgb(30, 30, 30);
             thunderGroupBox4.BodyColorC = Color.FromArgb(46, 46, 46);
             thunderGroupBox4.BodyColorD = Color.FromArgb(50, 55, 58);
-            thunderGroupBox4.Controls.Add(tableLayoutPanel1);
-            thunderGroupBox4.Controls.Add(nightLabel2);
-            thunderGroupBox4.Controls.Add(nightLabel1);
+            thunderGroupBox4.Controls.Add(Btn_Jog_R_Z);
+            thunderGroupBox4.Controls.Add(Btn_Jog_L_Z);
+            thunderGroupBox4.Controls.Add(Btn_Jog_R_Y);
+            thunderGroupBox4.Controls.Add(Btn_Jog_L_Y);
             thunderGroupBox4.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox4.Location = new Point(320, 239);
+            thunderGroupBox4.Location = new Point(320, 233);
+            thunderGroupBox4.Margin = new Padding(2);
             thunderGroupBox4.Name = "thunderGroupBox4";
-            thunderGroupBox4.Size = new Size(272, 101);
+            thunderGroupBox4.Size = new Size(270, 98);
             thunderGroupBox4.TabIndex = 29;
-            thunderGroupBox4.Text = "  평균값 적용 ROI 선택";
+            thunderGroupBox4.Text = "Jog 축 선택";
             // 
-            // tableLayoutPanel1
+            // Btn_Jog_R_Z
             // 
-            tableLayoutPanel1.ColumnCount = 6;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17F));
-            tableLayoutPanel1.Controls.Add(label1, 0, 1);
-            tableLayoutPanel1.Controls.Add(label2, 0, 2);
-            tableLayoutPanel1.Controls.Add(CheckBox_ROI_L1, 1, 1);
-            tableLayoutPanel1.Controls.Add(CheckBox_ROI_L2, 2, 1);
-            tableLayoutPanel1.Controls.Add(CheckBox_ROI_L3, 3, 1);
-            tableLayoutPanel1.Controls.Add(CheckBox_ROI_L4, 4, 1);
-            tableLayoutPanel1.Controls.Add(CheckBox_ROI_L5, 5, 1);
-            tableLayoutPanel1.Controls.Add(CheckBox_ROI_R2, 2, 2);
-            tableLayoutPanel1.Controls.Add(CheckBox_ROI_R3, 3, 2);
-            tableLayoutPanel1.Controls.Add(CheckBox_ROI_R1, 1, 2);
-            tableLayoutPanel1.Controls.Add(CheckBox_ROI_R4, 4, 2);
-            tableLayoutPanel1.Controls.Add(CheckBox_ROI_R5, 5, 2);
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel1.Size = new Size(272, 101);
-            tableLayoutPanel1.TabIndex = 15;
+            Btn_Jog_R_Z.BackColor = Color.Transparent;
+            Btn_Jog_R_Z.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Z.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Z.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Z.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_Jog_R_Z.Image = null;
+            Btn_Jog_R_Z.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Jog_R_Z.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Z.Location = new Point(137, 62);
+            Btn_Jog_R_Z.Name = "Btn_Jog_R_Z";
+            Btn_Jog_R_Z.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Z.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Z.Size = new Size(90, 25);
+            Btn_Jog_R_Z.TabIndex = 0;
+            Btn_Jog_R_Z.Text = "Right_Z";
+            Btn_Jog_R_Z.TextAlignment = StringAlignment.Center;
+            Btn_Jog_R_Z.Click += Btn_Jog_R_Z_Click;
             // 
-            // label1
+            // Btn_Jog_L_Z
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Location = new Point(13, 32);
-            label1.Name = "label1";
-            label1.Size = new Size(13, 15);
-            label1.TabIndex = 1;
-            label1.Text = "L";
+            Btn_Jog_L_Z.BackColor = Color.Transparent;
+            Btn_Jog_L_Z.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Z.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Z.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Z.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_Jog_L_Z.Image = null;
+            Btn_Jog_L_Z.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Jog_L_Z.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Z.Location = new Point(40, 62);
+            Btn_Jog_L_Z.Name = "Btn_Jog_L_Z";
+            Btn_Jog_L_Z.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Z.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Z.Size = new Size(90, 25);
+            Btn_Jog_L_Z.TabIndex = 0;
+            Btn_Jog_L_Z.Text = "Left_Z";
+            Btn_Jog_L_Z.TextAlignment = StringAlignment.Center;
+            Btn_Jog_L_Z.Click += Btn_Jog_L_Z_Click;
             // 
-            // label2
+            // Btn_Jog_R_Y
             // 
-            label2.Anchor = AnchorStyles.None;
-            label2.AutoSize = true;
-            label2.Location = new Point(13, 73);
-            label2.Name = "label2";
-            label2.Size = new Size(14, 15);
-            label2.TabIndex = 1;
-            label2.Text = "R";
+            Btn_Jog_R_Y.BackColor = Color.Transparent;
+            Btn_Jog_R_Y.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Y.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Y.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Y.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_Jog_R_Y.Image = null;
+            Btn_Jog_R_Y.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Jog_R_Y.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_R_Y.Location = new Point(137, 33);
+            Btn_Jog_R_Y.Name = "Btn_Jog_R_Y";
+            Btn_Jog_R_Y.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Y.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_R_Y.Size = new Size(90, 25);
+            Btn_Jog_R_Y.TabIndex = 0;
+            Btn_Jog_R_Y.Text = "Right_Y";
+            Btn_Jog_R_Y.TextAlignment = StringAlignment.Center;
+            Btn_Jog_R_Y.Click += Btn_Jog_R_Y_Click;
             // 
-            // CheckBox_ROI_L1
+            // Btn_Jog_L_Y
             // 
-            CheckBox_ROI_L1.BackColor = Color.Transparent;
-            CheckBox_ROI_L1.Background = true;
-            CheckBox_ROI_L1.Background_WidthPen = 2F;
-            CheckBox_ROI_L1.BackgroundPen = true;
-            CheckBox_ROI_L1.Checked = false;
-            CheckBox_ROI_L1.ColorBackground = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_L1.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L1.ColorChecked = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L1.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L1.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_L1.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            CheckBox_ROI_L1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L1.Effect_1_Transparency = 25;
-            CheckBox_ROI_L1.Effect_2 = true;
-            CheckBox_ROI_L1.Effect_2_ColorBackground = Color.White;
-            CheckBox_ROI_L1.Effect_2_Transparency = 15;
-            CheckBox_ROI_L1.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_L1.ForeColor = Color.FromArgb(245, 245, 245);
-            CheckBox_ROI_L1.LinearGradient_Background = false;
-            CheckBox_ROI_L1.LinearGradientPen = false;
-            CheckBox_ROI_L1.Location = new Point(40, 20);
-            CheckBox_ROI_L1.Margin = new Padding(0);
-            CheckBox_ROI_L1.Name = "CheckBox_ROI_L1";
-            CheckBox_ROI_L1.RGB = false;
-            CheckBox_ROI_L1.Rounding = false;
-            CheckBox_ROI_L1.RoundingInt = 100;
-            CheckBox_ROI_L1.Size = new Size(46, 45);
-            CheckBox_ROI_L1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            CheckBox_ROI_L1.TabIndex = 2;
-            CheckBox_ROI_L1.Tag = "Cyber";
-            CheckBox_ROI_L1.TextButton = "CyberCheckBox";
-            CheckBox_ROI_L1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            CheckBox_ROI_L1.Timer_Effect_1 = 1;
-            CheckBox_ROI_L1.Timer_RGB = 300;
-            // 
-            // CheckBox_ROI_L2
-            // 
-            CheckBox_ROI_L2.BackColor = Color.Transparent;
-            CheckBox_ROI_L2.Background = true;
-            CheckBox_ROI_L2.Background_WidthPen = 2F;
-            CheckBox_ROI_L2.BackgroundPen = true;
-            CheckBox_ROI_L2.Checked = false;
-            CheckBox_ROI_L2.ColorBackground = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L2.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L2.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_L2.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L2.ColorChecked = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L2.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L2.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_L2.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            CheckBox_ROI_L2.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L2.Effect_1_Transparency = 25;
-            CheckBox_ROI_L2.Effect_2 = true;
-            CheckBox_ROI_L2.Effect_2_ColorBackground = Color.White;
-            CheckBox_ROI_L2.Effect_2_Transparency = 15;
-            CheckBox_ROI_L2.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_L2.ForeColor = Color.FromArgb(245, 245, 245);
-            CheckBox_ROI_L2.LinearGradient_Background = false;
-            CheckBox_ROI_L2.LinearGradientPen = false;
-            CheckBox_ROI_L2.Location = new Point(86, 20);
-            CheckBox_ROI_L2.Margin = new Padding(0);
-            CheckBox_ROI_L2.Name = "CheckBox_ROI_L2";
-            CheckBox_ROI_L2.RGB = false;
-            CheckBox_ROI_L2.Rounding = false;
-            CheckBox_ROI_L2.RoundingInt = 100;
-            CheckBox_ROI_L2.Size = new Size(46, 45);
-            CheckBox_ROI_L2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            CheckBox_ROI_L2.TabIndex = 2;
-            CheckBox_ROI_L2.Tag = "Cyber";
-            CheckBox_ROI_L2.TextButton = "CyberCheckBox";
-            CheckBox_ROI_L2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            CheckBox_ROI_L2.Timer_Effect_1 = 1;
-            CheckBox_ROI_L2.Timer_RGB = 300;
-            // 
-            // CheckBox_ROI_L3
-            // 
-            CheckBox_ROI_L3.BackColor = Color.Transparent;
-            CheckBox_ROI_L3.Background = true;
-            CheckBox_ROI_L3.Background_WidthPen = 2F;
-            CheckBox_ROI_L3.BackgroundPen = true;
-            CheckBox_ROI_L3.Checked = false;
-            CheckBox_ROI_L3.ColorBackground = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L3.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L3.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_L3.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L3.ColorChecked = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L3.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L3.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_L3.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            CheckBox_ROI_L3.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L3.Effect_1_Transparency = 25;
-            CheckBox_ROI_L3.Effect_2 = true;
-            CheckBox_ROI_L3.Effect_2_ColorBackground = Color.White;
-            CheckBox_ROI_L3.Effect_2_Transparency = 15;
-            CheckBox_ROI_L3.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_L3.ForeColor = Color.FromArgb(245, 245, 245);
-            CheckBox_ROI_L3.LinearGradient_Background = false;
-            CheckBox_ROI_L3.LinearGradientPen = false;
-            CheckBox_ROI_L3.Location = new Point(132, 20);
-            CheckBox_ROI_L3.Margin = new Padding(0);
-            CheckBox_ROI_L3.Name = "CheckBox_ROI_L3";
-            CheckBox_ROI_L3.RGB = false;
-            CheckBox_ROI_L3.Rounding = false;
-            CheckBox_ROI_L3.RoundingInt = 100;
-            CheckBox_ROI_L3.Size = new Size(46, 45);
-            CheckBox_ROI_L3.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            CheckBox_ROI_L3.TabIndex = 2;
-            CheckBox_ROI_L3.Tag = "Cyber";
-            CheckBox_ROI_L3.TextButton = "CyberCheckBox";
-            CheckBox_ROI_L3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            CheckBox_ROI_L3.Timer_Effect_1 = 1;
-            CheckBox_ROI_L3.Timer_RGB = 300;
-            // 
-            // CheckBox_ROI_L4
-            // 
-            CheckBox_ROI_L4.BackColor = Color.Transparent;
-            CheckBox_ROI_L4.Background = true;
-            CheckBox_ROI_L4.Background_WidthPen = 2F;
-            CheckBox_ROI_L4.BackgroundPen = true;
-            CheckBox_ROI_L4.Checked = false;
-            CheckBox_ROI_L4.ColorBackground = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L4.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L4.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_L4.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L4.ColorChecked = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L4.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L4.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_L4.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            CheckBox_ROI_L4.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L4.Effect_1_Transparency = 25;
-            CheckBox_ROI_L4.Effect_2 = true;
-            CheckBox_ROI_L4.Effect_2_ColorBackground = Color.White;
-            CheckBox_ROI_L4.Effect_2_Transparency = 15;
-            CheckBox_ROI_L4.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_L4.ForeColor = Color.FromArgb(245, 245, 245);
-            CheckBox_ROI_L4.LinearGradient_Background = false;
-            CheckBox_ROI_L4.LinearGradientPen = false;
-            CheckBox_ROI_L4.Location = new Point(178, 20);
-            CheckBox_ROI_L4.Margin = new Padding(0);
-            CheckBox_ROI_L4.Name = "CheckBox_ROI_L4";
-            CheckBox_ROI_L4.RGB = false;
-            CheckBox_ROI_L4.Rounding = false;
-            CheckBox_ROI_L4.RoundingInt = 100;
-            CheckBox_ROI_L4.Size = new Size(46, 45);
-            CheckBox_ROI_L4.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            CheckBox_ROI_L4.TabIndex = 2;
-            CheckBox_ROI_L4.Tag = "Cyber";
-            CheckBox_ROI_L4.TextButton = "CyberCheckBox";
-            CheckBox_ROI_L4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            CheckBox_ROI_L4.Timer_Effect_1 = 1;
-            CheckBox_ROI_L4.Timer_RGB = 300;
-            // 
-            // CheckBox_ROI_L5
-            // 
-            CheckBox_ROI_L5.BackColor = Color.Transparent;
-            CheckBox_ROI_L5.Background = true;
-            CheckBox_ROI_L5.Background_WidthPen = 2F;
-            CheckBox_ROI_L5.BackgroundPen = true;
-            CheckBox_ROI_L5.Checked = false;
-            CheckBox_ROI_L5.ColorBackground = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L5.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L5.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_L5.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L5.ColorChecked = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L5.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_L5.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_L5.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            CheckBox_ROI_L5.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_L5.Effect_1_Transparency = 25;
-            CheckBox_ROI_L5.Effect_2 = true;
-            CheckBox_ROI_L5.Effect_2_ColorBackground = Color.White;
-            CheckBox_ROI_L5.Effect_2_Transparency = 15;
-            CheckBox_ROI_L5.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_L5.ForeColor = Color.FromArgb(245, 245, 245);
-            CheckBox_ROI_L5.LinearGradient_Background = false;
-            CheckBox_ROI_L5.LinearGradientPen = false;
-            CheckBox_ROI_L5.Location = new Point(224, 20);
-            CheckBox_ROI_L5.Margin = new Padding(0);
-            CheckBox_ROI_L5.Name = "CheckBox_ROI_L5";
-            CheckBox_ROI_L5.RGB = false;
-            CheckBox_ROI_L5.Rounding = false;
-            CheckBox_ROI_L5.RoundingInt = 100;
-            CheckBox_ROI_L5.Size = new Size(46, 45);
-            CheckBox_ROI_L5.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            CheckBox_ROI_L5.TabIndex = 2;
-            CheckBox_ROI_L5.Tag = "Cyber";
-            CheckBox_ROI_L5.TextButton = "CyberCheckBox";
-            CheckBox_ROI_L5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            CheckBox_ROI_L5.Timer_Effect_1 = 1;
-            CheckBox_ROI_L5.Timer_RGB = 300;
-            // 
-            // CheckBox_ROI_R2
-            // 
-            CheckBox_ROI_R2.BackColor = Color.Transparent;
-            CheckBox_ROI_R2.Background = true;
-            CheckBox_ROI_R2.Background_WidthPen = 2F;
-            CheckBox_ROI_R2.BackgroundPen = true;
-            CheckBox_ROI_R2.Checked = false;
-            CheckBox_ROI_R2.ColorBackground = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R2.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R2.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_R2.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R2.ColorChecked = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R2.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R2.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_R2.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            CheckBox_ROI_R2.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R2.Effect_1_Transparency = 25;
-            CheckBox_ROI_R2.Effect_2 = true;
-            CheckBox_ROI_R2.Effect_2_ColorBackground = Color.White;
-            CheckBox_ROI_R2.Effect_2_Transparency = 15;
-            CheckBox_ROI_R2.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_R2.ForeColor = Color.FromArgb(245, 245, 245);
-            CheckBox_ROI_R2.LinearGradient_Background = false;
-            CheckBox_ROI_R2.LinearGradientPen = false;
-            CheckBox_ROI_R2.Location = new Point(86, 60);
-            CheckBox_ROI_R2.Margin = new Padding(0);
-            CheckBox_ROI_R2.Name = "CheckBox_ROI_R2";
-            CheckBox_ROI_R2.RGB = false;
-            CheckBox_ROI_R2.Rounding = false;
-            CheckBox_ROI_R2.RoundingInt = 100;
-            CheckBox_ROI_R2.Size = new Size(46, 45);
-            CheckBox_ROI_R2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            CheckBox_ROI_R2.TabIndex = 2;
-            CheckBox_ROI_R2.Tag = "Cyber";
-            CheckBox_ROI_R2.TextButton = "CyberCheckBox";
-            CheckBox_ROI_R2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            CheckBox_ROI_R2.Timer_Effect_1 = 1;
-            CheckBox_ROI_R2.Timer_RGB = 300;
-            // 
-            // CheckBox_ROI_R3
-            // 
-            CheckBox_ROI_R3.BackColor = Color.Transparent;
-            CheckBox_ROI_R3.Background = true;
-            CheckBox_ROI_R3.Background_WidthPen = 2F;
-            CheckBox_ROI_R3.BackgroundPen = true;
-            CheckBox_ROI_R3.Checked = false;
-            CheckBox_ROI_R3.ColorBackground = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R3.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R3.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_R3.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R3.ColorChecked = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R3.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R3.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_R3.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            CheckBox_ROI_R3.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R3.Effect_1_Transparency = 25;
-            CheckBox_ROI_R3.Effect_2 = true;
-            CheckBox_ROI_R3.Effect_2_ColorBackground = Color.White;
-            CheckBox_ROI_R3.Effect_2_Transparency = 15;
-            CheckBox_ROI_R3.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_R3.ForeColor = Color.FromArgb(245, 245, 245);
-            CheckBox_ROI_R3.LinearGradient_Background = false;
-            CheckBox_ROI_R3.LinearGradientPen = false;
-            CheckBox_ROI_R3.Location = new Point(132, 60);
-            CheckBox_ROI_R3.Margin = new Padding(0);
-            CheckBox_ROI_R3.Name = "CheckBox_ROI_R3";
-            CheckBox_ROI_R3.RGB = false;
-            CheckBox_ROI_R3.Rounding = false;
-            CheckBox_ROI_R3.RoundingInt = 100;
-            CheckBox_ROI_R3.Size = new Size(46, 45);
-            CheckBox_ROI_R3.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            CheckBox_ROI_R3.TabIndex = 2;
-            CheckBox_ROI_R3.Tag = "Cyber";
-            CheckBox_ROI_R3.TextButton = "CyberCheckBox";
-            CheckBox_ROI_R3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            CheckBox_ROI_R3.Timer_Effect_1 = 1;
-            CheckBox_ROI_R3.Timer_RGB = 300;
-            // 
-            // CheckBox_ROI_R1
-            // 
-            CheckBox_ROI_R1.BackColor = Color.Transparent;
-            CheckBox_ROI_R1.Background = true;
-            CheckBox_ROI_R1.Background_WidthPen = 2F;
-            CheckBox_ROI_R1.BackgroundPen = true;
-            CheckBox_ROI_R1.Checked = false;
-            CheckBox_ROI_R1.ColorBackground = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_R1.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R1.ColorChecked = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R1.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R1.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_R1.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            CheckBox_ROI_R1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R1.Effect_1_Transparency = 25;
-            CheckBox_ROI_R1.Effect_2 = true;
-            CheckBox_ROI_R1.Effect_2_ColorBackground = Color.White;
-            CheckBox_ROI_R1.Effect_2_Transparency = 15;
-            CheckBox_ROI_R1.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_R1.ForeColor = Color.FromArgb(245, 245, 245);
-            CheckBox_ROI_R1.LinearGradient_Background = false;
-            CheckBox_ROI_R1.LinearGradientPen = false;
-            CheckBox_ROI_R1.Location = new Point(40, 60);
-            CheckBox_ROI_R1.Margin = new Padding(0);
-            CheckBox_ROI_R1.Name = "CheckBox_ROI_R1";
-            CheckBox_ROI_R1.RGB = false;
-            CheckBox_ROI_R1.Rounding = false;
-            CheckBox_ROI_R1.RoundingInt = 100;
-            CheckBox_ROI_R1.Size = new Size(46, 45);
-            CheckBox_ROI_R1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            CheckBox_ROI_R1.TabIndex = 2;
-            CheckBox_ROI_R1.Tag = "Cyber";
-            CheckBox_ROI_R1.TextButton = "CyberCheckBox";
-            CheckBox_ROI_R1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            CheckBox_ROI_R1.Timer_Effect_1 = 1;
-            CheckBox_ROI_R1.Timer_RGB = 300;
-            // 
-            // CheckBox_ROI_R4
-            // 
-            CheckBox_ROI_R4.BackColor = Color.Transparent;
-            CheckBox_ROI_R4.Background = true;
-            CheckBox_ROI_R4.Background_WidthPen = 2F;
-            CheckBox_ROI_R4.BackgroundPen = true;
-            CheckBox_ROI_R4.Checked = false;
-            CheckBox_ROI_R4.ColorBackground = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R4.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R4.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_R4.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R4.ColorChecked = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R4.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R4.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_R4.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            CheckBox_ROI_R4.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R4.Effect_1_Transparency = 25;
-            CheckBox_ROI_R4.Effect_2 = true;
-            CheckBox_ROI_R4.Effect_2_ColorBackground = Color.White;
-            CheckBox_ROI_R4.Effect_2_Transparency = 15;
-            CheckBox_ROI_R4.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_R4.ForeColor = Color.FromArgb(245, 245, 245);
-            CheckBox_ROI_R4.LinearGradient_Background = false;
-            CheckBox_ROI_R4.LinearGradientPen = false;
-            CheckBox_ROI_R4.Location = new Point(178, 60);
-            CheckBox_ROI_R4.Margin = new Padding(0);
-            CheckBox_ROI_R4.Name = "CheckBox_ROI_R4";
-            CheckBox_ROI_R4.RGB = false;
-            CheckBox_ROI_R4.Rounding = false;
-            CheckBox_ROI_R4.RoundingInt = 100;
-            CheckBox_ROI_R4.Size = new Size(46, 45);
-            CheckBox_ROI_R4.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            CheckBox_ROI_R4.TabIndex = 2;
-            CheckBox_ROI_R4.Tag = "Cyber";
-            CheckBox_ROI_R4.TextButton = "CyberCheckBox";
-            CheckBox_ROI_R4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            CheckBox_ROI_R4.Timer_Effect_1 = 1;
-            CheckBox_ROI_R4.Timer_RGB = 300;
-            // 
-            // CheckBox_ROI_R5
-            // 
-            CheckBox_ROI_R5.BackColor = Color.Transparent;
-            CheckBox_ROI_R5.Background = true;
-            CheckBox_ROI_R5.Background_WidthPen = 2F;
-            CheckBox_ROI_R5.BackgroundPen = true;
-            CheckBox_ROI_R5.Checked = false;
-            CheckBox_ROI_R5.ColorBackground = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R5.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R5.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_R5.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R5.ColorChecked = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R5.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            CheckBox_ROI_R5.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            CheckBox_ROI_R5.CyberCheckBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            CheckBox_ROI_R5.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            CheckBox_ROI_R5.Effect_1_Transparency = 25;
-            CheckBox_ROI_R5.Effect_2 = true;
-            CheckBox_ROI_R5.Effect_2_ColorBackground = Color.White;
-            CheckBox_ROI_R5.Effect_2_Transparency = 15;
-            CheckBox_ROI_R5.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_R5.ForeColor = Color.FromArgb(245, 245, 245);
-            CheckBox_ROI_R5.LinearGradient_Background = false;
-            CheckBox_ROI_R5.LinearGradientPen = false;
-            CheckBox_ROI_R5.Location = new Point(224, 60);
-            CheckBox_ROI_R5.Margin = new Padding(0);
-            CheckBox_ROI_R5.Name = "CheckBox_ROI_R5";
-            CheckBox_ROI_R5.RGB = false;
-            CheckBox_ROI_R5.Rounding = false;
-            CheckBox_ROI_R5.RoundingInt = 100;
-            CheckBox_ROI_R5.Size = new Size(46, 45);
-            CheckBox_ROI_R5.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            CheckBox_ROI_R5.TabIndex = 2;
-            CheckBox_ROI_R5.Tag = "Cyber";
-            CheckBox_ROI_R5.TextButton = "CyberCheckBox";
-            CheckBox_ROI_R5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            CheckBox_ROI_R5.Timer_Effect_1 = 1;
-            CheckBox_ROI_R5.Timer_RGB = 300;
-            // 
-            // nightLabel2
-            // 
-            nightLabel2.AutoSize = true;
-            nightLabel2.BackColor = Color.Transparent;
-            nightLabel2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            nightLabel2.ForeColor = Color.White;
-            nightLabel2.Location = new Point(10, 70);
-            nightLabel2.Name = "nightLabel2";
-            nightLabel2.Size = new Size(14, 15);
-            nightLabel2.TabIndex = 14;
-            nightLabel2.Text = "R";
-            // 
-            // nightLabel1
-            // 
-            nightLabel1.AutoSize = true;
-            nightLabel1.BackColor = Color.Transparent;
-            nightLabel1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            nightLabel1.ForeColor = Color.White;
-            nightLabel1.Location = new Point(10, 36);
-            nightLabel1.Name = "nightLabel1";
-            nightLabel1.Size = new Size(13, 15);
-            nightLabel1.TabIndex = 13;
-            nightLabel1.Text = "L";
+            Btn_Jog_L_Y.BackColor = Color.Transparent;
+            Btn_Jog_L_Y.BorderColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Y.EnteredBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Y.EnteredColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Y.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_Jog_L_Y.Image = null;
+            Btn_Jog_L_Y.ImageAlign = ContentAlignment.MiddleLeft;
+            Btn_Jog_L_Y.InactiveColor = Color.FromArgb(32, 34, 37);
+            Btn_Jog_L_Y.Location = new Point(40, 33);
+            Btn_Jog_L_Y.Name = "Btn_Jog_L_Y";
+            Btn_Jog_L_Y.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Y.PressedColor = Color.FromArgb(165, 37, 37);
+            Btn_Jog_L_Y.Size = new Size(90, 25);
+            Btn_Jog_L_Y.TabIndex = 0;
+            Btn_Jog_L_Y.Text = "Left_Y";
+            Btn_Jog_L_Y.TextAlignment = StringAlignment.Center;
+            Btn_Jog_L_Y.Click += Btn_Jog_L_Y_Click;
             // 
             // dPanel_login
             // 
@@ -929,7 +764,7 @@
             thunderGroupBox8.Controls.Add(cyberCheckBox2);
             thunderGroupBox8.Controls.Add(cyberCheckBox1);
             thunderGroupBox8.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox8.Location = new Point(320, 464);
+            thunderGroupBox8.Location = new Point(320, 472);
             thunderGroupBox8.Margin = new Padding(2);
             thunderGroupBox8.Name = "thunderGroupBox8";
             thunderGroupBox8.Size = new Size(270, 67);
@@ -1030,7 +865,7 @@
             thunderGroupBox6.Controls.Add(foxLabel16);
             thunderGroupBox6.Controls.Add(dPanel_visionCam2Auto);
             thunderGroupBox6.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox6.Location = new Point(318, 357);
+            thunderGroupBox6.Location = new Point(23, 442);
             thunderGroupBox6.Name = "thunderGroupBox6";
             thunderGroupBox6.Size = new Size(272, 101);
             thunderGroupBox6.TabIndex = 23;
@@ -1088,7 +923,7 @@
             thunderGroupBox5.Controls.Add(foxLabel10);
             thunderGroupBox5.Controls.Add(dPanel_visionCam1Auto);
             thunderGroupBox5.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox5.Location = new Point(23, 357);
+            thunderGroupBox5.Location = new Point(23, 335);
             thunderGroupBox5.Name = "thunderGroupBox5";
             thunderGroupBox5.Size = new Size(272, 101);
             thunderGroupBox5.TabIndex = 22;
@@ -1145,7 +980,7 @@
             thunderGroupBox3.Controls.Add(foxLabel5);
             thunderGroupBox3.Controls.Add(dPanel_plcAuto);
             thunderGroupBox3.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox3.Location = new Point(23, 239);
+            thunderGroupBox3.Location = new Point(23, 228);
             thunderGroupBox3.Name = "thunderGroupBox3";
             thunderGroupBox3.Size = new Size(272, 101);
             thunderGroupBox3.TabIndex = 21;
@@ -1384,12 +1219,13 @@
             Text = "Settings";
             TransparencyKey = Color.Fuchsia;
             FormClosing += SettingForm_FormClosing;
+            Load += SettingForm_Load;
             Move += SettingForm_Move;
             dungeonForm1.ResumeLayout(false);
+            thunderGroupBox9.ResumeLayout(false);
+            thunderGroupBox9.PerformLayout();
+            thunderGroupBox7.ResumeLayout(false);
             thunderGroupBox4.ResumeLayout(false);
-            thunderGroupBox4.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
             dPanel_login.ResumeLayout(false);
             thunderGroupBox8.ResumeLayout(false);
             thunderGroupBox6.ResumeLayout(false);
@@ -1438,24 +1274,24 @@
         private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox8;
         private ReaLTaiizor.Controls.CyberCheckBox cyberCheckBox2;
         private ReaLTaiizor.Controls.CyberCheckBox cyberCheckBox1;
-        private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox4;
-        private ReaLTaiizor.Controls.NightLabel nightLabel1;
-        private ReaLTaiizor.Controls.NightLabel nightLabel2;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Label label1;
-        private Label label2;
         private TableLayoutPanel tableLayoutPanel2;
         private RadioButton radioButton4;
         private RadioButton radioButton5;
-        private ReaLTaiizor.Controls.CyberCheckBox CheckBox_ROI_L1;
-        private ReaLTaiizor.Controls.CyberCheckBox CheckBox_ROI_L2;
-        private ReaLTaiizor.Controls.CyberCheckBox CheckBox_ROI_L3;
-        private ReaLTaiizor.Controls.CyberCheckBox CheckBox_ROI_L4;
-        private ReaLTaiizor.Controls.CyberCheckBox CheckBox_ROI_L5;
-        private ReaLTaiizor.Controls.CyberCheckBox CheckBox_ROI_R2;
-        private ReaLTaiizor.Controls.CyberCheckBox CheckBox_ROI_R3;
-        private ReaLTaiizor.Controls.CyberCheckBox CheckBox_ROI_R1;
-        private ReaLTaiizor.Controls.CyberCheckBox CheckBox_ROI_R4;
-        private ReaLTaiizor.Controls.CyberCheckBox CheckBox_ROI_R5;
+        private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox4;
+        private ReaLTaiizor.Controls.Button Btn_Jog_R_Z;
+        private ReaLTaiizor.Controls.Button Btn_Jog_L_Z;
+        private ReaLTaiizor.Controls.Button Btn_Jog_R_Y;
+        private ReaLTaiizor.Controls.Button Btn_Jog_L_Y;
+        private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox9;
+        private ReaLTaiizor.Controls.ThunderGroupBox thunderGroupBox7;
+        private ReaLTaiizor.Controls.Button Btn_JogOriginal;
+        private ReaLTaiizor.Controls.Button Btn_JogReverse;
+        private ReaLTaiizor.Controls.DreamButton Btn_MoveToPosition;
+        private ReaLTaiizor.Controls.DreamButton Btn_SetJogPosition;
+        private ReaLTaiizor.Controls.DreamButton Btn_SetJogVelocity;
+        private ReaLTaiizor.Controls.CrownTextBox TxtBox_JogPosition;
+        private ReaLTaiizor.Controls.CrownTextBox TxtBox_JogVelocity;
+        private ReaLTaiizor.Controls.DreamButton Btn_JogValueSave;
+        private ReaLTaiizor.Controls.DreamButton Btn_AutoMoveToSavePosition;
     }
 }

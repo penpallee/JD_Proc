@@ -18,7 +18,7 @@ namespace JD_Proc
 
         private Point startPoint;
         int GridViewGap = 6;
-        int res;
+        double res;
         #endregion
 
         #region [생성자]
@@ -36,12 +36,14 @@ namespace JD_Proc
         #region event(Foam_Load)
         private void AlignSettingForm_Load(object sender, EventArgs e)
         {
-            res = int.Parse(service.Read("resolution", "y_1"));
+            res = Math.Round(double.Parse(service.Read("resolution", "y_1")), 1);
             transparentPanel1.BackColor = Color.Transparent;
             transparentPanel1.ForeColor = Color.Transparent;
             Draw_Gridview_L();
             pictureBox1.Image = _picbox1.Image;
             Tbox_GridViewValue.Text = (GridViewGap * res).ToString();
+
+            
 
         }
         #endregion
@@ -116,7 +118,7 @@ namespace JD_Proc
         private void Btn_GridView_Check_Click(object sender, EventArgs e)
         {
 
-            GridViewGap = (int.Parse(Tbox_GridViewValue.Text) / res);
+            GridViewGap = (int)(int.Parse(Tbox_GridViewValue.Text) / res);
             Draw_Gridview_L();
         }
         #endregion
@@ -151,48 +153,6 @@ namespace JD_Proc
         }
         #endregion
 
-        #region [event - Select Jog Axis Button]
-        private void Btn_Jog_L_Y_Click(object sender, EventArgs e)
-        {
-            _form1.selectJogAxis_L_Y();
-        }
 
-        private void Btn_Jog_L_Z_Click(object sender, EventArgs e)
-        {
-            _form1.selectJogAxis_L_Z();
-        }
-
-        private void Btn_Jog_R_Y_Click(object sender, EventArgs e)
-        {
-            _form1.selectJogAxis_R_Y();
-        }
-
-        private void Btn_Jog_R_Z_Click(object sender, EventArgs e)
-        {
-            _form1.selectJogAxis_R_Z();
-        }
-        #endregion
-
-        #region [event - MouseClick Jog Button]
-        private void Btn_JogOriginal_MouseDown(object sender, MouseEventArgs e)
-        {
-            _form1.jogButtonOriginalClickDown();
-        }
-
-        private void Btn_JogOriginal_MouseUp(object sender, MouseEventArgs e)
-        {
-            _form1.jogButtonOriginalClickUp();
-        }
-
-        private void Btn_JogReverse_MouseDown(object sender, MouseEventArgs e)
-        {
-            _form1.jogButtonReverseClickDown();
-        }
-
-        private void Btn_JogReverse_MouseUp(object sender, MouseEventArgs e)
-        {
-            _form1.jogButtonReverseClickUp();
-        }
-        #endregion
     }
 }

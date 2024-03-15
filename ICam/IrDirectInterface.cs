@@ -37,6 +37,7 @@ namespace JD_Proc.ICam
         private bool _isAutomaticShutterActive;
         private int _paletteWidth, _paletteHeight;
         private int _thermalWidth, _thermalHeight;
+        private uint _SerialNumber;
         #endregion
 
         #region ctor
@@ -287,6 +288,15 @@ namespace JD_Proc.ICam
             CheckConnectionState();
             CheckResult(IrDirectInterfaceInvoke.evo_irimager_multi_get_clipped_format_position(InstanceId, out ushort x, out ushort y));
             return new Point(x, y);
+        }
+
+        public string GetSerial()
+        {
+            if (IrDirectInterfaceInvoke.evo_irimager_get_serial(out _SerialNumber) < 0)
+            {
+                return "Can't get serial number";
+            }
+            return _SerialNumber.ToString();
         }
         #endregion
 

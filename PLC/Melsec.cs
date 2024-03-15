@@ -1,6 +1,7 @@
 ﻿using ActUtlType64Lib;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,13 +62,15 @@ namespace JD_Proc.PLC
     {
         #region var
         public ActUtlType64Lib.ActUtlType64 actUtlType64;
+        int isConnect = -1;
         #endregion
 
         #region 생성자
         public Melsec(int actLogicalStationNumber)
         {
-            //actUtlType64 = new ActUtlType64Lib.ActUtlType64();
-            //actUtlType64.ActLogicalStationNumber = actLogicalStationNumber;
+            actUtlType64 = new ActUtlType64Lib.ActUtlType64();
+            actUtlType64.ActLogicalStationNumber = actLogicalStationNumber;
+           
         }
         #endregion
 
@@ -78,7 +81,8 @@ namespace JD_Proc.PLC
         /// <returns>연결상태(true = 연결중, false = 연결중이 아님)</returns>
         public bool IsConnected()
         {
-            if (actUtlType64.CheckControl() == 0)
+
+            if (isConnect == 0)
                 return true;
             else
                 return false;
@@ -86,8 +90,9 @@ namespace JD_Proc.PLC
 
         public void Open()
         {
-            actUtlType64.Open();
+            isConnect = actUtlType64.Open();
         }
+
         #endregion
 
         #region Read Ascii 

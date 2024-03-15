@@ -121,15 +121,18 @@ namespace JD_Proc
             ChartArea chartArea24 = new ChartArea();
             Legend legend24 = new Legend();
             Series series24 = new Series();
-            CheckBox_ROI_L1 = new ReaLTaiizor.Controls.MetroCheckBox();
             nightForm1 = new ReaLTaiizor.Forms.NightForm();
             panel6 = new Panel();
             panel2 = new Panel();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             panel3 = new Panel();
+            Btn_SetSV = new ReaLTaiizor.Controls.CyberButton();
+            TextBox_InputSV = new ReaLTaiizor.Controls.CyberTextBox();
+            Lbl_TempController = new ReaLTaiizor.Controls.NightLabel();
             Panel_CameraCenterLine_L = new ReaLTaiizor.Controls.Panel();
             Panel_BrighestLine_L = new ReaLTaiizor.Controls.Panel();
             dBtn_BrightestLine_L = new ReaLTaiizor.Controls.NightButton();
+            Btn_BottomLineSetting = new ReaLTaiizor.Controls.NightButton();
             dBtn_CameraLine_L = new ReaLTaiizor.Controls.NightButton();
             Label_SV_Value = new Label();
             Label_PV_Value = new Label();
@@ -144,21 +147,12 @@ namespace JD_Proc
             dataGridView2 = new DataGridView();
             Chart_Auto_L = new Chart();
             Chart_Auto_R = new Chart();
-            CheckBox_ROI_L5 = new ReaLTaiizor.Controls.MetroCheckBox();
-            CheckBox_ROI_L4 = new ReaLTaiizor.Controls.MetroCheckBox();
-            CheckBox_ROI_L3 = new ReaLTaiizor.Controls.MetroCheckBox();
-            CheckBox_ROI_L2 = new ReaLTaiizor.Controls.MetroCheckBox();
             dLabel_Ng_L = new ReaLTaiizor.Controls.NightLabel();
             panel4 = new Panel();
             Panel_CameraCenterLine_R = new ReaLTaiizor.Controls.Panel();
             Panel_BrighestLine_R = new ReaLTaiizor.Controls.Panel();
-            CheckBox_ROI_R5 = new ReaLTaiizor.Controls.MetroCheckBox();
-            CheckBox_ROI_R4 = new ReaLTaiizor.Controls.MetroCheckBox();
             dBtn_BrightestLine_R = new ReaLTaiizor.Controls.NightButton();
-            CheckBox_ROI_R3 = new ReaLTaiizor.Controls.MetroCheckBox();
             dBtn_CameraLine_R = new ReaLTaiizor.Controls.NightButton();
-            CheckBox_ROI_R2 = new ReaLTaiizor.Controls.MetroCheckBox();
-            CheckBox_ROI_R1 = new ReaLTaiizor.Controls.MetroCheckBox();
             dLabel_Ng_R = new ReaLTaiizor.Controls.NightLabel();
             dChart_R_5 = new Chart();
             dChart_R_4 = new Chart();
@@ -368,29 +362,6 @@ namespace JD_Proc
             tableLayoutPanel11.SuspendLayout();
             SuspendLayout();
             // 
-            // CheckBox_ROI_L1
-            // 
-            CheckBox_ROI_L1.BackColor = Color.Transparent;
-            CheckBox_ROI_L1.BackgroundColor = Color.White;
-            CheckBox_ROI_L1.BorderColor = Color.FromArgb(155, 155, 155);
-            CheckBox_ROI_L1.Checked = true;
-            CheckBox_ROI_L1.CheckSignColor = Color.FromArgb(65, 177, 225);
-            CheckBox_ROI_L1.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
-            CheckBox_ROI_L1.DisabledBorderColor = Color.FromArgb(205, 205, 205);
-            CheckBox_ROI_L1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_L1.IsDerivedStyle = true;
-            CheckBox_ROI_L1.Location = new Point(161, 67);
-            CheckBox_ROI_L1.Name = "CheckBox_ROI_L1";
-            CheckBox_ROI_L1.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
-            CheckBox_ROI_L1.Size = new Size(17, 16);
-            CheckBox_ROI_L1.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            CheckBox_ROI_L1.StyleManager = null;
-            CheckBox_ROI_L1.TabIndex = 36;
-            CheckBox_ROI_L1.Text = "metroCheckBox1";
-            CheckBox_ROI_L1.ThemeAuthor = "Taiizor";
-            CheckBox_ROI_L1.ThemeName = "MetroLight";
-            CheckBox_ROI_L1.CheckedChanged += CheckBox_ROI_L1_CheckedChanged;
-            // 
             // nightForm1
             // 
             nightForm1.BackColor = Color.FromArgb(23, 23, 23);
@@ -445,20 +416,19 @@ namespace JD_Proc
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(2, 2, 2);
+            panel3.Controls.Add(Btn_SetSV);
+            panel3.Controls.Add(TextBox_InputSV);
+            panel3.Controls.Add(Lbl_TempController);
             panel3.Controls.Add(Panel_CameraCenterLine_L);
             panel3.Controls.Add(Panel_BrighestLine_L);
             panel3.Controls.Add(dBtn_BrightestLine_L);
+            panel3.Controls.Add(Btn_BottomLineSetting);
             panel3.Controls.Add(dBtn_CameraLine_L);
             panel3.Controls.Add(Label_SV_Value);
             panel3.Controls.Add(Label_PV_Value);
             panel3.Controls.Add(Label_SV);
             panel3.Controls.Add(Label_PV);
             panel3.Controls.Add(tableLayoutPanel_Auto);
-            panel3.Controls.Add(CheckBox_ROI_L5);
-            panel3.Controls.Add(CheckBox_ROI_L4);
-            panel3.Controls.Add(CheckBox_ROI_L3);
-            panel3.Controls.Add(CheckBox_ROI_L2);
-            panel3.Controls.Add(CheckBox_ROI_L1);
             panel3.Controls.Add(dLabel_Ng_L);
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(dChart_L_5);
@@ -481,6 +451,89 @@ namespace JD_Proc
             panel3.Name = "panel3";
             panel3.Size = new Size(1920, 940);
             panel3.TabIndex = 8;
+            // 
+            // Btn_SetSV
+            // 
+            Btn_SetSV.Alpha = 20;
+            Btn_SetSV.BackColor = Color.Transparent;
+            Btn_SetSV.Background = true;
+            Btn_SetSV.Background_WidthPen = 4F;
+            Btn_SetSV.BackgroundPen = true;
+            Btn_SetSV.ColorBackground = Color.FromArgb(37, 52, 68);
+            Btn_SetSV.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            Btn_SetSV.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            Btn_SetSV.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            Btn_SetSV.ColorLighting = Color.FromArgb(29, 200, 238);
+            Btn_SetSV.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            Btn_SetSV.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            Btn_SetSV.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            Btn_SetSV.Effect_1 = true;
+            Btn_SetSV.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            Btn_SetSV.Effect_1_Transparency = 25;
+            Btn_SetSV.Effect_2 = true;
+            Btn_SetSV.Effect_2_ColorBackground = Color.White;
+            Btn_SetSV.Effect_2_Transparency = 20;
+            Btn_SetSV.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_SetSV.ForeColor = Color.FromArgb(245, 245, 245);
+            Btn_SetSV.Lighting = false;
+            Btn_SetSV.LinearGradient_Background = false;
+            Btn_SetSV.LinearGradientPen = false;
+            Btn_SetSV.Location = new Point(137, 355);
+            Btn_SetSV.Name = "Btn_SetSV";
+            Btn_SetSV.PenWidth = 15;
+            Btn_SetSV.Rounding = true;
+            Btn_SetSV.RoundingInt = 70;
+            Btn_SetSV.Size = new Size(48, 26);
+            Btn_SetSV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Btn_SetSV.TabIndex = 45;
+            Btn_SetSV.Tag = "Set";
+            Btn_SetSV.TextButton = "Set";
+            Btn_SetSV.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            Btn_SetSV.Timer_Effect_1 = 5;
+            Btn_SetSV.Timer_RGB = 300;
+            Btn_SetSV.Click += Btn_SetSV_Click;
+            // 
+            // TextBox_InputSV
+            // 
+            TextBox_InputSV.Alpha = 20;
+            TextBox_InputSV.BackColor = Color.Transparent;
+            TextBox_InputSV.Background_WidthPen = 3F;
+            TextBox_InputSV.BackgroundPen = true;
+            TextBox_InputSV.ColorBackground = Color.FromArgb(37, 52, 68);
+            TextBox_InputSV.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            TextBox_InputSV.ColorLighting = Color.FromArgb(29, 200, 238);
+            TextBox_InputSV.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            TextBox_InputSV.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            TextBox_InputSV.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            TextBox_InputSV.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBox_InputSV.ForeColor = Color.FromArgb(245, 245, 245);
+            TextBox_InputSV.Lighting = false;
+            TextBox_InputSV.LinearGradientPen = false;
+            TextBox_InputSV.Location = new Point(11, 355);
+            TextBox_InputSV.Name = "TextBox_InputSV";
+            TextBox_InputSV.PenWidth = 15;
+            TextBox_InputSV.RGB = false;
+            TextBox_InputSV.Rounding = true;
+            TextBox_InputSV.RoundingInt = 60;
+            TextBox_InputSV.Size = new Size(116, 27);
+            TextBox_InputSV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            TextBox_InputSV.TabIndex = 45;
+            TextBox_InputSV.Tag = "Cyber";
+            TextBox_InputSV.TextButton = "0";
+            TextBox_InputSV.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            TextBox_InputSV.Timer_RGB = 300;
+            // 
+            // Lbl_TempController
+            // 
+            Lbl_TempController.AutoSize = true;
+            Lbl_TempController.BackColor = Color.Transparent;
+            Lbl_TempController.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
+            Lbl_TempController.ForeColor = Color.FromArgb(114, 118, 127);
+            Lbl_TempController.Location = new Point(11, 272);
+            Lbl_TempController.Name = "Lbl_TempController";
+            Lbl_TempController.Size = new Size(182, 47);
+            Lbl_TempController.TabIndex = 45;
+            Lbl_TempController.Text = "TCon_OFF";
             // 
             // Panel_CameraCenterLine_L
             // 
@@ -531,6 +584,29 @@ namespace JD_Proc
             dBtn_BrightestLine_L.Text = "BrighestLine";
             dBtn_BrightestLine_L.Click += dBtn_BrightestLine_L_Click;
             // 
+            // Btn_BottomLineSetting
+            // 
+            Btn_BottomLineSetting.BackColor = Color.Transparent;
+            Btn_BottomLineSetting.DialogResult = DialogResult.None;
+            Btn_BottomLineSetting.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_BottomLineSetting.ForeColor = Color.Silver;
+            Btn_BottomLineSetting.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            Btn_BottomLineSetting.HoverForeColor = Color.White;
+            Btn_BottomLineSetting.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            Btn_BottomLineSetting.Location = new Point(14, 189);
+            Btn_BottomLineSetting.MinimumSize = new Size(100, 50);
+            Btn_BottomLineSetting.Name = "Btn_BottomLineSetting";
+            Btn_BottomLineSetting.NormalBackColor = Color.White;
+            Btn_BottomLineSetting.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            Btn_BottomLineSetting.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            Btn_BottomLineSetting.PressedForeColor = Color.White;
+            Btn_BottomLineSetting.Radius = 20;
+            Btn_BottomLineSetting.Size = new Size(100, 50);
+            Btn_BottomLineSetting.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Btn_BottomLineSetting.TabIndex = 41;
+            Btn_BottomLineSetting.Text = "BtmLineSetting";
+            Btn_BottomLineSetting.Click += Btn_BottomLineSetting_Click;
+            // 
             // dBtn_CameraLine_L
             // 
             dBtn_CameraLine_L.BackColor = Color.Transparent;
@@ -540,7 +616,7 @@ namespace JD_Proc
             dBtn_CameraLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             dBtn_CameraLine_L.HoverForeColor = Color.White;
             dBtn_CameraLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_CameraLine_L.Location = new Point(856, 367);
+            dBtn_CameraLine_L.Location = new Point(856, 371);
             dBtn_CameraLine_L.MinimumSize = new Size(100, 50);
             dBtn_CameraLine_L.Name = "dBtn_CameraLine_L";
             dBtn_CameraLine_L.NormalBackColor = Color.White;
@@ -559,7 +635,7 @@ namespace JD_Proc
             Label_SV_Value.AutoSize = true;
             Label_SV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Label_SV_Value.ForeColor = SystemColors.ControlLightLight;
-            Label_SV_Value.Location = new Point(134, 455);
+            Label_SV_Value.Location = new Point(134, 325);
             Label_SV_Value.Name = "Label_SV_Value";
             Label_SV_Value.Size = new Size(19, 21);
             Label_SV_Value.TabIndex = 40;
@@ -570,7 +646,7 @@ namespace JD_Proc
             Label_PV_Value.AutoSize = true;
             Label_PV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Label_PV_Value.ForeColor = SystemColors.ControlLightLight;
-            Label_PV_Value.Location = new Point(54, 455);
+            Label_PV_Value.Location = new Point(54, 325);
             Label_PV_Value.Name = "Label_PV_Value";
             Label_PV_Value.Size = new Size(19, 21);
             Label_PV_Value.TabIndex = 40;
@@ -581,7 +657,7 @@ namespace JD_Proc
             Label_SV.AutoSize = true;
             Label_SV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Label_SV.ForeColor = SystemColors.ControlDark;
-            Label_SV.Location = new Point(94, 452);
+            Label_SV.Location = new Point(94, 322);
             Label_SV.Name = "Label_SV";
             Label_SV.Size = new Size(48, 25);
             Label_SV.TabIndex = 39;
@@ -592,7 +668,7 @@ namespace JD_Proc
             Label_PV.AutoSize = true;
             Label_PV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Label_PV.ForeColor = SystemColors.ControlDark;
-            Label_PV.Location = new Point(12, 453);
+            Label_PV.Location = new Point(12, 323);
             Label_PV.Name = "Label_PV";
             Label_PV.Size = new Size(49, 25);
             Label_PV.TabIndex = 38;
@@ -809,98 +885,6 @@ namespace JD_Proc
             Chart_Auto_R.TabIndex = 7;
             Chart_Auto_R.Text = "R_Camera_Gap";
             // 
-            // CheckBox_ROI_L5
-            // 
-            CheckBox_ROI_L5.BackColor = Color.Transparent;
-            CheckBox_ROI_L5.BackgroundColor = Color.White;
-            CheckBox_ROI_L5.BorderColor = Color.FromArgb(155, 155, 155);
-            CheckBox_ROI_L5.Checked = true;
-            CheckBox_ROI_L5.CheckSignColor = Color.FromArgb(65, 177, 225);
-            CheckBox_ROI_L5.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
-            CheckBox_ROI_L5.DisabledBorderColor = Color.FromArgb(205, 205, 205);
-            CheckBox_ROI_L5.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_L5.IsDerivedStyle = true;
-            CheckBox_ROI_L5.Location = new Point(161, 237);
-            CheckBox_ROI_L5.Name = "CheckBox_ROI_L5";
-            CheckBox_ROI_L5.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
-            CheckBox_ROI_L5.Size = new Size(17, 16);
-            CheckBox_ROI_L5.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            CheckBox_ROI_L5.StyleManager = null;
-            CheckBox_ROI_L5.TabIndex = 37;
-            CheckBox_ROI_L5.Text = "metroCheckBox2";
-            CheckBox_ROI_L5.ThemeAuthor = "Taiizor";
-            CheckBox_ROI_L5.ThemeName = "MetroLight";
-            CheckBox_ROI_L5.CheckedChanged += CheckBox_ROI_L5_CheckedChanged;
-            // 
-            // CheckBox_ROI_L4
-            // 
-            CheckBox_ROI_L4.BackColor = Color.Transparent;
-            CheckBox_ROI_L4.BackgroundColor = Color.White;
-            CheckBox_ROI_L4.BorderColor = Color.FromArgb(155, 155, 155);
-            CheckBox_ROI_L4.Checked = true;
-            CheckBox_ROI_L4.CheckSignColor = Color.FromArgb(65, 177, 225);
-            CheckBox_ROI_L4.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
-            CheckBox_ROI_L4.DisabledBorderColor = Color.FromArgb(205, 205, 205);
-            CheckBox_ROI_L4.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_L4.IsDerivedStyle = true;
-            CheckBox_ROI_L4.Location = new Point(161, 193);
-            CheckBox_ROI_L4.Name = "CheckBox_ROI_L4";
-            CheckBox_ROI_L4.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
-            CheckBox_ROI_L4.Size = new Size(17, 16);
-            CheckBox_ROI_L4.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            CheckBox_ROI_L4.StyleManager = null;
-            CheckBox_ROI_L4.TabIndex = 37;
-            CheckBox_ROI_L4.Text = "metroCheckBox2";
-            CheckBox_ROI_L4.ThemeAuthor = "Taiizor";
-            CheckBox_ROI_L4.ThemeName = "MetroLight";
-            CheckBox_ROI_L4.CheckedChanged += CheckBox_ROI_L4_CheckedChanged;
-            // 
-            // CheckBox_ROI_L3
-            // 
-            CheckBox_ROI_L3.BackColor = Color.Transparent;
-            CheckBox_ROI_L3.BackgroundColor = Color.White;
-            CheckBox_ROI_L3.BorderColor = Color.FromArgb(155, 155, 155);
-            CheckBox_ROI_L3.Checked = true;
-            CheckBox_ROI_L3.CheckSignColor = Color.FromArgb(65, 177, 225);
-            CheckBox_ROI_L3.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
-            CheckBox_ROI_L3.DisabledBorderColor = Color.FromArgb(205, 205, 205);
-            CheckBox_ROI_L3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_L3.IsDerivedStyle = true;
-            CheckBox_ROI_L3.Location = new Point(161, 152);
-            CheckBox_ROI_L3.Name = "CheckBox_ROI_L3";
-            CheckBox_ROI_L3.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
-            CheckBox_ROI_L3.Size = new Size(17, 16);
-            CheckBox_ROI_L3.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            CheckBox_ROI_L3.StyleManager = null;
-            CheckBox_ROI_L3.TabIndex = 37;
-            CheckBox_ROI_L3.Text = "metroCheckBox2";
-            CheckBox_ROI_L3.ThemeAuthor = "Taiizor";
-            CheckBox_ROI_L3.ThemeName = "MetroLight";
-            CheckBox_ROI_L3.CheckedChanged += CheckBox_ROI_L3_CheckedChanged;
-            // 
-            // CheckBox_ROI_L2
-            // 
-            CheckBox_ROI_L2.BackColor = Color.Transparent;
-            CheckBox_ROI_L2.BackgroundColor = Color.White;
-            CheckBox_ROI_L2.BorderColor = Color.FromArgb(155, 155, 155);
-            CheckBox_ROI_L2.Checked = true;
-            CheckBox_ROI_L2.CheckSignColor = Color.FromArgb(65, 177, 225);
-            CheckBox_ROI_L2.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
-            CheckBox_ROI_L2.DisabledBorderColor = Color.FromArgb(205, 205, 205);
-            CheckBox_ROI_L2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_L2.IsDerivedStyle = true;
-            CheckBox_ROI_L2.Location = new Point(161, 109);
-            CheckBox_ROI_L2.Name = "CheckBox_ROI_L2";
-            CheckBox_ROI_L2.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
-            CheckBox_ROI_L2.Size = new Size(17, 16);
-            CheckBox_ROI_L2.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            CheckBox_ROI_L2.StyleManager = null;
-            CheckBox_ROI_L2.TabIndex = 37;
-            CheckBox_ROI_L2.Text = "metroCheckBox2";
-            CheckBox_ROI_L2.ThemeAuthor = "Taiizor";
-            CheckBox_ROI_L2.ThemeName = "MetroLight";
-            CheckBox_ROI_L2.CheckedChanged += CheckBox_ROI_L2_CheckedChanged;
-            // 
             // dLabel_Ng_L
             // 
             dLabel_Ng_L.AutoSize = true;
@@ -918,13 +902,8 @@ namespace JD_Proc
             panel4.BackColor = Color.Black;
             panel4.Controls.Add(Panel_CameraCenterLine_R);
             panel4.Controls.Add(Panel_BrighestLine_R);
-            panel4.Controls.Add(CheckBox_ROI_R5);
-            panel4.Controls.Add(CheckBox_ROI_R4);
             panel4.Controls.Add(dBtn_BrightestLine_R);
-            panel4.Controls.Add(CheckBox_ROI_R3);
             panel4.Controls.Add(dBtn_CameraLine_R);
-            panel4.Controls.Add(CheckBox_ROI_R2);
-            panel4.Controls.Add(CheckBox_ROI_R1);
             panel4.Controls.Add(dLabel_Ng_R);
             panel4.Controls.Add(dChart_R_5);
             panel4.Controls.Add(dChart_R_4);
@@ -973,52 +952,6 @@ namespace JD_Proc
             Panel_BrighestLine_R.Text = "panel5";
             Panel_BrighestLine_R.Visible = false;
             // 
-            // CheckBox_ROI_R5
-            // 
-            CheckBox_ROI_R5.BackColor = Color.Transparent;
-            CheckBox_ROI_R5.BackgroundColor = Color.White;
-            CheckBox_ROI_R5.BorderColor = Color.FromArgb(155, 155, 155);
-            CheckBox_ROI_R5.Checked = true;
-            CheckBox_ROI_R5.CheckSignColor = Color.FromArgb(65, 177, 225);
-            CheckBox_ROI_R5.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
-            CheckBox_ROI_R5.DisabledBorderColor = Color.FromArgb(205, 205, 205);
-            CheckBox_ROI_R5.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_R5.IsDerivedStyle = true;
-            CheckBox_ROI_R5.Location = new Point(153, 236);
-            CheckBox_ROI_R5.Name = "CheckBox_ROI_R5";
-            CheckBox_ROI_R5.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
-            CheckBox_ROI_R5.Size = new Size(17, 16);
-            CheckBox_ROI_R5.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            CheckBox_ROI_R5.StyleManager = null;
-            CheckBox_ROI_R5.TabIndex = 39;
-            CheckBox_ROI_R5.Text = "metroCheckBox2";
-            CheckBox_ROI_R5.ThemeAuthor = "Taiizor";
-            CheckBox_ROI_R5.ThemeName = "MetroLight";
-            CheckBox_ROI_R5.CheckedChanged += CheckBox_ROI_R5_CheckedChanged;
-            // 
-            // CheckBox_ROI_R4
-            // 
-            CheckBox_ROI_R4.BackColor = Color.Transparent;
-            CheckBox_ROI_R4.BackgroundColor = Color.White;
-            CheckBox_ROI_R4.BorderColor = Color.FromArgb(155, 155, 155);
-            CheckBox_ROI_R4.Checked = true;
-            CheckBox_ROI_R4.CheckSignColor = Color.FromArgb(65, 177, 225);
-            CheckBox_ROI_R4.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
-            CheckBox_ROI_R4.DisabledBorderColor = Color.FromArgb(205, 205, 205);
-            CheckBox_ROI_R4.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_R4.IsDerivedStyle = true;
-            CheckBox_ROI_R4.Location = new Point(153, 192);
-            CheckBox_ROI_R4.Name = "CheckBox_ROI_R4";
-            CheckBox_ROI_R4.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
-            CheckBox_ROI_R4.Size = new Size(17, 16);
-            CheckBox_ROI_R4.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            CheckBox_ROI_R4.StyleManager = null;
-            CheckBox_ROI_R4.TabIndex = 40;
-            CheckBox_ROI_R4.Text = "metroCheckBox2";
-            CheckBox_ROI_R4.ThemeAuthor = "Taiizor";
-            CheckBox_ROI_R4.ThemeName = "MetroLight";
-            CheckBox_ROI_R4.CheckedChanged += CheckBox_ROI_R4_CheckedChanged;
-            // 
             // dBtn_BrightestLine_R
             // 
             dBtn_BrightestLine_R.BackColor = Color.Transparent;
@@ -1042,29 +975,6 @@ namespace JD_Proc
             dBtn_BrightestLine_R.Text = "BrighestLine";
             dBtn_BrightestLine_R.Click += dBtn_BrightestLine_R_Click;
             // 
-            // CheckBox_ROI_R3
-            // 
-            CheckBox_ROI_R3.BackColor = Color.Transparent;
-            CheckBox_ROI_R3.BackgroundColor = Color.White;
-            CheckBox_ROI_R3.BorderColor = Color.FromArgb(155, 155, 155);
-            CheckBox_ROI_R3.Checked = true;
-            CheckBox_ROI_R3.CheckSignColor = Color.FromArgb(65, 177, 225);
-            CheckBox_ROI_R3.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
-            CheckBox_ROI_R3.DisabledBorderColor = Color.FromArgb(205, 205, 205);
-            CheckBox_ROI_R3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_R3.IsDerivedStyle = true;
-            CheckBox_ROI_R3.Location = new Point(153, 151);
-            CheckBox_ROI_R3.Name = "CheckBox_ROI_R3";
-            CheckBox_ROI_R3.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
-            CheckBox_ROI_R3.Size = new Size(17, 16);
-            CheckBox_ROI_R3.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            CheckBox_ROI_R3.StyleManager = null;
-            CheckBox_ROI_R3.TabIndex = 41;
-            CheckBox_ROI_R3.Text = "metroCheckBox2";
-            CheckBox_ROI_R3.ThemeAuthor = "Taiizor";
-            CheckBox_ROI_R3.ThemeName = "MetroLight";
-            CheckBox_ROI_R3.CheckedChanged += CheckBox_ROI_R3_CheckedChanged;
-            // 
             // dBtn_CameraLine_R
             // 
             dBtn_CameraLine_R.BackColor = Color.Transparent;
@@ -1087,52 +997,6 @@ namespace JD_Proc
             dBtn_CameraLine_R.TabIndex = 41;
             dBtn_CameraLine_R.Text = "CenterLine";
             dBtn_CameraLine_R.Click += dBtn_CameraLine_R_Click;
-            // 
-            // CheckBox_ROI_R2
-            // 
-            CheckBox_ROI_R2.BackColor = Color.Transparent;
-            CheckBox_ROI_R2.BackgroundColor = Color.White;
-            CheckBox_ROI_R2.BorderColor = Color.FromArgb(155, 155, 155);
-            CheckBox_ROI_R2.Checked = true;
-            CheckBox_ROI_R2.CheckSignColor = Color.FromArgb(65, 177, 225);
-            CheckBox_ROI_R2.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
-            CheckBox_ROI_R2.DisabledBorderColor = Color.FromArgb(205, 205, 205);
-            CheckBox_ROI_R2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_R2.IsDerivedStyle = true;
-            CheckBox_ROI_R2.Location = new Point(153, 108);
-            CheckBox_ROI_R2.Name = "CheckBox_ROI_R2";
-            CheckBox_ROI_R2.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
-            CheckBox_ROI_R2.Size = new Size(17, 16);
-            CheckBox_ROI_R2.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            CheckBox_ROI_R2.StyleManager = null;
-            CheckBox_ROI_R2.TabIndex = 42;
-            CheckBox_ROI_R2.Text = "metroCheckBox2";
-            CheckBox_ROI_R2.ThemeAuthor = "Taiizor";
-            CheckBox_ROI_R2.ThemeName = "MetroLight";
-            CheckBox_ROI_R2.CheckedChanged += CheckBox_ROI_R2_CheckedChanged;
-            // 
-            // CheckBox_ROI_R1
-            // 
-            CheckBox_ROI_R1.BackColor = Color.Transparent;
-            CheckBox_ROI_R1.BackgroundColor = Color.White;
-            CheckBox_ROI_R1.BorderColor = Color.FromArgb(155, 155, 155);
-            CheckBox_ROI_R1.Checked = true;
-            CheckBox_ROI_R1.CheckSignColor = Color.FromArgb(65, 177, 225);
-            CheckBox_ROI_R1.CheckState = ReaLTaiizor.Enum.Metro.CheckState.Checked;
-            CheckBox_ROI_R1.DisabledBorderColor = Color.FromArgb(205, 205, 205);
-            CheckBox_ROI_R1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            CheckBox_ROI_R1.IsDerivedStyle = true;
-            CheckBox_ROI_R1.Location = new Point(153, 66);
-            CheckBox_ROI_R1.Name = "CheckBox_ROI_R1";
-            CheckBox_ROI_R1.SignStyle = ReaLTaiizor.Enum.Metro.SignStyle.Sign;
-            CheckBox_ROI_R1.Size = new Size(17, 16);
-            CheckBox_ROI_R1.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            CheckBox_ROI_R1.StyleManager = null;
-            CheckBox_ROI_R1.TabIndex = 38;
-            CheckBox_ROI_R1.Text = "metroCheckBox1";
-            CheckBox_ROI_R1.ThemeAuthor = "Taiizor";
-            CheckBox_ROI_R1.ThemeName = "MetroLight";
-            CheckBox_ROI_R1.CheckedChanged += CheckBox_ROI_R1_CheckedChanged;
             // 
             // dLabel_Ng_R
             // 
@@ -1340,7 +1204,7 @@ namespace JD_Proc
             dComboBox_scale2.IntegralHeight = false;
             dComboBox_scale2.ItemHeight = 20;
             dComboBox_scale2.Items.AddRange(new object[] { "Manual", "MinMax", "Sigma1", "Sigma3" });
-            dComboBox_scale2.Location = new Point(12, 367);
+            dComboBox_scale2.Location = new Point(12, 415);
             dComboBox_scale2.Name = "dComboBox_scale2";
             dComboBox_scale2.Size = new Size(102, 26);
             dComboBox_scale2.StartIndex = 3;
@@ -1369,7 +1233,7 @@ namespace JD_Proc
             dComboBox_cam2.IntegralHeight = false;
             dComboBox_cam2.ItemHeight = 20;
             dComboBox_cam2.Items.AddRange(new object[] { "AlarmBlue", "AlarmBlueHi", "GrayBW", "GrayWB", "AlarmGreen", "Iron", "IronHi", "Medical", "Rainbow", "RainbowHi", "AlarmRed" });
-            dComboBox_cam2.Location = new Point(12, 410);
+            dComboBox_cam2.Location = new Point(12, 458);
             dComboBox_cam2.Name = "dComboBox_cam2";
             dComboBox_cam2.Size = new Size(102, 26);
             dComboBox_cam2.StartIndex = 1;
@@ -1403,7 +1267,7 @@ namespace JD_Proc
             dTxt_cam2.ShortcutsEnabled = true;
             dTxt_cam2.ShowBottomBorder = true;
             dTxt_cam2.ShowTopBorder = true;
-            dTxt_cam2.Size = new Size(173, 345);
+            dTxt_cam2.Size = new Size(173, 158);
             dTxt_cam2.TabIndex = 10;
             dTxt_cam2.Text = " 작업 결과 ..";
             dTxt_cam2.TextAlignment = HorizontalAlignment.Left;
@@ -1776,7 +1640,7 @@ namespace JD_Proc
             dComboBox_scale1.IntegralHeight = false;
             dComboBox_scale1.ItemHeight = 20;
             dComboBox_scale1.Items.AddRange(new object[] { "Manual", "MinMax", "Sigma1", "Sigma3" });
-            dComboBox_scale1.Location = new Point(12, 367);
+            dComboBox_scale1.Location = new Point(12, 415);
             dComboBox_scale1.Name = "dComboBox_scale1";
             dComboBox_scale1.Size = new Size(102, 26);
             dComboBox_scale1.StartIndex = 3;
@@ -1789,7 +1653,7 @@ namespace JD_Proc
             dLable_tmp1.BackColor = Color.Transparent;
             dLable_tmp1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             dLable_tmp1.ForeColor = Color.FromArgb(114, 118, 127);
-            dLable_tmp1.Location = new Point(132, 368);
+            dLable_tmp1.Location = new Point(136, 408);
             dLable_tmp1.Name = "dLable_tmp1";
             dLable_tmp1.Size = new Size(25, 30);
             dLable_tmp1.TabIndex = 13;
@@ -1817,7 +1681,7 @@ namespace JD_Proc
             dComboBox_cam1.IntegralHeight = false;
             dComboBox_cam1.ItemHeight = 20;
             dComboBox_cam1.Items.AddRange(new object[] { "AlarmBlue", "AlarmBlueHi", "GrayBW", "GrayWB", "AlarmGreen", "Iron", "IronHi", "Medical", "Rainbow", "RainbowHi", "AlarmRed" });
-            dComboBox_cam1.Location = new Point(12, 410);
+            dComboBox_cam1.Location = new Point(12, 458);
             dComboBox_cam1.Name = "dComboBox_cam1";
             dComboBox_cam1.Size = new Size(102, 26);
             dComboBox_cam1.StartIndex = 1;
@@ -1842,7 +1706,7 @@ namespace JD_Proc
             dTxt_cam1.ShortcutsEnabled = true;
             dTxt_cam1.ShowBottomBorder = true;
             dTxt_cam1.ShowTopBorder = true;
-            dTxt_cam1.Size = new Size(173, 345);
+            dTxt_cam1.Size = new Size(173, 159);
             dTxt_cam1.TabIndex = 9;
             dTxt_cam1.Text = " 작업 결과 ..";
             dTxt_cam1.TextAlignment = HorizontalAlignment.Left;
@@ -3886,16 +3750,6 @@ namespace JD_Proc
         private TableLayoutPanel tableLayoutPanel_Auto;
         private ReaLTaiizor.Controls.NightButton dBtn_Measure2;
         private ReaLTaiizor.Controls.NightButton dBtn_Measure1;
-        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L5;
-        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L4;
-        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L3;
-        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L2;
-        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_L1;
-        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_R5;
-        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_R4;
-        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_R3;
-        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_R2;
-        private ReaLTaiizor.Controls.MetroCheckBox CheckBox_ROI_R1;
         private TableLayoutPanel tableLayoutPanel5;
         private PictureBox pictureBox1_Auto;
         private TableLayoutPanel tableLayoutPanel6;
@@ -3988,5 +3842,9 @@ namespace JD_Proc
         private ReaLTaiizor.Controls.NightButton nightButton13;
         private ReaLTaiizor.Controls.Panel Panel_CameraCenterLine_R;
         private ReaLTaiizor.Controls.Panel Panel_BrighestLine_R;
+        private ReaLTaiizor.Controls.NightButton Btn_BottomLineSetting;
+        private ReaLTaiizor.Controls.NightLabel Lbl_TempController;
+        private ReaLTaiizor.Controls.CyberButton Btn_SetSV;
+        private ReaLTaiizor.Controls.CyberTextBox TextBox_InputSV;
     }
 }

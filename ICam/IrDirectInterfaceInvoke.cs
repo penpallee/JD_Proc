@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 
 namespace JD_Proc.ICam
 {
@@ -37,17 +32,24 @@ namespace JD_Proc.ICam
         float tempBox;            /*!< Temperature inside camera housing */
     }
 
-    
-    
+
+
     internal class IrDirectInterfaceInvoke
     {
+
+
+
+        [DllImport("libirimager.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int evo_irimager_get_serial(out uint serial);
+
         /**
- * @brief Initializes an IRImager instance connected to this computer via USB
- * @param[in] xml_config path to xml config
- * @param[in] formats_def path to folder containing formants.def (for default path use: "")
- * @param[in] log_file path for log file. Set to null or "" for disable logging.
- * @return 0 on success, -1 on error
- */
+         * @brief Initializes an IRImager instance connected to this computer via USB
+         * @param[in] xml_config path to xml config
+         * @param[in] formats_def path to folder containing formants.def (for default path use: "")
+         * @param[in] log_file path for log file. Set to null or "" for disable logging.
+         * @return 0 on success, -1 on error
+         */
+
         [DllImport("libirimager.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int evo_irimager_usb_init(string xml_config, string formats_def, string log_file);
 
