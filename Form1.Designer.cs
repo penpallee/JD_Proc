@@ -126,6 +126,7 @@ namespace JD_Proc
             panel2 = new Panel();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             panel3 = new Panel();
+            TxtBox_SelectedImgName = new ReaLTaiizor.Controls.NightTextBox();
             Btn_SetSV = new ReaLTaiizor.Controls.CyberButton();
             TextBox_InputSV = new ReaLTaiizor.Controls.CyberTextBox();
             Lbl_TempController = new ReaLTaiizor.Controls.NightLabel();
@@ -416,6 +417,7 @@ namespace JD_Proc
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(2, 2, 2);
+            panel3.Controls.Add(TxtBox_SelectedImgName);
             panel3.Controls.Add(Btn_SetSV);
             panel3.Controls.Add(TextBox_InputSV);
             panel3.Controls.Add(Lbl_TempController);
@@ -451,6 +453,31 @@ namespace JD_Proc
             panel3.Name = "panel3";
             panel3.Size = new Size(1920, 940);
             panel3.TabIndex = 8;
+            // 
+            // TxtBox_SelectedImgName
+            // 
+            TxtBox_SelectedImgName.ActiveBorderColor = Color.FromArgb(242, 93, 89);
+            TxtBox_SelectedImgName.BackColor = Color.FromArgb(43, 48, 67);
+            TxtBox_SelectedImgName.BaseBackColor = Color.FromArgb(43, 48, 67);
+            TxtBox_SelectedImgName.ColorBordersOnEnter = true;
+            TxtBox_SelectedImgName.DisableBorderColor = Color.FromArgb(60, 63, 80);
+            TxtBox_SelectedImgName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TxtBox_SelectedImgName.ForeColor = Color.FromArgb(127, 131, 140);
+            TxtBox_SelectedImgName.Image = null;
+            TxtBox_SelectedImgName.Location = new Point(12, 9);
+            TxtBox_SelectedImgName.MaxLength = 32767;
+            TxtBox_SelectedImgName.Multiline = false;
+            TxtBox_SelectedImgName.Name = "TxtBox_SelectedImgName";
+            TxtBox_SelectedImgName.ReadOnly = false;
+            TxtBox_SelectedImgName.ShortcutsEnabled = true;
+            TxtBox_SelectedImgName.ShowBottomBorder = true;
+            TxtBox_SelectedImgName.ShowTopBorder = true;
+            TxtBox_SelectedImgName.Size = new Size(173, 48);
+            TxtBox_SelectedImgName.TabIndex = 46;
+            TxtBox_SelectedImgName.TextAlignment = HorizontalAlignment.Left;
+            TxtBox_SelectedImgName.UseSystemPasswordChar = false;
+            TxtBox_SelectedImgName.Watermark = "";
+            TxtBox_SelectedImgName.WatermarkColor = Color.FromArgb(116, 120, 129);
             // 
             // Btn_SetSV
             // 
@@ -593,7 +620,7 @@ namespace JD_Proc
             Btn_BottomLineSetting.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
             Btn_BottomLineSetting.HoverForeColor = Color.White;
             Btn_BottomLineSetting.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            Btn_BottomLineSetting.Location = new Point(14, 189);
+            Btn_BottomLineSetting.Location = new Point(12, 207);
             Btn_BottomLineSetting.MinimumSize = new Size(100, 50);
             Btn_BottomLineSetting.Name = "Btn_BottomLineSetting";
             Btn_BottomLineSetting.NormalBackColor = Color.White;
@@ -1698,7 +1725,7 @@ namespace JD_Proc
             dTxt_cam1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dTxt_cam1.ForeColor = Color.FromArgb(127, 131, 140);
             dTxt_cam1.Image = null;
-            dTxt_cam1.Location = new Point(12, 8);
+            dTxt_cam1.Location = new Point(12, 69);
             dTxt_cam1.MaxLength = 32767;
             dTxt_cam1.Multiline = true;
             dTxt_cam1.Name = "dTxt_cam1";
@@ -1706,7 +1733,7 @@ namespace JD_Proc
             dTxt_cam1.ShortcutsEnabled = true;
             dTxt_cam1.ShowBottomBorder = true;
             dTxt_cam1.ShowTopBorder = true;
-            dTxt_cam1.Size = new Size(173, 159);
+            dTxt_cam1.Size = new Size(173, 129);
             dTxt_cam1.TabIndex = 9;
             dTxt_cam1.Text = " 작업 결과 ..";
             dTxt_cam1.TextAlignment = HorizontalAlignment.Left;
@@ -3846,5 +3873,6 @@ namespace JD_Proc
         private ReaLTaiizor.Controls.NightLabel Lbl_TempController;
         private ReaLTaiizor.Controls.CyberButton Btn_SetSV;
         private ReaLTaiizor.Controls.CyberTextBox TextBox_InputSV;
+        private ReaLTaiizor.Controls.NightTextBox TxtBox_SelectedImgName;
     }
 }

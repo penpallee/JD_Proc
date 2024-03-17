@@ -822,9 +822,6 @@ namespace JD_Proc
             List<Model.Blob> blobs = blobService.FindBlobs(grayBmap_L, threshold);
             List<Model.Blob> okBlobs = GetOkBlob(blobs, "cam1");
 
-            Debug.Print($@"X: {okBlobs[0].X.ToString()}, Y: {okBlobs[0].Y.ToString()}, Width: {okBlobs[0].Width.ToString()}, Height: {okBlobs[0].Height.ToString()}");
-
-
             if (okBlobs.Count == 1)
             {
                 Service.SettingsService settingsService = new Service.SettingsService();
@@ -938,8 +935,6 @@ namespace JD_Proc
         #region event(lmage load) - click
         private void dBtn_load1_Click(object sender, EventArgs e)
         {
-
-
             string image_file = string.Empty;
 
             OpenFileDialog dialog = new OpenFileDialog();
@@ -949,6 +944,8 @@ namespace JD_Proc
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 image_file = dialog.FileName;
+
+                TxtBox_SelectedImgName.Text = image_file.Split("\\").Last();
 
                 //csv파일 읽기
                 string csvFile = image_file.Replace(".bmp", ".csv");
@@ -1310,7 +1307,10 @@ namespace JD_Proc
         {
             try
             {
-                if (TempDDList.Count != 0) BottomLineSetting();
+                if (TempDDList.Count != 0)
+                {
+                    BottomLineSetting();
+                }
                 else MessageBox.Show("Error, Empty Data set, Please Load & Process First", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
@@ -1318,6 +1318,14 @@ namespace JD_Proc
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+        #endregion
+
+        #region [event - Btn_SetSV_Click]
+        private void Btn_SetSV_Click(object sender, EventArgs e)
+        {
+            TempController.SetTargetTemperature(TempController, int.Parse(TextBox_InputSV.textBox.Text));
+            TextBox_InputSV.textBox.Clear();
         }
         #endregion
 
@@ -1456,6 +1464,7 @@ namespace JD_Proc
             //calculate mean temperature
             int rows = images.ThermalImage.GetLength(0);
             int columns = images.ThermalImage.GetLength(1);
+            TempDDList = new List<List<Double>>();
 
             double mean = 0;
             for (int row = 0; row < rows; row++)
@@ -1465,8 +1474,11 @@ namespace JD_Proc
                     ushort value = images.ThermalImage[row, column];
                     mean += value;
                     _tempData_L[column, row] = ((double)value - 1000.0) / 10.0;
+                    TempDDList[column].Add(_tempData_L[column, row]);
                 }
             }
+
+            
 
             //Calculates mean value: meanSum / pixelCount
             mean /= rows * columns;
@@ -1497,6 +1509,7 @@ namespace JD_Proc
             double mean = 0;
             for (int row = 0; row < rows; row++)
             {
+                TempDDList.Add(new List<double>());
                 for (int column = 0; column < columns; column++)
                 {
                     ushort value = images.ThermalImage[row, column];
@@ -1722,6 +1735,18 @@ namespace JD_Proc
         #region method - Porcess
         void Porcess(string cam, int roi, Model.Blob blob, int threshold, string mode)
         {
+            //TempDDList = new List<List<Double>>();
+
+            //for (int column = 0; column < 640; column++)
+            //{
+
+            //    TempDDList.Add(new List<double>());
+
+            //    for (int r = 0; r < 479; r++)
+            //    {
+            //        TempDDList[column].Add(_tempData_L[column, r]);
+            //    }
+            //}
             //roi 정보를 읽어온다(x, y, widht, height)
             (int roiX, int roiY, int roiWidth, int roiHeight) = GetRoiInfo(cam, roi);
 
@@ -3243,7 +3268,7 @@ namespace JD_Proc
         {
 
             double avg_high_pixel = 0;
-            int low_std = 236;
+            int low_std = int.Parse(service.Read("STANDARD", "BtmIdx"));
             int gap_pixel = 0;
             double subpixel = 0;
 
@@ -3286,7 +3311,7 @@ namespace JD_Proc
         {
             double pVariation = 0;
             int c_PixelIndex = 0;
-            for (int i = 0; i < 479; i++)
+            for (int i = 0; i < 478; i++)
             {
                 if (Math.Abs(TempDDList[320][i] - TempDDList[320][i + 1]) > pVariation)
                 {
@@ -3295,7 +3320,7 @@ namespace JD_Proc
                 }
             }
 
-            if (c_PixelIndex == int.Parse(service.Read("STANDARD", "BtmIdx"))) MessageBox.Show("OK, BottomLine Setting OK", "Setting OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (c_PixelIndex + 2 == int.Parse(service.Read("STANDARD", "BtmIdx"))) MessageBox.Show("OK, BottomLine Setting OK", "Setting OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else MessageBox.Show("Fail, BottomLine Setting Fail, Please Retry Setting", "Setting Fail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         #endregion
@@ -3427,10 +3452,6 @@ namespace JD_Proc
         #endregion
 
 
-        private void Btn_SetSV_Click(object sender, EventArgs e)
-        {
-            TempController.SetTargetTemperature(TempController, int.Parse(TextBox_InputSV.textBox.Text));
-            TextBox_InputSV.textBox.Clear();
-        }
+
     }
 }

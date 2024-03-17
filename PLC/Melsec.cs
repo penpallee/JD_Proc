@@ -321,5 +321,13 @@ namespace JD_Proc.PLC
             return byteArray;
         }
         #endregion
+
+        #region [ACK Response]
+        public byte[] PLC_ACK_Response()
+        {
+            byte[] byteArray = new byte[8];
+            return byteArray;
+        }
+        #endregion
     }
 }
