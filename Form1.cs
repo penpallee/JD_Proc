@@ -2269,8 +2269,8 @@ namespace JD_Proc
 
                 Color newC = Color.Black;
 
-                cloneBmap_L.SetPixel(tempX, up - 1, newC);
-                cloneBmap_L.SetPixel(tempX, dw + 1, newC);
+                cloneBmap_L.SetPixel(tempX, int.Parse(service.Read("STANDARD", "UpperIdx")) - 1, newC);
+                cloneBmap_L.SetPixel(tempX, int.Parse(service.Read("STANDARD", "BtmIdx")) - 1, newC);
 
                 tempX = tempX + 1;
             }
@@ -2433,8 +2433,8 @@ namespace JD_Proc
 
                 Color newC = Color.Black;
 
-                cloneBmap_R.SetPixel(tempX, up - 1, newC);
-                cloneBmap_R.SetPixel(tempX, dw + 1, newC);
+                cloneBmap_R.SetPixel(tempX, int.Parse(service.Read("STANDARD", "UpperIdx"))-1, newC);
+                cloneBmap_R.SetPixel(tempX, int.Parse(service.Read("STANDARD", "BtmIdx"))+1, newC);
 
                 tempX = tempX + 1;
             }
@@ -3286,6 +3286,7 @@ namespace JD_Proc
             gap_pixel = low_std - UpperStd;
             Debug.Print("오른쪽 가장 높은값(index) : " + avg_high_pixel + "(" + TempDDList[320].FindLastIndex(x => x == avg_high_pixel).ToString() + "), " + "Left First Edge point : " + UpperStd.ToString());
 
+            service.Write("STANDARD", "UpperIdx", UpperStd.ToString());
 
             subpixel = (TempDDList[320][UpperStd] - avg_high_pixel) / (TempDDList[320][UpperStd] - TempDDList[320][UpperStd - 1]);
             Debug.Print("픽셀 수: " + gap_pixel.ToString() + ", Gap : " + (Math.Round((double)gap_pixel + subpixel, 2).ToString()));
