@@ -1,8 +1,15 @@
-﻿using ActUtlType64Lib;
+﻿// PLC(MELSEC) Ethernet 통신을 사용하려면
+// PLC의 ethernet 포로토콜 설정이 TCP의 특정포트를 세팅해줘야 사용할 수 있다.
+// ack통신을 하려면 이부분을 먼저 PLC담당자와 확인해보자
+
+using ActUtlType64Lib;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,11 +65,34 @@ namespace JD_Proc.PLC
     }
     #endregion
 
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct _3E_BIN_REQUEST_COMMAND
+    {
+        public ushort wSubHeader;           // 서브 머리글
+        public byte byNetworkNo;            // 네트워크 번호
+        public byte byPlcNo;                // PLC 번호
+        public ushort wModuleIONo;          // 요구 상대 모듈 I/O 번호	
+        public byte byModuleStateNo;        // 요구 상대 모듈 국번호
+        public ushort wDataLength;          // 요구 데이터 길이
+        public ushort wCpuTimer;            // CPU 감시 타이머
+        public ushort wCommand;             // Command(Read)
+        public ushort wSubCommand;          // Sub Command
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+        public byte[] byDeviceAddr;         // 선두 Device Addr
+        public byte byDeviceCode;           // Device 코드
+        public ushort wCount;               // 읽기/쓰기 점수
+    };
+
     public class Melsec
     {
         #region var
         public ActUtlType64Lib.ActUtlType64 actUtlType64;
         int isConnect = -1;
+        private string _plcIp = "192.168.3.11"; // PLC의 IP 주소
+        private int _plcPort = 5007; // PLC의 포트 번호, 예시값
+        _3E_BIN_REQUEST_COMMAND _Request_Header;
         #endregion
 
         #region 생성자
@@ -329,5 +359,125 @@ namespace JD_Proc.PLC
             return byteArray;
         }
         #endregion
+
+        #region
+        public void SendAndReceive()
+        {
+
+            //byte[] buffer = CreateRequestBuffer(_Request_Header);
+            byte[] buffer = HeaderInitiallizer();
+
+            using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
+            {
+                try
+                {
+                    socket.Connect(_plcIp, _plcPort); // PLC에 연결 시도
+                    if (socket.Connected)
+                    {
+                        socket.Send(buffer); // 요청 프레임 전송
+                        foreach(var _buffer in buffer)
+                        {
+                            Debug.Print(Convert.ToString(_buffer, 16));
+                        }
+                        byte[] responseBuffer = new byte[1024]; // 응답을 받을 버퍼
+                        //if (socket.Available > 0)
+                        //{
+                        int bytesRead = socket.Receive(responseBuffer);
+                        
+                        //}
+                        // 응답 처리...
+                        Debug.Print("응답 받음  : " + bytesRead);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"에러 발생: {ex.Message}");
+                }
+            }
+        }
+        #endregion
+
+        #region [method - CreateRequestBuffer]
+        private byte[] CreateRequestBuffer(_3E_BIN_REQUEST_COMMAND requestHeader)
+        {
+            byte[] buffer = new byte[Marshal.SizeOf(requestHeader)];
+
+            unsafe
+            {
+                fixed (byte* fixedBuffer = buffer)
+                {
+                    Marshal.StructureToPtr(requestHeader, (IntPtr)fixedBuffer, false);
+                }
+            }
+
+            return buffer;
+        }
+        #endregion
+
+        #region [InitiallizeHeader]
+        private byte[] HeaderInitiallizer()
+        {
+            _Request_Header = new _3E_BIN_REQUEST_COMMAND();
+            _Request_Header.byDeviceAddr = new byte[3];
+
+            int dwTemp = 0x10; // 주소
+
+            _Request_Header.wSubHeader = 0x0050;// 바이너리 50 Subheader			
+            _Request_Header.byNetworkNo = 0x01;
+            _Request_Header.byPlcNo = 0xFF;
+            _Request_Header.wModuleIONo = 0x03FF;
+            _Request_Header.byModuleStateNo = 0x00;
+            _Request_Header.wDataLength = 0x000C;
+            _Request_Header.wCpuTimer = 0x0010;
+            _Request_Header.wCommand = 0x0401;              // read command '0401';		
+            _Request_Header.wSubCommand = 0x0001;
+            _Request_Header.byDeviceAddr[0] = (byte)(dwTemp & 0x000000FF);
+            _Request_Header.byDeviceAddr[1] = (byte)(dwTemp >> 8 & 0x000000FF);
+            _Request_Header.byDeviceAddr[2] = (byte)(dwTemp >> 16 & 0x000000FF);
+            _Request_Header.byDeviceCode = 0x90; // M
+            _Request_Header.wCount = (ushort)1; // 읽을 수량
+
+            byte[] buffer = new byte[Marshal.SizeOf(_Request_Header)];
+
+            unsafe
+            {
+                fixed (byte* fixed_buffer = buffer)
+                {
+
+                    Marshal.StructureToPtr(_Request_Header, (IntPtr)fixed_buffer, false);
+                }
+            }
+
+            return buffer;
+        }
+        #endregion
+
+        public async void sendmessage()
+        {
+            IPAddress ipAddress = IPAddress.Parse("192.168.3.11");
+            IPEndPoint ipEndPoint = new(ipAddress, 2500);
+
+            using Socket client = new(
+                ipEndPoint.AddressFamily,
+                SocketType.Stream,
+                ProtocolType.Tcp);
+
+            await client.ConnectAsync(ipEndPoint);
+
+            // Send request.
+            string message = "500000FF03FF000018000404010000M*0050000002";
+            byte[] messageBytes = Encoding.UTF8.GetBytes(message);
+            _ = await client.SendAsync(messageBytes, SocketFlags.None);
+            Debug.Print($"sent : \"{message}\"");
+
+            // Receive response.
+            var buffer = new byte[1_024];
+            var received = await client.ReceiveAsync(buffer, SocketFlags.None);
+            var response = Encoding.UTF8.GetString(buffer, 0, received);
+            Debug.Print($"received: \"{response}\"");
+
+            client.Shutdown(SocketShutdown.Both);
+        }
+
     }
 }

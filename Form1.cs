@@ -25,6 +25,7 @@ using static JD_Proc.Log.LogManager;
 
 namespace JD_Proc
 {
+
     public partial class Form1 : Form
     {
         #region var
@@ -145,11 +146,19 @@ namespace JD_Proc
 
         bool bSimulationMode = false;
         bool bIsPLC = false;
+        bool IsProcessP = false;
 
         Image bmpforscv = null;
         GaussianBlur Gblur = null;
 
         Service.SettingsService service;
+
+        bool AT_PLC_AUTO = false;
+        bool AT_PLC_START = false;
+        bool AT_VISION_AUTO = false;
+        bool AT_VISION_READY = false;
+        bool AT_VISION_BUSY = false;
+        bool AT_VISION_END = false;
         #endregion
 
         #region 생성자
@@ -210,8 +219,8 @@ namespace JD_Proc
                         MessageBox.Show("1번 카메라 연결 에러, generic1.xml serial 번호확인 및 카메라 프로그램 구동중인지 확인 부탁드립니다.", "Camera Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         //System.Environment.Exit(0);
 
-                        dBtn_auto.Enabled = false;
-                        dBtn_auto.BackColor = Color.Gray;
+                        //dBtn_auto.Enabled = false;
+                        //dBtn_auto.BackColor = Color.Gray;
                         dBtn_live1.Enabled = false;
                         dBtn_Measure1.Enabled = false;
                         dBtn_imageSave1.Enabled = false;
@@ -353,7 +362,7 @@ namespace JD_Proc
 
             PLC_AUTO = PLC_Check_Status("B101"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
             //PLC_AUTO = PLC_Check_Status("M20288"); //TJ 추가, PLC의 B111번 디바이스 값 읽어서 Boolean값으로 반환
-            if (PLC_AUTO)
+            if (PLC_AUTO || AT_PLC_AUTO)
             {
 
                 if (state == "auto") VISION_AUTO = true; //TJ 추가
@@ -367,7 +376,7 @@ namespace JD_Proc
                     {
                         PLC_START_L = PLC_Check_Status("B110"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
                         //PLC_START_L = PLC_Check_Status("M20289"); //TJ 추가, PLC의 B110번 디바이스 값 읽어서 Boolean값으로 반환
-                        if (PLC_START_L)
+                        if (PLC_START_L || AT_PLC_START)
                         {
                             VISION_READY_L = false;
                             VISION_END_L = false;
@@ -738,10 +747,10 @@ namespace JD_Proc
 
                 if (bSimulationMode)
                 {
-                    _AutoSimulation = new AutoSimulation();
+                    _AutoSimulation = new AutoSimulation(this);
                     _AutoSimulation.Show();
                 }
-                if (!bSimulationMode) _AutoTimer.Start();
+                if (bSimulationMode) _AutoTimer.Start();
 
             }
             else if (state == "auto")
@@ -808,6 +817,12 @@ namespace JD_Proc
         #region event(process) - click
         private void dBtn_Process1_Click(object sender, EventArgs e)
         {
+            if (IsProcessP)
+            {
+                dBtn_Process1.Enabled = false;
+                IsProcessP = false;
+            }
+
             originBmap_L = (Bitmap)pictureBox1.Image;
             cloneBmap_L = (Bitmap)originBmap_L.Clone();
             grayBmap_L = new Bitmap(640, 480, originBmap_L.PixelFormat);
@@ -923,6 +938,17 @@ namespace JD_Proc
         #region event(Measure) - click
         private void dBtn_Measure1_Click(object sender, EventArgs e)
         {
+            TempDDList = new List<List<Double>>();
+            for (int column = 0; column < 640; column++)
+            {
+
+                TempDDList.Add(new List<double>());
+
+                for (int r = 0; r < 479; r++)
+                {
+                    TempDDList[column].Add(_tempData_L[column, r]);
+                }
+            }
             measureFunc1(sender, e);
         }
 
@@ -936,6 +962,12 @@ namespace JD_Proc
         private void dBtn_load1_Click(object sender, EventArgs e)
         {
             string image_file = string.Empty;
+
+            if (!IsProcessP)
+            {
+                dBtn_Process1.Enabled = true; ;
+                IsProcessP = true;
+            }
 
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg;*.png)|*.BMP;*.JPG;*.JPEG,*.PNG";
@@ -1278,7 +1310,7 @@ namespace JD_Proc
         }
         #endregion
 
-        #region [event - SupprotLineDraw]
+        #region [event - SupportLineDraw]
         private void dBtn_CameraLine_L_Click(object sender, EventArgs e)
         {
             cameraCenterLineDraw_L();
@@ -1464,21 +1496,22 @@ namespace JD_Proc
             //calculate mean temperature
             int rows = images.ThermalImage.GetLength(0);
             int columns = images.ThermalImage.GetLength(1);
-            TempDDList = new List<List<Double>>();
+            
 
             double mean = 0;
             for (int row = 0; row < rows; row++)
             {
+
                 for (int column = 0; column < columns; column++)
                 {
                     ushort value = images.ThermalImage[row, column];
                     mean += value;
                     _tempData_L[column, row] = ((double)value - 1000.0) / 10.0;
-                    TempDDList[column].Add(_tempData_L[column, row]);
+
                 }
             }
 
-            
+
 
             //Calculates mean value: meanSum / pixelCount
             mean /= rows * columns;
@@ -2269,9 +2302,13 @@ namespace JD_Proc
 
                 Color newC = Color.Black;
 
-                cloneBmap_L.SetPixel(tempX, int.Parse(service.Read("STANDARD", "UpperIdx")) - 1, newC);
-                cloneBmap_L.SetPixel(tempX, int.Parse(service.Read("STANDARD", "BtmIdx")) - 1, newC);
-
+                try
+                {
+                    cloneBmap_L.SetPixel(tempX, int.Parse(service.Read("STANDARD", "UpperIdx"))-2, newC);
+                    cloneBmap_L.SetPixel(tempX, int.Parse(service.Read("STANDARD", "BtmIdx")), newC);
+                }
+                catch { }
+ 
                 tempX = tempX + 1;
             }
 
@@ -2433,8 +2470,8 @@ namespace JD_Proc
 
                 Color newC = Color.Black;
 
-                cloneBmap_R.SetPixel(tempX, int.Parse(service.Read("STANDARD", "UpperIdx"))-1, newC);
-                cloneBmap_R.SetPixel(tempX, int.Parse(service.Read("STANDARD", "BtmIdx"))+1, newC);
+                cloneBmap_R.SetPixel(tempX, int.Parse(service.Read("STANDARD", "UpperIdx")) - 1, newC);
+                cloneBmap_R.SetPixel(tempX, int.Parse(service.Read("STANDARD", "BtmIdx")) + 1, newC);
 
                 tempX = tempX + 1;
             }
@@ -2935,8 +2972,6 @@ namespace JD_Proc
                 //}
                 //gappixelcount = Math.Round(gappixelcount / 80, 2);
 
-                CalculateGap();
-
                 string reesult =
                                  //"GAP 평균 \r\n" + "\r\n" +
                                  //             "LEFT_1 : " + avg[0].ToString() + "\r\n" + "\r\n" +
@@ -2944,7 +2979,7 @@ namespace JD_Proc
                                  //             "LEFT_3 : " + avg[2].ToString() + "\r\n" + "\r\n" +
                                  //             "LEFT_4 : " + avg[3].ToString() + "\r\n" + "\r\n" +
                                  //             "LEFT_5 : " + avg[4].ToString() + "\r\n" + "\r\n" + "\r\n" +
-                                 "Gap Distance : " + Math.Round(CalculateGap() * resolution, 2);
+                                 "Gap Distance : " + (Math.Round(CalculateGap() * resolution - 30, 2) );
                 //"전체평균 : " + Math.Round((gappixelcount) * resolution,2);
                 //"전체평균 : " + totalAVg;
 
@@ -3128,18 +3163,24 @@ namespace JD_Proc
         #endregion
 
         #region [method - PLCMotorSetVelocityValue]
-        public void PLCMotorSetVelocityValue()
+        public void PLCMotorSetVelocityValue(int Velocity)
         {
+            /// 디바이스의 일괄 쓰기를 실행합니다.
+            /// </ summary >
+            /// < param name = "szDevice" > 디바이스 명 </ param >
+            /// < param name = "iSize" > 쓰기 점수 </ param >
+            /// < param name = "iData" > 쓰기 디바이스 값</ param >
+            /// < returns ></ returns >
             //W10~W11 - Motor_ Command Velocity value [0.01mm/s단위] -> 10[mm/s] = 1000
-            //MELSEC_JOG.actUtlType64.WriteDeviceBlock("W10", );
+            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W10", 2, ref Velocity);
         }
         #endregion
 
         #region [method - PLCMotorSetPositionValue]
-        public void PLCMotorSetPositionValue()
+        public void PLCMotorSetPositionValue(int Position)
         {
             //W12~W13 - Motor_ Command position value [0.0001mm단위] (Absolute 위치) -> 10[mm/s] = 100000
-            //MELSEC_JOG.actUtlType64.WriteDeviceBlock("W12", );
+            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W12", 2,ref Position);
         }
         #endregion
 
@@ -3263,36 +3304,118 @@ namespace JD_Proc
 
         #endregion
 
+        //#region [method - CalculateGap]
+        //private double CalculateGap()
+        //{
+
+        //    double avg_high_pixel = 0;
+        //    int low_std = int.Parse(service.Read("STANDARD", "BtmIdx"));
+        //    int gap_pixel = 0;
+        //    double subpixel = 0;
+
+        //    for (int r = 248; r < 400; r++)
+        //    {
+
+        //        if (TempDDList[320][r] > avg_high_pixel)
+        //        {
+        //            avg_high_pixel = TempDDList[320][r];
+        //        }
+
+        //    }
+
+        //    var UpperStd = TempDDList[320].FindIndex(x => x > avg_high_pixel);
+        //    gap_pixel = low_std - UpperStd;
+        //    Debug.Print("오른쪽 가장 높은값(index) : " + avg_high_pixel + "(" + TempDDList[320].FindLastIndex(x => x == avg_high_pixel).ToString() + "), " + "Left First Edge point : " + UpperStd.ToString());
+
+        //    service.Write("STANDARD", "UpperIdx", UpperStd.ToString());
+
+        //    subpixel = (TempDDList[320][UpperStd] - avg_high_pixel) / (TempDDList[320][UpperStd] - TempDDList[320][UpperStd - 1]);
+        //    Debug.Print("픽셀 수: " + gap_pixel.ToString() + ", Gap : " + (Math.Round((double)gap_pixel + subpixel, 2).ToString()));
+
+        //    return low_std - Math.Round(GetXLinearEquation(UpperStd, TempDDList[320][UpperStd], UpperStd - 1, TempDDList[320][UpperStd - 1], avg_high_pixel), 2);
+        //    //return (Math.Round((double)gap_pixel + subpixel, 2));
+        //}
+        //#endregion
+
+        //#region [method - CalculateGap]
+        //private double CalculateGap()
+        //{
+
+        //    double STD_OF_STD = 0;
+        //    int ROLL_FIXED_PIXEL = int.Parse(service.Read("STANDARD", "BtmIdx"));
+        //    int gap_pixel = 0;
+        //    double subpixel = 0;
+        //    int B_Pixel = 0;
+        //    int LIP_VARIANT_PIXEL = 0;
+
+        //    // 온도데이터에의 320번째 열에서 가장 밝은 픽셀 인덱스 B_Pixel에 저장한다.
+        //    B_Pixel = TempDDList[320].IndexOf(TempDDList[320].Max());
+
+        //    // 고정픽셀과 유동픽셀의 기준을 얻기 위해 에지지점들외의 가장 값이 높은 픽셀을 구한다.
+        //    // 온도그래프 특성상 너무 왔다갔다 튀므로 기울기를 통해 구할 경우 변수가 많으므로 
+        //    // +-10픽셀정도 오차내에서 일관적으로 얻고자 하는 기준을 얻을 수 있는 픽셀 index를 그래프를 분석하여 설정(145, 232)
+        //    // 에지가 눈으로 봤을때 최대한 이미지의 가운데 오게끔 하면 됨
+        //    for (int r = 145; r < 232; r++) if (TempDDList[320][r] > STD_OF_STD) STD_OF_STD = TempDDList[320][r];
+
+        //    //가장 밝은픽셀로부터 위쪽(립방향, 그래프 상에서 왼쪽)으로 스캔하며 STD_OF_STD와 비교하여 마지막으로 큰 index값을 저장한다.
+        //    for (int i= B_Pixel;i>0;i--) if (TempDDList[320][i] > STD_OF_STD) LIP_VARIANT_PIXEL = i;
+
+
+        //    // 고정되어있는 아래 롤부분의 픽셀과 변화하는 위의 Lip부분의 픽셀의 차를 구해준다.
+        //    gap_pixel = ROLL_FIXED_PIXEL - LIP_VARIANT_PIXEL;
+            
+        //    service.Write("STANDARD", "UpperIdx", LIP_VARIANT_PIXEL.ToString());
+
+        //    //subpixel = (TempDDList[320][LIP_VARIANT_PIXEL] - STD_OF_STD) / (TempDDList[320][LIP_VARIANT_PIXEL] - TempDDList[320][LIP_VARIANT_PIXEL - 1]);
+        //    //Debug.Print("픽셀 수: " + gap_pixel.ToString() + ", Gap : " + (Math.Round((double)gap_pixel + subpixel, 2).ToString()));
+
+        //    return ROLL_FIXED_PIXEL - Math.Round(GetXLinearEquation(LIP_VARIANT_PIXEL, TempDDList[320][LIP_VARIANT_PIXEL], LIP_VARIANT_PIXEL - 1, TempDDList[320][LIP_VARIANT_PIXEL - 1], STD_OF_STD), 2);
+
+        //    //return (Math.Round((double)gap_pixel + subpixel, 2));
+        //}
+        //#endregion
+
         #region [method - CalculateGap]
         private double CalculateGap()
         {
 
-            double avg_high_pixel = 0;
-            int low_std = int.Parse(service.Read("STANDARD", "BtmIdx"));
+            double STD_OF_STD = 0;
+            int ROLL_FIXED_PIXEL = int.Parse(service.Read("STANDARD", "BtmIdx"));
+            int LIP_VARIANT_PIXEL = 0;
             int gap_pixel = 0;
-            double subpixel = 0;
+            int B_Pixel = 0;
 
-            for (int r = 248; r < 400; r++)
+            // 온도데이터에의 320번째 열에서 가장 밝은 픽셀 인덱스 B_Pixel에 저장한다.
+            try
+
             {
+                B_Pixel = TempDDList[320].IndexOf(TempDDList[320].Max());
 
-                if (TempDDList[320][r] > avg_high_pixel)
+
+                // 고정픽셀과 유동픽셀의 기준을 얻기 위해 에지지점들외의 가장 값이 높은 픽셀을 구한다.
+                // 온도그래프 특성상 너무 왔다갔다 튀므로 기울기를 통해 구할 경우 변수가 많으므로 
+                // +-10픽셀정도 오차내에서 일관적으로 얻고자 하는 기준을 얻을 수 있는 픽셀 index를 그래프를 분석하여 설정(145, 232)
+                // 에지가 눈으로 봤을때 최대한 이미지의 가운데 오게끔 하면 됨
+                for (int r = 145; r < 232; r++) if (TempDDList[320][r] > STD_OF_STD) STD_OF_STD = TempDDList[320][r];
+
+                LIP_VARIANT_PIXEL = TempDDList[320].FindIndex(x => x > STD_OF_STD);
+
+                //고정되어있는 아래 롤부분의 픽셀과 변화하는 위의 Lip부분의 픽셀의 차를 구해준다.
+                gap_pixel = ROLL_FIXED_PIXEL - LIP_VARIANT_PIXEL;
+
+                if (service.Read("STANDARD", "UpperIdx") != null)
                 {
-                    avg_high_pixel = TempDDList[320][r];
+                    service.Write("STANDARD", "UpperIdx", LIP_VARIANT_PIXEL.ToString());
                 }
 
+                //고정되어있는 롤 pixel 에서 가변적인 윗부분 lip 픽셀을 빼준다음 해당 픽셀들을 모두 포함하므로 +1을 해준다.
+                return ROLL_FIXED_PIXEL - Math.Round(GetXLinearEquation(LIP_VARIANT_PIXEL, TempDDList[320][LIP_VARIANT_PIXEL], LIP_VARIANT_PIXEL - 1, TempDDList[320][LIP_VARIANT_PIXEL - 1], STD_OF_STD), 2) + 1;
             }
-
-            var UpperStd = TempDDList[320].FindIndex(x => x > avg_high_pixel);
-            gap_pixel = low_std - UpperStd;
-            Debug.Print("오른쪽 가장 높은값(index) : " + avg_high_pixel + "(" + TempDDList[320].FindLastIndex(x => x == avg_high_pixel).ToString() + "), " + "Left First Edge point : " + UpperStd.ToString());
-
-            service.Write("STANDARD", "UpperIdx", UpperStd.ToString());
-
-            subpixel = (TempDDList[320][UpperStd] - avg_high_pixel) / (TempDDList[320][UpperStd] - TempDDList[320][UpperStd - 1]);
-            Debug.Print("픽셀 수: " + gap_pixel.ToString() + ", Gap : " + (Math.Round((double)gap_pixel + subpixel, 2).ToString()));
-
-            return low_std - Math.Round(GetXLinearEquation(UpperStd, TempDDList[320][UpperStd], UpperStd - 1, TempDDList[320][UpperStd - 1], avg_high_pixel), 2);
-            //return (Math.Round((double)gap_pixel + subpixel, 2));
+            catch {
+                MessageBox.Show("이미 계산한 결과입니다.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+ 
         }
         #endregion
 
@@ -3310,19 +3433,18 @@ namespace JD_Proc
         #region [method - BottomLineSetting]
         private void BottomLineSetting()
         {
-            double pVariation = 0;
-            int c_PixelIndex = 0;
-            for (int i = 0; i < 478; i++)
-            {
-                if (Math.Abs(TempDDList[320][i] - TempDDList[320][i + 1]) > pVariation)
-                {
-                    c_PixelIndex = i;
-                    pVariation = Math.Abs(TempDDList[320][i] - TempDDList[320][i + 1]);
-                }
-            }
+            double STD_OF_STD = 0;
 
-            if (c_PixelIndex + 2 == int.Parse(service.Read("STANDARD", "BtmIdx"))) MessageBox.Show("OK, BottomLine Setting OK", "Setting OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else MessageBox.Show("Fail, BottomLine Setting Fail, Please Retry Setting", "Setting Fail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            try {
+                for (int r = 145; r < 232; r++)
+                { if (TempDDList[320][r] > STD_OF_STD) STD_OF_STD = TempDDList[320][r]; }
+
+                if (service.Read("STANDARD", "BtmIdx") != null) service.Write("STANDARD", "BtmIdx",TempDDList[320].FindLastIndex(x => x > STD_OF_STD).ToString());
+
+                MessageBox.Show("불러온 이미지의 Bottom Line을 Default로 설정하였습니다.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception) { 
+            }
         }
         #endregion
 
@@ -3454,5 +3576,9 @@ namespace JD_Proc
 
 
 
+        private void Btn_PLCACK_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -126,19 +126,6 @@ namespace JD_Proc
             panel2 = new Panel();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             panel3 = new Panel();
-            TxtBox_SelectedImgName = new ReaLTaiizor.Controls.NightTextBox();
-            Btn_SetSV = new ReaLTaiizor.Controls.CyberButton();
-            TextBox_InputSV = new ReaLTaiizor.Controls.CyberTextBox();
-            Lbl_TempController = new ReaLTaiizor.Controls.NightLabel();
-            Panel_CameraCenterLine_L = new ReaLTaiizor.Controls.Panel();
-            Panel_BrighestLine_L = new ReaLTaiizor.Controls.Panel();
-            dBtn_BrightestLine_L = new ReaLTaiizor.Controls.NightButton();
-            Btn_BottomLineSetting = new ReaLTaiizor.Controls.NightButton();
-            dBtn_CameraLine_L = new ReaLTaiizor.Controls.NightButton();
-            Label_SV_Value = new Label();
-            Label_PV_Value = new Label();
-            Label_SV = new Label();
-            Label_PV = new Label();
             tableLayoutPanel_Auto = new TableLayoutPanel();
             tableLayoutPanel5 = new TableLayoutPanel();
             pictureBox1_Auto = new PictureBox();
@@ -148,6 +135,15 @@ namespace JD_Proc
             dataGridView2 = new DataGridView();
             Chart_Auto_L = new Chart();
             Chart_Auto_R = new Chart();
+            Panel_CameraCenterLine_L = new ReaLTaiizor.Controls.Panel();
+            Panel_BrighestLine_L = new ReaLTaiizor.Controls.Panel();
+            dBtn_BrightestLine_L = new ReaLTaiizor.Controls.NightButton();
+            Btn_BottomLineSetting = new ReaLTaiizor.Controls.NightButton();
+            dBtn_CameraLine_L = new ReaLTaiizor.Controls.NightButton();
+            Label_SV_Value = new Label();
+            Label_PV_Value = new Label();
+            Label_SV = new Label();
+            Label_PV = new Label();
             dLabel_Ng_L = new ReaLTaiizor.Controls.NightLabel();
             panel4 = new Panel();
             Panel_CameraCenterLine_R = new ReaLTaiizor.Controls.Panel();
@@ -201,6 +197,11 @@ namespace JD_Proc
             dBtn_snap1 = new ReaLTaiizor.Controls.NightButton();
             dBtn_Process1 = new ReaLTaiizor.Controls.NightButton();
             dBtn_Measure1 = new ReaLTaiizor.Controls.NightButton();
+            Btn_PLCACK = new ReaLTaiizor.Controls.NightButton();
+            Lbl_TempController = new ReaLTaiizor.Controls.NightLabel();
+            Btn_SetSV = new ReaLTaiizor.Controls.CyberButton();
+            TextBox_InputSV = new ReaLTaiizor.Controls.CyberTextBox();
+            TxtBox_SelectedImgName = new ReaLTaiizor.Controls.NightTextBox();
             panel1 = new Panel();
             dLabel_autoState = new ReaLTaiizor.Controls.NightLabel();
             dBtn_settings = new ReaLTaiizor.Controls.Button();
@@ -417,10 +418,7 @@ namespace JD_Proc
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(2, 2, 2);
-            panel3.Controls.Add(TxtBox_SelectedImgName);
-            panel3.Controls.Add(Btn_SetSV);
-            panel3.Controls.Add(TextBox_InputSV);
-            panel3.Controls.Add(Lbl_TempController);
+            panel3.Controls.Add(tableLayoutPanel_Auto);
             panel3.Controls.Add(Panel_CameraCenterLine_L);
             panel3.Controls.Add(Panel_BrighestLine_L);
             panel3.Controls.Add(dBtn_BrightestLine_L);
@@ -430,7 +428,6 @@ namespace JD_Proc
             panel3.Controls.Add(Label_PV_Value);
             panel3.Controls.Add(Label_SV);
             panel3.Controls.Add(Label_PV);
-            panel3.Controls.Add(tableLayoutPanel_Auto);
             panel3.Controls.Add(dLabel_Ng_L);
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(dChart_L_5);
@@ -449,257 +446,15 @@ namespace JD_Proc
             panel3.Controls.Add(dTxt_cam1);
             panel3.Controls.Add(pictureBox1);
             panel3.Controls.Add(tableLayoutPanel3);
+            panel3.Controls.Add(Btn_PLCACK);
+            panel3.Controls.Add(Lbl_TempController);
+            panel3.Controls.Add(Btn_SetSV);
+            panel3.Controls.Add(TextBox_InputSV);
+            panel3.Controls.Add(TxtBox_SelectedImgName);
             panel3.Location = new Point(0, 99);
             panel3.Name = "panel3";
             panel3.Size = new Size(1920, 940);
             panel3.TabIndex = 8;
-            // 
-            // TxtBox_SelectedImgName
-            // 
-            TxtBox_SelectedImgName.ActiveBorderColor = Color.FromArgb(242, 93, 89);
-            TxtBox_SelectedImgName.BackColor = Color.FromArgb(43, 48, 67);
-            TxtBox_SelectedImgName.BaseBackColor = Color.FromArgb(43, 48, 67);
-            TxtBox_SelectedImgName.ColorBordersOnEnter = true;
-            TxtBox_SelectedImgName.DisableBorderColor = Color.FromArgb(60, 63, 80);
-            TxtBox_SelectedImgName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            TxtBox_SelectedImgName.ForeColor = Color.FromArgb(127, 131, 140);
-            TxtBox_SelectedImgName.Image = null;
-            TxtBox_SelectedImgName.Location = new Point(12, 9);
-            TxtBox_SelectedImgName.MaxLength = 32767;
-            TxtBox_SelectedImgName.Multiline = false;
-            TxtBox_SelectedImgName.Name = "TxtBox_SelectedImgName";
-            TxtBox_SelectedImgName.ReadOnly = false;
-            TxtBox_SelectedImgName.ShortcutsEnabled = true;
-            TxtBox_SelectedImgName.ShowBottomBorder = true;
-            TxtBox_SelectedImgName.ShowTopBorder = true;
-            TxtBox_SelectedImgName.Size = new Size(173, 48);
-            TxtBox_SelectedImgName.TabIndex = 46;
-            TxtBox_SelectedImgName.TextAlignment = HorizontalAlignment.Left;
-            TxtBox_SelectedImgName.UseSystemPasswordChar = false;
-            TxtBox_SelectedImgName.Watermark = "";
-            TxtBox_SelectedImgName.WatermarkColor = Color.FromArgb(116, 120, 129);
-            // 
-            // Btn_SetSV
-            // 
-            Btn_SetSV.Alpha = 20;
-            Btn_SetSV.BackColor = Color.Transparent;
-            Btn_SetSV.Background = true;
-            Btn_SetSV.Background_WidthPen = 4F;
-            Btn_SetSV.BackgroundPen = true;
-            Btn_SetSV.ColorBackground = Color.FromArgb(37, 52, 68);
-            Btn_SetSV.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            Btn_SetSV.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            Btn_SetSV.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            Btn_SetSV.ColorLighting = Color.FromArgb(29, 200, 238);
-            Btn_SetSV.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            Btn_SetSV.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            Btn_SetSV.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            Btn_SetSV.Effect_1 = true;
-            Btn_SetSV.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            Btn_SetSV.Effect_1_Transparency = 25;
-            Btn_SetSV.Effect_2 = true;
-            Btn_SetSV.Effect_2_ColorBackground = Color.White;
-            Btn_SetSV.Effect_2_Transparency = 20;
-            Btn_SetSV.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_SetSV.ForeColor = Color.FromArgb(245, 245, 245);
-            Btn_SetSV.Lighting = false;
-            Btn_SetSV.LinearGradient_Background = false;
-            Btn_SetSV.LinearGradientPen = false;
-            Btn_SetSV.Location = new Point(137, 355);
-            Btn_SetSV.Name = "Btn_SetSV";
-            Btn_SetSV.PenWidth = 15;
-            Btn_SetSV.Rounding = true;
-            Btn_SetSV.RoundingInt = 70;
-            Btn_SetSV.Size = new Size(48, 26);
-            Btn_SetSV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            Btn_SetSV.TabIndex = 45;
-            Btn_SetSV.Tag = "Set";
-            Btn_SetSV.TextButton = "Set";
-            Btn_SetSV.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            Btn_SetSV.Timer_Effect_1 = 5;
-            Btn_SetSV.Timer_RGB = 300;
-            Btn_SetSV.Click += Btn_SetSV_Click;
-            // 
-            // TextBox_InputSV
-            // 
-            TextBox_InputSV.Alpha = 20;
-            TextBox_InputSV.BackColor = Color.Transparent;
-            TextBox_InputSV.Background_WidthPen = 3F;
-            TextBox_InputSV.BackgroundPen = true;
-            TextBox_InputSV.ColorBackground = Color.FromArgb(37, 52, 68);
-            TextBox_InputSV.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            TextBox_InputSV.ColorLighting = Color.FromArgb(29, 200, 238);
-            TextBox_InputSV.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            TextBox_InputSV.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            TextBox_InputSV.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            TextBox_InputSV.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            TextBox_InputSV.ForeColor = Color.FromArgb(245, 245, 245);
-            TextBox_InputSV.Lighting = false;
-            TextBox_InputSV.LinearGradientPen = false;
-            TextBox_InputSV.Location = new Point(11, 355);
-            TextBox_InputSV.Name = "TextBox_InputSV";
-            TextBox_InputSV.PenWidth = 15;
-            TextBox_InputSV.RGB = false;
-            TextBox_InputSV.Rounding = true;
-            TextBox_InputSV.RoundingInt = 60;
-            TextBox_InputSV.Size = new Size(116, 27);
-            TextBox_InputSV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            TextBox_InputSV.TabIndex = 45;
-            TextBox_InputSV.Tag = "Cyber";
-            TextBox_InputSV.TextButton = "0";
-            TextBox_InputSV.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            TextBox_InputSV.Timer_RGB = 300;
-            // 
-            // Lbl_TempController
-            // 
-            Lbl_TempController.AutoSize = true;
-            Lbl_TempController.BackColor = Color.Transparent;
-            Lbl_TempController.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
-            Lbl_TempController.ForeColor = Color.FromArgb(114, 118, 127);
-            Lbl_TempController.Location = new Point(11, 272);
-            Lbl_TempController.Name = "Lbl_TempController";
-            Lbl_TempController.Size = new Size(182, 47);
-            Lbl_TempController.TabIndex = 45;
-            Lbl_TempController.Text = "TCon_OFF";
-            // 
-            // Panel_CameraCenterLine_L
-            // 
-            Panel_CameraCenterLine_L.BackColor = Color.Silver;
-            Panel_CameraCenterLine_L.EdgeColor = Color.FromArgb(32, 41, 50);
-            Panel_CameraCenterLine_L.Location = new Point(311, 319);
-            Panel_CameraCenterLine_L.Name = "Panel_CameraCenterLine_L";
-            Panel_CameraCenterLine_L.Padding = new Padding(5);
-            Panel_CameraCenterLine_L.Size = new Size(640, 3);
-            Panel_CameraCenterLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            Panel_CameraCenterLine_L.TabIndex = 44;
-            Panel_CameraCenterLine_L.Text = "panel5";
-            Panel_CameraCenterLine_L.Visible = false;
-            // 
-            // Panel_BrighestLine_L
-            // 
-            Panel_BrighestLine_L.BackColor = Color.Yellow;
-            Panel_BrighestLine_L.EdgeColor = Color.FromArgb(32, 41, 50);
-            Panel_BrighestLine_L.Location = new Point(311, 286);
-            Panel_BrighestLine_L.Name = "Panel_BrighestLine_L";
-            Panel_BrighestLine_L.Padding = new Padding(5);
-            Panel_BrighestLine_L.Size = new Size(640, 3);
-            Panel_BrighestLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            Panel_BrighestLine_L.TabIndex = 43;
-            Panel_BrighestLine_L.Text = "panel5";
-            Panel_BrighestLine_L.Visible = false;
-            // 
-            // dBtn_BrightestLine_L
-            // 
-            dBtn_BrightestLine_L.BackColor = Color.Transparent;
-            dBtn_BrightestLine_L.DialogResult = DialogResult.None;
-            dBtn_BrightestLine_L.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_BrightestLine_L.ForeColor = Color.Silver;
-            dBtn_BrightestLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_BrightestLine_L.HoverForeColor = Color.White;
-            dBtn_BrightestLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_BrightestLine_L.Location = new Point(856, 423);
-            dBtn_BrightestLine_L.MinimumSize = new Size(100, 50);
-            dBtn_BrightestLine_L.Name = "dBtn_BrightestLine_L";
-            dBtn_BrightestLine_L.NormalBackColor = Color.White;
-            dBtn_BrightestLine_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_BrightestLine_L.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_BrightestLine_L.PressedForeColor = Color.White;
-            dBtn_BrightestLine_L.Radius = 20;
-            dBtn_BrightestLine_L.Size = new Size(100, 50);
-            dBtn_BrightestLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_BrightestLine_L.TabIndex = 42;
-            dBtn_BrightestLine_L.Text = "BrighestLine";
-            dBtn_BrightestLine_L.Click += dBtn_BrightestLine_L_Click;
-            // 
-            // Btn_BottomLineSetting
-            // 
-            Btn_BottomLineSetting.BackColor = Color.Transparent;
-            Btn_BottomLineSetting.DialogResult = DialogResult.None;
-            Btn_BottomLineSetting.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_BottomLineSetting.ForeColor = Color.Silver;
-            Btn_BottomLineSetting.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            Btn_BottomLineSetting.HoverForeColor = Color.White;
-            Btn_BottomLineSetting.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            Btn_BottomLineSetting.Location = new Point(12, 207);
-            Btn_BottomLineSetting.MinimumSize = new Size(100, 50);
-            Btn_BottomLineSetting.Name = "Btn_BottomLineSetting";
-            Btn_BottomLineSetting.NormalBackColor = Color.White;
-            Btn_BottomLineSetting.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            Btn_BottomLineSetting.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            Btn_BottomLineSetting.PressedForeColor = Color.White;
-            Btn_BottomLineSetting.Radius = 20;
-            Btn_BottomLineSetting.Size = new Size(100, 50);
-            Btn_BottomLineSetting.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Btn_BottomLineSetting.TabIndex = 41;
-            Btn_BottomLineSetting.Text = "BtmLineSetting";
-            Btn_BottomLineSetting.Click += Btn_BottomLineSetting_Click;
-            // 
-            // dBtn_CameraLine_L
-            // 
-            dBtn_CameraLine_L.BackColor = Color.Transparent;
-            dBtn_CameraLine_L.DialogResult = DialogResult.None;
-            dBtn_CameraLine_L.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_CameraLine_L.ForeColor = Color.Silver;
-            dBtn_CameraLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_CameraLine_L.HoverForeColor = Color.White;
-            dBtn_CameraLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_CameraLine_L.Location = new Point(856, 371);
-            dBtn_CameraLine_L.MinimumSize = new Size(100, 50);
-            dBtn_CameraLine_L.Name = "dBtn_CameraLine_L";
-            dBtn_CameraLine_L.NormalBackColor = Color.White;
-            dBtn_CameraLine_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_CameraLine_L.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_CameraLine_L.PressedForeColor = Color.White;
-            dBtn_CameraLine_L.Radius = 20;
-            dBtn_CameraLine_L.Size = new Size(100, 50);
-            dBtn_CameraLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_CameraLine_L.TabIndex = 41;
-            dBtn_CameraLine_L.Text = "CenterLine";
-            dBtn_CameraLine_L.Click += dBtn_CameraLine_L_Click;
-            // 
-            // Label_SV_Value
-            // 
-            Label_SV_Value.AutoSize = true;
-            Label_SV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Label_SV_Value.ForeColor = SystemColors.ControlLightLight;
-            Label_SV_Value.Location = new Point(134, 325);
-            Label_SV_Value.Name = "Label_SV_Value";
-            Label_SV_Value.Size = new Size(19, 21);
-            Label_SV_Value.TabIndex = 40;
-            Label_SV_Value.Text = "0";
-            // 
-            // Label_PV_Value
-            // 
-            Label_PV_Value.AutoSize = true;
-            Label_PV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Label_PV_Value.ForeColor = SystemColors.ControlLightLight;
-            Label_PV_Value.Location = new Point(54, 325);
-            Label_PV_Value.Name = "Label_PV_Value";
-            Label_PV_Value.Size = new Size(19, 21);
-            Label_PV_Value.TabIndex = 40;
-            Label_PV_Value.Text = "0";
-            // 
-            // Label_SV
-            // 
-            Label_SV.AutoSize = true;
-            Label_SV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Label_SV.ForeColor = SystemColors.ControlDark;
-            Label_SV.Location = new Point(94, 322);
-            Label_SV.Name = "Label_SV";
-            Label_SV.Size = new Size(48, 25);
-            Label_SV.TabIndex = 39;
-            Label_SV.Text = "SV : ";
-            // 
-            // Label_PV
-            // 
-            Label_PV.AutoSize = true;
-            Label_PV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Label_PV.ForeColor = SystemColors.ControlDark;
-            Label_PV.Location = new Point(12, 323);
-            Label_PV.Name = "Label_PV";
-            Label_PV.Size = new Size(49, 25);
-            Label_PV.TabIndex = 38;
-            Label_PV.Text = "PV : ";
             // 
             // tableLayoutPanel_Auto
             // 
@@ -710,7 +465,7 @@ namespace JD_Proc
             tableLayoutPanel_Auto.Controls.Add(tableLayoutPanel6, 1, 0);
             tableLayoutPanel_Auto.Controls.Add(Chart_Auto_L, 0, 1);
             tableLayoutPanel_Auto.Controls.Add(Chart_Auto_R, 1, 1);
-            tableLayoutPanel_Auto.Location = new Point(200, 499);
+            tableLayoutPanel_Auto.Location = new Point(2, 4);
             tableLayoutPanel_Auto.Name = "tableLayoutPanel_Auto";
             tableLayoutPanel_Auto.RowCount = 2;
             tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
@@ -911,6 +666,145 @@ namespace JD_Proc
             Chart_Auto_R.Size = new Size(954, 370);
             Chart_Auto_R.TabIndex = 7;
             Chart_Auto_R.Text = "R_Camera_Gap";
+            // 
+            // Panel_CameraCenterLine_L
+            // 
+            Panel_CameraCenterLine_L.BackColor = Color.Silver;
+            Panel_CameraCenterLine_L.EdgeColor = Color.FromArgb(32, 41, 50);
+            Panel_CameraCenterLine_L.Location = new Point(311, 319);
+            Panel_CameraCenterLine_L.Name = "Panel_CameraCenterLine_L";
+            Panel_CameraCenterLine_L.Padding = new Padding(5);
+            Panel_CameraCenterLine_L.Size = new Size(640, 3);
+            Panel_CameraCenterLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Panel_CameraCenterLine_L.TabIndex = 44;
+            Panel_CameraCenterLine_L.Text = "panel5";
+            Panel_CameraCenterLine_L.Visible = false;
+            // 
+            // Panel_BrighestLine_L
+            // 
+            Panel_BrighestLine_L.BackColor = Color.Yellow;
+            Panel_BrighestLine_L.EdgeColor = Color.FromArgb(32, 41, 50);
+            Panel_BrighestLine_L.Location = new Point(311, 286);
+            Panel_BrighestLine_L.Name = "Panel_BrighestLine_L";
+            Panel_BrighestLine_L.Padding = new Padding(5);
+            Panel_BrighestLine_L.Size = new Size(640, 3);
+            Panel_BrighestLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Panel_BrighestLine_L.TabIndex = 43;
+            Panel_BrighestLine_L.Text = "panel5";
+            Panel_BrighestLine_L.Visible = false;
+            // 
+            // dBtn_BrightestLine_L
+            // 
+            dBtn_BrightestLine_L.BackColor = Color.Transparent;
+            dBtn_BrightestLine_L.DialogResult = DialogResult.None;
+            dBtn_BrightestLine_L.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_BrightestLine_L.ForeColor = Color.Silver;
+            dBtn_BrightestLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_BrightestLine_L.HoverForeColor = Color.White;
+            dBtn_BrightestLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_BrightestLine_L.Location = new Point(856, 423);
+            dBtn_BrightestLine_L.MinimumSize = new Size(100, 50);
+            dBtn_BrightestLine_L.Name = "dBtn_BrightestLine_L";
+            dBtn_BrightestLine_L.NormalBackColor = Color.White;
+            dBtn_BrightestLine_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_BrightestLine_L.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_BrightestLine_L.PressedForeColor = Color.White;
+            dBtn_BrightestLine_L.Radius = 20;
+            dBtn_BrightestLine_L.Size = new Size(100, 50);
+            dBtn_BrightestLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_BrightestLine_L.TabIndex = 42;
+            dBtn_BrightestLine_L.Text = "BrighestLine";
+            dBtn_BrightestLine_L.Click += dBtn_BrightestLine_L_Click;
+            // 
+            // Btn_BottomLineSetting
+            // 
+            Btn_BottomLineSetting.BackColor = Color.Transparent;
+            Btn_BottomLineSetting.DialogResult = DialogResult.None;
+            Btn_BottomLineSetting.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_BottomLineSetting.ForeColor = Color.Silver;
+            Btn_BottomLineSetting.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            Btn_BottomLineSetting.HoverForeColor = Color.White;
+            Btn_BottomLineSetting.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            Btn_BottomLineSetting.Location = new Point(12, 207);
+            Btn_BottomLineSetting.MinimumSize = new Size(100, 50);
+            Btn_BottomLineSetting.Name = "Btn_BottomLineSetting";
+            Btn_BottomLineSetting.NormalBackColor = Color.White;
+            Btn_BottomLineSetting.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            Btn_BottomLineSetting.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            Btn_BottomLineSetting.PressedForeColor = Color.White;
+            Btn_BottomLineSetting.Radius = 20;
+            Btn_BottomLineSetting.Size = new Size(100, 50);
+            Btn_BottomLineSetting.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Btn_BottomLineSetting.TabIndex = 41;
+            Btn_BottomLineSetting.Text = "BtmLineSetting";
+            Btn_BottomLineSetting.Click += Btn_BottomLineSetting_Click;
+            // 
+            // dBtn_CameraLine_L
+            // 
+            dBtn_CameraLine_L.BackColor = Color.Transparent;
+            dBtn_CameraLine_L.DialogResult = DialogResult.None;
+            dBtn_CameraLine_L.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_CameraLine_L.ForeColor = Color.Silver;
+            dBtn_CameraLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_CameraLine_L.HoverForeColor = Color.White;
+            dBtn_CameraLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_CameraLine_L.Location = new Point(856, 371);
+            dBtn_CameraLine_L.MinimumSize = new Size(100, 50);
+            dBtn_CameraLine_L.Name = "dBtn_CameraLine_L";
+            dBtn_CameraLine_L.NormalBackColor = Color.White;
+            dBtn_CameraLine_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_CameraLine_L.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_CameraLine_L.PressedForeColor = Color.White;
+            dBtn_CameraLine_L.Radius = 20;
+            dBtn_CameraLine_L.Size = new Size(100, 50);
+            dBtn_CameraLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_CameraLine_L.TabIndex = 41;
+            dBtn_CameraLine_L.Text = "CenterLine";
+            dBtn_CameraLine_L.Click += dBtn_CameraLine_L_Click;
+            // 
+            // Label_SV_Value
+            // 
+            Label_SV_Value.AutoSize = true;
+            Label_SV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_SV_Value.ForeColor = SystemColors.ControlLightLight;
+            Label_SV_Value.Location = new Point(134, 325);
+            Label_SV_Value.Name = "Label_SV_Value";
+            Label_SV_Value.Size = new Size(19, 21);
+            Label_SV_Value.TabIndex = 40;
+            Label_SV_Value.Text = "0";
+            // 
+            // Label_PV_Value
+            // 
+            Label_PV_Value.AutoSize = true;
+            Label_PV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_PV_Value.ForeColor = SystemColors.ControlLightLight;
+            Label_PV_Value.Location = new Point(54, 325);
+            Label_PV_Value.Name = "Label_PV_Value";
+            Label_PV_Value.Size = new Size(19, 21);
+            Label_PV_Value.TabIndex = 40;
+            Label_PV_Value.Text = "0";
+            // 
+            // Label_SV
+            // 
+            Label_SV.AutoSize = true;
+            Label_SV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_SV.ForeColor = SystemColors.ControlDark;
+            Label_SV.Location = new Point(94, 322);
+            Label_SV.Name = "Label_SV";
+            Label_SV.Size = new Size(48, 25);
+            Label_SV.TabIndex = 39;
+            Label_SV.Text = "SV : ";
+            // 
+            // Label_PV
+            // 
+            Label_PV.AutoSize = true;
+            Label_PV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_PV.ForeColor = SystemColors.ControlDark;
+            Label_PV.Location = new Point(12, 323);
+            Label_PV.Name = "Label_PV";
+            Label_PV.Size = new Size(49, 25);
+            Label_PV.TabIndex = 38;
+            Label_PV.Text = "PV : ";
             // 
             // dLabel_Ng_L
             // 
@@ -1936,6 +1830,137 @@ namespace JD_Proc
             dBtn_Measure1.TabIndex = 36;
             dBtn_Measure1.Text = "Measure";
             dBtn_Measure1.Click += dBtn_Measure1_Click;
+            // 
+            // Btn_PLCACK
+            // 
+            Btn_PLCACK.BackColor = Color.Transparent;
+            Btn_PLCACK.DialogResult = DialogResult.None;
+            Btn_PLCACK.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_PLCACK.ForeColor = Color.Silver;
+            Btn_PLCACK.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            Btn_PLCACK.HoverForeColor = Color.White;
+            Btn_PLCACK.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            Btn_PLCACK.Location = new Point(104, 207);
+            Btn_PLCACK.MinimumSize = new Size(100, 50);
+            Btn_PLCACK.Name = "Btn_PLCACK";
+            Btn_PLCACK.NormalBackColor = Color.White;
+            Btn_PLCACK.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            Btn_PLCACK.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            Btn_PLCACK.PressedForeColor = Color.White;
+            Btn_PLCACK.Radius = 20;
+            Btn_PLCACK.Size = new Size(100, 50);
+            Btn_PLCACK.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Btn_PLCACK.TabIndex = 47;
+            Btn_PLCACK.Text = "PLC_ACK_TEST";
+            Btn_PLCACK.Click += Btn_PLCACK_Click;
+            // 
+            // Lbl_TempController
+            // 
+            Lbl_TempController.AutoSize = true;
+            Lbl_TempController.BackColor = Color.Transparent;
+            Lbl_TempController.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
+            Lbl_TempController.ForeColor = Color.FromArgb(114, 118, 127);
+            Lbl_TempController.Location = new Point(11, 272);
+            Lbl_TempController.Name = "Lbl_TempController";
+            Lbl_TempController.Size = new Size(182, 47);
+            Lbl_TempController.TabIndex = 45;
+            Lbl_TempController.Text = "TCon_OFF";
+            // 
+            // Btn_SetSV
+            // 
+            Btn_SetSV.Alpha = 20;
+            Btn_SetSV.BackColor = Color.Transparent;
+            Btn_SetSV.Background = true;
+            Btn_SetSV.Background_WidthPen = 4F;
+            Btn_SetSV.BackgroundPen = true;
+            Btn_SetSV.ColorBackground = Color.FromArgb(37, 52, 68);
+            Btn_SetSV.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            Btn_SetSV.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            Btn_SetSV.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            Btn_SetSV.ColorLighting = Color.FromArgb(29, 200, 238);
+            Btn_SetSV.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            Btn_SetSV.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            Btn_SetSV.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            Btn_SetSV.Effect_1 = true;
+            Btn_SetSV.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            Btn_SetSV.Effect_1_Transparency = 25;
+            Btn_SetSV.Effect_2 = true;
+            Btn_SetSV.Effect_2_ColorBackground = Color.White;
+            Btn_SetSV.Effect_2_Transparency = 20;
+            Btn_SetSV.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_SetSV.ForeColor = Color.FromArgb(245, 245, 245);
+            Btn_SetSV.Lighting = false;
+            Btn_SetSV.LinearGradient_Background = false;
+            Btn_SetSV.LinearGradientPen = false;
+            Btn_SetSV.Location = new Point(137, 355);
+            Btn_SetSV.Name = "Btn_SetSV";
+            Btn_SetSV.PenWidth = 15;
+            Btn_SetSV.Rounding = true;
+            Btn_SetSV.RoundingInt = 70;
+            Btn_SetSV.Size = new Size(48, 26);
+            Btn_SetSV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Btn_SetSV.TabIndex = 45;
+            Btn_SetSV.Tag = "Set";
+            Btn_SetSV.TextButton = "Set";
+            Btn_SetSV.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            Btn_SetSV.Timer_Effect_1 = 5;
+            Btn_SetSV.Timer_RGB = 300;
+            Btn_SetSV.Click += Btn_SetSV_Click;
+            // 
+            // TextBox_InputSV
+            // 
+            TextBox_InputSV.Alpha = 20;
+            TextBox_InputSV.BackColor = Color.Transparent;
+            TextBox_InputSV.Background_WidthPen = 3F;
+            TextBox_InputSV.BackgroundPen = true;
+            TextBox_InputSV.ColorBackground = Color.FromArgb(37, 52, 68);
+            TextBox_InputSV.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            TextBox_InputSV.ColorLighting = Color.FromArgb(29, 200, 238);
+            TextBox_InputSV.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            TextBox_InputSV.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            TextBox_InputSV.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            TextBox_InputSV.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBox_InputSV.ForeColor = Color.FromArgb(245, 245, 245);
+            TextBox_InputSV.Lighting = false;
+            TextBox_InputSV.LinearGradientPen = false;
+            TextBox_InputSV.Location = new Point(11, 355);
+            TextBox_InputSV.Name = "TextBox_InputSV";
+            TextBox_InputSV.PenWidth = 15;
+            TextBox_InputSV.RGB = false;
+            TextBox_InputSV.Rounding = true;
+            TextBox_InputSV.RoundingInt = 60;
+            TextBox_InputSV.Size = new Size(116, 27);
+            TextBox_InputSV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            TextBox_InputSV.TabIndex = 45;
+            TextBox_InputSV.Tag = "Cyber";
+            TextBox_InputSV.TextButton = "0";
+            TextBox_InputSV.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            TextBox_InputSV.Timer_RGB = 300;
+            // 
+            // TxtBox_SelectedImgName
+            // 
+            TxtBox_SelectedImgName.ActiveBorderColor = Color.FromArgb(242, 93, 89);
+            TxtBox_SelectedImgName.BackColor = Color.FromArgb(43, 48, 67);
+            TxtBox_SelectedImgName.BaseBackColor = Color.FromArgb(43, 48, 67);
+            TxtBox_SelectedImgName.ColorBordersOnEnter = true;
+            TxtBox_SelectedImgName.DisableBorderColor = Color.FromArgb(60, 63, 80);
+            TxtBox_SelectedImgName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TxtBox_SelectedImgName.ForeColor = Color.FromArgb(127, 131, 140);
+            TxtBox_SelectedImgName.Image = null;
+            TxtBox_SelectedImgName.Location = new Point(12, 9);
+            TxtBox_SelectedImgName.MaxLength = 32767;
+            TxtBox_SelectedImgName.Multiline = false;
+            TxtBox_SelectedImgName.Name = "TxtBox_SelectedImgName";
+            TxtBox_SelectedImgName.ReadOnly = false;
+            TxtBox_SelectedImgName.ShortcutsEnabled = true;
+            TxtBox_SelectedImgName.ShowBottomBorder = true;
+            TxtBox_SelectedImgName.ShowTopBorder = true;
+            TxtBox_SelectedImgName.Size = new Size(173, 48);
+            TxtBox_SelectedImgName.TabIndex = 46;
+            TxtBox_SelectedImgName.TextAlignment = HorizontalAlignment.Left;
+            TxtBox_SelectedImgName.UseSystemPasswordChar = false;
+            TxtBox_SelectedImgName.Watermark = "";
+            TxtBox_SelectedImgName.WatermarkColor = Color.FromArgb(116, 120, 129);
             // 
             // panel1
             // 
@@ -3874,5 +3899,6 @@ namespace JD_Proc
         private ReaLTaiizor.Controls.CyberButton Btn_SetSV;
         private ReaLTaiizor.Controls.CyberTextBox TextBox_InputSV;
         private ReaLTaiizor.Controls.NightTextBox TxtBox_SelectedImgName;
+        private ReaLTaiizor.Controls.NightButton Btn_PLCACK;
     }
 }

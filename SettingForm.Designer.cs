@@ -495,9 +495,9 @@
             TxtBox_JogPosition.ForeColor = Color.FromArgb(220, 220, 220);
             TxtBox_JogPosition.Location = new Point(107, 64);
             TxtBox_JogPosition.Name = "TxtBox_JogPosition";
-            TxtBox_JogPosition.Size = new Size(52, 23);
+            TxtBox_JogPosition.Size = new Size(55, 23);
             TxtBox_JogPosition.TabIndex = 27;
-            TxtBox_JogPosition.Text = "0";
+            TxtBox_JogPosition.Text = "0.0001mm";
             // 
             // TxtBox_JogVelocity
             // 
@@ -506,9 +506,9 @@
             TxtBox_JogVelocity.ForeColor = Color.FromArgb(220, 220, 220);
             TxtBox_JogVelocity.Location = new Point(106, 33);
             TxtBox_JogVelocity.Name = "TxtBox_JogVelocity";
-            TxtBox_JogVelocity.Size = new Size(53, 23);
+            TxtBox_JogVelocity.Size = new Size(56, 23);
             TxtBox_JogVelocity.TabIndex = 25;
-            TxtBox_JogVelocity.Text = "0";
+            TxtBox_JogVelocity.Text = "0.01mm";
             // 
             // thunderGroupBox7
             // 
@@ -546,7 +546,6 @@
             Btn_JogOriginal.Size = new Size(44, 49);
             Btn_JogOriginal.TabIndex = 10;
             Btn_JogOriginal.TextAlignment = StringAlignment.Center;
-            //Btn_JogOriginal.Click += Btn_JogOriginal_Click;
             // 
             // Btn_JogReverse
             // 
@@ -566,7 +565,6 @@
             Btn_JogReverse.Size = new Size(45, 62);
             Btn_JogReverse.TabIndex = 9;
             Btn_JogReverse.TextAlignment = StringAlignment.Center;
-            //Btn_JogReverse.Click += Btn_JogReverse_Click;
             // 
             // thunderGroupBox4
             // 

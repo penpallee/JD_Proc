@@ -457,12 +457,12 @@ namespace JD_Proc
 
         private void Btn_SetJogVelocity_Click(object sender, EventArgs e)
         {
-            _form1.PLCMotorSetVelocityValue();
+            _form1.PLCMotorSetVelocityValue(int.Parse(TxtBox_JogVelocity.Text));
         }
 
         private void Btn_SetJogPosition_Click(object sender, EventArgs e)
         {
-            _form1.PLCMotorSetPositionValue();
+            _form1.PLCMotorSetPositionValue(int.Parse(TxtBox_JogPosition.Text));
         }
 
         private void Btn_MoveToPosition_Click(object sender, EventArgs e)
@@ -478,6 +478,8 @@ namespace JD_Proc
 
         private void Btn_AutoMoveToSavePosition_Click(object sender, EventArgs e)
         {
+            TxtBox_JogVelocity.Text = service.Read("PLC_JOG_OFFSET", "VELOCITY");
+            TxtBox_JogPosition.Text = service.Read("PLC_JOG_OFFSET", "POSITION");
             _form1.PLCJogAutoMoveToSavedValue();
         }
 

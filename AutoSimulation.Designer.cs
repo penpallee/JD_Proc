@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            Btn_VISION_End = new Button();
+            Btn_VISION_Busy = new Button();
+            Btn_VISION_Ready = new Button();
+            Btn_PLC_StartL = new Button();
+            Btn_VISION_Auto = new Button();
             label1 = new Label();
             label2 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button6 = new Button();
-            button8 = new Button();
+            Btn_PLC_Auto = new Button();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,14 +45,14 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(button8, 1, 4);
-            tableLayoutPanel1.Controls.Add(button6, 1, 3);
-            tableLayoutPanel1.Controls.Add(button4, 1, 2);
-            tableLayoutPanel1.Controls.Add(button3, 0, 2);
-            tableLayoutPanel1.Controls.Add(button2, 1, 1);
+            tableLayoutPanel1.Controls.Add(Btn_VISION_End, 1, 4);
+            tableLayoutPanel1.Controls.Add(Btn_VISION_Busy, 1, 3);
+            tableLayoutPanel1.Controls.Add(Btn_VISION_Ready, 1, 2);
+            tableLayoutPanel1.Controls.Add(Btn_PLC_StartL, 0, 2);
+            tableLayoutPanel1.Controls.Add(Btn_VISION_Auto, 1, 1);
             tableLayoutPanel1.Controls.Add(label1, 0, 0);
             tableLayoutPanel1.Controls.Add(label2, 1, 0);
-            tableLayoutPanel1.Controls.Add(button1, 0, 1);
+            tableLayoutPanel1.Controls.Add(Btn_PLC_Auto, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -64,6 +64,66 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.Size = new Size(800, 450);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // Btn_VISION_End
+            // 
+            Btn_VISION_End.Dock = DockStyle.Fill;
+            Btn_VISION_End.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_VISION_End.Location = new Point(403, 363);
+            Btn_VISION_End.Name = "Btn_VISION_End";
+            Btn_VISION_End.Size = new Size(394, 84);
+            Btn_VISION_End.TabIndex = 9;
+            Btn_VISION_End.Text = "VISION_END";
+            Btn_VISION_End.UseVisualStyleBackColor = true;
+            Btn_VISION_End.Click += Btn_VISION_End_Click;
+            // 
+            // Btn_VISION_Busy
+            // 
+            Btn_VISION_Busy.Dock = DockStyle.Fill;
+            Btn_VISION_Busy.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_VISION_Busy.Location = new Point(403, 273);
+            Btn_VISION_Busy.Name = "Btn_VISION_Busy";
+            Btn_VISION_Busy.Size = new Size(394, 84);
+            Btn_VISION_Busy.TabIndex = 7;
+            Btn_VISION_Busy.Text = "VISION_BUSY";
+            Btn_VISION_Busy.UseVisualStyleBackColor = true;
+            Btn_VISION_Busy.Click += Btn_VISION_Busy_Click;
+            // 
+            // Btn_VISION_Ready
+            // 
+            Btn_VISION_Ready.Dock = DockStyle.Fill;
+            Btn_VISION_Ready.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_VISION_Ready.Location = new Point(403, 183);
+            Btn_VISION_Ready.Name = "Btn_VISION_Ready";
+            Btn_VISION_Ready.Size = new Size(394, 84);
+            Btn_VISION_Ready.TabIndex = 5;
+            Btn_VISION_Ready.Text = "VISION_READY";
+            Btn_VISION_Ready.UseVisualStyleBackColor = true;
+            Btn_VISION_Ready.Click += Btn_VISION_Ready_Click;
+            // 
+            // Btn_PLC_StartL
+            // 
+            Btn_PLC_StartL.Dock = DockStyle.Fill;
+            Btn_PLC_StartL.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_PLC_StartL.Location = new Point(3, 183);
+            Btn_PLC_StartL.Name = "Btn_PLC_StartL";
+            Btn_PLC_StartL.Size = new Size(394, 84);
+            Btn_PLC_StartL.TabIndex = 4;
+            Btn_PLC_StartL.Text = "PLC_START_L";
+            Btn_PLC_StartL.UseVisualStyleBackColor = true;
+            Btn_PLC_StartL.Click += Btn_PLC_StartL_Click;
+            // 
+            // Btn_VISION_Auto
+            // 
+            Btn_VISION_Auto.Dock = DockStyle.Fill;
+            Btn_VISION_Auto.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_VISION_Auto.Location = new Point(403, 93);
+            Btn_VISION_Auto.Name = "Btn_VISION_Auto";
+            Btn_VISION_Auto.Size = new Size(394, 84);
+            Btn_VISION_Auto.TabIndex = 3;
+            Btn_VISION_Auto.Text = "VISION_AUTO";
+            Btn_VISION_Auto.UseVisualStyleBackColor = true;
+            Btn_VISION_Auto.Click += Btn_VISION_Auto_Click;
             // 
             // label1
             // 
@@ -89,71 +149,17 @@
             label2.Text = "VISION_SIGNAL";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // Btn_PLC_Auto
             // 
-            button1.Dock = DockStyle.Fill;
-            button1.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(3, 93);
-            button1.Name = "button1";
-            button1.Size = new Size(394, 84);
-            button1.TabIndex = 2;
-            button1.Text = "PLC_AUTO";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Dock = DockStyle.Fill;
-            button2.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(403, 93);
-            button2.Name = "button2";
-            button2.Size = new Size(394, 84);
-            button2.TabIndex = 3;
-            button2.Text = "VISION_AUTO";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Dock = DockStyle.Fill;
-            button3.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(3, 183);
-            button3.Name = "button3";
-            button3.Size = new Size(394, 84);
-            button3.TabIndex = 4;
-            button3.Text = "PLC_START_L";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Dock = DockStyle.Fill;
-            button4.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.Location = new Point(403, 183);
-            button4.Name = "button4";
-            button4.Size = new Size(394, 84);
-            button4.TabIndex = 5;
-            button4.Text = "VISION_READY";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            button6.Dock = DockStyle.Fill;
-            button6.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            button6.Location = new Point(403, 273);
-            button6.Name = "button6";
-            button6.Size = new Size(394, 84);
-            button6.TabIndex = 7;
-            button6.Text = "VISION_BUSY";
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            button8.Dock = DockStyle.Fill;
-            button8.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            button8.Location = new Point(403, 363);
-            button8.Name = "button8";
-            button8.Size = new Size(394, 84);
-            button8.TabIndex = 9;
-            button8.Text = "VISION_END";
-            button8.UseVisualStyleBackColor = true;
+            Btn_PLC_Auto.Dock = DockStyle.Fill;
+            Btn_PLC_Auto.Font = new Font("맑은 고딕", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_PLC_Auto.Location = new Point(3, 93);
+            Btn_PLC_Auto.Name = "Btn_PLC_Auto";
+            Btn_PLC_Auto.Size = new Size(394, 84);
+            Btn_PLC_Auto.TabIndex = 2;
+            Btn_PLC_Auto.Text = "PLC_AUTO";
+            Btn_PLC_Auto.UseVisualStyleBackColor = true;
+            Btn_PLC_Auto.Click += Btn_PLC_Auto_Click;
             // 
             // AutoSimulation
             // 
@@ -171,13 +177,13 @@
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private Button button8;
-        private Button button6;
-        private Button button4;
-        private Button button3;
-        private Button button2;
+        private Button Btn_VISION_End;
+        private Button Btn_VISION_Busy;
+        private Button Btn_VISION_Ready;
+        private Button Btn_PLC_StartL;
+        private Button Btn_VISION_Auto;
         private Label label1;
         private Label label2;
-        private Button button1;
+        private Button Btn_PLC_Auto;
     }
 }
