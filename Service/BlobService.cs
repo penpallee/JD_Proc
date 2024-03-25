@@ -12,6 +12,7 @@ namespace JD_Proc.Service
 
         public List<Model.Blob> FindBlobs(Bitmap image, int thresholdValue)
         {
+
             List<Model.Blob> blobs = new List<Model.Blob>();
             int width = image.Width;
             int height = image.Height;
@@ -21,11 +22,13 @@ namespace JD_Proc.Service
             {
                 for (int y = 0; y < height; y++)
                 {
-                    if (!visited[x, y] && image.GetPixel(x, y).R > thresholdValue)
-                    {
-                        Model.Blob blob = ExtractBlob(image, visited, x, y, thresholdValue);
-                        blobs.Add(blob);
-                    }
+                    
+                        if (!visited[x, y] && image.GetPixel(x, y).R > thresholdValue)
+                        {
+                            Model.Blob blob = ExtractBlob(image, visited, x, y, thresholdValue);
+                            blobs.Add(blob);
+                        }
+                    
                 }
             }
 

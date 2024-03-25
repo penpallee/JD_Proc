@@ -97,6 +97,7 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             radioButton4 = new RadioButton();
             radioButton5 = new RadioButton();
+            TxtBox_JogCurrPosition = new TextBox();
             foxLabel1 = new ReaLTaiizor.Controls.FoxLabel();
             foxLabel2 = new ReaLTaiizor.Controls.FoxLabel();
             foxLabel3 = new ReaLTaiizor.Controls.FoxLabel();
@@ -443,6 +444,7 @@
             thunderGroupBox9.BodyColorB = Color.FromArgb(30, 30, 30);
             thunderGroupBox9.BodyColorC = Color.FromArgb(46, 46, 46);
             thunderGroupBox9.BodyColorD = Color.FromArgb(50, 55, 58);
+            thunderGroupBox9.Controls.Add(TxtBox_JogCurrPosition);
             thunderGroupBox9.Controls.Add(Btn_SetJogPosition);
             thunderGroupBox9.Controls.Add(Btn_SetJogVelocity);
             thunderGroupBox9.Controls.Add(TxtBox_JogPosition);
@@ -452,7 +454,7 @@
             thunderGroupBox9.ForeColor = Color.WhiteSmoke;
             thunderGroupBox9.Location = new Point(320, 336);
             thunderGroupBox9.Name = "thunderGroupBox9";
-            thunderGroupBox9.Size = new Size(217, 100);
+            thunderGroupBox9.Size = new Size(270, 100);
             thunderGroupBox9.TabIndex = 31;
             thunderGroupBox9.Text = "thunderGroupBox9";
             // 
@@ -482,7 +484,7 @@
             Btn_SetJogVelocity.ForeColor = Color.FromArgb(40, 218, 255);
             Btn_SetJogVelocity.Location = new Point(168, 33);
             Btn_SetJogVelocity.Name = "Btn_SetJogVelocity";
-            Btn_SetJogVelocity.Size = new Size(35, 27);
+            Btn_SetJogVelocity.Size = new Size(34, 27);
             Btn_SetJogVelocity.TabIndex = 28;
             Btn_SetJogVelocity.Text = "SET";
             Btn_SetJogVelocity.UseVisualStyleBackColor = true;
@@ -495,9 +497,9 @@
             TxtBox_JogPosition.ForeColor = Color.FromArgb(220, 220, 220);
             TxtBox_JogPosition.Location = new Point(107, 64);
             TxtBox_JogPosition.Name = "TxtBox_JogPosition";
+            TxtBox_JogPosition.PlaceholderText = "0.0001mm";
             TxtBox_JogPosition.Size = new Size(55, 23);
             TxtBox_JogPosition.TabIndex = 27;
-            TxtBox_JogPosition.Text = "0.0001mm";
             // 
             // TxtBox_JogVelocity
             // 
@@ -506,9 +508,9 @@
             TxtBox_JogVelocity.ForeColor = Color.FromArgb(220, 220, 220);
             TxtBox_JogVelocity.Location = new Point(106, 33);
             TxtBox_JogVelocity.Name = "TxtBox_JogVelocity";
+            TxtBox_JogVelocity.PlaceholderText = "0.01mm";
             TxtBox_JogVelocity.Size = new Size(56, 23);
             TxtBox_JogVelocity.TabIndex = 25;
-            TxtBox_JogVelocity.Text = "0.01mm";
             // 
             // thunderGroupBox7
             // 
@@ -521,10 +523,10 @@
             thunderGroupBox7.Controls.Add(Btn_JogReverse);
             thunderGroupBox7.Font = new Font("맑은 고딕", 6F, FontStyle.Regular, GraphicsUnit.Point);
             thunderGroupBox7.ForeColor = Color.WhiteSmoke;
-            thunderGroupBox7.Location = new Point(542, 335);
+            thunderGroupBox7.Location = new Point(543, 233);
             thunderGroupBox7.Margin = new Padding(2);
             thunderGroupBox7.Name = "thunderGroupBox7";
-            thunderGroupBox7.Size = new Size(50, 133);
+            thunderGroupBox7.Size = new Size(50, 98);
             thunderGroupBox7.TabIndex = 30;
             thunderGroupBox7.Text = "Jog                     1";
             // 
@@ -538,14 +540,16 @@
             Btn_JogOriginal.Image = (Image)resources.GetObject("Btn_JogOriginal.Image");
             Btn_JogOriginal.ImageAlign = ContentAlignment.MiddleCenter;
             Btn_JogOriginal.InactiveColor = Color.FromArgb(32, 34, 37);
-            Btn_JogOriginal.Location = new Point(3, 26);
+            Btn_JogOriginal.Location = new Point(11, 29);
             Btn_JogOriginal.Margin = new Padding(2);
             Btn_JogOriginal.Name = "Btn_JogOriginal";
             Btn_JogOriginal.PressedBorderColor = Color.FromArgb(165, 37, 37);
             Btn_JogOriginal.PressedColor = Color.FromArgb(165, 37, 37);
-            Btn_JogOriginal.Size = new Size(44, 49);
+            Btn_JogOriginal.Size = new Size(26, 29);
             Btn_JogOriginal.TabIndex = 10;
             Btn_JogOriginal.TextAlignment = StringAlignment.Center;
+            Btn_JogOriginal.MouseDown += Btn_JogOriginal_MouseDown_1;
+            Btn_JogOriginal.MouseUp += Btn_JogOriginal_MouseUp_1;
             // 
             // Btn_JogReverse
             // 
@@ -557,14 +561,16 @@
             Btn_JogReverse.Image = (Image)resources.GetObject("Btn_JogReverse.Image");
             Btn_JogReverse.ImageAlign = ContentAlignment.MiddleCenter;
             Btn_JogReverse.InactiveColor = Color.FromArgb(32, 34, 37);
-            Btn_JogReverse.Location = new Point(2, 66);
+            Btn_JogReverse.Location = new Point(11, 62);
             Btn_JogReverse.Margin = new Padding(2);
             Btn_JogReverse.Name = "Btn_JogReverse";
             Btn_JogReverse.PressedBorderColor = Color.FromArgb(165, 37, 37);
             Btn_JogReverse.PressedColor = Color.FromArgb(165, 37, 37);
-            Btn_JogReverse.Size = new Size(45, 62);
+            Btn_JogReverse.Size = new Size(26, 28);
             Btn_JogReverse.TabIndex = 9;
             Btn_JogReverse.TextAlignment = StringAlignment.Center;
+            Btn_JogReverse.MouseDown += Btn_JogReverse_MouseDown_1;
+            Btn_JogReverse.MouseUp += Btn_JogReverse_MouseUp_1;
             // 
             // thunderGroupBox4
             // 
@@ -581,7 +587,7 @@
             thunderGroupBox4.Location = new Point(320, 233);
             thunderGroupBox4.Margin = new Padding(2);
             thunderGroupBox4.Name = "thunderGroupBox4";
-            thunderGroupBox4.Size = new Size(270, 98);
+            thunderGroupBox4.Size = new Size(217, 98);
             thunderGroupBox4.TabIndex = 29;
             thunderGroupBox4.Text = "Jog 축 선택";
             // 
@@ -595,7 +601,7 @@
             Btn_Jog_R_Z.Image = null;
             Btn_Jog_R_Z.ImageAlign = ContentAlignment.MiddleLeft;
             Btn_Jog_R_Z.InactiveColor = Color.FromArgb(32, 34, 37);
-            Btn_Jog_R_Z.Location = new Point(137, 62);
+            Btn_Jog_R_Z.Location = new Point(111, 62);
             Btn_Jog_R_Z.Name = "Btn_Jog_R_Z";
             Btn_Jog_R_Z.PressedBorderColor = Color.FromArgb(165, 37, 37);
             Btn_Jog_R_Z.PressedColor = Color.FromArgb(165, 37, 37);
@@ -615,7 +621,7 @@
             Btn_Jog_L_Z.Image = null;
             Btn_Jog_L_Z.ImageAlign = ContentAlignment.MiddleLeft;
             Btn_Jog_L_Z.InactiveColor = Color.FromArgb(32, 34, 37);
-            Btn_Jog_L_Z.Location = new Point(40, 62);
+            Btn_Jog_L_Z.Location = new Point(14, 62);
             Btn_Jog_L_Z.Name = "Btn_Jog_L_Z";
             Btn_Jog_L_Z.PressedBorderColor = Color.FromArgb(165, 37, 37);
             Btn_Jog_L_Z.PressedColor = Color.FromArgb(165, 37, 37);
@@ -635,7 +641,7 @@
             Btn_Jog_R_Y.Image = null;
             Btn_Jog_R_Y.ImageAlign = ContentAlignment.MiddleLeft;
             Btn_Jog_R_Y.InactiveColor = Color.FromArgb(32, 34, 37);
-            Btn_Jog_R_Y.Location = new Point(137, 33);
+            Btn_Jog_R_Y.Location = new Point(111, 33);
             Btn_Jog_R_Y.Name = "Btn_Jog_R_Y";
             Btn_Jog_R_Y.PressedBorderColor = Color.FromArgb(165, 37, 37);
             Btn_Jog_R_Y.PressedColor = Color.FromArgb(165, 37, 37);
@@ -655,7 +661,7 @@
             Btn_Jog_L_Y.Image = null;
             Btn_Jog_L_Y.ImageAlign = ContentAlignment.MiddleLeft;
             Btn_Jog_L_Y.InactiveColor = Color.FromArgb(32, 34, 37);
-            Btn_Jog_L_Y.Location = new Point(40, 33);
+            Btn_Jog_L_Y.Location = new Point(14, 33);
             Btn_Jog_L_Y.Name = "Btn_Jog_L_Y";
             Btn_Jog_L_Y.PressedBorderColor = Color.FromArgb(165, 37, 37);
             Btn_Jog_L_Y.PressedColor = Color.FromArgb(165, 37, 37);
@@ -1205,6 +1211,13 @@
             radioButton5.TabStop = true;
             radioButton5.UseVisualStyleBackColor = true;
             // 
+            // TxtBox_JogCurrPosition
+            // 
+            TxtBox_JogCurrPosition.Location = new Point(208, 65);
+            TxtBox_JogCurrPosition.Name = "TxtBox_JogCurrPosition";
+            TxtBox_JogCurrPosition.Size = new Size(52, 23);
+            TxtBox_JogCurrPosition.TabIndex = 31;
+            // 
             // SettingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1291,5 +1304,6 @@
         private ReaLTaiizor.Controls.CrownTextBox TxtBox_JogVelocity;
         private ReaLTaiizor.Controls.DreamButton Btn_JogValueSave;
         private ReaLTaiizor.Controls.DreamButton Btn_AutoMoveToSavePosition;
+        private TextBox TxtBox_JogCurrPosition;
     }
 }

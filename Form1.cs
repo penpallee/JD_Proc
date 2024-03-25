@@ -14,11 +14,10 @@ using JD_Proc.Lock;
 using JD_Proc.Log;
 using JD_Proc.Service;
 using JD_Proc.TempController;
-using System;
 using System.Data;
-using System.Data.Common;
 using System.Diagnostics;
 using System.Drawing.Imaging;
+using System.Runtime.Remoting;
 using System.Timers;
 using System.Windows.Forms.DataVisualization.Charting;
 using static JD_Proc.Log.LogManager;
@@ -61,14 +60,21 @@ namespace JD_Proc
         Bitmap cloneBmap_L;
         Bitmap cloneBmap_R;
 
+        Bitmap AcloneBmap_L;
+        Bitmap AcloneBmap_R;
+
         Bitmap grayBmap_L;
         Bitmap grayBmap_R;
+
+        Bitmap AgrayBmap_L;
+        Bitmap AgrayBmap_R;
 
         int brighestDrawLine_L = 0;
         int brighestDrawLine_R = 0;
 
         public static PLC.Melsec _MELSEC;
         public static PLC.Melsec MELSEC_JOG;
+        public static PLC.Melsec MELSEC_JOG_Timer;
         public static PLC.Melsec _MELSEC_HEART;
 
         double[,] _tempData_L = new double[640, 480];
@@ -120,6 +126,9 @@ namespace JD_Proc
         DataTable dataTable_L = new DataTable();
         DataTable dataTable_R = new DataTable();
 
+        private Series Auto_Series_L = new Series();
+        private Series Auto_Series_R;
+
         Rockey2 rockey;
 
         string state = "manual";
@@ -138,6 +147,7 @@ namespace JD_Proc
         System.Timers.Timer _AutoTimer = new System.Timers.Timer();
         System.Threading.Timer _HeartbitTimer;
         System.Threading.Timer _TempControllerTimer;
+        System.Threading.Timer _JogResetTimer;
 
         object lockObject = new object();
 
@@ -153,12 +163,14 @@ namespace JD_Proc
 
         Service.SettingsService service;
 
-        bool AT_PLC_AUTO = false;
-        bool AT_PLC_START = false;
-        bool AT_VISION_AUTO = false;
-        bool AT_VISION_READY = false;
-        bool AT_VISION_BUSY = false;
-        bool AT_VISION_END = false;
+        public bool AT_PLC_AUTO = false;
+        public bool AT_PLC_START = false;
+        public bool AT_VISION_AUTO = false;
+        public bool AT_VISION_READY = false;
+        public bool AT_VISION_BUSY = false;
+        public bool AT_VISION_END = false;
+
+        int cnt = 0;
         #endregion
 
         #region 생성자
@@ -245,7 +257,7 @@ namespace JD_Proc
                         dBtn_imageSave2.Enabled = false;
                     }
 
-                    if (bIsPLC)
+                    //if (bIsPLC)
                     {
                         try
                         {
@@ -289,10 +301,18 @@ namespace JD_Proc
             SetModel(_Model_path);
             InitChartDesign();
 
+
+            if (!bIsPLC)
+            {
+                _AutoTimer.Interval = 2000;
+                _AutoTimer.Elapsed += new ElapsedEventHandler(AutoTimer);
+            }
             if (bIsPLC)
             {
-                _AutoTimer.Interval = 500;
+                _AutoTimer.Interval = 2000;
+
                 _AutoTimer.Elapsed += new ElapsedEventHandler(AutoTimer);
+
                 _HeartbitTimer = new System.Threading.Timer(VISION_Heartbit, null, 1000, 400);
             }
 
@@ -327,20 +347,30 @@ namespace JD_Proc
         #region event(auto) - Timer
         void AutoTimer(object sender, ElapsedEventArgs e)
         {
-
             this.BeginInvoke((MethodInvoker)(() =>
             {
                 if (dataTable_L.Rows.Count > 20)
                 {
                     dataTable_L.Rows.RemoveAt(0);
                     dataTable_R.Rows.RemoveAt(0);
+                    Auto_Series_L.Points.RemoveAt(0);
+                    Chart_Auto_L.ChartAreas[0].AxisX.Minimum = cnt - 20;
+                    Chart_Auto_L.ChartAreas[0].AxisX.Maximum = cnt;
+
                 }
                 double avgValue = new Random().NextDouble() * 100;
                 dataTable_L.Rows.Add(avgValue);
                 dataTable_R.Rows.Add(avgValue);
+                //Auto_Series_L.Points.Add(avgValue);
+                Auto_Series_L.Points.AddXY(cnt, avgValue);
+                //Chart_Auto_L.Series.Invalidate();
+
+
 
                 dataGridView1.Refresh();
                 dataGridView2.Refresh();
+
+                cnt++;
             }));
 
 
@@ -382,15 +412,11 @@ namespace JD_Proc
                             VISION_END_L = false;
                             VISION_BUSY_L = true;
 
-                            //AutoSnap_L();
-                            //AutoProcess_L();
-
-                            lock (lockObject)
-                            {
-                                //[Developing]
-                                //ParrotGraphGenerateData(VISION_BUSY_L == true, gapDistAvg_L);
-                                //[end developing]
-                            }
+                            AutoSnap_L();
+                            AutoProcess_L();
+                            _imageGrabberThread_1 = new Thread(new ThreadStart(ImageGrabberMethode1));
+                            _grabImages_1 = true;
+                            _imageGrabberThread_1.Start();
 
                             VISION_BUSY_L = false;
                             VISION_END_L = true;
@@ -489,8 +515,8 @@ namespace JD_Proc
 
         void AutoProcess_L()
         {
-            cloneBmap_L = (Bitmap)originBmap_L.Clone();
-            grayBmap_L = new Bitmap(640, 480, originBmap_L.PixelFormat);
+            AcloneBmap_L = (Bitmap)originBmap_L.Clone();
+            AgrayBmap_L = new Bitmap(640, 480, originBmap_L.PixelFormat);
 
             // gray image로 변환
             ToGray("cam1");
@@ -498,68 +524,75 @@ namespace JD_Proc
             //blob 처리
             int threshold = 100;
             Service.BlobService blobService = new Service.BlobService();
-            List<Model.Blob> blobs = blobService.FindBlobs(grayBmap_L, threshold);
-            List<Model.Blob> okBlobs = GetOkBlob(blobs, "cam1");
 
-            if (okBlobs.Count == 1)
+            lock (lockObject)
             {
-                Service.SettingsService settingsService = new Service.SettingsService();
-                string cal_mode = settingsService.Read("cal_mode", "cal_mode");
-
-                Porcess("CAM1", 1, okBlobs[0], threshold, cal_mode);
-                Porcess("CAM1", 2, okBlobs[0], threshold, cal_mode);
-                Porcess("CAM1", 3, okBlobs[0], threshold, cal_mode);
-                Porcess("CAM1", 4, okBlobs[0], threshold, cal_mode);
-                Porcess("CAM1", 5, okBlobs[0], threshold, cal_mode);
-
-                DrawRoiZoom_L(1, true);
-                DrawRoiZoom_L(2, true);
-                DrawRoiZoom_L(3, true);
-                DrawRoiZoom_L(4, true);
-                DrawRoiZoom_L(5, true);
-
-                DrawChart_L(true);
-
-                gapDistAvg_L = (int)(WriteGapAvg("cam1", true));
+                List<Model.Blob> blobs = blobService.FindBlobs(AgrayBmap_L, threshold);
+                List<Model.Blob> okBlobs = GetOkBlob(blobs, "cam1");
 
 
-
-                this.BeginInvoke((MethodInvoker)(() =>
+                if (okBlobs.Count == 1)
                 {
-                    if (dataTable_L.Rows.Count > 20)
-                    {
-                        dataTable_L.Rows.RemoveAt(0);
-                    }
-                    dataTable_L.Rows.Add(gapDistAvg_L);   // Automode에서 data gridview에 gapdata를 뿌려주는 코드
-                    dLabel_Ng_L.ForeColor = Color.Lime;
-                    dLabel_Ng_L.Text = "OK - " + DateTime.Now.ToString("HH:mm:ss");
-                }));
-            }
-            else
-            {
-                if (okBlobs.Count == 0)
-                {
+                    Service.SettingsService settingsService = new Service.SettingsService();
+                    string cal_mode = settingsService.Read("cal_mode", "cal_mode");
+
+                    Porcess("CAM1", 1, okBlobs[0], threshold, cal_mode);
+                    Porcess("CAM1", 2, okBlobs[0], threshold, cal_mode);
+                    Porcess("CAM1", 3, okBlobs[0], threshold, cal_mode);
+                    Porcess("CAM1", 4, okBlobs[0], threshold, cal_mode);
+                    Porcess("CAM1", 5, okBlobs[0], threshold, cal_mode);
+
+                    DrawRoiZoom_L(1, true);
+                    DrawRoiZoom_L(2, true);
+                    DrawRoiZoom_L(3, true);
+                    DrawRoiZoom_L(4, true);
+                    DrawRoiZoom_L(5, true);
+
+                    DrawChart_L(true);
+
+                    gapDistAvg_L = (int)(WriteGapAvg("cam1", true));
+
+
+
                     this.BeginInvoke((MethodInvoker)(() =>
                     {
-                        dLabel_Ng_L.ForeColor = Color.Red;
-                        dLabel_Ng_L.Text = "정상적인 이미지가 아닙니다. (영역을 찾지 못함) - " + DateTime.Now.ToString("HH:mm:ss");
+                        if (dataTable_L.Rows.Count > 20)
+                        {
+                            dataTable_L.Rows.RemoveAt(0);
+                            Auto_Series_L.Points.RemoveAt(0);
+                        }
+                        dataTable_L.Rows.Add(gapDistAvg_L);   // Automode에서 data gridview에 gapdata를 뿌려주는 코드
+                        Auto_Series_L.Points.Add(gapDistAvg_L);
+                        dLabel_Ng_L.ForeColor = Color.Lime;
+                        dLabel_Ng_L.Text = "OK - " + DateTime.Now.ToString("HH:mm:ss");
                     }));
                 }
-                else if (okBlobs.Count > 1)
+                else
                 {
-                    this.BeginInvoke((MethodInvoker)(() =>
+                    if (okBlobs.Count == 0)
                     {
-                        dLabel_Ng_L.ForeColor = Color.Red;
-                        dLabel_Ng_L.Text = "정상적인 이미지가 아닙니다. (영역이 두개 이상) - " + DateTime.Now.ToString("HH:mm:ss");
-                    }));
+                        this.BeginInvoke((MethodInvoker)(() =>
+                        {
+                            dLabel_Ng_L.ForeColor = Color.Red;
+                            dLabel_Ng_L.Text = "정상적인 이미지가 아닙니다. (영역을 찾지 못함) - " + DateTime.Now.ToString("HH:mm:ss");
+                        }));
+                    }
+                    else if (okBlobs.Count > 1)
+                    {
+                        this.BeginInvoke((MethodInvoker)(() =>
+                        {
+                            dLabel_Ng_L.ForeColor = Color.Red;
+                            dLabel_Ng_L.Text = "정상적인 이미지가 아닙니다. (영역이 두개 이상) - " + DateTime.Now.ToString("HH:mm:ss");
+                        }));
+                    }
                 }
             }
         }
 
         void AutpProcess_R()
         {
-            cloneBmap_R = (Bitmap)originBmap_R.Clone();
-            grayBmap_R = new Bitmap(640, 480, originBmap_R.PixelFormat);
+            AcloneBmap_R = (Bitmap)originBmap_R.Clone();
+            AgrayBmap_R = new Bitmap(640, 480, originBmap_R.PixelFormat);
 
             //그래이 이미지로 변환
             ToGray("cam2");
@@ -567,7 +600,7 @@ namespace JD_Proc
             //blob 처리
             int threshold = 100;
             Service.BlobService blobService = new Service.BlobService();
-            List<Model.Blob> blobs = blobService.FindBlobs(grayBmap_R, threshold);
+            List<Model.Blob> blobs = blobService.FindBlobs(AgrayBmap_R, threshold);
             List<Model.Blob> okBlobs = GetOkBlob(blobs, "cam2");
 
             if (okBlobs.Count == 1)
@@ -741,16 +774,32 @@ namespace JD_Proc
 
                 dataTable_L.Columns.Add("Average", typeof(double));
                 dataGridView1.DataSource = dataTable_L;
+                Chart_Auto_L.DataSource = Auto_Series_L;
+                Auto_Series_L.BorderWidth = 3;
+                Auto_Series_L.ChartArea = "ChartArea1";
+                Auto_Series_L.ChartType = SeriesChartType.Line;
+                Auto_Series_L.Color = Color.Lime;
+                Auto_Series_L.IsValueShownAsLabel = true;
+                Auto_Series_L.LabelForeColor = Color.White;
+                Auto_Series_L.Legend = "Legend1";
+                Auto_Series_L.MarkerColor = Color.Lime;
+                Auto_Series_L.MarkerSize = 10;
+                Auto_Series_L.MarkerStyle = MarkerStyle.Circle;
+                Auto_Series_L.Points.Clear();
+                Chart_Auto_L.Series.Clear();
+                Chart_Auto_L.Series.Add(Auto_Series_L);
 
                 dataTable_R.Columns.Add("Average", typeof(double));
                 dataGridView2.DataSource = dataTable_R;
 
-                if (bSimulationMode)
+                if (!bSimulationMode)
                 {
                     _AutoSimulation = new AutoSimulation(this);
+
+                    _AutoSimulation.Enabled = true;
                     _AutoSimulation.Show();
                 }
-                if (bSimulationMode) _AutoTimer.Start();
+                if (!bSimulationMode) _AutoTimer.Start();
 
             }
             else if (state == "auto")
@@ -847,6 +896,7 @@ namespace JD_Proc
                 Porcess("CAM1", 3, okBlobs[0], threshold, cal_mode);
                 Porcess("CAM1", 4, okBlobs[0], threshold, cal_mode);
                 Porcess("CAM1", 5, okBlobs[0], threshold, cal_mode);
+
 
                 DrawRoiZoom_L(1, false);
                 DrawRoiZoom_L(2, false);
@@ -1429,14 +1479,12 @@ namespace JD_Proc
                 //Invoke UI-Thread for update of ui
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
-                    pictureBox1.Image = _images.PaletteImage;
-                    //pictureBox1.Image = grayBmap_L;
-                    pictureBox1_Auto.Image = _images.PaletteImage;
-                    //_AlignSettingform.BeginInvoke((MethodInvoker)(() =>
-                    //{
-                    //    pictureBox1.Image = images.PaletteImage;
-                    //}));
-                    dLable_tmp1.Text = Math.Round(mean, 2).ToString();
+                    if (state == "auto") pictureBox1_Auto.Image = _images.PaletteImage;
+                    else
+                    {
+                        pictureBox1.Image = _images.PaletteImage;
+                        dLable_tmp1.Text = Math.Round(mean, 2).ToString();
+                    }
                 }));
             }
         }
@@ -1496,7 +1544,7 @@ namespace JD_Proc
             //calculate mean temperature
             int rows = images.ThermalImage.GetLength(0);
             int columns = images.ThermalImage.GetLength(1);
-            
+
 
             double mean = 0;
             for (int row = 0; row < rows; row++)
@@ -1768,18 +1816,6 @@ namespace JD_Proc
         #region method - Porcess
         void Porcess(string cam, int roi, Model.Blob blob, int threshold, string mode)
         {
-            //TempDDList = new List<List<Double>>();
-
-            //for (int column = 0; column < 640; column++)
-            //{
-
-            //    TempDDList.Add(new List<double>());
-
-            //    for (int r = 0; r < 479; r++)
-            //    {
-            //        TempDDList[column].Add(_tempData_L[column, r]);
-            //    }
-            //}
             //roi 정보를 읽어온다(x, y, widht, height)
             (int roiX, int roiY, int roiWidth, int roiHeight) = GetRoiInfo(cam, roi);
 
@@ -1818,30 +1854,39 @@ namespace JD_Proc
         {
             if (cam == "cam1")
             {
-                for (int xx = 0; xx < cloneBmap_L.Width; xx++)
+                lock (lockObject)
                 {
-                    for (int yy = 0; yy < cloneBmap_L.Height; yy++)
+                    for (int xx = 0; xx < AcloneBmap_L.Width; xx++)
                     {
-                        Color old = cloneBmap_L.GetPixel(xx, yy);
-                        int grayScale = (int)((old.R * 0.3) + (old.G * 0.59) + (old.B * 0.11));
-                        Color newC = Color.FromArgb(old.A, grayScale, grayScale, grayScale);
+                        for (int yy = 0; yy < AcloneBmap_L.Height; yy++)
+                        {
+                            Color old = AcloneBmap_L.GetPixel(xx, yy);
+                            int grayScale = (int)((old.R * 0.3) + (old.G * 0.59) + (old.B * 0.11));
+                            Color newC = Color.FromArgb(old.A, grayScale, grayScale, grayScale);
 
-                        grayBmap_L.SetPixel(xx, yy, newC);
+                            AgrayBmap_L.SetPixel(xx, yy, newC);
+
+
+                        }
                     }
                 }
+
 
             }
             else if (cam == "cam2")
             {
-                for (int xx = 0; xx < cloneBmap_R.Width; xx++)
+                lock (lockObject)
                 {
-                    for (int yy = 0; yy < cloneBmap_R.Height; yy++)
+                    for (int xx = 0; xx < AcloneBmap_R.Width; xx++)
                     {
-                        Color old = cloneBmap_R.GetPixel(xx, yy);
-                        int grayScale = (int)((old.R * 0.3) + (old.G * 0.59) + (old.B * 0.11));
-                        Color newC = Color.FromArgb(old.A, grayScale, grayScale, grayScale);
+                        for (int yy = 0; yy < AcloneBmap_R.Height; yy++)
+                        {
+                            Color old = AcloneBmap_R.GetPixel(xx, yy);
+                            int grayScale = (int)((old.R * 0.3) + (old.G * 0.59) + (old.B * 0.11));
+                            Color newC = Color.FromArgb(old.A, grayScale, grayScale, grayScale);
 
-                        grayBmap_R.SetPixel(xx, yy, newC);
+                            AgrayBmap_R.SetPixel(xx, yy, newC);
+                        }
                     }
                 }
             }
@@ -1856,19 +1901,35 @@ namespace JD_Proc
             {
                 foreach (Model.Blob blob in blobs)
                 {
-                    //blob의 가로길이가 이미지의 가로길이만큼 여부 확인
-                    if (blob.Width == grayBmap_L.Width && blob.Height >= 3)
+                    lock (lockObject)
                     {
-                        int startY = blob.Y;
-                        int endY = startY + blob.Height;
-
-                        //blob의 시작점 Y와 끝점 Y가 roi영역을 넘어서는지 여부 확인
-                        if (startY >= _LEFT_ROI_BTN_1.Top && endY <= _LEFT_ROI_BTN_1.Top + _LEFT_ROI_BTN_1.Height)
+                        if (blob.Width == AgrayBmap_L.Width && blob.Height >= 3)
                         {
-                            Model.Blob resultBlob = new Model.Blob(blob.X, blob.Y, blob.Width, blob.Height);
-                            okBlobs.Add(resultBlob);
+                            int startY = blob.Y;
+                            int endY = startY + blob.Height;
+
+                            //blob의 시작점 Y와 끝점 Y가 roi영역을 넘어서는지 여부 확인
+                            if (startY >= _LEFT_ROI_BTN_1.Top && endY <= _LEFT_ROI_BTN_1.Top + _LEFT_ROI_BTN_1.Height)
+                            {
+                                Model.Blob resultBlob = new Model.Blob(blob.X, blob.Y, blob.Width, blob.Height);
+                                okBlobs.Add(resultBlob);
+                            }
                         }
                     }
+
+                    //blob의 가로길이가 이미지의 가로길이만큼 여부 확인
+                    //if (blob.Width == cloneBmap_L.Width && blob.Height >= 3)
+                    //{
+                    //    int startY = blob.Y;
+                    //    int endY = startY + blob.Height;
+
+                    //    //blob의 시작점 Y와 끝점 Y가 roi영역을 넘어서는지 여부 확인
+                    //    if (startY >= _LEFT_ROI_BTN_1.Top && endY <= _LEFT_ROI_BTN_1.Top + _LEFT_ROI_BTN_1.Height)
+                    //    {
+                    //        Model.Blob resultBlob = new Model.Blob(blob.X, blob.Y, blob.Width, blob.Height);
+                    //        okBlobs.Add(resultBlob);
+                    //    }
+                    //}
                 }
             }
             else if (cam == "cam2")
@@ -1876,7 +1937,7 @@ namespace JD_Proc
                 foreach (Model.Blob blob in blobs)
                 {
                     //blob의 가로길이가 이미지의 가로길이만큼 여부 확인
-                    if (blob.Width == grayBmap_R.Width && blob.Height >= 3)
+                    if (blob.Width == AgrayBmap_R.Width && blob.Height >= 3)
                     {
                         int startY = blob.Y;
                         int endY = startY + blob.Height;
@@ -2168,10 +2229,7 @@ namespace JD_Proc
                                 nowPixelValue = grayBmap_R.GetPixel(x, y1).R;
                             }
 
-                            //double per = blob_avg - ((blob_avg - roi_avg) * 0.1);
                             double per = blob_avg - ((blob_avg - roi_avg) * 0.3);
-                            //blob_avg - (blob_avg * 0.2);
-                            //double per = blob_avg * 1.2;
 
                             if (nextPixelValue < per)
                             {
@@ -2304,11 +2362,11 @@ namespace JD_Proc
 
                 try
                 {
-                    cloneBmap_L.SetPixel(tempX, int.Parse(service.Read("STANDARD", "UpperIdx"))-2, newC);
+                    cloneBmap_L.SetPixel(tempX, int.Parse(service.Read("STANDARD", "UpperIdx")) - 2, newC);
                     cloneBmap_L.SetPixel(tempX, int.Parse(service.Read("STANDARD", "BtmIdx")), newC);
                 }
                 catch { }
- 
+
                 tempX = tempX + 1;
             }
 
@@ -2964,41 +3022,29 @@ namespace JD_Proc
 
                 totalAVg = Math.Round(totalAVg / getNumberIncludeROIAverage(isCheckboxROI_L), 2);
 
-                //double gappixelcount = 0;
-                //for (int i=280; i<360; i++)
-                //{
-                //    gappixelcount +=
-                //    TempVariation_L[i].IndexOf(TempVariation_L[i].Max(x => x)) - TempVariation_L[i].IndexOf(TempVariation_L[i].Min(x => x));
-                //}
-                //gappixelcount = Math.Round(gappixelcount / 80, 2);
-
-                string reesult =
+                double Gapvalue = (Math.Round(CalculateGap() * resolution - 30, 2));
+                string result =
                                  //"GAP 평균 \r\n" + "\r\n" +
                                  //             "LEFT_1 : " + avg[0].ToString() + "\r\n" + "\r\n" +
                                  //             "LEFT_2 : " + avg[1].ToString() + "\r\n" + "\r\n" +
                                  //             "LEFT_3 : " + avg[2].ToString() + "\r\n" + "\r\n" +
                                  //             "LEFT_4 : " + avg[3].ToString() + "\r\n" + "\r\n" +
                                  //             "LEFT_5 : " + avg[4].ToString() + "\r\n" + "\r\n" + "\r\n" +
-                                 "Gap Distance : " + (Math.Round(CalculateGap() * resolution - 30, 2) );
-                //"전체평균 : " + Math.Round((gappixelcount) * resolution,2);
-                //"전체평균 : " + totalAVg;
-
-
-                //TempVariation_L.Clear();
+                                 "Gap Distance : " + Gapvalue;
 
                 if (isThread == true)
                 {
                     this.BeginInvoke((MethodInvoker)(() =>
                     {
-                        dTxt_cam1.Text = reesult;
+                        dTxt_cam1.Text = result;
                     }));
                 }
                 else
                 {
-                    dTxt_cam1.Text = reesult;
+                    dTxt_cam1.Text = result;
                 }
 
-                return totalAVg;
+                return Gapvalue;
             }
             else if (cam == "cam2")
             {
@@ -3020,7 +3066,7 @@ namespace JD_Proc
 
                 totalAVg = Math.Round(totalAVg / getNumberIncludeROIAverage(isCheckboxROI_R), 2);
 
-                string reesult = "GAP 평균 \r\n" + "\r\n" +
+                string result = "GAP 평균 \r\n" + "\r\n" +
                                  "LEFT_1 : " + avg[0].ToString() + "\r\n" + "\r\n" +
                                  "LEFT_2 : " + avg[1].ToString() + "\r\n" + "\r\n" +
                                  "LEFT_3 : " + avg[2].ToString() + "\r\n" + "\r\n" +
@@ -3032,12 +3078,12 @@ namespace JD_Proc
                 {
                     this.BeginInvoke((MethodInvoker)(() =>
                     {
-                        dTxt_cam2.Text = reesult;
+                        dTxt_cam2.Text = result;
                     }));
                 }
                 else
                 {
-                    dTxt_cam2.Text = reesult;
+                    dTxt_cam2.Text = result;
                 }
 
                 return totalAVg;
@@ -3107,6 +3153,26 @@ namespace JD_Proc
         }
         #endregion
 
+        #region [method - Graph Generate Point]
+        public void AddDataPoint(double data)
+        {
+            Auto_Series_L = new Series();
+            Chart_Auto_L.Series.Add(Auto_Series_L);
+
+            if (Chart_Auto_L.Series.Count >= 20)
+            {
+                // 가장 오래된 데이터를 삭제합니다.
+                Auto_Series_L.Points.RemoveAt(0);
+            }
+
+            // 새 데이터 포인트를 추가합니다.
+            Auto_Series_L.Points.Add(data);
+
+            // 챠트 갱신
+            Chart_Auto_L.Invalidate();
+        }
+        #endregion
+
         #region [method - Select Jog Axis]
         public void selectJogAxis_L_Y()
         {
@@ -3159,6 +3225,24 @@ namespace JD_Proc
         {
             //W10, W12에 적절한 데이터가 있는지 확인후 없으면 SET해주고 MOVE할수 있게 한다.
             MELSEC_JOG.actUtlType64.SetDevice("B2C", short.Parse("1"));
+            _JogResetTimer = new System.Threading.Timer(selectedJogMoveToInputPositionResetDevice, null, 0, 200);
+        }
+        public void selectedJogMoveToInputPositionResetDevice(object? state)
+        {
+            MELSEC_JOG_Timer = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+            MELSEC_JOG_Timer.Open();
+            MELSEC_JOG_Timer.actUtlType64.GetDevice("B12C", out int value);
+            
+            Debug.Print(value.ToString());
+
+            if (value == 1)
+            {
+                MELSEC_JOG_Timer.actUtlType64.SetDevice("B2C", short.Parse("0"));
+                Debug.Print(MELSEC_JOG_Timer.actUtlType64.GetDevice("B12C", out int value1).ToString());
+                Debug.Print(value1.ToString());
+                _JogResetTimer.Dispose();
+            }
+
         }
         #endregion
 
@@ -3172,15 +3256,25 @@ namespace JD_Proc
             /// < param name = "iData" > 쓰기 디바이스 값</ param >
             /// < returns ></ returns >
             //W10~W11 - Motor_ Command Velocity value [0.01mm/s단위] -> 10[mm/s] = 1000
-            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W10", 2, ref Velocity);
+
+            int[] data = new int[2];
+            // 상위 16비트와 하위 16비트로 나누기
+            data[0] = Velocity & 0xFFFF; // 하위 16비트
+            data[1] = (Velocity >> 16) & 0xFFFF; // 상위 16비트
+
+            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W10", 2, ref data[0]);
         }
         #endregion
 
         #region [method - PLCMotorSetPositionValue]
         public void PLCMotorSetPositionValue(int Position)
         {
+            int[] data = new int[2];
+            // 상위 16비트와 하위 16비트로 나누기
+            data[0] = Position & 0xFFFF; // 하위 16비트
+            data[1] = (Position >> 16) & 0xFFFF; // 상위 16비트
             //W12~W13 - Motor_ Command position value [0.0001mm단위] (Absolute 위치) -> 10[mm/s] = 100000
-            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W12", 2,ref Position);
+            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W12", 2, ref data[0]);
         }
         #endregion
 
@@ -3188,12 +3282,25 @@ namespace JD_Proc
         public void PLCJogAutoMoveToSavedValue()
         {
             int vel = int.Parse(service.Read("PLC_JOG_OFFSET", "VELOCITY"));
+
+            int[] dataVel = new int[2];
+            // 상위 16비트와 하위 16비트로 나누기
+            dataVel[0] = vel & 0xFFFF; // 하위 16비트
+            dataVel[1] = (vel >> 16) & 0xFFFF; // 상위 16비트
+
             int pos = int.Parse(service.Read("PLC_JOG_OFFSET", "POSITION "));
 
-            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W10", 2, ref vel);
-            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W12", 2, ref pos);
+            int[] dataPos = new int[2];
+            // 상위 16비트와 하위 16비트로 나누기
+            dataPos[0] = pos & 0xFFFF; // 하위 16비트
+            dataPos[1] = (pos >> 16) & 0xFFFF; // 상위 16비트
+
+            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W10", 2, ref dataVel[0]);
+            MELSEC_JOG.actUtlType64.WriteDeviceBlock("W12", 2, ref dataPos[0]);
 
             MELSEC_JOG.actUtlType64.SetDevice("B2C", short.Parse("1"));
+
+            _JogResetTimer = new System.Threading.Timer(selectedJogMoveToInputPositionResetDevice, null, 0, 200);
         }
         #endregion
 
@@ -3363,7 +3470,7 @@ namespace JD_Proc
 
         //    // 고정되어있는 아래 롤부분의 픽셀과 변화하는 위의 Lip부분의 픽셀의 차를 구해준다.
         //    gap_pixel = ROLL_FIXED_PIXEL - LIP_VARIANT_PIXEL;
-            
+
         //    service.Write("STANDARD", "UpperIdx", LIP_VARIANT_PIXEL.ToString());
 
         //    //subpixel = (TempDDList[320][LIP_VARIANT_PIXEL] - STD_OF_STD) / (TempDDList[320][LIP_VARIANT_PIXEL] - TempDDList[320][LIP_VARIANT_PIXEL - 1]);
@@ -3411,11 +3518,12 @@ namespace JD_Proc
                 //고정되어있는 롤 pixel 에서 가변적인 윗부분 lip 픽셀을 빼준다음 해당 픽셀들을 모두 포함하므로 +1을 해준다.
                 return ROLL_FIXED_PIXEL - Math.Round(GetXLinearEquation(LIP_VARIANT_PIXEL, TempDDList[320][LIP_VARIANT_PIXEL], LIP_VARIANT_PIXEL - 1, TempDDList[320][LIP_VARIANT_PIXEL - 1], STD_OF_STD), 2) + 1;
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("이미 계산한 결과입니다.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return -1;
             }
- 
+
         }
         #endregion
 
@@ -3435,15 +3543,17 @@ namespace JD_Proc
         {
             double STD_OF_STD = 0;
 
-            try {
+            try
+            {
                 for (int r = 145; r < 232; r++)
                 { if (TempDDList[320][r] > STD_OF_STD) STD_OF_STD = TempDDList[320][r]; }
 
-                if (service.Read("STANDARD", "BtmIdx") != null) service.Write("STANDARD", "BtmIdx",TempDDList[320].FindLastIndex(x => x > STD_OF_STD).ToString());
+                if (service.Read("STANDARD", "BtmIdx") != null) service.Write("STANDARD", "BtmIdx", TempDDList[320].FindLastIndex(x => x > STD_OF_STD).ToString());
 
                 MessageBox.Show("불러온 이미지의 Bottom Line을 Default로 설정하였습니다.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception) { 
+            catch (Exception)
+            {
             }
         }
         #endregion
@@ -3578,7 +3688,7 @@ namespace JD_Proc
 
         private void Btn_PLCACK_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

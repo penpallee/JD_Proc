@@ -527,6 +527,27 @@ namespace JD_Proc
         }
         #endregion
 
+        #region [event - JogButton]
+        private void Btn_JogOriginal_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonOriginalClickDown();
+        }
+
+        private void Btn_JogOriginal_MouseUp_1(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonOriginalClickUp();
+        }
+
+        private void Btn_JogReverse_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonReverseClickDown();
+        }
+
+        private void Btn_JogReverse_MouseUp_1(object sender, MouseEventArgs e)
+        {
+            _form1.jogButtonReverseClickUp();
+        }
+        #endregion
     }
 }
 

@@ -12,7 +12,7 @@ namespace JD_Proc
 {
     public partial class AutoSimulation : Form
     {
-        Form1 _form1;
+        public Form1 _form1;
         public AutoSimulation(Form1 form)
         {
             InitializeComponent();
@@ -21,12 +21,21 @@ namespace JD_Proc
 
         private void Btn_PLC_Auto_Click(object sender, EventArgs e)
         {
-            
+            if (_form1.AT_PLC_AUTO == false)
+            {
+                Btn_PLC_Auto.BackColor = Color.Aquamarine;
+                _form1.AT_PLC_AUTO = true;
+            }
+            else
+            {
+                Btn_PLC_Auto.BackColor= SystemColors.Control;
+                _form1.AT_PLC_AUTO = false;
+            }
         }
 
         private void Btn_PLC_StartL_Click(object sender, EventArgs e)
         {
-
+            _form1.AT_PLC_START = true;
         }
 
         private void Btn_VISION_Auto_Click(object sender, EventArgs e)
