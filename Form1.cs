@@ -1462,13 +1462,6 @@ namespace JD_Proc
                         _tempData_L[column, row] = ((double)value - 1000.0) / 10.0;
                     }
                 }
-                for (int column = 0; column < columns; column++)
-                {
-                    for (int row = 0; row < rows - 1; row++)
-                    {
-
-                    }
-                }
 
                 //Calculates mean value: meanSum / pixelCount
                 mean /= rows * columns;
@@ -1510,13 +1503,6 @@ namespace JD_Proc
                         _tempData_R[column, row] = ((double)value - 1000.0) / 10.0;
                     }
                 }
-                for (int column = 0; column < columns; column++)
-                {
-                    for (int row = 0; row < rows - 1; row++)
-                    {
-                        TempVariation_R[column][row] = _tempData_R[column, row] - _tempData_R[column, row + 1];
-                    }
-                }
 
                 //Calculates mean value: meanSum / pixelCount
                 mean /= rows * columns;
@@ -1525,10 +1511,10 @@ namespace JD_Proc
                 mean = (mean - 1000.0) / 10.0;
 
                 //Invoke UI-Thread for update of ui
+                if (state == "auto") pictureBox2_Auto.Image = _images.PaletteImage;
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
                     pictureBox2.Image = images.PaletteImage;
-                    pictureBox2_Auto.Image = images.PaletteImage;
                     dLable_tmp2.Text = Math.Round(mean, 2).ToString();
                 }));
             }
