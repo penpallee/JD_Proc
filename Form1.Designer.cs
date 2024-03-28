@@ -31,21 +31,21 @@ namespace JD_Proc
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            ChartArea chartArea1 = new ChartArea();
+            Legend legend1 = new Legend();
+            Series series1 = new Series();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            ChartArea chartArea1 = new ChartArea();
-            Legend legend1 = new Legend();
-            Series series1 = new Series();
+            ChartArea chartArea2 = new ChartArea();
+            Legend legend2 = new Legend();
+            Series series2 = new Series();
             DataPoint dataPoint1 = new DataPoint(0D, 23D);
             DataPoint dataPoint2 = new DataPoint(1D, 28D);
             DataPoint dataPoint3 = new DataPoint(2D, 25D);
             DataPoint dataPoint4 = new DataPoint(3D, 22D);
             DataPoint dataPoint5 = new DataPoint(4D, 20D);
-            ChartArea chartArea2 = new ChartArea();
-            Legend legend2 = new Legend();
-            Series series2 = new Series();
             ChartArea chartArea3 = new ChartArea();
             Legend legend3 = new Legend();
             Series series3 = new Series();
@@ -55,9 +55,18 @@ namespace JD_Proc
             ChartArea chartArea5 = new ChartArea();
             Legend legend5 = new Legend();
             Series series5 = new Series();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             ChartArea chartArea6 = new ChartArea();
             Legend legend6 = new Legend();
             Series series6 = new Series();
+            DataPoint dataPoint6 = new DataPoint(0D, 23D);
+            DataPoint dataPoint7 = new DataPoint(1D, 28D);
+            DataPoint dataPoint8 = new DataPoint(2D, 25D);
+            DataPoint dataPoint9 = new DataPoint(3D, 22D);
+            DataPoint dataPoint10 = new DataPoint(4D, 20D);
             ChartArea chartArea7 = new ChartArea();
             Legend legend7 = new Legend();
             Series series7 = new Series();
@@ -76,18 +85,9 @@ namespace JD_Proc
             ChartArea chartArea12 = new ChartArea();
             Legend legend12 = new Legend();
             Series series12 = new Series();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             ChartArea chartArea13 = new ChartArea();
             Legend legend13 = new Legend();
             Series series13 = new Series();
-            DataPoint dataPoint6 = new DataPoint(0D, 23D);
-            DataPoint dataPoint7 = new DataPoint(1D, 28D);
-            DataPoint dataPoint8 = new DataPoint(2D, 25D);
-            DataPoint dataPoint9 = new DataPoint(3D, 22D);
-            DataPoint dataPoint10 = new DataPoint(4D, 20D);
             ChartArea chartArea14 = new ChartArea();
             Legend legend14 = new Legend();
             Series series14 = new Series();
@@ -100,32 +100,42 @@ namespace JD_Proc
             ChartArea chartArea17 = new ChartArea();
             Legend legend17 = new Legend();
             Series series17 = new Series();
-            ChartArea chartArea18 = new ChartArea();
-            Legend legend18 = new Legend();
-            Series series18 = new Series();
-            ChartArea chartArea19 = new ChartArea();
-            Legend legend19 = new Legend();
-            Series series19 = new Series();
-            ChartArea chartArea20 = new ChartArea();
-            Legend legend20 = new Legend();
-            Series series20 = new Series();
-            ChartArea chartArea21 = new ChartArea();
-            Legend legend21 = new Legend();
-            Series series21 = new Series();
-            ChartArea chartArea22 = new ChartArea();
-            Legend legend22 = new Legend();
-            Series series22 = new Series();
-            ChartArea chartArea23 = new ChartArea();
-            Legend legend23 = new Legend();
-            Series series23 = new Series();
-            ChartArea chartArea24 = new ChartArea();
-            Legend legend24 = new Legend();
-            Series series24 = new Series();
             nightForm1 = new ReaLTaiizor.Forms.NightForm();
             panel6 = new Panel();
             panel2 = new Panel();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             panel3 = new Panel();
+            num_Row = new NumericUpDown();
+            btnGraphShow = new Button();
+            label7 = new Label();
+            num_AxisEndX = new NumericUpDown();
+            num_AxisStartX = new NumericUpDown();
+            btn_AxisChange = new Button();
+            Lbl_LVchart2 = new Label();
+            Lbl_LVchart1 = new Label();
+            Panel_LVChart = new Panel();
+            tableLayoutPanel12 = new TableLayoutPanel();
+            tableLayoutPanel16 = new TableLayoutPanel();
+            label6 = new Label();
+            dComboBox_cam1 = new ReaLTaiizor.Controls.DungeonComboBox();
+            tableLayoutPanel13 = new TableLayoutPanel();
+            Label_PV = new Label();
+            Label_SV = new Label();
+            Label_SV_Value = new Label();
+            Label_PV_Value = new Label();
+            tableLayoutPanel14 = new TableLayoutPanel();
+            TextBox_InputSV = new ReaLTaiizor.Controls.CyberTextBox();
+            Btn_SetSV = new ReaLTaiizor.Controls.CyberButton();
+            tableLayoutPanel15 = new TableLayoutPanel();
+            label5 = new Label();
+            dComboBox_scale1 = new ReaLTaiizor.Controls.DungeonComboBox();
+            Panel_CameraCenterLine_L = new ReaLTaiizor.Controls.Panel();
+            Panel_BrighestLine_L = new ReaLTaiizor.Controls.Panel();
+            dBtn_BrightestLine_L = new ReaLTaiizor.Controls.NightButton();
+            dBtn_CameraLine_L = new ReaLTaiizor.Controls.NightButton();
+            dLabel_Ng_L = new ReaLTaiizor.Controls.NightLabel();
+            panel4 = new Panel();
+            Chart_TempGraph_R = new Chart();
             tableLayoutPanel_Auto = new TableLayoutPanel();
             tableLayoutPanel5 = new TableLayoutPanel();
             pictureBox1_Auto = new PictureBox();
@@ -135,32 +145,13 @@ namespace JD_Proc
             dataGridView2 = new DataGridView();
             Chart_Auto_L = new Chart();
             Chart_Auto_R = new Chart();
-            Panel_CameraCenterLine_L = new ReaLTaiizor.Controls.Panel();
-            Panel_BrighestLine_L = new ReaLTaiizor.Controls.Panel();
-            dBtn_BrightestLine_L = new ReaLTaiizor.Controls.NightButton();
-            Btn_BottomLineSetting = new ReaLTaiizor.Controls.NightButton();
-            dBtn_CameraLine_L = new ReaLTaiizor.Controls.NightButton();
-            Label_SV_Value = new Label();
-            Label_PV_Value = new Label();
-            Label_SV = new Label();
-            Label_PV = new Label();
-            dLabel_Ng_L = new ReaLTaiizor.Controls.NightLabel();
-            panel4 = new Panel();
             Panel_CameraCenterLine_R = new ReaLTaiizor.Controls.Panel();
             Panel_BrighestLine_R = new ReaLTaiizor.Controls.Panel();
             dBtn_BrightestLine_R = new ReaLTaiizor.Controls.NightButton();
             dBtn_CameraLine_R = new ReaLTaiizor.Controls.NightButton();
             dLabel_Ng_R = new ReaLTaiizor.Controls.NightLabel();
-            dChart_R_5 = new Chart();
-            dChart_R_4 = new Chart();
             dChart_R_3 = new Chart();
-            dChart_R_2 = new Chart();
-            dChart_R_1 = new Chart();
-            dPic_roi_5_R = new ReaLTaiizor.Controls.HopePictureBox();
-            dPic_roi_4_R = new ReaLTaiizor.Controls.HopePictureBox();
             dPic_roi_3_R = new ReaLTaiizor.Controls.HopePictureBox();
-            dPic_roi_2_R = new ReaLTaiizor.Controls.HopePictureBox();
-            dPic_roi_1_R = new ReaLTaiizor.Controls.HopePictureBox();
             dLable_tmp2 = new ReaLTaiizor.Controls.NightLabel();
             dComboBox_scale2 = new ReaLTaiizor.Controls.DungeonComboBox();
             dComboBox_cam2 = new ReaLTaiizor.Controls.DungeonComboBox();
@@ -174,33 +165,18 @@ namespace JD_Proc
             dBtn_snap2 = new ReaLTaiizor.Controls.NightButton();
             dBtn_Process2 = new ReaLTaiizor.Controls.NightButton();
             dBtn_Measure2 = new ReaLTaiizor.Controls.NightButton();
-            dChart_L_5 = new Chart();
-            dChart_L_4 = new Chart();
             dChart_L_3 = new Chart();
-            dChart_L_2 = new Chart();
-            dChart_L_1 = new Chart();
-            dPic_roi_5_L = new ReaLTaiizor.Controls.HopePictureBox();
-            dPic_roi_4_L = new ReaLTaiizor.Controls.HopePictureBox();
             dPic_roi_3_L = new ReaLTaiizor.Controls.HopePictureBox();
-            dPic_roi_2_L = new ReaLTaiizor.Controls.HopePictureBox();
-            dPic_roi_1_L = new ReaLTaiizor.Controls.HopePictureBox();
-            dComboBox_scale1 = new ReaLTaiizor.Controls.DungeonComboBox();
-            dLable_tmp1 = new ReaLTaiizor.Controls.NightLabel();
-            dComboBox_cam1 = new ReaLTaiizor.Controls.DungeonComboBox();
             dTxt_cam1 = new ReaLTaiizor.Controls.NightTextBox();
             pictureBox1 = new PictureBox();
             tableLayoutPanel3 = new TableLayoutPanel();
-            dBtn_load1 = new ReaLTaiizor.Controls.NightButton();
-            dBtn_imageSave1 = new ReaLTaiizor.Controls.NightButton();
-            dBtn_live1 = new ReaLTaiizor.Controls.NightButton();
-            dBtn_stop1 = new ReaLTaiizor.Controls.NightButton();
-            dBtn_snap1 = new ReaLTaiizor.Controls.NightButton();
-            dBtn_Process1 = new ReaLTaiizor.Controls.NightButton();
             dBtn_Measure1 = new ReaLTaiizor.Controls.NightButton();
-            Btn_PLCACK = new ReaLTaiizor.Controls.NightButton();
-            Lbl_TempController = new ReaLTaiizor.Controls.NightLabel();
-            Btn_SetSV = new ReaLTaiizor.Controls.CyberButton();
-            TextBox_InputSV = new ReaLTaiizor.Controls.CyberTextBox();
+            dBtn_Process1 = new ReaLTaiizor.Controls.NightButton();
+            dBtn_snap1 = new ReaLTaiizor.Controls.NightButton();
+            dBtn_live1 = new ReaLTaiizor.Controls.NightButton();
+            Btn_BottomLineSetting = new ReaLTaiizor.Controls.NightButton();
+            dBtn_imageSave1 = new ReaLTaiizor.Controls.NightButton();
+            dBtn_load1 = new ReaLTaiizor.Controls.NightButton();
             TxtBox_SelectedImgName = new ReaLTaiizor.Controls.NightTextBox();
             panel1 = new Panel();
             dLabel_autoState = new ReaLTaiizor.Controls.NightLabel();
@@ -210,9 +186,10 @@ namespace JD_Proc
             dBtn_save_L = new ReaLTaiizor.Controls.ThunderButton();
             dBtn_modelOpen = new ReaLTaiizor.Controls.ThunderButton();
             tableLayoutPanel2 = new TableLayoutPanel();
+            dRadio_cam1 = new ReaLTaiizor.Controls.CyberRadioButton();
+            dRadio_TempCon = new ReaLTaiizor.Controls.CyberRadioButton();
             dRadio_plc = new ReaLTaiizor.Controls.CyberRadioButton();
             dRadio_cam2 = new ReaLTaiizor.Controls.CyberRadioButton();
-            dRadio_cam1 = new ReaLTaiizor.Controls.CyberRadioButton();
             skyLabel1 = new ReaLTaiizor.Controls.SkyLabel();
             thunderControlBox1 = new ReaLTaiizor.Controls.ThunderControlBox();
             panel7 = new Panel();
@@ -290,6 +267,16 @@ namespace JD_Proc
             nightForm1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)num_Row).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)num_AxisEndX).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)num_AxisStartX).BeginInit();
+            tableLayoutPanel12.SuspendLayout();
+            tableLayoutPanel16.SuspendLayout();
+            tableLayoutPanel13.SuspendLayout();
+            tableLayoutPanel14.SuspendLayout();
+            tableLayoutPanel15.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Chart_TempGraph_R).BeginInit();
             tableLayoutPanel_Auto.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1_Auto).BeginInit();
@@ -299,29 +286,12 @@ namespace JD_Proc
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Chart_Auto_L).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Chart_Auto_R).BeginInit();
-            panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dChart_R_5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_R_4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dChart_R_3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_R_2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_R_1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_5_R).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_4_R).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dPic_roi_3_R).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_2_R).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_1_R).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dChart_L_5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_L_4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dChart_L_3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_L_2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_L_1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_5_L).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_4_L).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dPic_roi_3_L).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_2_L).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_1_L).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel3.SuspendLayout();
             panel1.SuspendLayout();
@@ -418,43 +388,533 @@ namespace JD_Proc
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(2, 2, 2);
-            panel3.Controls.Add(tableLayoutPanel_Auto);
+            panel3.Controls.Add(num_Row);
+            panel3.Controls.Add(btnGraphShow);
+            panel3.Controls.Add(label7);
+            panel3.Controls.Add(num_AxisEndX);
+            panel3.Controls.Add(num_AxisStartX);
+            panel3.Controls.Add(btn_AxisChange);
+            panel3.Controls.Add(Lbl_LVchart2);
+            panel3.Controls.Add(Lbl_LVchart1);
+            panel3.Controls.Add(Panel_LVChart);
+            panel3.Controls.Add(tableLayoutPanel12);
             panel3.Controls.Add(Panel_CameraCenterLine_L);
             panel3.Controls.Add(Panel_BrighestLine_L);
             panel3.Controls.Add(dBtn_BrightestLine_L);
-            panel3.Controls.Add(Btn_BottomLineSetting);
             panel3.Controls.Add(dBtn_CameraLine_L);
-            panel3.Controls.Add(Label_SV_Value);
-            panel3.Controls.Add(Label_PV_Value);
-            panel3.Controls.Add(Label_SV);
-            panel3.Controls.Add(Label_PV);
             panel3.Controls.Add(dLabel_Ng_L);
             panel3.Controls.Add(panel4);
-            panel3.Controls.Add(dChart_L_5);
-            panel3.Controls.Add(dChart_L_4);
             panel3.Controls.Add(dChart_L_3);
-            panel3.Controls.Add(dChart_L_2);
-            panel3.Controls.Add(dChart_L_1);
-            panel3.Controls.Add(dPic_roi_5_L);
-            panel3.Controls.Add(dPic_roi_4_L);
             panel3.Controls.Add(dPic_roi_3_L);
-            panel3.Controls.Add(dPic_roi_2_L);
-            panel3.Controls.Add(dPic_roi_1_L);
-            panel3.Controls.Add(dComboBox_scale1);
-            panel3.Controls.Add(dLable_tmp1);
-            panel3.Controls.Add(dComboBox_cam1);
             panel3.Controls.Add(dTxt_cam1);
             panel3.Controls.Add(pictureBox1);
             panel3.Controls.Add(tableLayoutPanel3);
-            panel3.Controls.Add(Btn_PLCACK);
-            panel3.Controls.Add(Lbl_TempController);
-            panel3.Controls.Add(Btn_SetSV);
-            panel3.Controls.Add(TextBox_InputSV);
             panel3.Controls.Add(TxtBox_SelectedImgName);
             panel3.Location = new Point(0, 99);
             panel3.Name = "panel3";
             panel3.Size = new Size(1920, 940);
             panel3.TabIndex = 8;
+            // 
+            // num_Row
+            // 
+            num_Row.Location = new Point(823, 629);
+            num_Row.Maximum = new decimal(new int[] { 640, 0, 0, 0 });
+            num_Row.Name = "num_Row";
+            num_Row.Size = new Size(137, 23);
+            num_Row.TabIndex = 58;
+            // 
+            // btnGraphShow
+            // 
+            btnGraphShow.BackColor = SystemColors.ActiveCaption;
+            btnGraphShow.FlatStyle = FlatStyle.Flat;
+            btnGraphShow.Font = new Font("맑은 고딕", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGraphShow.ForeColor = Color.White;
+            btnGraphShow.Location = new Point(823, 595);
+            btnGraphShow.Name = "btnGraphShow";
+            btnGraphShow.Size = new Size(137, 28);
+            btnGraphShow.TabIndex = 57;
+            btnGraphShow.Text = "ShowGraph";
+            btnGraphShow.UseVisualStyleBackColor = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("맑은 고딕", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(873, 527);
+            label7.Name = "label7";
+            label7.Size = new Size(42, 21);
+            label7.TabIndex = 56;
+            label7.Text = "<X<";
+            // 
+            // num_AxisEndX
+            // 
+            num_AxisEndX.Location = new Point(915, 526);
+            num_AxisEndX.Maximum = new decimal(new int[] { 480, 0, 0, 0 });
+            num_AxisEndX.Name = "num_AxisEndX";
+            num_AxisEndX.Size = new Size(41, 23);
+            num_AxisEndX.TabIndex = 55;
+            // 
+            // num_AxisStartX
+            // 
+            num_AxisStartX.Location = new Point(826, 526);
+            num_AxisStartX.Maximum = new decimal(new int[] { 480, 0, 0, 0 });
+            num_AxisStartX.Name = "num_AxisStartX";
+            num_AxisStartX.Size = new Size(43, 23);
+            num_AxisStartX.TabIndex = 54;
+            // 
+            // btn_AxisChange
+            // 
+            btn_AxisChange.BackColor = SystemColors.ActiveCaption;
+            btn_AxisChange.FlatStyle = FlatStyle.Flat;
+            btn_AxisChange.Font = new Font("맑은 고딕", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_AxisChange.ForeColor = Color.White;
+            btn_AxisChange.Location = new Point(827, 495);
+            btn_AxisChange.Name = "btn_AxisChange";
+            btn_AxisChange.Size = new Size(129, 29);
+            btn_AxisChange.TabIndex = 53;
+            btn_AxisChange.Text = "AixsRangechange";
+            btn_AxisChange.UseVisualStyleBackColor = false;
+            // 
+            // Lbl_LVchart2
+            // 
+            Lbl_LVchart2.AutoSize = true;
+            Lbl_LVchart2.Location = new Point(902, 500);
+            Lbl_LVchart2.Name = "Lbl_LVchart2";
+            Lbl_LVchart2.Size = new Size(38, 15);
+            Lbl_LVchart2.TabIndex = 52;
+            Lbl_LVchart2.Text = "label8";
+            // 
+            // Lbl_LVchart1
+            // 
+            Lbl_LVchart1.AutoSize = true;
+            Lbl_LVchart1.Location = new Point(837, 500);
+            Lbl_LVchart1.Name = "Lbl_LVchart1";
+            Lbl_LVchart1.Size = new Size(38, 15);
+            Lbl_LVchart1.TabIndex = 51;
+            Lbl_LVchart1.Text = "label7";
+            // 
+            // Panel_LVChart
+            // 
+            Panel_LVChart.Location = new Point(6, 494);
+            Panel_LVChart.Name = "Panel_LVChart";
+            Panel_LVChart.Size = new Size(815, 300);
+            Panel_LVChart.TabIndex = 50;
+            // 
+            // tableLayoutPanel12
+            // 
+            tableLayoutPanel12.ColumnCount = 1;
+            tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel12.Controls.Add(tableLayoutPanel16, 0, 3);
+            tableLayoutPanel12.Controls.Add(tableLayoutPanel13, 0, 0);
+            tableLayoutPanel12.Controls.Add(tableLayoutPanel14, 0, 1);
+            tableLayoutPanel12.Controls.Add(tableLayoutPanel15, 0, 2);
+            tableLayoutPanel12.Location = new Point(3, 151);
+            tableLayoutPanel12.Name = "tableLayoutPanel12";
+            tableLayoutPanel12.RowCount = 5;
+            tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel12.Size = new Size(191, 247);
+            tableLayoutPanel12.TabIndex = 49;
+            // 
+            // tableLayoutPanel16
+            // 
+            tableLayoutPanel16.ColumnCount = 2;
+            tableLayoutPanel16.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel16.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel16.Controls.Add(label6, 0, 0);
+            tableLayoutPanel16.Controls.Add(dComboBox_cam1, 1, 0);
+            tableLayoutPanel16.Dock = DockStyle.Fill;
+            tableLayoutPanel16.Location = new Point(3, 150);
+            tableLayoutPanel16.Name = "tableLayoutPanel16";
+            tableLayoutPanel16.RowCount = 1;
+            tableLayoutPanel16.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel16.Size = new Size(185, 43);
+            tableLayoutPanel16.TabIndex = 3;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.None;
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Segoe UI", 6.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.ForeColor = SystemColors.ControlDark;
+            label6.Location = new Point(6, 15);
+            label6.Name = "label6";
+            label6.Size = new Size(42, 12);
+            label6.TabIndex = 40;
+            label6.Text = "Pal_Scale";
+            // 
+            // dComboBox_cam1
+            // 
+            dComboBox_cam1.Anchor = AnchorStyles.None;
+            dComboBox_cam1.BackColor = Color.FromArgb(246, 246, 246);
+            dComboBox_cam1.ColorA = Color.FromArgb(246, 132, 85);
+            dComboBox_cam1.ColorB = Color.FromArgb(231, 108, 57);
+            dComboBox_cam1.ColorC = Color.FromArgb(242, 241, 240);
+            dComboBox_cam1.ColorD = Color.FromArgb(253, 252, 252);
+            dComboBox_cam1.ColorE = Color.FromArgb(239, 237, 236);
+            dComboBox_cam1.ColorF = Color.FromArgb(180, 180, 180);
+            dComboBox_cam1.ColorG = Color.FromArgb(119, 119, 118);
+            dComboBox_cam1.ColorH = Color.FromArgb(224, 222, 220);
+            dComboBox_cam1.ColorI = Color.FromArgb(250, 249, 249);
+            dComboBox_cam1.DrawMode = DrawMode.OwnerDrawFixed;
+            dComboBox_cam1.DropDownHeight = 100;
+            dComboBox_cam1.DropDownStyle = ComboBoxStyle.DropDownList;
+            dComboBox_cam1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dComboBox_cam1.ForeColor = Color.FromArgb(76, 76, 97);
+            dComboBox_cam1.FormattingEnabled = true;
+            dComboBox_cam1.HoverSelectionColor = Color.Empty;
+            dComboBox_cam1.IntegralHeight = false;
+            dComboBox_cam1.ItemHeight = 20;
+            dComboBox_cam1.Items.AddRange(new object[] { "AlarmBlue", "AlarmBlueHi", "GrayBW", "GrayWB", "AlarmGreen", "Iron", "IronHi", "Medical", "Rainbow", "RainbowHi", "AlarmRed" });
+            dComboBox_cam1.Location = new Point(69, 8);
+            dComboBox_cam1.Name = "dComboBox_cam1";
+            dComboBox_cam1.Size = new Size(102, 26);
+            dComboBox_cam1.StartIndex = 1;
+            dComboBox_cam1.TabIndex = 12;
+            dComboBox_cam1.SelectedIndexChanged += dComboBox_cam1_SelectedIndexChanged;
+            // 
+            // tableLayoutPanel13
+            // 
+            tableLayoutPanel13.ColumnCount = 4;
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel13.Controls.Add(Label_PV, 0, 0);
+            tableLayoutPanel13.Controls.Add(Label_SV, 2, 0);
+            tableLayoutPanel13.Controls.Add(Label_SV_Value, 3, 0);
+            tableLayoutPanel13.Controls.Add(Label_PV_Value, 1, 0);
+            tableLayoutPanel13.Dock = DockStyle.Fill;
+            tableLayoutPanel13.Location = new Point(3, 3);
+            tableLayoutPanel13.Name = "tableLayoutPanel13";
+            tableLayoutPanel13.RowCount = 1;
+            tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel13.Size = new Size(185, 43);
+            tableLayoutPanel13.TabIndex = 0;
+            // 
+            // Label_PV
+            // 
+            Label_PV.Anchor = AnchorStyles.None;
+            Label_PV.AutoSize = true;
+            Label_PV.BackColor = Color.Transparent;
+            Label_PV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_PV.ForeColor = SystemColors.ControlDark;
+            Label_PV.Location = new Point(3, 9);
+            Label_PV.Name = "Label_PV";
+            Label_PV.Size = new Size(39, 25);
+            Label_PV.TabIndex = 38;
+            Label_PV.Text = "PV: ";
+            // 
+            // Label_SV
+            // 
+            Label_SV.Anchor = AnchorStyles.None;
+            Label_SV.AutoSize = true;
+            Label_SV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_SV.ForeColor = SystemColors.ControlDark;
+            Label_SV.Location = new Point(96, 9);
+            Label_SV.Name = "Label_SV";
+            Label_SV.Size = new Size(38, 25);
+            Label_SV.TabIndex = 39;
+            Label_SV.Text = "SV: ";
+            // 
+            // Label_SV_Value
+            // 
+            Label_SV_Value.Anchor = AnchorStyles.None;
+            Label_SV_Value.AutoSize = true;
+            Label_SV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_SV_Value.ForeColor = SystemColors.ControlLightLight;
+            Label_SV_Value.Location = new Point(152, 11);
+            Label_SV_Value.Name = "Label_SV_Value";
+            Label_SV_Value.Size = new Size(19, 21);
+            Label_SV_Value.TabIndex = 40;
+            Label_SV_Value.Text = "0";
+            // 
+            // Label_PV_Value
+            // 
+            Label_PV_Value.Anchor = AnchorStyles.None;
+            Label_PV_Value.AutoSize = true;
+            Label_PV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Label_PV_Value.ForeColor = SystemColors.ControlLightLight;
+            Label_PV_Value.Location = new Point(59, 11);
+            Label_PV_Value.Name = "Label_PV_Value";
+            Label_PV_Value.Size = new Size(19, 21);
+            Label_PV_Value.TabIndex = 40;
+            Label_PV_Value.Text = "0";
+            // 
+            // tableLayoutPanel14
+            // 
+            tableLayoutPanel14.ColumnCount = 2;
+            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel14.Controls.Add(TextBox_InputSV, 0, 0);
+            tableLayoutPanel14.Controls.Add(Btn_SetSV, 1, 0);
+            tableLayoutPanel14.Dock = DockStyle.Fill;
+            tableLayoutPanel14.Location = new Point(3, 52);
+            tableLayoutPanel14.Name = "tableLayoutPanel14";
+            tableLayoutPanel14.RowCount = 1;
+            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel14.Size = new Size(185, 43);
+            tableLayoutPanel14.TabIndex = 1;
+            // 
+            // TextBox_InputSV
+            // 
+            TextBox_InputSV.Alpha = 20;
+            TextBox_InputSV.BackColor = Color.Transparent;
+            TextBox_InputSV.Background_WidthPen = 3F;
+            TextBox_InputSV.BackgroundPen = true;
+            TextBox_InputSV.ColorBackground = Color.FromArgb(37, 52, 68);
+            TextBox_InputSV.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            TextBox_InputSV.ColorLighting = Color.FromArgb(29, 200, 238);
+            TextBox_InputSV.ColorPen_1 = Color.FromArgb(29, 200, 238);
+            TextBox_InputSV.ColorPen_2 = Color.FromArgb(37, 52, 68);
+            TextBox_InputSV.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            TextBox_InputSV.Dock = DockStyle.Fill;
+            TextBox_InputSV.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBox_InputSV.ForeColor = Color.FromArgb(245, 245, 245);
+            TextBox_InputSV.Lighting = false;
+            TextBox_InputSV.LinearGradientPen = false;
+            TextBox_InputSV.Location = new Point(3, 3);
+            TextBox_InputSV.Name = "TextBox_InputSV";
+            TextBox_InputSV.PenWidth = 15;
+            TextBox_InputSV.RGB = false;
+            TextBox_InputSV.Rounding = true;
+            TextBox_InputSV.RoundingInt = 60;
+            TextBox_InputSV.Size = new Size(123, 37);
+            TextBox_InputSV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            TextBox_InputSV.TabIndex = 45;
+            TextBox_InputSV.Tag = "Cyber";
+            TextBox_InputSV.TextButton = "0";
+            TextBox_InputSV.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            TextBox_InputSV.Timer_RGB = 300;
+            // 
+            // Btn_SetSV
+            // 
+            Btn_SetSV.Alpha = 20;
+            Btn_SetSV.BackColor = Color.Transparent;
+            Btn_SetSV.Background = true;
+            Btn_SetSV.Background_WidthPen = 4F;
+            Btn_SetSV.BackgroundPen = true;
+            Btn_SetSV.ColorBackground = Color.FromArgb(37, 52, 68);
+            Btn_SetSV.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            Btn_SetSV.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            Btn_SetSV.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            Btn_SetSV.ColorLighting = Color.FromArgb(29, 200, 238);
+            Btn_SetSV.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            Btn_SetSV.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            Btn_SetSV.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            Btn_SetSV.Dock = DockStyle.Fill;
+            Btn_SetSV.Effect_1 = true;
+            Btn_SetSV.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            Btn_SetSV.Effect_1_Transparency = 25;
+            Btn_SetSV.Effect_2 = true;
+            Btn_SetSV.Effect_2_ColorBackground = Color.White;
+            Btn_SetSV.Effect_2_Transparency = 20;
+            Btn_SetSV.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_SetSV.ForeColor = Color.FromArgb(245, 245, 245);
+            Btn_SetSV.Lighting = false;
+            Btn_SetSV.LinearGradient_Background = false;
+            Btn_SetSV.LinearGradientPen = false;
+            Btn_SetSV.Location = new Point(132, 3);
+            Btn_SetSV.Name = "Btn_SetSV";
+            Btn_SetSV.PenWidth = 15;
+            Btn_SetSV.Rounding = true;
+            Btn_SetSV.RoundingInt = 70;
+            Btn_SetSV.Size = new Size(50, 37);
+            Btn_SetSV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Btn_SetSV.TabIndex = 45;
+            Btn_SetSV.Tag = "Set";
+            Btn_SetSV.TextButton = "Set";
+            Btn_SetSV.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            Btn_SetSV.Timer_Effect_1 = 5;
+            Btn_SetSV.Timer_RGB = 300;
+            Btn_SetSV.Click += Btn_SetSV_Click;
+            // 
+            // tableLayoutPanel15
+            // 
+            tableLayoutPanel15.ColumnCount = 2;
+            tableLayoutPanel15.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel15.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel15.Controls.Add(label5, 0, 0);
+            tableLayoutPanel15.Controls.Add(dComboBox_scale1, 1, 0);
+            tableLayoutPanel15.Dock = DockStyle.Fill;
+            tableLayoutPanel15.Location = new Point(3, 101);
+            tableLayoutPanel15.Name = "tableLayoutPanel15";
+            tableLayoutPanel15.RowCount = 1;
+            tableLayoutPanel15.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel15.Size = new Size(185, 43);
+            tableLayoutPanel15.TabIndex = 2;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.None;
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = SystemColors.ControlDark;
+            label5.Location = new Point(9, 9);
+            label5.Name = "label5";
+            label5.Size = new Size(37, 25);
+            label5.TabIndex = 39;
+            label5.Text = "Pal";
+            // 
+            // dComboBox_scale1
+            // 
+            dComboBox_scale1.Anchor = AnchorStyles.None;
+            dComboBox_scale1.BackColor = Color.FromArgb(246, 246, 246);
+            dComboBox_scale1.ColorA = Color.FromArgb(246, 132, 85);
+            dComboBox_scale1.ColorB = Color.FromArgb(231, 108, 57);
+            dComboBox_scale1.ColorC = Color.FromArgb(242, 241, 240);
+            dComboBox_scale1.ColorD = Color.FromArgb(253, 252, 252);
+            dComboBox_scale1.ColorE = Color.FromArgb(239, 237, 236);
+            dComboBox_scale1.ColorF = Color.FromArgb(180, 180, 180);
+            dComboBox_scale1.ColorG = Color.FromArgb(119, 119, 118);
+            dComboBox_scale1.ColorH = Color.FromArgb(224, 222, 220);
+            dComboBox_scale1.ColorI = Color.FromArgb(250, 249, 249);
+            dComboBox_scale1.DrawMode = DrawMode.OwnerDrawFixed;
+            dComboBox_scale1.DropDownHeight = 100;
+            dComboBox_scale1.DropDownStyle = ComboBoxStyle.DropDownList;
+            dComboBox_scale1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dComboBox_scale1.ForeColor = Color.FromArgb(76, 76, 97);
+            dComboBox_scale1.FormattingEnabled = true;
+            dComboBox_scale1.HoverSelectionColor = Color.Empty;
+            dComboBox_scale1.IntegralHeight = false;
+            dComboBox_scale1.ItemHeight = 20;
+            dComboBox_scale1.Items.AddRange(new object[] { "Manual", "MinMax", "Sigma1", "Sigma3" });
+            dComboBox_scale1.Location = new Point(69, 8);
+            dComboBox_scale1.Name = "dComboBox_scale1";
+            dComboBox_scale1.Size = new Size(102, 26);
+            dComboBox_scale1.StartIndex = 3;
+            dComboBox_scale1.TabIndex = 18;
+            dComboBox_scale1.SelectedIndexChanged += dComboBox_scale1_SelectedIndexChanged;
+            // 
+            // Panel_CameraCenterLine_L
+            // 
+            Panel_CameraCenterLine_L.BackColor = Color.Silver;
+            Panel_CameraCenterLine_L.EdgeColor = Color.FromArgb(32, 41, 50);
+            Panel_CameraCenterLine_L.Location = new Point(311, 319);
+            Panel_CameraCenterLine_L.Name = "Panel_CameraCenterLine_L";
+            Panel_CameraCenterLine_L.Padding = new Padding(5);
+            Panel_CameraCenterLine_L.Size = new Size(640, 3);
+            Panel_CameraCenterLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Panel_CameraCenterLine_L.TabIndex = 44;
+            Panel_CameraCenterLine_L.Text = "panel5";
+            Panel_CameraCenterLine_L.Visible = false;
+            // 
+            // Panel_BrighestLine_L
+            // 
+            Panel_BrighestLine_L.BackColor = Color.Yellow;
+            Panel_BrighestLine_L.EdgeColor = Color.FromArgb(32, 41, 50);
+            Panel_BrighestLine_L.Location = new Point(311, 286);
+            Panel_BrighestLine_L.Name = "Panel_BrighestLine_L";
+            Panel_BrighestLine_L.Padding = new Padding(5);
+            Panel_BrighestLine_L.Size = new Size(640, 3);
+            Panel_BrighestLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            Panel_BrighestLine_L.TabIndex = 43;
+            Panel_BrighestLine_L.Text = "panel5";
+            Panel_BrighestLine_L.Visible = false;
+            // 
+            // dBtn_BrightestLine_L
+            // 
+            dBtn_BrightestLine_L.BackColor = Color.Transparent;
+            dBtn_BrightestLine_L.DialogResult = DialogResult.None;
+            dBtn_BrightestLine_L.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_BrightestLine_L.ForeColor = Color.Silver;
+            dBtn_BrightestLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_BrightestLine_L.HoverForeColor = Color.White;
+            dBtn_BrightestLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_BrightestLine_L.Location = new Point(856, 423);
+            dBtn_BrightestLine_L.MinimumSize = new Size(100, 50);
+            dBtn_BrightestLine_L.Name = "dBtn_BrightestLine_L";
+            dBtn_BrightestLine_L.NormalBackColor = Color.White;
+            dBtn_BrightestLine_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_BrightestLine_L.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_BrightestLine_L.PressedForeColor = Color.White;
+            dBtn_BrightestLine_L.Radius = 20;
+            dBtn_BrightestLine_L.Size = new Size(100, 50);
+            dBtn_BrightestLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_BrightestLine_L.TabIndex = 42;
+            dBtn_BrightestLine_L.Text = "BrighestLine";
+            dBtn_BrightestLine_L.Click += dBtn_BrightestLine_L_Click;
+            // 
+            // dBtn_CameraLine_L
+            // 
+            dBtn_CameraLine_L.BackColor = Color.Transparent;
+            dBtn_CameraLine_L.DialogResult = DialogResult.None;
+            dBtn_CameraLine_L.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_CameraLine_L.ForeColor = Color.Silver;
+            dBtn_CameraLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_CameraLine_L.HoverForeColor = Color.White;
+            dBtn_CameraLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_CameraLine_L.Location = new Point(856, 371);
+            dBtn_CameraLine_L.MinimumSize = new Size(100, 50);
+            dBtn_CameraLine_L.Name = "dBtn_CameraLine_L";
+            dBtn_CameraLine_L.NormalBackColor = Color.White;
+            dBtn_CameraLine_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_CameraLine_L.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_CameraLine_L.PressedForeColor = Color.White;
+            dBtn_CameraLine_L.Radius = 20;
+            dBtn_CameraLine_L.Size = new Size(100, 50);
+            dBtn_CameraLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_CameraLine_L.TabIndex = 41;
+            dBtn_CameraLine_L.Text = "CenterLine";
+            dBtn_CameraLine_L.Click += dBtn_CameraLine_L_Click;
+            // 
+            // dLabel_Ng_L
+            // 
+            dLabel_Ng_L.AutoSize = true;
+            dLabel_Ng_L.BackColor = Color.Transparent;
+            dLabel_Ng_L.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dLabel_Ng_L.ForeColor = Color.FromArgb(114, 118, 127);
+            dLabel_Ng_L.Location = new Point(201, 453);
+            dLabel_Ng_L.Name = "dLabel_Ng_L";
+            dLabel_Ng_L.Size = new Size(97, 30);
+            dLabel_Ng_L.TabIndex = 34;
+            dLabel_Ng_L.Text = "작업상태";
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Black;
+            panel4.Controls.Add(Chart_TempGraph_R);
+            panel4.Controls.Add(tableLayoutPanel_Auto);
+            panel4.Controls.Add(Panel_CameraCenterLine_R);
+            panel4.Controls.Add(Panel_BrighestLine_R);
+            panel4.Controls.Add(dBtn_BrightestLine_R);
+            panel4.Controls.Add(dBtn_CameraLine_R);
+            panel4.Controls.Add(dLabel_Ng_R);
+            panel4.Controls.Add(dChart_R_3);
+            panel4.Controls.Add(dPic_roi_3_R);
+            panel4.Controls.Add(dLable_tmp2);
+            panel4.Controls.Add(dComboBox_scale2);
+            panel4.Controls.Add(dComboBox_cam2);
+            panel4.Controls.Add(pictureBox2);
+            panel4.Controls.Add(dTxt_cam2);
+            panel4.Controls.Add(tableLayoutPanel4);
+            panel4.Location = new Point(962, 1);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(960, 950);
+            panel4.TabIndex = 9;
+            // 
+            // Chart_TempGraph_R
+            // 
+            chartArea1.Name = "ChartArea1";
+            Chart_TempGraph_R.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            Chart_TempGraph_R.Legends.Add(legend1);
+            Chart_TempGraph_R.Location = new Point(7, 493);
+            Chart_TempGraph_R.Name = "Chart_TempGraph_R";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            Chart_TempGraph_R.Series.Add(series1);
+            Chart_TempGraph_R.Size = new Size(945, 300);
+            Chart_TempGraph_R.TabIndex = 49;
+            Chart_TempGraph_R.Text = "chart13";
             // 
             // tableLayoutPanel_Auto
             // 
@@ -465,7 +925,7 @@ namespace JD_Proc
             tableLayoutPanel_Auto.Controls.Add(tableLayoutPanel6, 1, 0);
             tableLayoutPanel_Auto.Controls.Add(Chart_Auto_L, 0, 1);
             tableLayoutPanel_Auto.Controls.Add(Chart_Auto_R, 1, 1);
-            tableLayoutPanel_Auto.Location = new Point(2, 4);
+            tableLayoutPanel_Auto.Location = new Point(421, 614);
             tableLayoutPanel_Auto.Name = "tableLayoutPanel_Auto";
             tableLayoutPanel_Auto.RowCount = 2;
             tableLayoutPanel_Auto.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
@@ -588,48 +1048,6 @@ namespace JD_Proc
             Chart_Auto_L.BackColor = Color.FromArgb(0, 0, 20);
             Chart_Auto_L.BackSecondaryColor = SystemColors.Desktop;
             Chart_Auto_L.BorderlineDashStyle = ChartDashStyle.Solid;
-            chartArea1.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
-            chartArea1.AxisX.LineColor = Color.FromArgb(0, 0, 20);
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
-            chartArea1.AxisY.LineColor = Color.FromArgb(0, 0, 20);
-            chartArea1.AxisY.MajorGrid.Enabled = false;
-            chartArea1.BackColor = Color.FromArgb(0, 0, 20);
-            chartArea1.Name = "ChartArea1";
-            Chart_Auto_L.ChartAreas.Add(chartArea1);
-            Chart_Auto_L.Dock = DockStyle.Fill;
-            legend1.BackColor = Color.Transparent;
-            legend1.ForeColor = Color.White;
-            legend1.Name = "Legend1";
-            Chart_Auto_L.Legends.Add(legend1);
-            Chart_Auto_L.Location = new Point(3, 567);
-            Chart_Auto_L.Name = "Chart_Auto_L";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = SeriesChartType.Line;
-            series1.Color = Color.Lime;
-            series1.IsValueShownAsLabel = true;
-            series1.LabelForeColor = Color.White;
-            series1.Legend = "Legend1";
-            series1.MarkerColor = Color.Lime;
-            series1.MarkerSize = 10;
-            series1.MarkerStyle = MarkerStyle.Circle;
-            series1.Name = "Gap(um)";
-            series1.Points.Add(dataPoint1);
-            series1.Points.Add(dataPoint2);
-            series1.Points.Add(dataPoint3);
-            series1.Points.Add(dataPoint4);
-            series1.Points.Add(dataPoint5);
-            Chart_Auto_L.Series.Add(series1);
-            Chart_Auto_L.Size = new Size(954, 370);
-            Chart_Auto_L.TabIndex = 6;
-            Chart_Auto_L.Text = "L_Camera_Gap";
-            // 
-            // Chart_Auto_R
-            // 
-            Chart_Auto_R.BackColor = Color.FromArgb(0, 0, 20);
-            Chart_Auto_R.BackSecondaryColor = SystemColors.Desktop;
-            Chart_Auto_R.BorderlineDashStyle = ChartDashStyle.Solid;
             chartArea2.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
             chartArea2.AxisX.LineColor = Color.FromArgb(0, 0, 20);
             chartArea2.AxisX.MajorGrid.Enabled = false;
@@ -637,17 +1055,17 @@ namespace JD_Proc
             chartArea2.AxisY.LineColor = Color.FromArgb(0, 0, 20);
             chartArea2.AxisY.MajorGrid.Enabled = false;
             chartArea2.BackColor = Color.FromArgb(0, 0, 20);
-            chartArea2.Name = "ChartArea2";
-            Chart_Auto_R.ChartAreas.Add(chartArea2);
-            Chart_Auto_R.Dock = DockStyle.Fill;
+            chartArea2.Name = "ChartArea1";
+            Chart_Auto_L.ChartAreas.Add(chartArea2);
+            Chart_Auto_L.Dock = DockStyle.Fill;
             legend2.BackColor = Color.Transparent;
             legend2.ForeColor = Color.White;
             legend2.Name = "Legend1";
-            Chart_Auto_R.Legends.Add(legend2);
-            Chart_Auto_R.Location = new Point(963, 567);
-            Chart_Auto_R.Name = "Chart_Auto_R";
+            Chart_Auto_L.Legends.Add(legend2);
+            Chart_Auto_L.Location = new Point(3, 567);
+            Chart_Auto_L.Name = "Chart_Auto_L";
             series2.BorderWidth = 3;
-            series2.ChartArea = "ChartArea2";
+            series2.ChartArea = "ChartArea1";
             series2.ChartType = SeriesChartType.Line;
             series2.Color = Color.Lime;
             series2.IsValueShownAsLabel = true;
@@ -662,190 +1080,52 @@ namespace JD_Proc
             series2.Points.Add(dataPoint3);
             series2.Points.Add(dataPoint4);
             series2.Points.Add(dataPoint5);
-            Chart_Auto_R.Series.Add(series2);
+            Chart_Auto_L.Series.Add(series2);
+            Chart_Auto_L.Size = new Size(954, 370);
+            Chart_Auto_L.TabIndex = 6;
+            Chart_Auto_L.Text = "L_Camera_Gap";
+            // 
+            // Chart_Auto_R
+            // 
+            Chart_Auto_R.BackColor = Color.FromArgb(0, 0, 20);
+            Chart_Auto_R.BackSecondaryColor = SystemColors.Desktop;
+            Chart_Auto_R.BorderlineDashStyle = ChartDashStyle.Solid;
+            chartArea3.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea3.AxisX.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea3.AxisY.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea3.AxisY.MajorGrid.Enabled = false;
+            chartArea3.BackColor = Color.FromArgb(0, 0, 20);
+            chartArea3.Name = "ChartArea2";
+            Chart_Auto_R.ChartAreas.Add(chartArea3);
+            Chart_Auto_R.Dock = DockStyle.Fill;
+            legend3.BackColor = Color.Transparent;
+            legend3.ForeColor = Color.White;
+            legend3.Name = "Legend1";
+            Chart_Auto_R.Legends.Add(legend3);
+            Chart_Auto_R.Location = new Point(963, 567);
+            Chart_Auto_R.Name = "Chart_Auto_R";
+            series3.BorderWidth = 3;
+            series3.ChartArea = "ChartArea2";
+            series3.ChartType = SeriesChartType.Line;
+            series3.Color = Color.Lime;
+            series3.IsValueShownAsLabel = true;
+            series3.LabelForeColor = Color.White;
+            series3.Legend = "Legend1";
+            series3.MarkerColor = Color.Lime;
+            series3.MarkerSize = 10;
+            series3.MarkerStyle = MarkerStyle.Circle;
+            series3.Name = "Gap(um)";
+            series3.Points.Add(dataPoint1);
+            series3.Points.Add(dataPoint2);
+            series3.Points.Add(dataPoint3);
+            series3.Points.Add(dataPoint4);
+            series3.Points.Add(dataPoint5);
+            Chart_Auto_R.Series.Add(series3);
             Chart_Auto_R.Size = new Size(954, 370);
             Chart_Auto_R.TabIndex = 7;
             Chart_Auto_R.Text = "R_Camera_Gap";
-            // 
-            // Panel_CameraCenterLine_L
-            // 
-            Panel_CameraCenterLine_L.BackColor = Color.Silver;
-            Panel_CameraCenterLine_L.EdgeColor = Color.FromArgb(32, 41, 50);
-            Panel_CameraCenterLine_L.Location = new Point(311, 319);
-            Panel_CameraCenterLine_L.Name = "Panel_CameraCenterLine_L";
-            Panel_CameraCenterLine_L.Padding = new Padding(5);
-            Panel_CameraCenterLine_L.Size = new Size(640, 3);
-            Panel_CameraCenterLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            Panel_CameraCenterLine_L.TabIndex = 44;
-            Panel_CameraCenterLine_L.Text = "panel5";
-            Panel_CameraCenterLine_L.Visible = false;
-            // 
-            // Panel_BrighestLine_L
-            // 
-            Panel_BrighestLine_L.BackColor = Color.Yellow;
-            Panel_BrighestLine_L.EdgeColor = Color.FromArgb(32, 41, 50);
-            Panel_BrighestLine_L.Location = new Point(311, 286);
-            Panel_BrighestLine_L.Name = "Panel_BrighestLine_L";
-            Panel_BrighestLine_L.Padding = new Padding(5);
-            Panel_BrighestLine_L.Size = new Size(640, 3);
-            Panel_BrighestLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            Panel_BrighestLine_L.TabIndex = 43;
-            Panel_BrighestLine_L.Text = "panel5";
-            Panel_BrighestLine_L.Visible = false;
-            // 
-            // dBtn_BrightestLine_L
-            // 
-            dBtn_BrightestLine_L.BackColor = Color.Transparent;
-            dBtn_BrightestLine_L.DialogResult = DialogResult.None;
-            dBtn_BrightestLine_L.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_BrightestLine_L.ForeColor = Color.Silver;
-            dBtn_BrightestLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_BrightestLine_L.HoverForeColor = Color.White;
-            dBtn_BrightestLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_BrightestLine_L.Location = new Point(856, 423);
-            dBtn_BrightestLine_L.MinimumSize = new Size(100, 50);
-            dBtn_BrightestLine_L.Name = "dBtn_BrightestLine_L";
-            dBtn_BrightestLine_L.NormalBackColor = Color.White;
-            dBtn_BrightestLine_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_BrightestLine_L.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_BrightestLine_L.PressedForeColor = Color.White;
-            dBtn_BrightestLine_L.Radius = 20;
-            dBtn_BrightestLine_L.Size = new Size(100, 50);
-            dBtn_BrightestLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_BrightestLine_L.TabIndex = 42;
-            dBtn_BrightestLine_L.Text = "BrighestLine";
-            dBtn_BrightestLine_L.Click += dBtn_BrightestLine_L_Click;
-            // 
-            // Btn_BottomLineSetting
-            // 
-            Btn_BottomLineSetting.BackColor = Color.Transparent;
-            Btn_BottomLineSetting.DialogResult = DialogResult.None;
-            Btn_BottomLineSetting.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_BottomLineSetting.ForeColor = Color.Silver;
-            Btn_BottomLineSetting.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            Btn_BottomLineSetting.HoverForeColor = Color.White;
-            Btn_BottomLineSetting.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            Btn_BottomLineSetting.Location = new Point(12, 207);
-            Btn_BottomLineSetting.MinimumSize = new Size(100, 50);
-            Btn_BottomLineSetting.Name = "Btn_BottomLineSetting";
-            Btn_BottomLineSetting.NormalBackColor = Color.White;
-            Btn_BottomLineSetting.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            Btn_BottomLineSetting.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            Btn_BottomLineSetting.PressedForeColor = Color.White;
-            Btn_BottomLineSetting.Radius = 20;
-            Btn_BottomLineSetting.Size = new Size(100, 50);
-            Btn_BottomLineSetting.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Btn_BottomLineSetting.TabIndex = 41;
-            Btn_BottomLineSetting.Text = "BtmLineSetting";
-            Btn_BottomLineSetting.Click += Btn_BottomLineSetting_Click;
-            // 
-            // dBtn_CameraLine_L
-            // 
-            dBtn_CameraLine_L.BackColor = Color.Transparent;
-            dBtn_CameraLine_L.DialogResult = DialogResult.None;
-            dBtn_CameraLine_L.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_CameraLine_L.ForeColor = Color.Silver;
-            dBtn_CameraLine_L.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_CameraLine_L.HoverForeColor = Color.White;
-            dBtn_CameraLine_L.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_CameraLine_L.Location = new Point(856, 371);
-            dBtn_CameraLine_L.MinimumSize = new Size(100, 50);
-            dBtn_CameraLine_L.Name = "dBtn_CameraLine_L";
-            dBtn_CameraLine_L.NormalBackColor = Color.White;
-            dBtn_CameraLine_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_CameraLine_L.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_CameraLine_L.PressedForeColor = Color.White;
-            dBtn_CameraLine_L.Radius = 20;
-            dBtn_CameraLine_L.Size = new Size(100, 50);
-            dBtn_CameraLine_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_CameraLine_L.TabIndex = 41;
-            dBtn_CameraLine_L.Text = "CenterLine";
-            dBtn_CameraLine_L.Click += dBtn_CameraLine_L_Click;
-            // 
-            // Label_SV_Value
-            // 
-            Label_SV_Value.AutoSize = true;
-            Label_SV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Label_SV_Value.ForeColor = SystemColors.ControlLightLight;
-            Label_SV_Value.Location = new Point(134, 325);
-            Label_SV_Value.Name = "Label_SV_Value";
-            Label_SV_Value.Size = new Size(19, 21);
-            Label_SV_Value.TabIndex = 40;
-            Label_SV_Value.Text = "0";
-            // 
-            // Label_PV_Value
-            // 
-            Label_PV_Value.AutoSize = true;
-            Label_PV_Value.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Label_PV_Value.ForeColor = SystemColors.ControlLightLight;
-            Label_PV_Value.Location = new Point(54, 325);
-            Label_PV_Value.Name = "Label_PV_Value";
-            Label_PV_Value.Size = new Size(19, 21);
-            Label_PV_Value.TabIndex = 40;
-            Label_PV_Value.Text = "0";
-            // 
-            // Label_SV
-            // 
-            Label_SV.AutoSize = true;
-            Label_SV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Label_SV.ForeColor = SystemColors.ControlDark;
-            Label_SV.Location = new Point(94, 322);
-            Label_SV.Name = "Label_SV";
-            Label_SV.Size = new Size(48, 25);
-            Label_SV.TabIndex = 39;
-            Label_SV.Text = "SV : ";
-            // 
-            // Label_PV
-            // 
-            Label_PV.AutoSize = true;
-            Label_PV.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Label_PV.ForeColor = SystemColors.ControlDark;
-            Label_PV.Location = new Point(12, 323);
-            Label_PV.Name = "Label_PV";
-            Label_PV.Size = new Size(49, 25);
-            Label_PV.TabIndex = 38;
-            Label_PV.Text = "PV : ";
-            // 
-            // dLabel_Ng_L
-            // 
-            dLabel_Ng_L.AutoSize = true;
-            dLabel_Ng_L.BackColor = Color.Transparent;
-            dLabel_Ng_L.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dLabel_Ng_L.ForeColor = Color.FromArgb(114, 118, 127);
-            dLabel_Ng_L.Location = new Point(201, 453);
-            dLabel_Ng_L.Name = "dLabel_Ng_L";
-            dLabel_Ng_L.Size = new Size(97, 30);
-            dLabel_Ng_L.TabIndex = 34;
-            dLabel_Ng_L.Text = "작업상태";
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.Black;
-            panel4.Controls.Add(Panel_CameraCenterLine_R);
-            panel4.Controls.Add(Panel_BrighestLine_R);
-            panel4.Controls.Add(dBtn_BrightestLine_R);
-            panel4.Controls.Add(dBtn_CameraLine_R);
-            panel4.Controls.Add(dLabel_Ng_R);
-            panel4.Controls.Add(dChart_R_5);
-            panel4.Controls.Add(dChart_R_4);
-            panel4.Controls.Add(dChart_R_3);
-            panel4.Controls.Add(dChart_R_2);
-            panel4.Controls.Add(dChart_R_1);
-            panel4.Controls.Add(dPic_roi_5_R);
-            panel4.Controls.Add(dPic_roi_4_R);
-            panel4.Controls.Add(dPic_roi_3_R);
-            panel4.Controls.Add(dPic_roi_2_R);
-            panel4.Controls.Add(dPic_roi_1_R);
-            panel4.Controls.Add(dLable_tmp2);
-            panel4.Controls.Add(dComboBox_scale2);
-            panel4.Controls.Add(dComboBox_cam2);
-            panel4.Controls.Add(pictureBox2);
-            panel4.Controls.Add(dTxt_cam2);
-            panel4.Controls.Add(tableLayoutPanel4);
-            panel4.Location = new Point(962, 1);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(960, 950);
-            panel4.TabIndex = 9;
             // 
             // Panel_CameraCenterLine_R
             // 
@@ -931,165 +1211,37 @@ namespace JD_Proc
             dLabel_Ng_R.TabIndex = 35;
             dLabel_Ng_R.Text = "작업상태";
             // 
-            // dChart_R_5
+            // dChart_R_3
             // 
-            dChart_R_5.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea3.Name = "ChartArea1";
-            dChart_R_5.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            dChart_R_5.Legends.Add(legend3);
-            dChart_R_5.Location = new Point(308, 844);
-            dChart_R_5.Name = "dChart_R_5";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = SeriesChartType.Line;
-            series3.LabelForeColor = Color.IndianRed;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            dChart_R_5.Series.Add(series3);
-            dChart_R_5.Size = new Size(640, 80);
-            dChart_R_5.TabIndex = 36;
-            dChart_R_5.Text = "chart5";
-            // 
-            // dChart_R_4
-            // 
-            dChart_R_4.BackColor = Color.FromArgb(45, 45, 45);
+            dChart_R_3.BackColor = Color.FromArgb(45, 45, 45);
             chartArea4.Name = "ChartArea1";
-            dChart_R_4.ChartAreas.Add(chartArea4);
+            dChart_R_3.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
-            dChart_R_4.Legends.Add(legend4);
-            dChart_R_4.Location = new Point(308, 757);
-            dChart_R_4.Name = "dChart_R_4";
+            dChart_R_3.Legends.Add(legend4);
+            dChart_R_3.Location = new Point(315, 799);
+            dChart_R_3.Name = "dChart_R_3";
             series4.ChartArea = "ChartArea1";
             series4.ChartType = SeriesChartType.Line;
             series4.LabelForeColor = Color.IndianRed;
             series4.Legend = "Legend1";
             series4.Name = "Series1";
-            dChart_R_4.Series.Add(series4);
-            dChart_R_4.Size = new Size(640, 80);
-            dChart_R_4.TabIndex = 35;
-            dChart_R_4.Text = "chart4";
-            // 
-            // dChart_R_3
-            // 
-            dChart_R_3.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea5.Name = "ChartArea1";
-            dChart_R_3.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            dChart_R_3.Legends.Add(legend5);
-            dChart_R_3.Location = new Point(308, 671);
-            dChart_R_3.Name = "dChart_R_3";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = SeriesChartType.Line;
-            series5.LabelForeColor = Color.IndianRed;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            dChart_R_3.Series.Add(series5);
-            dChart_R_3.Size = new Size(640, 80);
+            dChart_R_3.Series.Add(series4);
+            dChart_R_3.Size = new Size(640, 121);
             dChart_R_3.TabIndex = 34;
             dChart_R_3.Text = "chart3";
-            // 
-            // dChart_R_2
-            // 
-            dChart_R_2.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea6.Name = "ChartArea1";
-            dChart_R_2.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            dChart_R_2.Legends.Add(legend6);
-            dChart_R_2.Location = new Point(308, 585);
-            dChart_R_2.Name = "dChart_R_2";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = SeriesChartType.Line;
-            series6.LabelForeColor = Color.IndianRed;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            dChart_R_2.Series.Add(series6);
-            dChart_R_2.Size = new Size(640, 80);
-            dChart_R_2.TabIndex = 33;
-            dChart_R_2.Text = "chart2";
-            // 
-            // dChart_R_1
-            // 
-            dChart_R_1.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea7.Name = "ChartArea1";
-            dChart_R_1.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            dChart_R_1.Legends.Add(legend7);
-            dChart_R_1.Location = new Point(308, 499);
-            dChart_R_1.Name = "dChart_R_1";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = SeriesChartType.Line;
-            series7.LabelForeColor = Color.IndianRed;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            dChart_R_1.Series.Add(series7);
-            dChart_R_1.Size = new Size(640, 80);
-            dChart_R_1.TabIndex = 32;
-            dChart_R_1.Text = "chart1";
-            // 
-            // dPic_roi_5_R
-            // 
-            dPic_roi_5_R.BackColor = Color.White;
-            dPic_roi_5_R.Location = new Point(12, 843);
-            dPic_roi_5_R.Name = "dPic_roi_5_R";
-            dPic_roi_5_R.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dPic_roi_5_R.Size = new Size(290, 80);
-            dPic_roi_5_R.SizeMode = PictureBoxSizeMode.StretchImage;
-            dPic_roi_5_R.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dPic_roi_5_R.TabIndex = 31;
-            dPic_roi_5_R.TabStop = false;
-            dPic_roi_5_R.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // dPic_roi_4_R
-            // 
-            dPic_roi_4_R.BackColor = Color.White;
-            dPic_roi_4_R.Location = new Point(12, 757);
-            dPic_roi_4_R.Name = "dPic_roi_4_R";
-            dPic_roi_4_R.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dPic_roi_4_R.Size = new Size(290, 80);
-            dPic_roi_4_R.SizeMode = PictureBoxSizeMode.StretchImage;
-            dPic_roi_4_R.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dPic_roi_4_R.TabIndex = 30;
-            dPic_roi_4_R.TabStop = false;
-            dPic_roi_4_R.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // dPic_roi_3_R
             // 
             dPic_roi_3_R.BackColor = Color.White;
-            dPic_roi_3_R.Location = new Point(12, 671);
+            dPic_roi_3_R.Location = new Point(7, 799);
             dPic_roi_3_R.Name = "dPic_roi_3_R";
             dPic_roi_3_R.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dPic_roi_3_R.Size = new Size(290, 80);
+            dPic_roi_3_R.Size = new Size(290, 121);
             dPic_roi_3_R.SizeMode = PictureBoxSizeMode.StretchImage;
             dPic_roi_3_R.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             dPic_roi_3_R.TabIndex = 29;
             dPic_roi_3_R.TabStop = false;
             dPic_roi_3_R.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // dPic_roi_2_R
-            // 
-            dPic_roi_2_R.BackColor = Color.White;
-            dPic_roi_2_R.Location = new Point(12, 585);
-            dPic_roi_2_R.Name = "dPic_roi_2_R";
-            dPic_roi_2_R.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dPic_roi_2_R.Size = new Size(290, 80);
-            dPic_roi_2_R.SizeMode = PictureBoxSizeMode.StretchImage;
-            dPic_roi_2_R.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dPic_roi_2_R.TabIndex = 28;
-            dPic_roi_2_R.TabStop = false;
-            dPic_roi_2_R.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // dPic_roi_1_R
-            // 
-            dPic_roi_1_R.BackColor = Color.White;
-            dPic_roi_1_R.Location = new Point(12, 499);
-            dPic_roi_1_R.Name = "dPic_roi_1_R";
-            dPic_roi_1_R.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dPic_roi_1_R.Size = new Size(290, 80);
-            dPic_roi_1_R.SizeMode = PictureBoxSizeMode.StretchImage;
-            dPic_roi_1_R.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dPic_roi_1_R.TabIndex = 27;
-            dPic_roi_1_R.TabStop = false;
-            dPic_roi_1_R.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // dLable_tmp2
             // 
@@ -1383,231 +1535,36 @@ namespace JD_Proc
             dBtn_Measure2.Text = "Measure";
             dBtn_Measure2.Click += dBtn_Measure2_Click;
             // 
-            // dChart_L_5
-            // 
-            dChart_L_5.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea8.Name = "ChartArea1";
-            dChart_L_5.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            dChart_L_5.Legends.Add(legend8);
-            dChart_L_5.Location = new Point(308, 844);
-            dChart_L_5.Name = "dChart_L_5";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = SeriesChartType.Line;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            dChart_L_5.Series.Add(series8);
-            dChart_L_5.Size = new Size(640, 80);
-            dChart_L_5.TabIndex = 31;
-            dChart_L_5.Text = "chart5";
-            // 
-            // dChart_L_4
-            // 
-            dChart_L_4.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea9.Name = "ChartArea1";
-            dChart_L_4.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            dChart_L_4.Legends.Add(legend9);
-            dChart_L_4.Location = new Point(308, 757);
-            dChart_L_4.Name = "dChart_L_4";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = SeriesChartType.Line;
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            dChart_L_4.Series.Add(series9);
-            dChart_L_4.Size = new Size(640, 80);
-            dChart_L_4.TabIndex = 30;
-            dChart_L_4.Text = "chart4";
-            // 
             // dChart_L_3
             // 
             dChart_L_3.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea10.Name = "ChartArea1";
-            dChart_L_3.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            dChart_L_3.Legends.Add(legend10);
-            dChart_L_3.Location = new Point(308, 671);
+            chartArea5.Name = "ChartArea1";
+            dChart_L_3.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            dChart_L_3.Legends.Add(legend5);
+            dChart_L_3.Location = new Point(311, 800);
             dChart_L_3.Name = "dChart_L_3";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = SeriesChartType.Line;
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            dChart_L_3.Series.Add(series10);
-            dChart_L_3.Size = new Size(640, 80);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = SeriesChartType.Line;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            dChart_L_3.Series.Add(series5);
+            dChart_L_3.Size = new Size(640, 121);
             dChart_L_3.TabIndex = 29;
             dChart_L_3.Text = "chart3";
-            // 
-            // dChart_L_2
-            // 
-            dChart_L_2.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea11.Name = "ChartArea1";
-            dChart_L_2.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            dChart_L_2.Legends.Add(legend11);
-            dChart_L_2.Location = new Point(308, 585);
-            dChart_L_2.Name = "dChart_L_2";
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = SeriesChartType.Line;
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            dChart_L_2.Series.Add(series11);
-            dChart_L_2.Size = new Size(640, 80);
-            dChart_L_2.TabIndex = 28;
-            dChart_L_2.Text = "chart2";
-            // 
-            // dChart_L_1
-            // 
-            dChart_L_1.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea12.Name = "ChartArea1";
-            dChart_L_1.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            dChart_L_1.Legends.Add(legend12);
-            dChart_L_1.Location = new Point(308, 499);
-            dChart_L_1.Name = "dChart_L_1";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = SeriesChartType.Line;
-            series12.LabelForeColor = Color.IndianRed;
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            dChart_L_1.Series.Add(series12);
-            dChart_L_1.Size = new Size(640, 80);
-            dChart_L_1.TabIndex = 27;
-            dChart_L_1.Text = "chart1";
-            // 
-            // dPic_roi_5_L
-            // 
-            dPic_roi_5_L.BackColor = Color.White;
-            dPic_roi_5_L.Location = new Point(12, 843);
-            dPic_roi_5_L.Name = "dPic_roi_5_L";
-            dPic_roi_5_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dPic_roi_5_L.Size = new Size(290, 80);
-            dPic_roi_5_L.SizeMode = PictureBoxSizeMode.StretchImage;
-            dPic_roi_5_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dPic_roi_5_L.TabIndex = 26;
-            dPic_roi_5_L.TabStop = false;
-            dPic_roi_5_L.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // dPic_roi_4_L
-            // 
-            dPic_roi_4_L.BackColor = Color.White;
-            dPic_roi_4_L.Location = new Point(12, 757);
-            dPic_roi_4_L.Name = "dPic_roi_4_L";
-            dPic_roi_4_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dPic_roi_4_L.Size = new Size(290, 80);
-            dPic_roi_4_L.SizeMode = PictureBoxSizeMode.StretchImage;
-            dPic_roi_4_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dPic_roi_4_L.TabIndex = 25;
-            dPic_roi_4_L.TabStop = false;
-            dPic_roi_4_L.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // dPic_roi_3_L
             // 
             dPic_roi_3_L.BackColor = Color.White;
-            dPic_roi_3_L.Location = new Point(12, 671);
+            dPic_roi_3_L.Location = new Point(6, 800);
             dPic_roi_3_L.Name = "dPic_roi_3_L";
             dPic_roi_3_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dPic_roi_3_L.Size = new Size(290, 80);
+            dPic_roi_3_L.Size = new Size(290, 121);
             dPic_roi_3_L.SizeMode = PictureBoxSizeMode.StretchImage;
             dPic_roi_3_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             dPic_roi_3_L.TabIndex = 24;
             dPic_roi_3_L.TabStop = false;
             dPic_roi_3_L.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // dPic_roi_2_L
-            // 
-            dPic_roi_2_L.BackColor = Color.White;
-            dPic_roi_2_L.Location = new Point(12, 585);
-            dPic_roi_2_L.Name = "dPic_roi_2_L";
-            dPic_roi_2_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dPic_roi_2_L.Size = new Size(290, 80);
-            dPic_roi_2_L.SizeMode = PictureBoxSizeMode.StretchImage;
-            dPic_roi_2_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dPic_roi_2_L.TabIndex = 23;
-            dPic_roi_2_L.TabStop = false;
-            dPic_roi_2_L.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // dPic_roi_1_L
-            // 
-            dPic_roi_1_L.BackColor = Color.White;
-            dPic_roi_1_L.Location = new Point(12, 499);
-            dPic_roi_1_L.Name = "dPic_roi_1_L";
-            dPic_roi_1_L.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dPic_roi_1_L.Size = new Size(290, 80);
-            dPic_roi_1_L.SizeMode = PictureBoxSizeMode.StretchImage;
-            dPic_roi_1_L.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dPic_roi_1_L.TabIndex = 22;
-            dPic_roi_1_L.TabStop = false;
-            dPic_roi_1_L.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // dComboBox_scale1
-            // 
-            dComboBox_scale1.BackColor = Color.FromArgb(246, 246, 246);
-            dComboBox_scale1.ColorA = Color.FromArgb(246, 132, 85);
-            dComboBox_scale1.ColorB = Color.FromArgb(231, 108, 57);
-            dComboBox_scale1.ColorC = Color.FromArgb(242, 241, 240);
-            dComboBox_scale1.ColorD = Color.FromArgb(253, 252, 252);
-            dComboBox_scale1.ColorE = Color.FromArgb(239, 237, 236);
-            dComboBox_scale1.ColorF = Color.FromArgb(180, 180, 180);
-            dComboBox_scale1.ColorG = Color.FromArgb(119, 119, 118);
-            dComboBox_scale1.ColorH = Color.FromArgb(224, 222, 220);
-            dComboBox_scale1.ColorI = Color.FromArgb(250, 249, 249);
-            dComboBox_scale1.DrawMode = DrawMode.OwnerDrawFixed;
-            dComboBox_scale1.DropDownHeight = 100;
-            dComboBox_scale1.DropDownStyle = ComboBoxStyle.DropDownList;
-            dComboBox_scale1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dComboBox_scale1.ForeColor = Color.FromArgb(76, 76, 97);
-            dComboBox_scale1.FormattingEnabled = true;
-            dComboBox_scale1.HoverSelectionColor = Color.Empty;
-            dComboBox_scale1.IntegralHeight = false;
-            dComboBox_scale1.ItemHeight = 20;
-            dComboBox_scale1.Items.AddRange(new object[] { "Manual", "MinMax", "Sigma1", "Sigma3" });
-            dComboBox_scale1.Location = new Point(12, 415);
-            dComboBox_scale1.Name = "dComboBox_scale1";
-            dComboBox_scale1.Size = new Size(102, 26);
-            dComboBox_scale1.StartIndex = 3;
-            dComboBox_scale1.TabIndex = 18;
-            dComboBox_scale1.SelectedIndexChanged += dComboBox_scale1_SelectedIndexChanged;
-            // 
-            // dLable_tmp1
-            // 
-            dLable_tmp1.AutoSize = true;
-            dLable_tmp1.BackColor = Color.Transparent;
-            dLable_tmp1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dLable_tmp1.ForeColor = Color.FromArgb(114, 118, 127);
-            dLable_tmp1.Location = new Point(136, 408);
-            dLable_tmp1.Name = "dLable_tmp1";
-            dLable_tmp1.Size = new Size(25, 30);
-            dLable_tmp1.TabIndex = 13;
-            dLable_tmp1.Text = "0";
-            // 
-            // dComboBox_cam1
-            // 
-            dComboBox_cam1.BackColor = Color.FromArgb(246, 246, 246);
-            dComboBox_cam1.ColorA = Color.FromArgb(246, 132, 85);
-            dComboBox_cam1.ColorB = Color.FromArgb(231, 108, 57);
-            dComboBox_cam1.ColorC = Color.FromArgb(242, 241, 240);
-            dComboBox_cam1.ColorD = Color.FromArgb(253, 252, 252);
-            dComboBox_cam1.ColorE = Color.FromArgb(239, 237, 236);
-            dComboBox_cam1.ColorF = Color.FromArgb(180, 180, 180);
-            dComboBox_cam1.ColorG = Color.FromArgb(119, 119, 118);
-            dComboBox_cam1.ColorH = Color.FromArgb(224, 222, 220);
-            dComboBox_cam1.ColorI = Color.FromArgb(250, 249, 249);
-            dComboBox_cam1.DrawMode = DrawMode.OwnerDrawFixed;
-            dComboBox_cam1.DropDownHeight = 100;
-            dComboBox_cam1.DropDownStyle = ComboBoxStyle.DropDownList;
-            dComboBox_cam1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dComboBox_cam1.ForeColor = Color.FromArgb(76, 76, 97);
-            dComboBox_cam1.FormattingEnabled = true;
-            dComboBox_cam1.HoverSelectionColor = Color.Empty;
-            dComboBox_cam1.IntegralHeight = false;
-            dComboBox_cam1.ItemHeight = 20;
-            dComboBox_cam1.Items.AddRange(new object[] { "AlarmBlue", "AlarmBlueHi", "GrayBW", "GrayWB", "AlarmGreen", "Iron", "IronHi", "Medical", "Rainbow", "RainbowHi", "AlarmRed" });
-            dComboBox_cam1.Location = new Point(12, 458);
-            dComboBox_cam1.Name = "dComboBox_cam1";
-            dComboBox_cam1.Size = new Size(102, 26);
-            dComboBox_cam1.StartIndex = 1;
-            dComboBox_cam1.TabIndex = 12;
-            dComboBox_cam1.SelectedIndexChanged += dComboBox_cam1_SelectedIndexChanged;
             // 
             // dTxt_cam1
             // 
@@ -1619,7 +1576,7 @@ namespace JD_Proc
             dTxt_cam1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dTxt_cam1.ForeColor = Color.FromArgb(127, 131, 140);
             dTxt_cam1.Image = null;
-            dTxt_cam1.Location = new Point(12, 69);
+            dTxt_cam1.Location = new Point(3, 69);
             dTxt_cam1.MaxLength = 32767;
             dTxt_cam1.Multiline = true;
             dTxt_cam1.Name = "dTxt_cam1";
@@ -1627,7 +1584,7 @@ namespace JD_Proc
             dTxt_cam1.ShortcutsEnabled = true;
             dTxt_cam1.ShowBottomBorder = true;
             dTxt_cam1.ShowTopBorder = true;
-            dTxt_cam1.Size = new Size(173, 129);
+            dTxt_cam1.Size = new Size(191, 76);
             dTxt_cam1.TabIndex = 9;
             dTxt_cam1.Text = " 작업 결과 ..";
             dTxt_cam1.TextAlignment = HorizontalAlignment.Left;
@@ -1643,18 +1600,21 @@ namespace JD_Proc
             pictureBox1.Size = new Size(640, 480);
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
+            pictureBox1.MouseDown += pictureBox1_MouseDown;
+            pictureBox1.MouseMove += pictureBox1_MouseMove;
+            pictureBox1.MouseWheel += pictureBox1_MouseWheel;
             // 
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 1;
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Controls.Add(dBtn_load1, 0, 0);
-            tableLayoutPanel3.Controls.Add(dBtn_imageSave1, 0, 1);
-            tableLayoutPanel3.Controls.Add(dBtn_live1, 0, 2);
-            tableLayoutPanel3.Controls.Add(dBtn_stop1, 0, 3);
-            tableLayoutPanel3.Controls.Add(dBtn_snap1, 0, 4);
-            tableLayoutPanel3.Controls.Add(dBtn_Process1, 0, 5);
             tableLayoutPanel3.Controls.Add(dBtn_Measure1, 0, 6);
+            tableLayoutPanel3.Controls.Add(dBtn_Process1, 0, 5);
+            tableLayoutPanel3.Controls.Add(dBtn_snap1, 0, 4);
+            tableLayoutPanel3.Controls.Add(dBtn_live1, 0, 3);
+            tableLayoutPanel3.Controls.Add(Btn_BottomLineSetting, 0, 0);
+            tableLayoutPanel3.Controls.Add(dBtn_imageSave1, 0, 2);
+            tableLayoutPanel3.Controls.Add(dBtn_load1, 0, 1);
             tableLayoutPanel3.Location = new Point(853, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 8;
@@ -1668,145 +1628,6 @@ namespace JD_Proc
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.Size = new Size(107, 351);
             tableLayoutPanel3.TabIndex = 4;
-            // 
-            // dBtn_load1
-            // 
-            dBtn_load1.BackColor = Color.Transparent;
-            dBtn_load1.DialogResult = DialogResult.None;
-            dBtn_load1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_load1.ForeColor = Color.Silver;
-            dBtn_load1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_load1.HoverForeColor = Color.White;
-            dBtn_load1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_load1.Location = new Point(3, 3);
-            dBtn_load1.MinimumSize = new Size(100, 50);
-            dBtn_load1.Name = "dBtn_load1";
-            dBtn_load1.NormalBackColor = Color.White;
-            dBtn_load1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_load1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_load1.PressedForeColor = Color.White;
-            dBtn_load1.Radius = 20;
-            dBtn_load1.Size = new Size(100, 50);
-            dBtn_load1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_load1.TabIndex = 0;
-            dBtn_load1.Text = "load";
-            dBtn_load1.Click += dBtn_load1_Click;
-            // 
-            // dBtn_imageSave1
-            // 
-            dBtn_imageSave1.BackColor = Color.Transparent;
-            dBtn_imageSave1.DialogResult = DialogResult.None;
-            dBtn_imageSave1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_imageSave1.ForeColor = Color.Silver;
-            dBtn_imageSave1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_imageSave1.HoverForeColor = Color.White;
-            dBtn_imageSave1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_imageSave1.Location = new Point(3, 50);
-            dBtn_imageSave1.MinimumSize = new Size(100, 50);
-            dBtn_imageSave1.Name = "dBtn_imageSave1";
-            dBtn_imageSave1.NormalBackColor = Color.White;
-            dBtn_imageSave1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_imageSave1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_imageSave1.PressedForeColor = Color.White;
-            dBtn_imageSave1.Radius = 20;
-            dBtn_imageSave1.Size = new Size(100, 50);
-            dBtn_imageSave1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_imageSave1.TabIndex = 1;
-            dBtn_imageSave1.Text = "save";
-            dBtn_imageSave1.Click += dBtn_imageSave1_Click;
-            // 
-            // dBtn_live1
-            // 
-            dBtn_live1.BackColor = Color.Transparent;
-            dBtn_live1.DialogResult = DialogResult.None;
-            dBtn_live1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_live1.ForeColor = Color.Silver;
-            dBtn_live1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_live1.HoverForeColor = Color.White;
-            dBtn_live1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_live1.Location = new Point(3, 97);
-            dBtn_live1.MinimumSize = new Size(100, 50);
-            dBtn_live1.Name = "dBtn_live1";
-            dBtn_live1.NormalBackColor = Color.White;
-            dBtn_live1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_live1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_live1.PressedForeColor = Color.White;
-            dBtn_live1.Radius = 20;
-            dBtn_live1.Size = new Size(100, 50);
-            dBtn_live1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_live1.TabIndex = 2;
-            dBtn_live1.Text = "live";
-            dBtn_live1.Click += dBtn_live1_Click;
-            // 
-            // dBtn_stop1
-            // 
-            dBtn_stop1.BackColor = Color.Transparent;
-            dBtn_stop1.DialogResult = DialogResult.None;
-            dBtn_stop1.Enabled = false;
-            dBtn_stop1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_stop1.ForeColor = Color.Silver;
-            dBtn_stop1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_stop1.HoverForeColor = Color.White;
-            dBtn_stop1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_stop1.Location = new Point(3, 144);
-            dBtn_stop1.MinimumSize = new Size(100, 50);
-            dBtn_stop1.Name = "dBtn_stop1";
-            dBtn_stop1.NormalBackColor = Color.White;
-            dBtn_stop1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_stop1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_stop1.PressedForeColor = Color.White;
-            dBtn_stop1.Radius = 20;
-            dBtn_stop1.Size = new Size(100, 50);
-            dBtn_stop1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_stop1.TabIndex = 6;
-            dBtn_stop1.Text = "live stop";
-            dBtn_stop1.Click += dBtn_stop1_Click;
-            // 
-            // dBtn_snap1
-            // 
-            dBtn_snap1.BackColor = Color.Transparent;
-            dBtn_snap1.DialogResult = DialogResult.None;
-            dBtn_snap1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_snap1.ForeColor = Color.Silver;
-            dBtn_snap1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_snap1.HoverForeColor = Color.White;
-            dBtn_snap1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_snap1.Location = new Point(3, 191);
-            dBtn_snap1.MinimumSize = new Size(100, 50);
-            dBtn_snap1.Name = "dBtn_snap1";
-            dBtn_snap1.NormalBackColor = Color.White;
-            dBtn_snap1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_snap1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_snap1.PressedForeColor = Color.White;
-            dBtn_snap1.Radius = 20;
-            dBtn_snap1.Size = new Size(100, 50);
-            dBtn_snap1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_snap1.TabIndex = 3;
-            dBtn_snap1.Text = "snap";
-            dBtn_snap1.Click += dBtn_snap1_Click;
-            // 
-            // dBtn_Process1
-            // 
-            dBtn_Process1.BackColor = Color.Transparent;
-            dBtn_Process1.DialogResult = DialogResult.None;
-            dBtn_Process1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dBtn_Process1.ForeColor = Color.Silver;
-            dBtn_Process1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            dBtn_Process1.HoverForeColor = Color.White;
-            dBtn_Process1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            dBtn_Process1.Location = new Point(3, 238);
-            dBtn_Process1.MinimumSize = new Size(100, 50);
-            dBtn_Process1.Name = "dBtn_Process1";
-            dBtn_Process1.NormalBackColor = Color.White;
-            dBtn_Process1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            dBtn_Process1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            dBtn_Process1.PressedForeColor = Color.White;
-            dBtn_Process1.Radius = 20;
-            dBtn_Process1.Size = new Size(100, 50);
-            dBtn_Process1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            dBtn_Process1.TabIndex = 4;
-            dBtn_Process1.Text = "Process";
-            dBtn_Process1.Click += dBtn_Process1_Click;
             // 
             // dBtn_Measure1
             // 
@@ -1831,111 +1652,143 @@ namespace JD_Proc
             dBtn_Measure1.Text = "Measure";
             dBtn_Measure1.Click += dBtn_Measure1_Click;
             // 
-            // Btn_PLCACK
+            // dBtn_Process1
             // 
-            Btn_PLCACK.BackColor = Color.Transparent;
-            Btn_PLCACK.DialogResult = DialogResult.None;
-            Btn_PLCACK.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_PLCACK.ForeColor = Color.Silver;
-            Btn_PLCACK.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
-            Btn_PLCACK.HoverForeColor = Color.White;
-            Btn_PLCACK.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            Btn_PLCACK.Location = new Point(104, 207);
-            Btn_PLCACK.MinimumSize = new Size(100, 50);
-            Btn_PLCACK.Name = "Btn_PLCACK";
-            Btn_PLCACK.NormalBackColor = Color.White;
-            Btn_PLCACK.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            Btn_PLCACK.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
-            Btn_PLCACK.PressedForeColor = Color.White;
-            Btn_PLCACK.Radius = 20;
-            Btn_PLCACK.Size = new Size(100, 50);
-            Btn_PLCACK.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Btn_PLCACK.TabIndex = 47;
-            Btn_PLCACK.Text = "PLC_ACK_TEST";
-            Btn_PLCACK.Click += Btn_PLCACK_Click;
+            dBtn_Process1.BackColor = Color.Transparent;
+            dBtn_Process1.DialogResult = DialogResult.None;
+            dBtn_Process1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_Process1.ForeColor = Color.Silver;
+            dBtn_Process1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_Process1.HoverForeColor = Color.White;
+            dBtn_Process1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_Process1.Location = new Point(3, 238);
+            dBtn_Process1.MinimumSize = new Size(100, 50);
+            dBtn_Process1.Name = "dBtn_Process1";
+            dBtn_Process1.NormalBackColor = Color.White;
+            dBtn_Process1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_Process1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_Process1.PressedForeColor = Color.White;
+            dBtn_Process1.Radius = 20;
+            dBtn_Process1.Size = new Size(100, 50);
+            dBtn_Process1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_Process1.TabIndex = 4;
+            dBtn_Process1.Text = "Process";
+            dBtn_Process1.Click += dBtn_Process1_Click;
             // 
-            // Lbl_TempController
+            // dBtn_snap1
             // 
-            Lbl_TempController.AutoSize = true;
-            Lbl_TempController.BackColor = Color.Transparent;
-            Lbl_TempController.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
-            Lbl_TempController.ForeColor = Color.FromArgb(114, 118, 127);
-            Lbl_TempController.Location = new Point(11, 272);
-            Lbl_TempController.Name = "Lbl_TempController";
-            Lbl_TempController.Size = new Size(182, 47);
-            Lbl_TempController.TabIndex = 45;
-            Lbl_TempController.Text = "TCon_OFF";
+            dBtn_snap1.BackColor = Color.Transparent;
+            dBtn_snap1.DialogResult = DialogResult.None;
+            dBtn_snap1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_snap1.ForeColor = Color.Silver;
+            dBtn_snap1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_snap1.HoverForeColor = Color.White;
+            dBtn_snap1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_snap1.Location = new Point(3, 191);
+            dBtn_snap1.MinimumSize = new Size(100, 50);
+            dBtn_snap1.Name = "dBtn_snap1";
+            dBtn_snap1.NormalBackColor = Color.White;
+            dBtn_snap1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_snap1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_snap1.PressedForeColor = Color.White;
+            dBtn_snap1.Radius = 20;
+            dBtn_snap1.Size = new Size(100, 50);
+            dBtn_snap1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_snap1.TabIndex = 3;
+            dBtn_snap1.Text = "snap";
+            dBtn_snap1.Click += dBtn_snap1_Click;
             // 
-            // Btn_SetSV
+            // dBtn_live1
             // 
-            Btn_SetSV.Alpha = 20;
-            Btn_SetSV.BackColor = Color.Transparent;
-            Btn_SetSV.Background = true;
-            Btn_SetSV.Background_WidthPen = 4F;
-            Btn_SetSV.BackgroundPen = true;
-            Btn_SetSV.ColorBackground = Color.FromArgb(37, 52, 68);
-            Btn_SetSV.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            Btn_SetSV.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            Btn_SetSV.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            Btn_SetSV.ColorLighting = Color.FromArgb(29, 200, 238);
-            Btn_SetSV.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            Btn_SetSV.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            Btn_SetSV.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            Btn_SetSV.Effect_1 = true;
-            Btn_SetSV.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            Btn_SetSV.Effect_1_Transparency = 25;
-            Btn_SetSV.Effect_2 = true;
-            Btn_SetSV.Effect_2_ColorBackground = Color.White;
-            Btn_SetSV.Effect_2_Transparency = 20;
-            Btn_SetSV.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            Btn_SetSV.ForeColor = Color.FromArgb(245, 245, 245);
-            Btn_SetSV.Lighting = false;
-            Btn_SetSV.LinearGradient_Background = false;
-            Btn_SetSV.LinearGradientPen = false;
-            Btn_SetSV.Location = new Point(137, 355);
-            Btn_SetSV.Name = "Btn_SetSV";
-            Btn_SetSV.PenWidth = 15;
-            Btn_SetSV.Rounding = true;
-            Btn_SetSV.RoundingInt = 70;
-            Btn_SetSV.Size = new Size(48, 26);
-            Btn_SetSV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            Btn_SetSV.TabIndex = 45;
-            Btn_SetSV.Tag = "Set";
-            Btn_SetSV.TextButton = "Set";
-            Btn_SetSV.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            Btn_SetSV.Timer_Effect_1 = 5;
-            Btn_SetSV.Timer_RGB = 300;
-            Btn_SetSV.Click += Btn_SetSV_Click;
+            dBtn_live1.BackColor = Color.Transparent;
+            dBtn_live1.DialogResult = DialogResult.None;
+            dBtn_live1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_live1.ForeColor = Color.Silver;
+            dBtn_live1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_live1.HoverForeColor = Color.White;
+            dBtn_live1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_live1.Location = new Point(3, 144);
+            dBtn_live1.MinimumSize = new Size(100, 50);
+            dBtn_live1.Name = "dBtn_live1";
+            dBtn_live1.NormalBackColor = Color.White;
+            dBtn_live1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_live1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_live1.PressedForeColor = Color.White;
+            dBtn_live1.Radius = 20;
+            dBtn_live1.Size = new Size(100, 50);
+            dBtn_live1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_live1.TabIndex = 2;
+            dBtn_live1.Text = "live";
+            dBtn_live1.Click += dBtn_live1_Click;
             // 
-            // TextBox_InputSV
+            // Btn_BottomLineSetting
             // 
-            TextBox_InputSV.Alpha = 20;
-            TextBox_InputSV.BackColor = Color.Transparent;
-            TextBox_InputSV.Background_WidthPen = 3F;
-            TextBox_InputSV.BackgroundPen = true;
-            TextBox_InputSV.ColorBackground = Color.FromArgb(37, 52, 68);
-            TextBox_InputSV.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            TextBox_InputSV.ColorLighting = Color.FromArgb(29, 200, 238);
-            TextBox_InputSV.ColorPen_1 = Color.FromArgb(29, 200, 238);
-            TextBox_InputSV.ColorPen_2 = Color.FromArgb(37, 52, 68);
-            TextBox_InputSV.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            TextBox_InputSV.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            TextBox_InputSV.ForeColor = Color.FromArgb(245, 245, 245);
-            TextBox_InputSV.Lighting = false;
-            TextBox_InputSV.LinearGradientPen = false;
-            TextBox_InputSV.Location = new Point(11, 355);
-            TextBox_InputSV.Name = "TextBox_InputSV";
-            TextBox_InputSV.PenWidth = 15;
-            TextBox_InputSV.RGB = false;
-            TextBox_InputSV.Rounding = true;
-            TextBox_InputSV.RoundingInt = 60;
-            TextBox_InputSV.Size = new Size(116, 27);
-            TextBox_InputSV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            TextBox_InputSV.TabIndex = 45;
-            TextBox_InputSV.Tag = "Cyber";
-            TextBox_InputSV.TextButton = "0";
-            TextBox_InputSV.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            TextBox_InputSV.Timer_RGB = 300;
+            Btn_BottomLineSetting.BackColor = Color.Transparent;
+            Btn_BottomLineSetting.DialogResult = DialogResult.None;
+            Btn_BottomLineSetting.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            Btn_BottomLineSetting.ForeColor = Color.Silver;
+            Btn_BottomLineSetting.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            Btn_BottomLineSetting.HoverForeColor = Color.White;
+            Btn_BottomLineSetting.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            Btn_BottomLineSetting.Location = new Point(3, 3);
+            Btn_BottomLineSetting.MinimumSize = new Size(100, 50);
+            Btn_BottomLineSetting.Name = "Btn_BottomLineSetting";
+            Btn_BottomLineSetting.NormalBackColor = Color.White;
+            Btn_BottomLineSetting.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            Btn_BottomLineSetting.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            Btn_BottomLineSetting.PressedForeColor = Color.White;
+            Btn_BottomLineSetting.Radius = 20;
+            Btn_BottomLineSetting.Size = new Size(100, 50);
+            Btn_BottomLineSetting.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Btn_BottomLineSetting.TabIndex = 41;
+            Btn_BottomLineSetting.Text = "BtmLineSetting";
+            Btn_BottomLineSetting.Click += Btn_BottomLineSetting_Click;
+            // 
+            // dBtn_imageSave1
+            // 
+            dBtn_imageSave1.BackColor = Color.Transparent;
+            dBtn_imageSave1.DialogResult = DialogResult.None;
+            dBtn_imageSave1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_imageSave1.ForeColor = Color.Silver;
+            dBtn_imageSave1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_imageSave1.HoverForeColor = Color.White;
+            dBtn_imageSave1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_imageSave1.Location = new Point(3, 97);
+            dBtn_imageSave1.MinimumSize = new Size(100, 50);
+            dBtn_imageSave1.Name = "dBtn_imageSave1";
+            dBtn_imageSave1.NormalBackColor = Color.White;
+            dBtn_imageSave1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_imageSave1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_imageSave1.PressedForeColor = Color.White;
+            dBtn_imageSave1.Radius = 20;
+            dBtn_imageSave1.Size = new Size(100, 50);
+            dBtn_imageSave1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_imageSave1.TabIndex = 1;
+            dBtn_imageSave1.Text = "save";
+            dBtn_imageSave1.Click += dBtn_imageSave1_Click;
+            // 
+            // dBtn_load1
+            // 
+            dBtn_load1.BackColor = Color.Transparent;
+            dBtn_load1.DialogResult = DialogResult.None;
+            dBtn_load1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dBtn_load1.ForeColor = Color.Silver;
+            dBtn_load1.HoverBackColor = Color.FromArgb(50, 242, 93, 89);
+            dBtn_load1.HoverForeColor = Color.White;
+            dBtn_load1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            dBtn_load1.Location = new Point(3, 50);
+            dBtn_load1.MinimumSize = new Size(100, 50);
+            dBtn_load1.Name = "dBtn_load1";
+            dBtn_load1.NormalBackColor = Color.White;
+            dBtn_load1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            dBtn_load1.PressedBackColor = Color.FromArgb(100, 242, 93, 89);
+            dBtn_load1.PressedForeColor = Color.White;
+            dBtn_load1.Radius = 20;
+            dBtn_load1.Size = new Size(100, 50);
+            dBtn_load1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            dBtn_load1.TabIndex = 0;
+            dBtn_load1.Text = "load";
+            dBtn_load1.Click += dBtn_load1_Click;
             // 
             // TxtBox_SelectedImgName
             // 
@@ -1947,7 +1800,7 @@ namespace JD_Proc
             TxtBox_SelectedImgName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             TxtBox_SelectedImgName.ForeColor = Color.FromArgb(127, 131, 140);
             TxtBox_SelectedImgName.Image = null;
-            TxtBox_SelectedImgName.Location = new Point(12, 9);
+            TxtBox_SelectedImgName.Location = new Point(3, 9);
             TxtBox_SelectedImgName.MaxLength = 32767;
             TxtBox_SelectedImgName.Multiline = false;
             TxtBox_SelectedImgName.Name = "TxtBox_SelectedImgName";
@@ -1955,7 +1808,7 @@ namespace JD_Proc
             TxtBox_SelectedImgName.ShortcutsEnabled = true;
             TxtBox_SelectedImgName.ShowBottomBorder = true;
             TxtBox_SelectedImgName.ShowTopBorder = true;
-            TxtBox_SelectedImgName.Size = new Size(173, 48);
+            TxtBox_SelectedImgName.Size = new Size(191, 48);
             TxtBox_SelectedImgName.TabIndex = 46;
             TxtBox_SelectedImgName.TextAlignment = HorizontalAlignment.Left;
             TxtBox_SelectedImgName.UseSystemPasswordChar = false;
@@ -2058,19 +1911,105 @@ namespace JD_Proc
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnCount = 4;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.Controls.Add(dRadio_cam1, 0, 0);
+            tableLayoutPanel2.Controls.Add(dRadio_TempCon, 3, 0);
             tableLayoutPanel2.Controls.Add(dRadio_plc, 2, 0);
             tableLayoutPanel2.Controls.Add(dRadio_cam2, 1, 0);
-            tableLayoutPanel2.Controls.Add(dRadio_cam1, 0, 0);
             tableLayoutPanel2.Location = new Point(705, 15);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(336, 49);
+            tableLayoutPanel2.Size = new Size(476, 49);
             tableLayoutPanel2.TabIndex = 3;
+            // 
+            // dRadio_cam1
+            // 
+            dRadio_cam1.BackColor = Color.Transparent;
+            dRadio_cam1.Background = true;
+            dRadio_cam1.Background_WidthPen = 2F;
+            dRadio_cam1.BackgroundPen = true;
+            dRadio_cam1.Checked = false;
+            dRadio_cam1.Color_1_Background_value = Color.Empty;
+            dRadio_cam1.Color_2_Background_value = Color.Empty;
+            dRadio_cam1.ColorBackground = Color.FromArgb(37, 52, 68);
+            dRadio_cam1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            dRadio_cam1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            dRadio_cam1.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            dRadio_cam1.ColorChecked = Color.FromArgb(29, 200, 238);
+            dRadio_cam1.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            dRadio_cam1.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            dRadio_cam1.CyberRadioButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            dRadio_cam1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            dRadio_cam1.Effect_1_Transparency = 25;
+            dRadio_cam1.Effect_2 = true;
+            dRadio_cam1.Effect_2_ColorBackground = Color.White;
+            dRadio_cam1.Effect_2_Transparency = 15;
+            dRadio_cam1.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dRadio_cam1.ForeColor = Color.FromArgb(245, 245, 245);
+            dRadio_cam1.LinearGradient_Background = false;
+            dRadio_cam1.LinearGradient_Value = false;
+            dRadio_cam1.LinearGradientPen = false;
+            dRadio_cam1.Location = new Point(3, 3);
+            dRadio_cam1.Name = "dRadio_cam1";
+            dRadio_cam1.RGB = false;
+            dRadio_cam1.Rounding = true;
+            dRadio_cam1.RoundingInt = 100;
+            dRadio_cam1.Size = new Size(113, 45);
+            dRadio_cam1.SizeChecked = 8;
+            dRadio_cam1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            dRadio_cam1.TabIndex = 2;
+            dRadio_cam1.Tag = "Cyber";
+            dRadio_cam1.TextButton = "CAM #1";
+            dRadio_cam1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            dRadio_cam1.Timer_Effect_1 = 1;
+            dRadio_cam1.Timer_RGB = 300;
+            // 
+            // dRadio_TempCon
+            // 
+            dRadio_TempCon.BackColor = Color.Transparent;
+            dRadio_TempCon.Background = true;
+            dRadio_TempCon.Background_WidthPen = 2F;
+            dRadio_TempCon.BackgroundPen = true;
+            dRadio_TempCon.Checked = false;
+            dRadio_TempCon.Color_1_Background_value = Color.Empty;
+            dRadio_TempCon.Color_2_Background_value = Color.Empty;
+            dRadio_TempCon.ColorBackground = Color.FromArgb(37, 52, 68);
+            dRadio_TempCon.ColorBackground_1 = Color.FromArgb(37, 52, 68);
+            dRadio_TempCon.ColorBackground_2 = Color.FromArgb(41, 63, 86);
+            dRadio_TempCon.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
+            dRadio_TempCon.ColorChecked = Color.FromArgb(29, 200, 238);
+            dRadio_TempCon.ColorPen_1 = Color.FromArgb(37, 52, 68);
+            dRadio_TempCon.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            dRadio_TempCon.CyberRadioButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            dRadio_TempCon.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            dRadio_TempCon.Effect_1_Transparency = 25;
+            dRadio_TempCon.Effect_2 = true;
+            dRadio_TempCon.Effect_2_ColorBackground = Color.White;
+            dRadio_TempCon.Effect_2_Transparency = 15;
+            dRadio_TempCon.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dRadio_TempCon.ForeColor = Color.FromArgb(245, 245, 245);
+            dRadio_TempCon.LinearGradient_Background = false;
+            dRadio_TempCon.LinearGradient_Value = false;
+            dRadio_TempCon.LinearGradientPen = false;
+            dRadio_TempCon.Location = new Point(360, 3);
+            dRadio_TempCon.Name = "dRadio_TempCon";
+            dRadio_TempCon.RGB = false;
+            dRadio_TempCon.Rounding = true;
+            dRadio_TempCon.RoundingInt = 100;
+            dRadio_TempCon.Size = new Size(113, 45);
+            dRadio_TempCon.SizeChecked = 8;
+            dRadio_TempCon.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            dRadio_TempCon.TabIndex = 5;
+            dRadio_TempCon.Tag = "Cyber";
+            dRadio_TempCon.TextButton = "TempCon";
+            dRadio_TempCon.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            dRadio_TempCon.Timer_Effect_1 = 1;
+            dRadio_TempCon.Timer_RGB = 300;
             // 
             // dRadio_plc
             // 
@@ -2099,12 +2038,12 @@ namespace JD_Proc
             dRadio_plc.LinearGradient_Background = false;
             dRadio_plc.LinearGradient_Value = false;
             dRadio_plc.LinearGradientPen = false;
-            dRadio_plc.Location = new Point(227, 3);
+            dRadio_plc.Location = new Point(241, 3);
             dRadio_plc.Name = "dRadio_plc";
             dRadio_plc.RGB = false;
             dRadio_plc.Rounding = true;
             dRadio_plc.RoundingInt = 100;
-            dRadio_plc.Size = new Size(106, 45);
+            dRadio_plc.Size = new Size(113, 45);
             dRadio_plc.SizeChecked = 8;
             dRadio_plc.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             dRadio_plc.TabIndex = 4;
@@ -2141,12 +2080,12 @@ namespace JD_Proc
             dRadio_cam2.LinearGradient_Background = false;
             dRadio_cam2.LinearGradient_Value = false;
             dRadio_cam2.LinearGradientPen = false;
-            dRadio_cam2.Location = new Point(115, 3);
+            dRadio_cam2.Location = new Point(122, 3);
             dRadio_cam2.Name = "dRadio_cam2";
             dRadio_cam2.RGB = false;
             dRadio_cam2.Rounding = true;
             dRadio_cam2.RoundingInt = 100;
-            dRadio_cam2.Size = new Size(105, 45);
+            dRadio_cam2.Size = new Size(113, 45);
             dRadio_cam2.SizeChecked = 8;
             dRadio_cam2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             dRadio_cam2.TabIndex = 3;
@@ -2156,54 +2095,12 @@ namespace JD_Proc
             dRadio_cam2.Timer_Effect_1 = 1;
             dRadio_cam2.Timer_RGB = 300;
             // 
-            // dRadio_cam1
-            // 
-            dRadio_cam1.BackColor = Color.Transparent;
-            dRadio_cam1.Background = true;
-            dRadio_cam1.Background_WidthPen = 2F;
-            dRadio_cam1.BackgroundPen = true;
-            dRadio_cam1.Checked = false;
-            dRadio_cam1.Color_1_Background_value = Color.Empty;
-            dRadio_cam1.Color_2_Background_value = Color.Empty;
-            dRadio_cam1.ColorBackground = Color.FromArgb(37, 52, 68);
-            dRadio_cam1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            dRadio_cam1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            dRadio_cam1.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            dRadio_cam1.ColorChecked = Color.FromArgb(29, 200, 238);
-            dRadio_cam1.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            dRadio_cam1.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            dRadio_cam1.CyberRadioButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            dRadio_cam1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            dRadio_cam1.Effect_1_Transparency = 25;
-            dRadio_cam1.Effect_2 = true;
-            dRadio_cam1.Effect_2_ColorBackground = Color.White;
-            dRadio_cam1.Effect_2_Transparency = 15;
-            dRadio_cam1.Font = new Font("Arial", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dRadio_cam1.ForeColor = Color.FromArgb(245, 245, 245);
-            dRadio_cam1.LinearGradient_Background = false;
-            dRadio_cam1.LinearGradient_Value = false;
-            dRadio_cam1.LinearGradientPen = false;
-            dRadio_cam1.Location = new Point(3, 3);
-            dRadio_cam1.Name = "dRadio_cam1";
-            dRadio_cam1.RGB = false;
-            dRadio_cam1.Rounding = true;
-            dRadio_cam1.RoundingInt = 100;
-            dRadio_cam1.Size = new Size(105, 45);
-            dRadio_cam1.SizeChecked = 8;
-            dRadio_cam1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            dRadio_cam1.TabIndex = 2;
-            dRadio_cam1.Tag = "Cyber";
-            dRadio_cam1.TextButton = "CAM #1";
-            dRadio_cam1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            dRadio_cam1.Timer_Effect_1 = 1;
-            dRadio_cam1.Timer_RGB = 300;
-            // 
             // skyLabel1
             // 
             skyLabel1.AutoSize = true;
             skyLabel1.Font = new Font("Verdana", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
             skyLabel1.ForeColor = Color.FromArgb(27, 94, 137);
-            skyLabel1.Location = new Point(1106, 15);
+            skyLabel1.Location = new Point(1213, 17);
             skyLabel1.Name = "skyLabel1";
             skyLabel1.Size = new Size(171, 42);
             skyLabel1.TabIndex = 4;
@@ -2478,39 +2375,39 @@ namespace JD_Proc
             chart1.BackColor = Color.FromArgb(0, 0, 20);
             chart1.BackSecondaryColor = SystemColors.Desktop;
             chart1.BorderlineDashStyle = ChartDashStyle.Solid;
-            chartArea13.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
-            chartArea13.AxisX.LineColor = Color.FromArgb(0, 0, 20);
-            chartArea13.AxisX.MajorGrid.Enabled = false;
-            chartArea13.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
-            chartArea13.AxisY.LineColor = Color.FromArgb(0, 0, 20);
-            chartArea13.AxisY.MajorGrid.Enabled = false;
-            chartArea13.BackColor = Color.FromArgb(0, 0, 20);
-            chartArea13.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea13);
+            chartArea6.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea6.AxisX.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea6.AxisX.MajorGrid.Enabled = false;
+            chartArea6.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea6.AxisY.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea6.AxisY.MajorGrid.Enabled = false;
+            chartArea6.BackColor = Color.FromArgb(0, 0, 20);
+            chartArea6.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea6);
             chart1.Dock = DockStyle.Fill;
-            legend13.BackColor = Color.Transparent;
-            legend13.ForeColor = Color.White;
-            legend13.Name = "Legend1";
-            chart1.Legends.Add(legend13);
+            legend6.BackColor = Color.Transparent;
+            legend6.ForeColor = Color.White;
+            legend6.Name = "Legend1";
+            chart1.Legends.Add(legend6);
             chart1.Location = new Point(3, 567);
             chart1.Name = "chart1";
-            series13.BorderWidth = 3;
-            series13.ChartArea = "ChartArea1";
-            series13.ChartType = SeriesChartType.Line;
-            series13.Color = Color.Lime;
-            series13.IsValueShownAsLabel = true;
-            series13.LabelForeColor = Color.White;
-            series13.Legend = "Legend1";
-            series13.MarkerColor = Color.Lime;
-            series13.MarkerSize = 10;
-            series13.MarkerStyle = MarkerStyle.Circle;
-            series13.Name = "Gap(um)";
-            series13.Points.Add(dataPoint6);
-            series13.Points.Add(dataPoint7);
-            series13.Points.Add(dataPoint8);
-            series13.Points.Add(dataPoint9);
-            series13.Points.Add(dataPoint10);
-            chart1.Series.Add(series13);
+            series6.BorderWidth = 3;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = SeriesChartType.Line;
+            series6.Color = Color.Lime;
+            series6.IsValueShownAsLabel = true;
+            series6.LabelForeColor = Color.White;
+            series6.Legend = "Legend1";
+            series6.MarkerColor = Color.Lime;
+            series6.MarkerSize = 10;
+            series6.MarkerStyle = MarkerStyle.Circle;
+            series6.Name = "Gap(um)";
+            series6.Points.Add(dataPoint6);
+            series6.Points.Add(dataPoint7);
+            series6.Points.Add(dataPoint8);
+            series6.Points.Add(dataPoint9);
+            series6.Points.Add(dataPoint10);
+            chart1.Series.Add(series6);
             chart1.Size = new Size(954, 370);
             chart1.TabIndex = 6;
             chart1.Text = "L_Camera_Gap";
@@ -2520,39 +2417,39 @@ namespace JD_Proc
             chart2.BackColor = Color.FromArgb(0, 0, 20);
             chart2.BackSecondaryColor = SystemColors.Desktop;
             chart2.BorderlineDashStyle = ChartDashStyle.Solid;
-            chartArea14.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
-            chartArea14.AxisX.LineColor = Color.FromArgb(0, 0, 20);
-            chartArea14.AxisX.MajorGrid.Enabled = false;
-            chartArea14.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
-            chartArea14.AxisY.LineColor = Color.FromArgb(0, 0, 20);
-            chartArea14.AxisY.MajorGrid.Enabled = false;
-            chartArea14.BackColor = Color.FromArgb(0, 0, 20);
-            chartArea14.Name = "ChartArea2";
-            chart2.ChartAreas.Add(chartArea14);
+            chartArea7.AxisX.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea7.AxisX.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea7.AxisX.MajorGrid.Enabled = false;
+            chartArea7.AxisY.LabelStyle.ForeColor = Color.FromArgb(0, 0, 20);
+            chartArea7.AxisY.LineColor = Color.FromArgb(0, 0, 20);
+            chartArea7.AxisY.MajorGrid.Enabled = false;
+            chartArea7.BackColor = Color.FromArgb(0, 0, 20);
+            chartArea7.Name = "ChartArea2";
+            chart2.ChartAreas.Add(chartArea7);
             chart2.Dock = DockStyle.Fill;
-            legend14.BackColor = Color.Transparent;
-            legend14.ForeColor = Color.White;
-            legend14.Name = "Legend1";
-            chart2.Legends.Add(legend14);
+            legend7.BackColor = Color.Transparent;
+            legend7.ForeColor = Color.White;
+            legend7.Name = "Legend1";
+            chart2.Legends.Add(legend7);
             chart2.Location = new Point(963, 567);
             chart2.Name = "chart2";
-            series14.BorderWidth = 3;
-            series14.ChartArea = "ChartArea2";
-            series14.ChartType = SeriesChartType.Line;
-            series14.Color = Color.Lime;
-            series14.IsValueShownAsLabel = true;
-            series14.LabelForeColor = Color.White;
-            series14.Legend = "Legend1";
-            series14.MarkerColor = Color.Lime;
-            series14.MarkerSize = 10;
-            series14.MarkerStyle = MarkerStyle.Circle;
-            series14.Name = "Gap(um)";
-            series14.Points.Add(dataPoint6);
-            series14.Points.Add(dataPoint7);
-            series14.Points.Add(dataPoint8);
-            series14.Points.Add(dataPoint9);
-            series14.Points.Add(dataPoint10);
-            chart2.Series.Add(series14);
+            series7.BorderWidth = 3;
+            series7.ChartArea = "ChartArea2";
+            series7.ChartType = SeriesChartType.Line;
+            series7.Color = Color.Lime;
+            series7.IsValueShownAsLabel = true;
+            series7.LabelForeColor = Color.White;
+            series7.Legend = "Legend1";
+            series7.MarkerColor = Color.Lime;
+            series7.MarkerSize = 10;
+            series7.MarkerStyle = MarkerStyle.Circle;
+            series7.Name = "Gap(um)";
+            series7.Points.Add(dataPoint6);
+            series7.Points.Add(dataPoint7);
+            series7.Points.Add(dataPoint8);
+            series7.Points.Add(dataPoint9);
+            series7.Points.Add(dataPoint10);
+            chart2.Series.Add(series7);
             chart2.Size = new Size(954, 370);
             chart2.TabIndex = 7;
             chart2.Text = "R_Camera_Gap";
@@ -2880,18 +2777,18 @@ namespace JD_Proc
             // chart3
             // 
             chart3.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea15.Name = "ChartArea1";
-            chart3.ChartAreas.Add(chartArea15);
-            legend15.Name = "Legend1";
-            chart3.Legends.Add(legend15);
+            chartArea8.Name = "ChartArea1";
+            chart3.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            chart3.Legends.Add(legend8);
             chart3.Location = new Point(308, 844);
             chart3.Name = "chart3";
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = SeriesChartType.Line;
-            series15.LabelForeColor = Color.IndianRed;
-            series15.Legend = "Legend1";
-            series15.Name = "Series1";
-            chart3.Series.Add(series15);
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = SeriesChartType.Line;
+            series8.LabelForeColor = Color.IndianRed;
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            chart3.Series.Add(series8);
             chart3.Size = new Size(640, 80);
             chart3.TabIndex = 36;
             chart3.Text = "chart5";
@@ -2899,18 +2796,18 @@ namespace JD_Proc
             // chart4
             // 
             chart4.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea16.Name = "ChartArea1";
-            chart4.ChartAreas.Add(chartArea16);
-            legend16.Name = "Legend1";
-            chart4.Legends.Add(legend16);
+            chartArea9.Name = "ChartArea1";
+            chart4.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            chart4.Legends.Add(legend9);
             chart4.Location = new Point(308, 757);
             chart4.Name = "chart4";
-            series16.ChartArea = "ChartArea1";
-            series16.ChartType = SeriesChartType.Line;
-            series16.LabelForeColor = Color.IndianRed;
-            series16.Legend = "Legend1";
-            series16.Name = "Series1";
-            chart4.Series.Add(series16);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = SeriesChartType.Line;
+            series9.LabelForeColor = Color.IndianRed;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            chart4.Series.Add(series9);
             chart4.Size = new Size(640, 80);
             chart4.TabIndex = 35;
             chart4.Text = "chart4";
@@ -2918,18 +2815,18 @@ namespace JD_Proc
             // chart5
             // 
             chart5.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea17.Name = "ChartArea1";
-            chart5.ChartAreas.Add(chartArea17);
-            legend17.Name = "Legend1";
-            chart5.Legends.Add(legend17);
+            chartArea10.Name = "ChartArea1";
+            chart5.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            chart5.Legends.Add(legend10);
             chart5.Location = new Point(308, 671);
             chart5.Name = "chart5";
-            series17.ChartArea = "ChartArea1";
-            series17.ChartType = SeriesChartType.Line;
-            series17.LabelForeColor = Color.IndianRed;
-            series17.Legend = "Legend1";
-            series17.Name = "Series1";
-            chart5.Series.Add(series17);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = SeriesChartType.Line;
+            series10.LabelForeColor = Color.IndianRed;
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            chart5.Series.Add(series10);
             chart5.Size = new Size(640, 80);
             chart5.TabIndex = 34;
             chart5.Text = "chart3";
@@ -2937,18 +2834,18 @@ namespace JD_Proc
             // chart6
             // 
             chart6.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea18.Name = "ChartArea1";
-            chart6.ChartAreas.Add(chartArea18);
-            legend18.Name = "Legend1";
-            chart6.Legends.Add(legend18);
+            chartArea11.Name = "ChartArea1";
+            chart6.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            chart6.Legends.Add(legend11);
             chart6.Location = new Point(308, 585);
             chart6.Name = "chart6";
-            series18.ChartArea = "ChartArea1";
-            series18.ChartType = SeriesChartType.Line;
-            series18.LabelForeColor = Color.IndianRed;
-            series18.Legend = "Legend1";
-            series18.Name = "Series1";
-            chart6.Series.Add(series18);
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = SeriesChartType.Line;
+            series11.LabelForeColor = Color.IndianRed;
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            chart6.Series.Add(series11);
             chart6.Size = new Size(640, 80);
             chart6.TabIndex = 33;
             chart6.Text = "chart2";
@@ -2956,18 +2853,18 @@ namespace JD_Proc
             // chart7
             // 
             chart7.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea19.Name = "ChartArea1";
-            chart7.ChartAreas.Add(chartArea19);
-            legend19.Name = "Legend1";
-            chart7.Legends.Add(legend19);
+            chartArea12.Name = "ChartArea1";
+            chart7.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            chart7.Legends.Add(legend12);
             chart7.Location = new Point(308, 499);
             chart7.Name = "chart7";
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = SeriesChartType.Line;
-            series19.LabelForeColor = Color.IndianRed;
-            series19.Legend = "Legend1";
-            series19.Name = "Series1";
-            chart7.Series.Add(series19);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = SeriesChartType.Line;
+            series12.LabelForeColor = Color.IndianRed;
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            chart7.Series.Add(series12);
             chart7.Size = new Size(640, 80);
             chart7.TabIndex = 32;
             chart7.Text = "chart1";
@@ -3323,17 +3220,17 @@ namespace JD_Proc
             // chart8
             // 
             chart8.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea20.Name = "ChartArea1";
-            chart8.ChartAreas.Add(chartArea20);
-            legend20.Name = "Legend1";
-            chart8.Legends.Add(legend20);
+            chartArea13.Name = "ChartArea1";
+            chart8.ChartAreas.Add(chartArea13);
+            legend13.Name = "Legend1";
+            chart8.Legends.Add(legend13);
             chart8.Location = new Point(308, 844);
             chart8.Name = "chart8";
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = SeriesChartType.Line;
-            series20.Legend = "Legend1";
-            series20.Name = "Series1";
-            chart8.Series.Add(series20);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = SeriesChartType.Line;
+            series13.Legend = "Legend1";
+            series13.Name = "Series1";
+            chart8.Series.Add(series13);
             chart8.Size = new Size(640, 80);
             chart8.TabIndex = 31;
             chart8.Text = "chart5";
@@ -3341,17 +3238,17 @@ namespace JD_Proc
             // chart9
             // 
             chart9.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea21.Name = "ChartArea1";
-            chart9.ChartAreas.Add(chartArea21);
-            legend21.Name = "Legend1";
-            chart9.Legends.Add(legend21);
+            chartArea14.Name = "ChartArea1";
+            chart9.ChartAreas.Add(chartArea14);
+            legend14.Name = "Legend1";
+            chart9.Legends.Add(legend14);
             chart9.Location = new Point(308, 757);
             chart9.Name = "chart9";
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = SeriesChartType.Line;
-            series21.Legend = "Legend1";
-            series21.Name = "Series1";
-            chart9.Series.Add(series21);
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = SeriesChartType.Line;
+            series14.Legend = "Legend1";
+            series14.Name = "Series1";
+            chart9.Series.Add(series14);
             chart9.Size = new Size(640, 80);
             chart9.TabIndex = 30;
             chart9.Text = "chart4";
@@ -3359,17 +3256,17 @@ namespace JD_Proc
             // chart10
             // 
             chart10.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea22.Name = "ChartArea1";
-            chart10.ChartAreas.Add(chartArea22);
-            legend22.Name = "Legend1";
-            chart10.Legends.Add(legend22);
+            chartArea15.Name = "ChartArea1";
+            chart10.ChartAreas.Add(chartArea15);
+            legend15.Name = "Legend1";
+            chart10.Legends.Add(legend15);
             chart10.Location = new Point(308, 671);
             chart10.Name = "chart10";
-            series22.ChartArea = "ChartArea1";
-            series22.ChartType = SeriesChartType.Line;
-            series22.Legend = "Legend1";
-            series22.Name = "Series1";
-            chart10.Series.Add(series22);
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = SeriesChartType.Line;
+            series15.Legend = "Legend1";
+            series15.Name = "Series1";
+            chart10.Series.Add(series15);
             chart10.Size = new Size(640, 80);
             chart10.TabIndex = 29;
             chart10.Text = "chart3";
@@ -3377,17 +3274,17 @@ namespace JD_Proc
             // chart11
             // 
             chart11.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea23.Name = "ChartArea1";
-            chart11.ChartAreas.Add(chartArea23);
-            legend23.Name = "Legend1";
-            chart11.Legends.Add(legend23);
+            chartArea16.Name = "ChartArea1";
+            chart11.ChartAreas.Add(chartArea16);
+            legend16.Name = "Legend1";
+            chart11.Legends.Add(legend16);
             chart11.Location = new Point(308, 585);
             chart11.Name = "chart11";
-            series23.ChartArea = "ChartArea1";
-            series23.ChartType = SeriesChartType.Line;
-            series23.Legend = "Legend1";
-            series23.Name = "Series1";
-            chart11.Series.Add(series23);
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = SeriesChartType.Line;
+            series16.Legend = "Legend1";
+            series16.Name = "Series1";
+            chart11.Series.Add(series16);
             chart11.Size = new Size(640, 80);
             chart11.TabIndex = 28;
             chart11.Text = "chart2";
@@ -3395,18 +3292,18 @@ namespace JD_Proc
             // chart12
             // 
             chart12.BackColor = Color.FromArgb(45, 45, 45);
-            chartArea24.Name = "ChartArea1";
-            chart12.ChartAreas.Add(chartArea24);
-            legend24.Name = "Legend1";
-            chart12.Legends.Add(legend24);
+            chartArea17.Name = "ChartArea1";
+            chart12.ChartAreas.Add(chartArea17);
+            legend17.Name = "Legend1";
+            chart12.Legends.Add(legend17);
             chart12.Location = new Point(308, 499);
             chart12.Name = "chart12";
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = SeriesChartType.Line;
-            series24.LabelForeColor = Color.IndianRed;
-            series24.Legend = "Legend1";
-            series24.Name = "Series1";
-            chart12.Series.Add(series24);
+            series17.ChartArea = "ChartArea1";
+            series17.ChartType = SeriesChartType.Line;
+            series17.LabelForeColor = Color.IndianRed;
+            series17.Legend = "Legend1";
+            series17.Name = "Series1";
+            chart12.Series.Add(series17);
             chart12.Size = new Size(640, 80);
             chart12.TabIndex = 27;
             chart12.Text = "chart1";
@@ -3653,6 +3550,20 @@ namespace JD_Proc
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)num_Row).EndInit();
+            ((System.ComponentModel.ISupportInitialize)num_AxisEndX).EndInit();
+            ((System.ComponentModel.ISupportInitialize)num_AxisStartX).EndInit();
+            tableLayoutPanel12.ResumeLayout(false);
+            tableLayoutPanel16.ResumeLayout(false);
+            tableLayoutPanel16.PerformLayout();
+            tableLayoutPanel13.ResumeLayout(false);
+            tableLayoutPanel13.PerformLayout();
+            tableLayoutPanel14.ResumeLayout(false);
+            tableLayoutPanel15.ResumeLayout(false);
+            tableLayoutPanel15.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Chart_TempGraph_R).EndInit();
             tableLayoutPanel_Auto.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1_Auto).EndInit();
@@ -3662,30 +3573,12 @@ namespace JD_Proc
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)Chart_Auto_L).EndInit();
             ((System.ComponentModel.ISupportInitialize)Chart_Auto_R).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dChart_R_5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_R_4).EndInit();
             ((System.ComponentModel.ISupportInitialize)dChart_R_3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_R_2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_R_1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_5_R).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_4_R).EndInit();
             ((System.ComponentModel.ISupportInitialize)dPic_roi_3_R).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_2_R).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_1_R).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dChart_L_5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_L_4).EndInit();
             ((System.ComponentModel.ISupportInitialize)dChart_L_3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_L_2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dChart_L_1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_5_L).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_4_L).EndInit();
             ((System.ComponentModel.ISupportInitialize)dPic_roi_3_L).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_2_L).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dPic_roi_1_L).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tableLayoutPanel3.ResumeLayout(false);
             panel1.ResumeLayout(false);
@@ -3766,33 +3659,15 @@ namespace JD_Proc
         private PictureBox pictureBox1;
         private ReaLTaiizor.Controls.Button dBtn_settings;
         private ReaLTaiizor.Controls.DungeonComboBox dComboBox_cam1;
-        private ReaLTaiizor.Controls.NightLabel dLable_tmp1;
         private ReaLTaiizor.Controls.DungeonComboBox dComboBox_cam2;
         private ReaLTaiizor.Controls.DungeonComboBox dComboBox_scale2;
         private ReaLTaiizor.Controls.NightLabel dLable_tmp2;
         private ReaLTaiizor.Controls.NightButton dBtn_stop2;
-        private ReaLTaiizor.Controls.NightButton dBtn_stop1;
         private ReaLTaiizor.Controls.NightLabel dLabel_autoState;
-        private ReaLTaiizor.Controls.HopePictureBox dPic_roi_1_L;
-        private ReaLTaiizor.Controls.HopePictureBox dPic_roi_5_L;
-        private ReaLTaiizor.Controls.HopePictureBox dPic_roi_4_L;
         private ReaLTaiizor.Controls.HopePictureBox dPic_roi_3_L;
-        private ReaLTaiizor.Controls.HopePictureBox dPic_roi_2_L;
-        private ReaLTaiizor.Controls.HopePictureBox dPic_roi_5_R;
-        private ReaLTaiizor.Controls.HopePictureBox dPic_roi_4_R;
         private ReaLTaiizor.Controls.HopePictureBox dPic_roi_3_R;
-        private ReaLTaiizor.Controls.HopePictureBox dPic_roi_2_R;
-        private ReaLTaiizor.Controls.HopePictureBox dPic_roi_1_R;
-        private System.Windows.Forms.DataVisualization.Charting.Chart dChart_L_1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart dChart_L_4;
         private System.Windows.Forms.DataVisualization.Charting.Chart dChart_L_3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart dChart_L_2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart dChart_L_5;
-        private System.Windows.Forms.DataVisualization.Charting.Chart dChart_R_5;
-        private System.Windows.Forms.DataVisualization.Charting.Chart dChart_R_4;
         private System.Windows.Forms.DataVisualization.Charting.Chart dChart_R_3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart dChart_R_2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart dChart_R_1;
         private ReaLTaiizor.Controls.DungeonComboBox dComboBox_scale1;
         private ReaLTaiizor.Controls.NightLabel dLabel_Ng_L;
         private ReaLTaiizor.Controls.NightLabel dLabel_Ng_R;
@@ -3895,10 +3770,26 @@ namespace JD_Proc
         private ReaLTaiizor.Controls.Panel Panel_CameraCenterLine_R;
         private ReaLTaiizor.Controls.Panel Panel_BrighestLine_R;
         private ReaLTaiizor.Controls.NightButton Btn_BottomLineSetting;
-        private ReaLTaiizor.Controls.NightLabel Lbl_TempController;
         private ReaLTaiizor.Controls.CyberButton Btn_SetSV;
         private ReaLTaiizor.Controls.CyberTextBox TextBox_InputSV;
         private ReaLTaiizor.Controls.NightTextBox TxtBox_SelectedImgName;
-        private ReaLTaiizor.Controls.NightButton Btn_PLCACK;
+        private Chart Chart_TempGraph_R;
+        private ReaLTaiizor.Controls.CyberRadioButton dRadio_TempCon;
+        private TableLayoutPanel tableLayoutPanel12;
+        private TableLayoutPanel tableLayoutPanel13;
+        private TableLayoutPanel tableLayoutPanel14;
+        private TableLayoutPanel tableLayoutPanel15;
+        private TableLayoutPanel tableLayoutPanel16;
+        private Label label6;
+        private Label label5;
+        private Panel Panel_LVChart;
+        private Label Lbl_LVchart2;
+        private Label Lbl_LVchart1;
+        private Label label7;
+        private NumericUpDown num_AxisEndX;
+        private NumericUpDown num_AxisStartX;
+        private Button btn_AxisChange;
+        private NumericUpDown num_Row;
+        private Button btnGraphShow;
     }
 }

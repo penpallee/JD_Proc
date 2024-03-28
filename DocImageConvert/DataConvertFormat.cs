@@ -1,5 +1,6 @@
 ﻿using JD_Proc.Model;
 using System.Diagnostics;
+using System.IO;
 
 namespace JD_Proc.DocImageConvert
 {

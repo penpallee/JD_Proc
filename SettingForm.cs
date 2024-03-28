@@ -1,9 +1,4 @@
-﻿
-using JD_Proc.Log;
-using System.Diagnostics;
-using System.Timers;
-using System.Windows.Forms.VisualStyles;
-using static JD_Proc.Log.LogManager;
+﻿using JD_Proc.PLC;
 
 namespace JD_Proc
 {
@@ -15,7 +10,9 @@ namespace JD_Proc
         AlignSettingForm _alignsettingform;
         TempGraphForm _tempgraphform;
         Service.SettingsService service;
-
+        PLC.Melsec _SettingMelsec;
+        System.Threading.Timer _SettingJogTimer;
+        
         #endregion
 
         #region 생성자
@@ -30,9 +27,9 @@ namespace JD_Proc
             GetResolution_1();
             GetResolution_2();
 
-            _timer = new System.Timers.Timer();
-            _timer.Interval = 200;
-            _timer.Elapsed += new ElapsedEventHandler(PlcCheckTimer);
+            _SettingMelsec = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
+            
+
 
             // Developing
             dPanel_login.Visible = false;
@@ -56,75 +53,33 @@ namespace JD_Proc
         }
         #endregion
 
-        #region event(PLC Check) Timer
-        void PlcCheckTimer(object sender, ElapsedEventArgs e)
-        {
-            try
-            {
-                // plc -> vision
-                int plcAuto = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B101", out plcAuto);
 
-                this.BeginInvoke((MethodInvoker)(() =>
-                {
-                    if (plcAuto == 0)
-                        dPanel_plcAuto.BackColor = Color.Red;
-                    else
-                        dPanel_plcAuto.BackColor = Color.Lime;
-                }));
-
-                int cam1Start = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B110", out cam1Start);
-
-                this.BeginInvoke((MethodInvoker)(() =>
-                {
-                    if (cam1Start == 0)
-                        dPanel_plcCam1Cap.BackColor = Color.Red;
-                    else
-                        dPanel_plcCam1Cap.BackColor = Color.Lime;
-                }));
-
-                int cam2Start = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B111", out cam2Start);
-
-                this.BeginInvoke((MethodInvoker)(() =>
-                {
-                    if (cam2Start == 0)
-                        dPanel_plcCam2Cap.BackColor = Color.Red;
-                    else
-                        dPanel_plcCam2Cap.BackColor = Color.Lime;
-                }));
-            }
-            catch
-            {
-                LogManager log = new LogManager(@"C:\JD\log\", LogType.Daily);
-                log.WriteLine("셋팅 페이지에서 PLC 통신 에러");
-            }
-
-        }
-        #endregion
 
         #region event(resolution) - click
         private void dBtn_pixelSave_Click(object sender, EventArgs e)
         {
             string x = dTbox_x1.Text;
             string y = dTbox_y1.Text;
+            string CValue = dTbox_CValue.Text;
 
             Service.SettingsService service = new Service.SettingsService();
 
             service.Write("resolution", "x_1", x);
             service.Write("resolution", "y_1", y);
+            service.Write("Calibration", "L_Value", CValue);
         }
 
         private void dBtn_pixelSave2_Click(object sender, EventArgs e)
         {
             string x = dTbox_x2.Text;
             string y = dTbox_y2.Text;
+            string CValue = dTbox_CValue2.Text;
 
             Service.SettingsService service = new Service.SettingsService();
 
             service.Write("resolution", "x_2", x);
             service.Write("resolution", "y_2", y);
+            service.Write("Calibration", "R_Value", CValue);
         }
 
         private void dBtn_pixelLoad_Click(object sender, EventArgs e)
@@ -140,149 +95,7 @@ namespace JD_Proc
 
         #region event(plc) - click
 
-        private void dPanel_visionCam1Auto_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam1Auto.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B3", short.Parse("1"));
 
-                dPanel_visionCam1Auto.BackColor = Color.Lime;
-                dPanel_visionCam2Auto.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam1Auto.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B3", short.Parse("0"));
-
-                dPanel_visionCam1Auto.BackColor = Color.Red;
-                dPanel_visionCam2Auto.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam1Ready_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam1Ready.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B10", short.Parse("1"));
-
-                dPanel_visionCam1Ready.BackColor = Color.Lime;
-                dPanel_visionCam1Ready.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam1Ready.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B10", short.Parse("0"));
-
-                dPanel_visionCam1Ready.BackColor = Color.Red;
-                dPanel_visionCam1Ready.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam1Busy_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam1Busy.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B11", short.Parse("1"));
-
-                dPanel_visionCam1Busy.BackColor = Color.Lime;
-                dPanel_visionCam1Busy.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam1Busy.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B11", short.Parse("0"));
-
-                dPanel_visionCam1Busy.BackColor = Color.Red;
-                dPanel_visionCam1Busy.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam1End_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam1End.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B12", short.Parse("1"));
-
-                dPanel_visionCam1End.BackColor = Color.Lime;
-                dPanel_visionCam1End.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam1End.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B12", short.Parse("0"));
-
-                dPanel_visionCam1End.BackColor = Color.Red;
-                dPanel_visionCam1End.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam2Auto_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam2Auto.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice2("B3", short.Parse("1"));
-
-                dPanel_visionCam1Auto.BackColor = Color.Lime;
-                dPanel_visionCam2Auto.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam2Auto.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice2("B3", short.Parse("0"));
-
-                dPanel_visionCam1Auto.BackColor = Color.Red;
-                dPanel_visionCam2Auto.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam2Ready_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam2Ready.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B13", short.Parse("1"));
-
-                dPanel_visionCam2Ready.BackColor = Color.Lime;
-                dPanel_visionCam2Ready.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam2Ready.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B13", short.Parse("0"));
-
-                dPanel_visionCam2Ready.BackColor = Color.Red;
-                dPanel_visionCam2Ready.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam2Busy_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam2Busy.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B14", short.Parse("1"));
-
-                dPanel_visionCam2Busy.BackColor = Color.Lime;
-                dPanel_visionCam2Busy.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam2Busy.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B14", short.Parse("0"));
-
-                dPanel_visionCam2Busy.BackColor = Color.Red;
-                dPanel_visionCam2Busy.BackColor = Color.Red;
-            }
-        }
-
-        private void dPanel_visionCam2End_Click(object sender, EventArgs e)
-        {
-            if (dPanel_visionCam2End.BackColor == Color.Red)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B15", short.Parse("1"));
-
-                dPanel_visionCam2End.BackColor = Color.Lime;
-                dPanel_visionCam2End.BackColor = Color.Lime;
-            }
-            else if (dPanel_visionCam2End.BackColor == Color.Lime)
-            {
-                Form1._MELSEC.actUtlType64.SetDevice("B15", short.Parse("0"));
-
-                dPanel_visionCam2End.BackColor = Color.Red;
-                dPanel_visionCam2End.BackColor = Color.Red;
-            }
-        }
         #endregion
 
         #region event(login) - click
@@ -316,6 +129,7 @@ namespace JD_Proc
 
             dTbox_x1.Text = service.Read("resolution", "x_1");
             dTbox_y1.Text = service.Read("resolution", "y_1");
+            dTbox_CValue.Text = service.Read("Calibration", "L_Value");
         }
 
         void GetResolution_2()
@@ -324,79 +138,14 @@ namespace JD_Proc
 
             dTbox_x2.Text = service.Read("resolution", "x_2");
             dTbox_y2.Text = service.Read("resolution", "y_2");
+            dTbox_CValue2.Text = service.Read("Calibration", "R_Value");
+
+
         }
 
         #endregion
 
-        #region method - Set PLC
-        public void SetPlc()
-        {
-            try
-            {
-                // plc -> vision
-                int plcAuto = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B101", out plcAuto);
-                if (plcAuto == 0) dPanel_plcAuto.BackColor = Color.Red;
-                else dPanel_plcAuto.BackColor = Color.Lime;
 
-                int cam1Start = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B103", out cam1Start);
-                if (cam1Start == 0) dPanel_plcCam1Cap.BackColor = Color.Red;
-                else dPanel_plcCam1Cap.BackColor = Color.Lime;
-
-                int cam2Start = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B104", out cam2Start);
-
-                if (cam2Start == 0) dPanel_plcCam2Cap.BackColor = Color.Red;
-                else dPanel_plcCam2Cap.BackColor = Color.Lime;
-
-                // vision -> plc ...공통
-                int visionAuto = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B3", out visionAuto);
-                if (visionAuto == 0) dPanel_visionCam1Auto.BackColor = Color.Red;
-                else dPanel_visionCam1Auto.BackColor = Color.Lime;
-                if (visionAuto == 0) dPanel_visionCam2Auto.BackColor = Color.Red;
-                else dPanel_visionCam2Auto.BackColor = Color.Lime;
-
-                // vision -> plc ...cam1
-                int cam1Ready = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B4", out cam1Ready);
-                if (cam1Ready == 0) dPanel_visionCam1Ready.BackColor = Color.Red;
-                else dPanel_visionCam1Ready.BackColor = Color.Lime;
-
-                int cam1Busy = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B5", out cam1Busy);
-                if (cam1Busy == 0) dPanel_visionCam1Busy.BackColor = Color.Red;
-                else dPanel_visionCam1Busy.BackColor = Color.Lime;
-
-                int cam1End = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B6", out cam1End);
-                if (cam1End == 0) dPanel_visionCam1End.BackColor = Color.Red;
-                else dPanel_visionCam1End.BackColor = Color.Lime;
-
-                // vision -> plc ...cam2
-                int cam2Ready = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B7", out cam2Ready);
-                if (cam2Ready == 0) dPanel_visionCam2Ready.BackColor = Color.Red;
-                else dPanel_visionCam2Ready.BackColor = Color.Lime;
-
-                int cam2Busy = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B8", out cam2Busy);
-                if (cam2Busy == 0) dPanel_visionCam2Busy.BackColor = Color.Red;
-                else dPanel_visionCam2Busy.BackColor = Color.Lime;
-
-                int cam2End = int.MaxValue;
-                Form1._MELSEC.actUtlType64.GetDevice("B9", out cam2End);
-                if (cam2End == 0) dPanel_visionCam2End.BackColor = Color.Red;
-                else dPanel_visionCam2End.BackColor = Color.Lime;
-            }
-            catch
-            {
-                LogManager log = new LogManager(@"C:\JD\log\", LogType.Daily);
-                log.WriteLine("셋팅 페이지에서 PLC 통신 에러");
-            }
-        }
-        #endregion
 
         #region 잡동사니
         private void dungeonForm1_Click(object sender, EventArgs e)
@@ -452,18 +201,30 @@ namespace JD_Proc
                 Btn_Jog_R_Z.Enabled = false;
                 Btn_JogOriginal.Enabled = false;
                 Btn_JogReverse.Enabled = false;
+
+                TxtBox_JogVelocity_LY.Enabled = false;
+                TxtBox_JogPosition_LY.Enabled = false;
+
+                TxtBox_JogVelocity_LZ.Enabled = false;
+                TxtBox_JogPosition_LZ.Enabled = false;
+
+                TxtBox_JogVelocity_RY.Enabled = false;
+                TxtBox_JogPosition_RY.Enabled = false;
+
+                TxtBox_JogVelocity_RZ.Enabled = false;
+                Btn_SetJogPosition_RZ.Enabled = false;
+
+
+            }
+            else
+            {
+                _SettingJogTimer = new System.Threading.Timer(SettingJogTimer_Check, null, 0, 500);
+
+                
             }
         }
 
-        private void Btn_SetJogVelocity_Click(object sender, EventArgs e)
-        {
-            _form1.PLCMotorSetVelocityValue(int.Parse(TxtBox_JogVelocity.Text));
-        }
 
-        private void Btn_SetJogPosition_Click(object sender, EventArgs e)
-        {
-            _form1.PLCMotorSetPositionValue(int.Parse(TxtBox_JogPosition.Text));
-        }
 
         private void Btn_MoveToPosition_Click(object sender, EventArgs e)
         {
@@ -472,14 +233,23 @@ namespace JD_Proc
 
         private void Btn_JogValueSave_Click(object sender, EventArgs e)
         {
-            service.Write("PLC_JOG_OFFSET", "VELOCITY", TxtBox_JogVelocity.Text);
-            service.Write("PLC_JOG_OFFSET", "POSITION", TxtBox_JogPosition.Text);
+            service.Write("PLC_JOG_OFFSET", "L_Y_VELOCITY", TxtBox_JogVelocity_LY.Text);
+            service.Write("PLC_JOG_OFFSET", "L_Y_POSITION", TxtBox_JogPosition_LY.Text);
+
+            service.Write("PLC_JOG_OFFSET", "L_Z_VELOCITY", TxtBox_JogVelocity_LZ.Text);
+            service.Write("PLC_JOG_OFFSET", "L_Z_POSITION", TxtBox_JogPosition_LZ.Text);
+
+            service.Write("PLC_JOG_OFFSET", "R_Y_VELOCITY", TxtBox_JogVelocity_RY.Text);
+            service.Write("PLC_JOG_OFFSET", "R_Y_POSITION", TxtBox_JogPosition_RY.Text);
+
+            service.Write("PLC_JOG_OFFSET", "R_Z_VELOCITY", TxtBox_JogVelocity_RZ.Text);
+            service.Write("PLC_JOG_OFFSET", "R_Z_POSITION", Btn_SetJogPosition_RZ.Text);
         }
 
         private void Btn_AutoMoveToSavePosition_Click(object sender, EventArgs e)
         {
-            TxtBox_JogVelocity.Text = service.Read("PLC_JOG_OFFSET", "VELOCITY");
-            TxtBox_JogPosition.Text = service.Read("PLC_JOG_OFFSET", "POSITION");
+            TxtBox_JogVelocity_LY.Text = service.Read("PLC_JOG_OFFSET", "VELOCITY");
+            TxtBox_JogPosition_LY.Text = service.Read("PLC_JOG_OFFSET", "POSITION");
             _form1.PLCJogAutoMoveToSavedValue();
         }
 
@@ -547,7 +317,126 @@ namespace JD_Proc
         {
             _form1.jogButtonReverseClickUp();
         }
+
         #endregion
+
+        #region [event - JogSetBtnClick]
+        private void Btn_SetJogVelocity_LY_Click(object sender, EventArgs e)
+        {
+            _form1.PLCMotorSetVelocityValue(int.Parse(TxtBox_JogVelocity_LY.Text));
+        }
+
+        private void Btn_SetJogPosition_LY_Click(object sender, EventArgs e)
+        {
+            _form1.PLCMotorSetPositionValue(int.Parse(TxtBox_JogPosition_LY.Text));
+        }
+
+        private void Btn_SetJogVelocity_LZ_Click(object sender, EventArgs e)
+        {
+            _form1.PLCMotorSetVelocityValue(int.Parse(TxtBox_JogVelocity_LZ.Text));
+        }
+
+        private void Btn_SetJogPosition_LZ_Click(object sender, EventArgs e)
+        {
+            _form1.PLCMotorSetPositionValue(int.Parse(TxtBox_JogPosition_LZ.Text));
+        }
+
+        private void Btn_SetJogVelocity_RY_Click(object sender, EventArgs e)
+        {
+            _form1.PLCMotorSetVelocityValue(int.Parse(TxtBox_JogVelocity_RY.Text));
+        }
+
+        private void Btn_SetJogPosition_RY_Click(object sender, EventArgs e)
+        {
+            _form1.PLCMotorSetPositionValue(int.Parse(TxtBox_JogPosition_RY.Text));
+        }
+
+        private void Btn_SetJogVelocity_RZ_Click(object sender, EventArgs e)
+        {
+            _form1.PLCMotorSetVelocityValue(int.Parse(TxtBox_JogVelocity_RZ.Text));
+        }
+
+        private void TxtBox_JogPosition_RZ_Click(object sender, EventArgs e)
+        {
+            _form1.PLCMotorSetPositionValue(int.Parse(Btn_SetJogPosition_RZ.Text));
+        }
+        #endregion
+
+        private void SettingJogTimer_Check(object? state)
+        {
+            int Pos;
+            int Val;
+
+            
+            _SettingMelsec.actUtlType64.ReadDeviceBlock("W110", 2, out Pos);
+            this.BeginInvoke((MethodInvoker)(() =>
+            {
+                TxtBox_JogCurrPosition_LY.Text = Pos.ToString();
+            }));
+            _SettingMelsec.actUtlType64.ReadDeviceBlock("W112", 2, out Pos);
+            this.BeginInvoke((MethodInvoker)(() =>
+            {
+                TxtBox_JogCurrPosition_LZ.Text = Pos.ToString();
+            }));
+            _SettingMelsec.actUtlType64.ReadDeviceBlock("W114", 2, out Pos);
+            this.BeginInvoke((MethodInvoker)(() =>
+            {
+                TxtBox_JogCurrPosition_RY.Text = Pos.ToString();
+            }));
+            _SettingMelsec.actUtlType64.ReadDeviceBlock("W116", 2, out Pos);
+            this.BeginInvoke((MethodInvoker)(() =>
+            {
+                TxtBox_JogCurrPosition_RZ.Text = Pos.ToString();
+            }));
+
+
+
+
+            _SettingMelsec.actUtlType64.GetDevice("B120", out Val);
+            this.BeginInvoke((MethodInvoker)(() =>
+            {
+                if (Val == 1) Btn_Jog_L_Y.BorderColor = Color.IndianRed;
+                else
+                {
+                    Btn_Jog_L_Y.BorderColor = Color.Transparent;
+                    TxtBox_JogVelocity_LY.Enabled = false;
+                    TxtBox_JogPosition_LY.Enabled = false;
+                }
+            }));
+            _SettingMelsec.actUtlType64.GetDevice("B121", out Val);
+            this.BeginInvoke((MethodInvoker)(() =>
+            {
+                if (Val == 1) Btn_Jog_L_Z.BorderColor = Color.IndianRed;
+                else
+                {
+                    TxtBox_JogVelocity_LZ.Enabled = false;
+                    TxtBox_JogPosition_LZ.Enabled = false;
+                    Btn_Jog_L_Z.BorderColor = Color.Transparent;
+                }
+            }));
+            _SettingMelsec.actUtlType64.GetDevice("B122", out Val);
+            this.BeginInvoke((MethodInvoker)(() =>
+            {
+                if (Val == 1) Btn_Jog_R_Y.BorderColor = Color.IndianRed;
+                else
+                {
+                    TxtBox_JogVelocity_RY.Enabled = false;
+                    TxtBox_JogPosition_RY.Enabled = false;
+                    Btn_Jog_R_Y.BorderColor = Color.Transparent;
+                }
+            }));
+            _SettingMelsec.actUtlType64.GetDevice("B123", out Val);
+            this.BeginInvoke((MethodInvoker)(() =>
+            {
+                if (Val == 1) Btn_Jog_R_Z.BorderColor = Color.IndianRed;
+                else
+                {
+                    TxtBox_JogVelocity_RZ.Enabled = false;
+                    Btn_SetJogPosition_RZ.Enabled = false;
+                    Btn_Jog_R_Z.BorderColor = Color.Transparent;
+                }
+            }));
+        }
     }
 }
 

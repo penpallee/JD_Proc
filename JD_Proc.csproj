@@ -30,8 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts.WinForms" Version="0.9.7.1" />
     <PackageReference Include="ReaLTaiizor" Version="3.7.9.8" />
     <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+    <PackageReference Include="System.Windows.Extensions" Version="6.0.0" />
     <PackageReference Include="WinForms.DataVisualization" Version="1.9.1" />
   </ItemGroup>
 
@@ -41,6 +43,9 @@
     </Reference>
     <Reference Include="Interop.ActUtlType64Lib">
       <HintPath>Libs\x64\Interop.ActUtlType64Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="LVChart">
+      <HintPath>..\..\Users\DPS7\OneDrive\문서\KakaoTalk Downloads\LivechartNewTest\LivechartNewTest\LVChart.dll</HintPath>
     </Reference>
   </ItemGroup>
 

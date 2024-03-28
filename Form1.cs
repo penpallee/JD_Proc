@@ -17,7 +17,6 @@ using JD_Proc.TempController;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing.Imaging;
-using System.Runtime.Remoting;
 using System.Timers;
 using System.Windows.Forms.DataVisualization.Charting;
 using static JD_Proc.Log.LogManager;
@@ -171,6 +170,15 @@ namespace JD_Proc
         public bool AT_VISION_END = false;
 
         int cnt = 0;
+        private Point mouseDownLocation; // 마우스 클릭 시작 위치
+        private float currentZoomFactor = 1.0f; // 현재 줌 비율
+        private Image originalImage; // PictureBox에 표시되는 원본 이미지
+
+        Component.LVChart lvchart;
+        string chartCSVFilePath;
+
+        //Lvchart _lvachart;
+
         #endregion
 
         #region 생성자
@@ -189,6 +197,7 @@ namespace JD_Proc
             else bIsPLC = false;
 
             TempController = new SerialCommunication();
+            dRadio_TempCon.Checked = false;
 
             // Debug mode일때는 License검사를 하지 않도록 한다.
             // USB 동글 Lock, 아래 주석을 해제하면 Dongle USB꽂지 않으면 프로그램 실행 X
@@ -207,13 +216,12 @@ namespace JD_Proc
                     {
                         if (TempController.Comport_Open(service.Read("TempController", "Comport")) == true)
                         {
-                            Lbl_TempController.Text = "Temp_OK";
-                            Lbl_TempController.BackColor = Color.Aquamarine;
+                            dRadio_TempCon.Checked = true;
 
                         }
                         else
                         {
-                            Lbl_TempController.BackColor = Color.Red;
+                            dRadio_TempCon.Checked = false;
                         }
                     }
                     catch (Exception exception)
@@ -224,6 +232,12 @@ namespace JD_Proc
                     try
                     {
                         Connect("generic1.xml", 1);
+                        dRadio_cam1.Checked = true;
+                        dBtn_live1.Enabled = true;
+                        dBtn_Measure1.Enabled = false;
+                        dBtn_imageSave1.Enabled = false;
+                        dBtn_snap1.Enabled = false;
+                        dBtn_Process1.Enabled = false;
                     }
                     catch (Exception exception)
                     {
@@ -237,7 +251,7 @@ namespace JD_Proc
                         dBtn_Measure1.Enabled = false;
                         dBtn_imageSave1.Enabled = false;
                         dBtn_snap1.Enabled = false;
-                        dBtn_stop1.Enabled = false;
+                        dBtn_Process1.Enabled = false;
 
 
                     }
@@ -245,6 +259,7 @@ namespace JD_Proc
                     try
                     {
                         Connect("generic2.xml", 2);
+                        dRadio_cam2.Checked = true;
                     }
                     catch (Exception exception)
                     {
@@ -279,8 +294,8 @@ namespace JD_Proc
                         }
                     }
                 }
-                dRadio_cam1.Checked = true;
-                dRadio_cam2.Checked = true;
+
+
             }
             else if (_MODE == "manual")
             {
@@ -288,7 +303,6 @@ namespace JD_Proc
                 dBtn_live1.Enabled = false;
                 dBtn_live2.Enabled = false;
 
-                dBtn_stop1.Enabled = false;
                 dBtn_stop2.Enabled = false;
 
                 dBtn_snap1.Enabled = false;
@@ -318,6 +332,7 @@ namespace JD_Proc
 
             _TempControllerTimer = new System.Threading.Timer(TempController_TimerCheck, null, 1000, 400);
 
+            chartCSVFilePath = string.Empty;
 
         }
 
@@ -477,11 +492,11 @@ namespace JD_Proc
 
             originBmap_L = images.PaletteImage;
 
-            this.BeginInvoke((MethodInvoker)(() =>
-            {
-                dLable_tmp1.Text = Math.Round(mean, 1).ToString();
+            //this.BeginInvoke((MethodInvoker)(() =>
+            //{
+            //    dLable_tmp1.Text = Math.Round(mean, 1).ToString();
 
-            }));
+            //}));
         }
 
         void AutoSnap_R()
@@ -542,11 +557,8 @@ namespace JD_Proc
                     Porcess("CAM1", 4, okBlobs[0], threshold, cal_mode);
                     Porcess("CAM1", 5, okBlobs[0], threshold, cal_mode);
 
-                    DrawRoiZoom_L(1, true);
-                    DrawRoiZoom_L(2, true);
+
                     DrawRoiZoom_L(3, true);
-                    DrawRoiZoom_L(4, true);
-                    DrawRoiZoom_L(5, true);
 
                     DrawChart_L(true);
 
@@ -614,11 +626,9 @@ namespace JD_Proc
                 Porcess("CAM2", 4, okBlobs[0], threshold, cal_mode);
                 Porcess("CAM2", 5, okBlobs[0], threshold, cal_mode);
 
-                DrawRoiZoom_R(1, true);
-                DrawRoiZoom_R(2, true);
+
                 DrawRoiZoom_R(3, true);
-                DrawRoiZoom_R(4, true);
-                DrawRoiZoom_R(5, true);
+
 
                 DrawChart_R(true);
 
@@ -667,9 +677,9 @@ namespace JD_Proc
             dBtn_load1.Enabled = false;
             dBtn_imageSave1.Enabled = false;
             dBtn_live1.Enabled = false;
-            dBtn_stop1.Enabled = true;
-            dBtn_snap1.Enabled = false;
-            dBtn_Process1.Enabled = false;
+            dBtn_snap1.Enabled = true;
+            dBtn_Process1.Enabled = true;
+            dBtn_Measure1.Enabled = true;
 
             _imageGrabberThread_1 = new Thread(new ThreadStart(ImageGrabberMethode1));
             _grabImages_1 = true;
@@ -681,9 +691,9 @@ namespace JD_Proc
             dBtn_load2.Enabled = false;
             dBtn_imageSave2.Enabled = false;
             dBtn_live2.Enabled = false;
-            dBtn_stop2.Enabled = true;
-            dBtn_snap2.Enabled = false;
-            dBtn_Process2.Enabled = false;
+            dBtn_snap2.Enabled = true;
+            dBtn_Process2.Enabled = true;
+            dBtn_Measure2.Enabled = true;
 
             _imageGrabberThread_2 = new Thread(new ThreadStart(ImageGrabberMethode2));
             _grabImages_2 = true;
@@ -695,7 +705,6 @@ namespace JD_Proc
             dBtn_load1.Enabled = true;
             dBtn_imageSave1.Enabled = true;
             dBtn_live1.Enabled = true;
-            dBtn_stop1.Enabled = false;
             dBtn_snap1.Enabled = true;
             dBtn_Process1.Enabled = true;
 
@@ -763,7 +772,6 @@ namespace JD_Proc
                 dBtn_imageSave2.Enabled = false;
                 dBtn_live1.Enabled = false;
                 dBtn_live2.Enabled = false;
-                dBtn_stop1.Enabled = false;
                 dBtn_stop2.Enabled = false;
                 dBtn_snap1.Enabled = false;
                 dBtn_snap2.Enabled = false;
@@ -816,7 +824,6 @@ namespace JD_Proc
                 dBtn_imageSave2.Enabled = true;
                 dBtn_live1.Enabled = true;
                 dBtn_live2.Enabled = true;
-                dBtn_stop1.Enabled = true;
                 dBtn_stop2.Enabled = true;
                 dBtn_snap1.Enabled = true;
                 dBtn_snap2.Enabled = true;
@@ -840,6 +847,18 @@ namespace JD_Proc
         #region event(snap) - click
         private void dBtn_snap1_Click(object sender, EventArgs e)
         {
+            dBtn_imageSave1.Enabled = true;
+            TempDDList = new List<List<Double>>();
+            for (int column = 0; column < 640; column++)
+            {
+
+                TempDDList.Add(new List<double>());
+
+                for (int r = 0; r < 479; r++)
+                {
+                    TempDDList[column].Add(_tempData_L[column, r]);
+                }
+            }
             if (_imageGrabberThread_1 != null && _imageGrabberThread_1.IsAlive)
             {
                 _grabImages_1 = false;
@@ -852,6 +871,7 @@ namespace JD_Proc
 
         private void dBtn_snap2_Click(object sender, EventArgs e)
         {
+            dBtn_imageSave2.Enabled = true;
             if (_imageGrabberThread_2 != null && _imageGrabberThread_2.IsAlive)
             {
                 _grabImages_2 = false;
@@ -906,12 +926,13 @@ namespace JD_Proc
 
                 DrawChart_L(false);
 
-                WriteGapAvg("cam1", false);
 
+                if (WriteGapAvg("cam1", false) != 0)
+                {
+                    dLabel_Ng_L.ForeColor = Color.Lime;
+                    dLabel_Ng_L.Text = "OK - " + DateTime.Now.ToString("HH:mm:ss");
+                }
                 TempDDList.Clear();
-
-                dLabel_Ng_L.ForeColor = Color.Lime;
-                dLabel_Ng_L.Text = "OK - " + DateTime.Now.ToString("HH:mm:ss");
             }
             else
             {
@@ -988,18 +1009,13 @@ namespace JD_Proc
         #region event(Measure) - click
         private void dBtn_Measure1_Click(object sender, EventArgs e)
         {
-            TempDDList = new List<List<Double>>();
-            for (int column = 0; column < 640; column++)
-            {
 
-                TempDDList.Add(new List<double>());
-
-                for (int r = 0; r < 479; r++)
-                {
-                    TempDDList[column].Add(_tempData_L[column, r]);
-                }
-            }
             measureFunc1(sender, e);
+            _imageGrabberThread_1 = new Thread(new ThreadStart(ImageGrabberMethode1));
+            _grabImages_1 = true;
+            _imageGrabberThread_1.Start();
+
+            dBtn_load1.Enabled = true;
         }
 
         private void dBtn_Measure2_Click(object sender, EventArgs e)
@@ -1012,10 +1028,13 @@ namespace JD_Proc
         private void dBtn_load1_Click(object sender, EventArgs e)
         {
             string image_file = string.Empty;
+            string csvFile = string.Empty;
 
             if (!IsProcessP)
             {
-                dBtn_Process1.Enabled = true; ;
+                dBtn_Process1.Enabled = true;
+                dBtn_Measure1.Enabled = false;
+                dBtn_live1.Enabled = true;
                 IsProcessP = true;
             }
 
@@ -1030,19 +1049,19 @@ namespace JD_Proc
                 TxtBox_SelectedImgName.Text = image_file.Split("\\").Last();
 
                 //csv파일 읽기
-                string csvFile = image_file.Replace(".bmp", ".csv");
+                csvFile = image_file.Replace(".bmp", ".csv");
 
-                //var GaussedDDList = DataConvertFormat.ConvertCSVToDLList(csvFile.Replace(".csv", "GProcessed.csv"), 640, 480);
-                //var A_GaussedDDList = new List<List<Double>>();
                 TempDDList = new List<List<Double>>();
 
                 if (File.Exists(csvFile))
                 {
                     pictureBox1.Image = Bitmap.FromFile(image_file);
                     pictureBox1_Auto.Image = pictureBox1.Image;
+                    originalImage = pictureBox1.Image;
+                    lvchart = new Component.LVChart(Panel_LVChart, Lbl_LVchart1, Lbl_LVchart2, csvFile);
 
-                    SnaptoGaussianImagewithCSV(pictureBox1.Image);
-                    CalculateGaussianfileterToOriginalTempCSV(csvFile);
+                    //SnaptoGaussianImagewithCSV(pictureBox1.Image);
+                    //CalculateGaussianfileterToOriginalTempCSV(csvFile);
 
                     try
                     {
@@ -1101,7 +1120,18 @@ namespace JD_Proc
                 }
 
 
+
             }
+
+            //_lvachart = new Lvchart(Panel_LVChart, Lbl_LVchart1, Lbl_LVchart2);
+            //if (csvFile.Length > 0)
+            //{
+
+            //  _lvachart.GetData(csvFile, 640, 480); // CSV 경로 및 이미지 사이즈
+
+
+            //}
+
         }
 
         private void dBtn_load2_Click(object sender, EventArgs e)
@@ -1167,14 +1197,25 @@ namespace JD_Proc
         {
             string saveFolder = @"C:\JD\images\" + DateTime.Now.ToString("yyyy-MM-dd");
 
+
             if (!System.IO.Directory.Exists(saveFolder))
                 System.IO.Directory.CreateDirectory(saveFolder);
 
-            pictureBox1.Image.Save(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
-            pictureBox1_Auto.Image.Save(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
 
+            if (pictureBox1.Image != null)
+            {
+                pictureBox1.Image.Save(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+            }
+
+            if (pictureBox1_Auto.Image != null)
+            {
+                pictureBox1_Auto.Image.Save(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+            }
+
+            string CSVFilename = saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".csv";
             //csv 파일 저장
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(saveFolder + "\\" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".csv"))
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(CSVFilename))
             {
                 for (int y = 0; y < _tempData_L.GetLength(1); y++)
                 {
@@ -1190,8 +1231,16 @@ namespace JD_Proc
 
                     sendText = sendText.Remove(0, 1);
                     file.WriteLine(sendText);
+
                 }
+
             }
+
+            chartCSVFilePath = CSVFilename;
+
+
+
+
         }
 
         private void dBtn_imageSave2_Click(object sender, EventArgs e)
@@ -1305,7 +1354,6 @@ namespace JD_Proc
                 (OptrisColoringPalette)Enum.Parse(typeof(OptrisColoringPalette), (string)dComboBox_cam1.SelectedItem),
                 (OptrisPaletteScalingMethod)Enum.Parse(typeof(OptrisPaletteScalingMethod), (string)dComboBox_scale1.SelectedItem));
 
-            Debug.WriteLine(dComboBox_cam1.SelectedIndex);
         }
 
         private void dComboBox_cam1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1387,6 +1435,7 @@ namespace JD_Proc
         #region [event - BottomLineSetting]
         private void Btn_BottomLineSetting_Click(object sender, EventArgs e)
         {
+            dBtn_load1_Click(sender, e);
             try
             {
                 if (TempDDList.Count != 0)
@@ -1410,6 +1459,7 @@ namespace JD_Proc
             TextBox_InputSV.textBox.Clear();
         }
         #endregion
+
 
         #region method - 카메라 connect
         public void Connect(string configPath, int index)
@@ -1476,7 +1526,7 @@ namespace JD_Proc
                     else
                     {
                         pictureBox1.Image = _images.PaletteImage;
-                        dLable_tmp1.Text = Math.Round(mean, 2).ToString();
+                        //dLable_tmp1.Text = Math.Round(mean, 2).ToString();
                     }
                 }));
             }
@@ -1558,7 +1608,7 @@ namespace JD_Proc
             {
                 pictureBox1.Image = images.PaletteImage;
                 pictureBox1_Auto.Image = images.PaletteImage;
-                dLable_tmp1.Text = Math.Round(mean, 1).ToString();
+                //dLable_tmp1.Text = Math.Round(mean, 1).ToString();
 
             }));
 
@@ -1576,7 +1626,6 @@ namespace JD_Proc
             double mean = 0;
             for (int row = 0; row < rows; row++)
             {
-                TempDDList.Add(new List<double>());
                 for (int column = 0; column < columns; column++)
                 {
                     ushort value = images.ThermalImage[row, column];
@@ -1842,15 +1891,15 @@ namespace JD_Proc
             {
                 lock (lockObject)
                 {
-                    for (int xx = 0; xx < AcloneBmap_L.Width; xx++)
+                    for (int xx = 0; xx < cloneBmap_L.Width; xx++)
                     {
-                        for (int yy = 0; yy < AcloneBmap_L.Height; yy++)
+                        for (int yy = 0; yy < cloneBmap_L.Height; yy++)
                         {
-                            Color old = AcloneBmap_L.GetPixel(xx, yy);
+                            Color old = cloneBmap_L.GetPixel(xx, yy);
                             int grayScale = (int)((old.R * 0.3) + (old.G * 0.59) + (old.B * 0.11));
                             Color newC = Color.FromArgb(old.A, grayScale, grayScale, grayScale);
 
-                            AgrayBmap_L.SetPixel(xx, yy, newC);
+                            grayBmap_L.SetPixel(xx, yy, newC);
 
 
                         }
@@ -1863,15 +1912,15 @@ namespace JD_Proc
             {
                 lock (lockObject)
                 {
-                    for (int xx = 0; xx < AcloneBmap_R.Width; xx++)
+                    for (int xx = 0; xx < cloneBmap_R.Width; xx++)
                     {
-                        for (int yy = 0; yy < AcloneBmap_R.Height; yy++)
+                        for (int yy = 0; yy < cloneBmap_R.Height; yy++)
                         {
-                            Color old = AcloneBmap_R.GetPixel(xx, yy);
+                            Color old = cloneBmap_R.GetPixel(xx, yy);
                             int grayScale = (int)((old.R * 0.3) + (old.G * 0.59) + (old.B * 0.11));
                             Color newC = Color.FromArgb(old.A, grayScale, grayScale, grayScale);
 
-                            AgrayBmap_R.SetPixel(xx, yy, newC);
+                            grayBmap_R.SetPixel(xx, yy, newC);
                         }
                     }
                 }
@@ -1889,7 +1938,7 @@ namespace JD_Proc
                 {
                     lock (lockObject)
                     {
-                        if (blob.Width == AgrayBmap_L.Width && blob.Height >= 3)
+                        if (blob.Width == grayBmap_L.Width && blob.Height >= 3)
                         {
                             int startY = blob.Y;
                             int endY = startY + blob.Height;
@@ -1923,7 +1972,7 @@ namespace JD_Proc
                 foreach (Model.Blob blob in blobs)
                 {
                     //blob의 가로길이가 이미지의 가로길이만큼 여부 확인
-                    if (blob.Width == AgrayBmap_R.Width && blob.Height >= 3)
+                    if (blob.Width == grayBmap_R.Width && blob.Height >= 3)
                     {
                         int startY = blob.Y;
                         int endY = startY + blob.Height;
@@ -2361,39 +2410,8 @@ namespace JD_Proc
 
             Bitmap bMap = cloneBmap_L.Clone(new Rectangle(x, y, width, height), originBmap_L.PixelFormat);
 
-            if (roi == 1)
-            {
-                if (isThread == true)
-                {
-                    this.BeginInvoke((MethodInvoker)(() =>
-                    {
-                        dPic_roi_1_L.Image = bMap;
-                        dPic_roi_1_L.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }));
-                }
-                else
-                {
-                    dPic_roi_1_L.Image = bMap;
-                    dPic_roi_1_L.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
-            else if (roi == 2)
-            {
-                if (isThread == true)
-                {
-                    this.BeginInvoke((MethodInvoker)(() =>
-                    {
-                        dPic_roi_2_L.Image = bMap;
-                        dPic_roi_2_L.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }));
-                }
-                else
-                {
-                    dPic_roi_2_L.Image = bMap;
-                    dPic_roi_2_L.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
-            else if (roi == 3)
+
+            if (roi == 3)
             {
                 if (isThread == true)
                 {
@@ -2409,38 +2427,7 @@ namespace JD_Proc
                     dPic_roi_3_L.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
             }
-            else if (roi == 4)
-            {
-                if (isThread == true)
-                {
-                    this.BeginInvoke((MethodInvoker)(() =>
-                    {
-                        dPic_roi_4_L.Image = bMap;
-                        dPic_roi_4_L.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }));
-                }
-                else
-                {
-                    dPic_roi_4_L.Image = bMap;
-                    dPic_roi_4_L.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
-            else if (roi == 5)
-            {
-                if (isThread == true)
-                {
-                    this.BeginInvoke((MethodInvoker)(() =>
-                    {
-                        dPic_roi_5_L.Image = bMap;
-                        dPic_roi_5_L.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }));
-                }
-                else
-                {
-                    dPic_roi_5_L.Image = bMap;
-                    dPic_roi_5_L.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
+
         }
 
         void DrawRoiZoom_R(int roi, bool isThread)
@@ -2525,39 +2512,8 @@ namespace JD_Proc
 
             Bitmap bMap = cloneBmap_R.Clone(new Rectangle(x, y, width, height), originBmap_R.PixelFormat);
 
-            if (roi == 1)
-            {
-                if (isThread == true)
-                {
-                    this.BeginInvoke((MethodInvoker)(() =>
-                    {
-                        dPic_roi_1_R.Image = bMap;
-                        dPic_roi_1_R.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }));
-                }
-                else
-                {
-                    dPic_roi_1_R.Image = bMap;
-                    dPic_roi_1_R.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
-            else if (roi == 2)
-            {
-                if (isThread == true)
-                {
-                    this.BeginInvoke((MethodInvoker)(() =>
-                    {
-                        dPic_roi_2_R.Image = bMap;
-                        dPic_roi_2_R.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }));
-                }
-                else
-                {
-                    dPic_roi_2_R.Image = bMap;
-                    dPic_roi_2_R.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
-            else if (roi == 3)
+
+            if (roi == 3)
             {
                 if (isThread == true)
                 {
@@ -2573,199 +2529,64 @@ namespace JD_Proc
                     dPic_roi_3_R.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
             }
-            else if (roi == 4)
-            {
-                if (isThread == true)
-                {
-                    this.BeginInvoke((MethodInvoker)(() =>
-                    {
-                        dPic_roi_4_R.Image = bMap;
-                        dPic_roi_4_R.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }));
-                }
-                else
-                {
-                    dPic_roi_4_R.Image = bMap;
-                    dPic_roi_4_R.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
-            else if (roi == 5)
-            {
-                if (isThread == true)
-                {
-                    this.BeginInvoke((MethodInvoker)(() =>
-                    {
-                        dPic_roi_5_R.Image = bMap;
-                        dPic_roi_5_R.SizeMode = PictureBoxSizeMode.StretchImage;
-                    }));
-                }
-                else
-                {
-                    dPic_roi_5_R.Image = bMap;
-                    dPic_roi_5_R.SizeMode = PictureBoxSizeMode.StretchImage;
-                }
-            }
+
         }
         #endregion
 
         #region method - 차트 디자인 변경
         void InitChartDesign()
         {
-            //차트 배경 변경
-            dChart_L_1.ChartAreas[0].BackColor = Color.Black;
-            dChart_L_2.ChartAreas[0].BackColor = Color.Black;
-            dChart_L_3.ChartAreas[0].BackColor = Color.Black;
-            dChart_L_4.ChartAreas[0].BackColor = Color.Black;
-            dChart_L_5.ChartAreas[0].BackColor = Color.Black;
 
-            dChart_R_1.ChartAreas[0].BackColor = Color.Black;
-            dChart_R_2.ChartAreas[0].BackColor = Color.Black;
+            dChart_L_3.ChartAreas[0].BackColor = Color.Black;
+
             dChart_R_3.ChartAreas[0].BackColor = Color.Black;
-            dChart_R_4.ChartAreas[0].BackColor = Color.Black;
-            dChart_R_5.ChartAreas[0].BackColor = Color.Black;
 
             //차트 이름 변경
-            dChart_L_1.Series[0].LegendText = "LEFT 1";
-            dChart_L_2.Series[0].LegendText = "LEFT 2";
             dChart_L_3.Series[0].LegendText = "LEFT 3";
-            dChart_L_4.Series[0].LegendText = "LEFT 4";
-            dChart_L_5.Series[0].LegendText = "LEFT 5";
 
-            dChart_R_1.Series[0].LegendText = "RIGHT 1";
-            dChart_R_2.Series[0].LegendText = "RIGHT 2";
             dChart_R_3.Series[0].LegendText = "RIGHT 3";
-            dChart_R_4.Series[0].LegendText = "RIGHT 4";
-            dChart_R_5.Series[0].LegendText = "RIGHT 5";
+
 
             //x 라인 색상 변경
-            dChart_L_1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
-            dChart_L_2.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
             dChart_L_3.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
-            dChart_L_4.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
-            dChart_L_5.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
-
-            dChart_R_1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
-            dChart_R_2.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
             dChart_R_3.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
-            dChart_R_4.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
-            dChart_R_5.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
+
 
             //y 라인 색상 변경
-            dChart_L_1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
-            dChart_L_2.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
             dChart_L_3.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
-            dChart_L_4.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
-            dChart_L_5.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
-
-            dChart_R_1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
-            dChart_R_2.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
             dChart_R_3.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
-            dChart_R_4.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
-            dChart_R_5.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
 
             //x 라인 라벨 색상 변경
-            dChart_L_1.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
-            dChart_L_2.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
             dChart_L_3.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
-            dChart_L_4.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
-            dChart_L_5.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
-
-            dChart_R_1.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
-            dChart_R_2.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
             dChart_R_3.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
-            dChart_R_4.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
-            dChart_R_5.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
 
             //y 라인 라벨 색상 변경
-            dChart_L_1.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
-            dChart_L_2.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
             dChart_L_3.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
-            dChart_L_4.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
-            dChart_L_5.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
-
-            dChart_R_1.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
-            dChart_R_2.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
             dChart_R_3.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
-            dChart_R_4.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
-            dChart_R_5.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
 
             //x 라인 격자로 변경
-            dChart_L_1.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_L_2.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
             dChart_L_3.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_L_4.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_L_5.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-
-            dChart_R_1.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_R_2.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
             dChart_R_3.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_R_4.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_R_5.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
 
             //y 라인 격자로 변경
-            dChart_L_1.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_L_2.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
             dChart_L_3.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_L_4.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_L_5.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-
-            dChart_R_1.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_R_2.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
             dChart_R_3.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_R_4.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            dChart_R_5.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
 
             //라인 색상 변경
-            dChart_L_1.Series[0].Color = Color.Crimson;
-            dChart_L_2.Series[0].Color = Color.Crimson;
             dChart_L_3.Series[0].Color = Color.Crimson;
-            dChart_L_4.Series[0].Color = Color.Crimson;
-            dChart_L_5.Series[0].Color = Color.Crimson;
-
-            dChart_R_1.Series[0].Color = Color.Crimson;
-            dChart_R_2.Series[0].Color = Color.Crimson;
             dChart_R_3.Series[0].Color = Color.Crimson;
-            dChart_R_4.Series[0].Color = Color.Crimson;
-            dChart_R_5.Series[0].Color = Color.Crimson;
 
             //라인 두깨 변경
-            dChart_L_1.Series[0].BorderWidth = 2;
-            dChart_L_2.Series[0].BorderWidth = 2;
             dChart_L_3.Series[0].BorderWidth = 2;
-            dChart_L_4.Series[0].BorderWidth = 2;
-            dChart_L_5.Series[0].BorderWidth = 2;
-
-            dChart_R_1.Series[0].BorderWidth = 2;
-            dChart_R_2.Series[0].BorderWidth = 2;
             dChart_R_3.Series[0].BorderWidth = 2;
-            dChart_R_4.Series[0].BorderWidth = 2;
-            dChart_R_5.Series[0].BorderWidth = 2;
 
             //제목 배경 색상 변경
-            dChart_L_1.Legends[0].BackColor = Color.FromArgb(45, 45, 45);
-            dChart_L_2.Legends[0].BackColor = Color.FromArgb(45, 45, 45);
             dChart_L_3.Legends[0].BackColor = Color.FromArgb(45, 45, 45);
-            dChart_L_4.Legends[0].BackColor = Color.FromArgb(45, 45, 45);
-            dChart_L_5.Legends[0].BackColor = Color.FromArgb(45, 45, 45);
-
-            dChart_R_1.Legends[0].BackColor = Color.FromArgb(45, 45, 45);
-            dChart_R_2.Legends[0].BackColor = Color.FromArgb(45, 45, 45);
             dChart_R_3.Legends[0].BackColor = Color.FromArgb(45, 45, 45);
-            dChart_R_4.Legends[0].BackColor = Color.FromArgb(45, 45, 45);
-            dChart_R_5.Legends[0].BackColor = Color.FromArgb(45, 45, 45);
 
             // 제목 글씨 색상 변경
-            dChart_L_1.Legends[0].ForeColor = Color.White;
-            dChart_L_2.Legends[0].ForeColor = Color.White;
             dChart_L_3.Legends[0].ForeColor = Color.White;
-            dChart_L_4.Legends[0].ForeColor = Color.White;
-            dChart_L_5.Legends[0].ForeColor = Color.White;
-
-            dChart_R_1.Legends[0].ForeColor = Color.White;
-            dChart_R_2.Legends[0].ForeColor = Color.White;
             dChart_R_3.Legends[0].ForeColor = Color.White;
-            dChart_R_4.Legends[0].ForeColor = Color.White;
-            dChart_R_5.Legends[0].ForeColor = Color.White;
 
 
 
@@ -2779,20 +2600,12 @@ namespace JD_Proc
             {
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
-                    dChart_L_1.Series[0].Points.Clear();
-                    dChart_L_2.Series[0].Points.Clear();
                     dChart_L_3.Series[0].Points.Clear();
-                    dChart_L_4.Series[0].Points.Clear();
-                    dChart_L_5.Series[0].Points.Clear();
                 }));
             }
             else
             {
-                dChart_L_1.Series[0].Points.Clear();
-                dChart_L_2.Series[0].Points.Clear();
                 dChart_L_3.Series[0].Points.Clear();
-                dChart_L_4.Series[0].Points.Clear();
-                dChart_L_5.Series[0].Points.Clear();
             }
 
             List<int> roi1 = new List<int>();
@@ -2846,34 +2659,21 @@ namespace JD_Proc
             {
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
-                    dChart_L_1.ChartAreas[0].AxisY.Minimum = minAxisY;
-                    dChart_L_2.ChartAreas[0].AxisY.Minimum = minAxisY;
                     dChart_L_3.ChartAreas[0].AxisY.Minimum = minAxisY;
-                    dChart_L_4.ChartAreas[0].AxisY.Minimum = minAxisY;
-                    dChart_L_5.ChartAreas[0].AxisY.Minimum = minAxisY;
 
                     //차트 데이터 바인딩
-                    dChart_L_1.Series[0].Points.DataBindXY(xAxis, roi1);
-                    dChart_L_2.Series[0].Points.DataBindXY(xAxis, roi2);
                     dChart_L_3.Series[0].Points.DataBindXY(xAxis, roi3);
-                    dChart_L_4.Series[0].Points.DataBindXY(xAxis, roi4);
-                    dChart_L_5.Series[0].Points.DataBindXY(xAxis, roi5);
+
                 }));
             }
             else
             {
-                dChart_L_1.ChartAreas[0].AxisY.Minimum = minAxisY;
-                dChart_L_2.ChartAreas[0].AxisY.Minimum = minAxisY;
                 dChart_L_3.ChartAreas[0].AxisY.Minimum = minAxisY;
-                dChart_L_4.ChartAreas[0].AxisY.Minimum = minAxisY;
-                dChart_L_5.ChartAreas[0].AxisY.Minimum = minAxisY;
 
                 //차트 데이터 바인딩
-                dChart_L_1.Series[0].Points.DataBindXY(xAxis, roi1);
-                dChart_L_2.Series[0].Points.DataBindXY(xAxis, roi2);
+
                 dChart_L_3.Series[0].Points.DataBindXY(xAxis, roi3);
-                dChart_L_4.Series[0].Points.DataBindXY(xAxis, roi4);
-                dChart_L_5.Series[0].Points.DataBindXY(xAxis, roi5);
+
             }
 
         }
@@ -2884,20 +2684,12 @@ namespace JD_Proc
             {
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
-                    dChart_R_1.Series[0].Points.Clear();
-                    dChart_R_2.Series[0].Points.Clear();
                     dChart_R_3.Series[0].Points.Clear();
-                    dChart_R_4.Series[0].Points.Clear();
-                    dChart_R_5.Series[0].Points.Clear();
                 }));
             }
             else
             {
-                dChart_R_1.Series[0].Points.Clear();
-                dChart_R_2.Series[0].Points.Clear();
                 dChart_R_3.Series[0].Points.Clear();
-                dChart_R_4.Series[0].Points.Clear();
-                dChart_R_5.Series[0].Points.Clear();
             }
 
             List<int> roi1 = new List<int>();
@@ -2950,34 +2742,18 @@ namespace JD_Proc
             {
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
-                    dChart_R_1.ChartAreas[0].AxisY.Minimum = minAxisY;
-                    dChart_R_2.ChartAreas[0].AxisY.Minimum = minAxisY;
                     dChart_R_3.ChartAreas[0].AxisY.Minimum = minAxisY;
-                    dChart_R_4.ChartAreas[0].AxisY.Minimum = minAxisY;
-                    dChart_R_5.ChartAreas[0].AxisY.Minimum = minAxisY;
 
                     //차트 데이터 바인딩
-                    dChart_R_1.Series[0].Points.DataBindXY(xAxis, roi1);
-                    dChart_R_2.Series[0].Points.DataBindXY(xAxis, roi2);
                     dChart_R_3.Series[0].Points.DataBindXY(xAxis, roi3);
-                    dChart_R_4.Series[0].Points.DataBindXY(xAxis, roi4);
-                    dChart_R_5.Series[0].Points.DataBindXY(xAxis, roi5);
                 }));
             }
             else
             {
-                dChart_R_1.ChartAreas[0].AxisY.Minimum = minAxisY;
-                dChart_R_2.ChartAreas[0].AxisY.Minimum = minAxisY;
                 dChart_R_3.ChartAreas[0].AxisY.Minimum = minAxisY;
-                dChart_R_4.ChartAreas[0].AxisY.Minimum = minAxisY;
-                dChart_R_5.ChartAreas[0].AxisY.Minimum = minAxisY;
 
                 //차트 데이터 바인딩
-                dChart_R_1.Series[0].Points.DataBindXY(xAxis, roi1);
-                dChart_R_2.Series[0].Points.DataBindXY(xAxis, roi2);
                 dChart_R_3.Series[0].Points.DataBindXY(xAxis, roi3);
-                dChart_R_4.Series[0].Points.DataBindXY(xAxis, roi4);
-                dChart_R_5.Series[0].Points.DataBindXY(xAxis, roi5);
             }
 
         }
@@ -2986,6 +2762,10 @@ namespace JD_Proc
         #region method - gap평균 텍스에 찍어주기
         double WriteGapAvg(string cam, bool isThread)
         {
+            int CalValue;
+            double calculatedValue = CalculateGap();
+            if (calculatedValue == 0) return 0;
+
             if (cam == "cam1")
             {
                 SettingsService settingService = new SettingsService();
@@ -3008,15 +2788,15 @@ namespace JD_Proc
 
                 totalAVg = Math.Round(totalAVg / getNumberIncludeROIAverage(isCheckboxROI_L), 2);
 
-                double Gapvalue = (Math.Round(CalculateGap() * resolution - 30, 2));
-                string result =
-                                 //"GAP 평균 \r\n" + "\r\n" +
-                                 //             "LEFT_1 : " + avg[0].ToString() + "\r\n" + "\r\n" +
-                                 //             "LEFT_2 : " + avg[1].ToString() + "\r\n" + "\r\n" +
-                                 //             "LEFT_3 : " + avg[2].ToString() + "\r\n" + "\r\n" +
-                                 //             "LEFT_4 : " + avg[3].ToString() + "\r\n" + "\r\n" +
-                                 //             "LEFT_5 : " + avg[4].ToString() + "\r\n" + "\r\n" + "\r\n" +
-                                 "Gap Distance : " + Gapvalue;
+                try { CalValue = int.Parse(service.Read("Calibration", "L_Value")); }
+                catch
+                {
+                    MessageBox.Show("올바른 Calibration값을 입력해 주세요.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CalValue = 0;
+                }
+
+                double Gapvalue = (Math.Round(calculatedValue * resolution - 30 + CalValue, 2));
+                string result = "Gap Distance : " + Gapvalue;
 
                 if (isThread == true)
                 {
@@ -3108,6 +2888,8 @@ namespace JD_Proc
             Panel_BrighestLine_L.Visible = false;
             dBtn_snap1_Click(sender, e);
             dBtn_Process1_Click(sender, e);
+            dBtn_imageSave1_Click(sender, e);
+            if (chartCSVFilePath.Length > 0) lvchart = new Component.LVChart(Panel_LVChart, Lbl_LVchart1, Lbl_LVchart2, chartCSVFilePath);
         }
 
         private void measureFunc2(object sender, EventArgs e)
@@ -3218,7 +3000,7 @@ namespace JD_Proc
             MELSEC_JOG_Timer = new PLC.Melsec(int.Parse(service.Read("PLC_LOGICAL_STATION_NUMBER", "PLC_LOGICAL_STATION_NUMBER")));
             MELSEC_JOG_Timer.Open();
             MELSEC_JOG_Timer.actUtlType64.GetDevice("B12C", out int value);
-            
+
             Debug.Print(value.ToString());
 
             if (value == 1)
@@ -3306,6 +3088,14 @@ namespace JD_Proc
         public void jogButtonReverseClickUp()
         {
             MELSEC_JOG.actUtlType64.SetDevice("B2B", short.Parse("0"));
+        }
+        #endregion
+
+        #region [method - ReadCurrentPosition]
+        public int JogReadCurrentPosition(string DeviceAddr)
+        {
+            MELSEC_JOG.actUtlType64.ReadDeviceBlock(DeviceAddr, 2, out int Pos);
+            return Pos;
         }
         #endregion
 
@@ -3479,36 +3269,42 @@ namespace JD_Proc
             int B_Pixel = 0;
 
             // 온도데이터에의 320번째 열에서 가장 밝은 픽셀 인덱스 B_Pixel에 저장한다.
+
+            B_Pixel = TempDDList[320].IndexOf(TempDDList[320].Max());
+
+
+            // 고정픽셀과 유동픽셀의 기준을 얻기 위해 에지지점들외의 가장 값이 높은 픽셀을 구한다.
+            // 온도그래프 특성상 너무 왔다갔다 튀므로 기울기를 통해 구할 경우 변수가 많으므로 
+            // +-10픽셀정도 오차내에서 일관적으로 얻고자 하는 기준을 얻을 수 있는 픽셀 index를 그래프를 분석하여 설정(145, 232)
+            // 에지가 눈으로 봤을때 최대한 이미지의 가운데 오게끔 하면 됨
+            for (int r = 145; r < 232; r++) if (TempDDList[320][r] > STD_OF_STD) STD_OF_STD = TempDDList[320][r];
+
+            LIP_VARIANT_PIXEL = TempDDList[320].FindIndex(x => x > STD_OF_STD);
             try
-
             {
-                B_Pixel = TempDDList[320].IndexOf(TempDDList[320].Max());
-
-
-                // 고정픽셀과 유동픽셀의 기준을 얻기 위해 에지지점들외의 가장 값이 높은 픽셀을 구한다.
-                // 온도그래프 특성상 너무 왔다갔다 튀므로 기울기를 통해 구할 경우 변수가 많으므로 
-                // +-10픽셀정도 오차내에서 일관적으로 얻고자 하는 기준을 얻을 수 있는 픽셀 index를 그래프를 분석하여 설정(145, 232)
-                // 에지가 눈으로 봤을때 최대한 이미지의 가운데 오게끔 하면 됨
-                for (int r = 145; r < 232; r++) if (TempDDList[320][r] > STD_OF_STD) STD_OF_STD = TempDDList[320][r];
-
-                LIP_VARIANT_PIXEL = TempDDList[320].FindIndex(x => x > STD_OF_STD);
-
-                //고정되어있는 아래 롤부분의 픽셀과 변화하는 위의 Lip부분의 픽셀의 차를 구해준다.
-                gap_pixel = ROLL_FIXED_PIXEL - LIP_VARIANT_PIXEL;
-
-                if (service.Read("STANDARD", "UpperIdx") != null)
+                if (LIP_VARIANT_PIXEL == -1)
                 {
-                    service.Write("STANDARD", "UpperIdx", LIP_VARIANT_PIXEL.ToString());
-                }
 
-                //고정되어있는 롤 pixel 에서 가변적인 윗부분 lip 픽셀을 빼준다음 해당 픽셀들을 모두 포함하므로 +1을 해준다.
-                return ROLL_FIXED_PIXEL - Math.Round(GetXLinearEquation(LIP_VARIANT_PIXEL, TempDDList[320][LIP_VARIANT_PIXEL], LIP_VARIANT_PIXEL - 1, TempDDList[320][LIP_VARIANT_PIXEL - 1], STD_OF_STD), 2) + 1;
+                    throw new Exception();
+                }
             }
             catch
             {
-                MessageBox.Show("이미 계산한 결과입니다.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1;
+                MessageBox.Show("Gap 구간이 이미지의 중앙에 위치하지 않습니다. CenterLine을 참고하여 위치조절을 부탁 드립니다.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return 0;
             }
+
+            //고정되어있는 아래 롤부분의 픽셀과 변화하는 위의 Lip부분의 픽셀의 차를 구해준다.
+            gap_pixel = ROLL_FIXED_PIXEL - LIP_VARIANT_PIXEL;
+
+            if (service.Read("STANDARD", "UpperIdx") != null)
+            {
+                service.Write("STANDARD", "UpperIdx", LIP_VARIANT_PIXEL.ToString());
+            }
+
+            //고정되어있는 롤 pixel 에서 가변적인 윗부분 lip 픽셀을 빼준다음 해당 픽셀들을 모두 포함하므로 +1을 해준다.
+            return ROLL_FIXED_PIXEL - Math.Round(GetXLinearEquation(LIP_VARIANT_PIXEL, TempDDList[320][LIP_VARIANT_PIXEL], LIP_VARIANT_PIXEL - 1, TempDDList[320][LIP_VARIANT_PIXEL - 1], STD_OF_STD), 2) + 1;
+
 
         }
         #endregion
@@ -3652,8 +3448,7 @@ namespace JD_Proc
             {
                 this.BeginInvoke((MethodInvoker)(() =>
                 {
-                    Lbl_TempController.Text = "Temp_OK";
-                    Lbl_TempController.BackColor = Color.Aquamarine;
+                    dRadio_TempCon.Checked = true;
                     Label_PV_Value.Text = TempController.GetCurrentTemperature(TempController);
                     Label_SV_Value.Text = TempController.GetCurrentTargetTemperature(TempController);
                 }));
@@ -3661,20 +3456,153 @@ namespace JD_Proc
             }
             else
             {
-                this.BeginInvoke((MethodInvoker)(() =>
-                {
-                    Lbl_TempController.BackColor = Color.Red;
-                }));
+
+                _TempControllerTimer.Dispose();
+
+
+
+
 
             }
         }
         #endregion
 
-
-
-        private void Btn_PLCACK_Click(object sender, EventArgs e)
+        #region [method - PictureBox ZoomIn/Out]
+        private static Image ResizeImage(Image img, int width, int height)
         {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
 
+            destImage.SetResolution(img.HorizontalResolution, img.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                    graphics.DrawImage(img, destRect, 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
         }
+
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                // 줌 인 또는 줌 아웃 비율을 설정합니다.
+                const float zoomSpeed = 0.1f;
+                if (e.Delta > 0) // 마우스 휠을 위로
+                {
+                    currentZoomFactor += zoomSpeed;
+                }
+                else if (e.Delta < 0) // 마우스 휠을 아래로
+                {
+                    currentZoomFactor = Math.Max(1.0f, currentZoomFactor - zoomSpeed); // 줌 아웃 최소치를 1.0(원본 크기)로 제한
+                }
+
+                // 현재 줌 비율에 따라 이미지의 크기를 조절합니다.
+                var newSize = new Size((int)(originalImage.Width * currentZoomFactor), (int)(originalImage.Height * currentZoomFactor));
+                Bitmap zoomedImage = new Bitmap(originalImage, newSize);
+                pictureBox1.Image = zoomedImage;
+            }
+            catch (Exception ex)
+            {
+                // 오류 처리
+                MessageBox.Show($"Error during zoom: {ex.Message}");
+            }
+        }
+
+        private void ApplyImageDrag(int dx, int dy)
+        {
+            // 현재 PictureBox의 이미지를 Bitmap으로 변환합니다.
+            Bitmap currentBitmap = new Bitmap(pictureBox1.Image);
+
+            // 드래그한 만큼 이미지를 이동시키기 위한 새로운 Bitmap을 생성합니다.
+            Bitmap movedImage = new Bitmap(currentBitmap.Width, currentBitmap.Height);
+
+            using (Graphics g = Graphics.FromImage(movedImage))
+            {
+                // 새로운 이미지에 현재 이미지를 dx, dy만큼 이동시켜 그립니다.
+                g.Clear(Color.White); // 배경색을 설정할 수 있습니다.
+                g.DrawImage(currentBitmap, new Rectangle(dx, dy, currentBitmap.Width, currentBitmap.Height), new Rectangle(0, 0, currentBitmap.Width, currentBitmap.Height), GraphicsUnit.Pixel);
+            }
+
+            // PictureBox의 Image 속성을 업데이트하여 변경된 이미지 위치를 반영합니다.
+            pictureBox1.Image = movedImage;
+
+            // 사용하지 않는 리소스를 해제합니다.
+            currentBitmap.Dispose();
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                // 마우스 왼쪽 버튼을 클릭했을 때의 위치를 저장합니다.
+                mouseDownLocation = e.Location;
+            }
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                // 이미지가 줌 인된 상태에서만 드래그하여 이동할 수 있도록 합니다.
+                // PictureBox 내에서 마우스의 이동 거리를 계산합니다.
+                int dx = e.X - mouseDownLocation.X;
+                int dy = e.Y - mouseDownLocation.Y;
+
+                // PictureBox의 이미지를 이동시키기 위해 새 위치를 계산합니다.
+                ApplyImageDrag(dx, dy);
+
+                // 마우스 위치 업데이트
+                mouseDownLocation = e.Location;
+            }
+        }
+        #endregion
+
+        //#region [method - GraphManipulate]
+        //private void num_Row_ValueChanged(object sender, EventArgs e)
+        //{
+        //    int Value = (int)num_Row.Value - 1;
+        //    if (Value < 0)
+        //        Value = 0;
+        //    if (Value >= (int)num_Row.Maximum)
+        //        Value = (int)num_Row.Maximum - 1;
+        //    _lvachart.RowValue = Value;
+        //    _lvachart.GraphicRow(_lvachart.RowValue);//Graph 표시
+        //}
+
+        //private void btnGraphShow_Click(object sender, EventArgs e)
+        //{
+        //    _lvachart.GraphicRow(_lvachart.RowValue); //Graph 표시
+        //}
+        //private void btn_AxisReset_Click(object sender, EventArgs e)
+        //{
+        //    _lvachart.AxisXchangeRest(); //특정 구간에서 전체로 원복 한 경우
+        //}
+
+        //private void btn_AxisChange_Click(object sender, EventArgs e)
+        //{
+        //    _lvachart.AxisXchangeShow(); // 특정 구간 불러오기
+        //}
+        //private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        //{
+        //    _lvachart.startX = (int)num_AxisStartX.Value;  //특정 구간의 시작X 축값
+        //}
+        //private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        //{
+        //    _lvachart.EndX = (int)num_AxisEndX.Value;      //특정 구간의 시작Y 축값
+        //}
+
+        //#endregion
     }
 }
